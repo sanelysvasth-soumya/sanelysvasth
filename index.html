@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Svasth by Soumya</title>
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="font-awesome-4.2.0/css/font-awesome.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="home-page">
+    <!-- Hero Section -->
+    <div id="home" class="full-height">
+      <!-- Carousel Background -->
+      <div class="carousel-background">
+        <div class="slide active"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+      </div>
+
+      <!-- Navigation Dots -->
+      <div class="carousel-dots">
+        <div class="carousel-dot active"></div>
+        <div class="carousel-dot"></div>
+        <div class="carousel-dot"></div>
+      </div>
+
+      <!-- Content Slides -->
+      <div class="container text-center vertical-center" id="slide1-content">
+        <div class="content">
+          <div class="header-text">
+            <h2><span id="head-title"></span></h2>
+          </div>
+          <div class="space"></div>
+          <h1 class="main-title" style="color: #ffffff">Welcome to Svasth</h1>
+          <h4 style="color: #ffffff">
+            Because Self-care starts with Smart eating
+          </h4>
+          <hr />
+          <div class="header-text">
+            <h2><span id="head-title"></span></h2>
+          </div>
+          <div class="space"></div>
+          <a
+            href="services.html"
+            class="btn btn-primary btn-lg lets-go-btn"
+            style="margin-top: 80px"
+            >Let's Go</a
+          >
+        </div>
+      </div>
+
+      <div
+        class="container text-center vertical-center"
+        id="slide2-content"
+        style="display: none"
+      >
+        <div class="content">
+          <div class="header-text">
+            <h2><span id="head-title-2"></span></h2>
+          </div>
+          <div class="space"></div>
+          <h1 class="main-title" style="color: #ffffff">
+            Want to know Your health score?
+          </h1>
+          <h4 style="color: #ffffff; margin-top: 180px">
+            Take our quick assessment
+          </h4>
+          <hr />
+          <a
+            href="questionnaire.html"
+            class="btn btn-primary btn-lg lets-go-btn"
+            style="margin-top: -30px"
+            >Start Assessment</a
+          >
+        </div>
+      </div>
+
+      <div
+        class="container text-center vertical-center"
+        id="slide3-content"
+        style="display: none"
+      >
+        <div class="content">
+          <div class="header-text">
+            <h2><span id="head-title-3"></span></h2>
+          </div>
+          <div class="space"></div>
+          <h1 class="main-title" style="color: #ffffff">Transform Your Life</h1>
+          <h4 style="color: #ffffff">Start your wellness journey today</h4>
+          <hr />
+          <div class="space"></div>
+          <a
+            href="blogs.html"
+            class="btn btn-primary btn-lg lets-go-btn"
+            style="margin-top: 80px"
+            >Know more</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jquery.1.11.1.js"></script>
+    <script src="js/typed.js"></script>
+    <script>
+      // Typed.js initialization
+      $(document).ready(function () {
+        $("#head-title").typed({
+          strings: [
+            "Rediscover your health with Svasth",
+            "Soumya - Founder and dietitian",
+          ],
+          typeSpeed: 100,
+          loop: true,
+          startDelay: 100,
+        });
+      });
+
+      // Carousel functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".carousel-background .slide");
+        const dots = document.querySelectorAll(".carousel-dot");
+        const contents = [
+          document.getElementById("slide1-content"),
+          document.getElementById("slide2-content"),
+          document.getElementById("slide3-content"),
+        ];
+        let currentSlide = 0;
+
+        function showSlide(index) {
+          slides.forEach((slide) => slide.classList.remove("active"));
+          dots.forEach((dot) => dot.classList.remove("active"));
+          contents.forEach((content) => (content.style.display = "none"));
+
+          slides[index].classList.add("active");
+          dots[index].classList.add("active");
+          contents[index].style.display = "block";
+        }
+
+        // Add click events to dots
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+          });
+        });
+
+        // Auto advance slides
+        setInterval(() => {
+          currentSlide = (currentSlide + 1) % slides.length;
+          showSlide(currentSlide);
+        }, 5000);
+      });
+    </script>
+  </body>
+</html>

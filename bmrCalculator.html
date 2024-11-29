@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMR Calculator - HealthScore</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <style>
+    body {
+      padding: 20px;
+      background-color: #f9fafb;
+    }
+  </style>
+  <body>
+    <!-- Navigation -->
+    <div id="nav-placeholder"></div>
+
+    <!-- Main Content Section -->
+    <div id="calculator-section">
+      <div class="container">
+        <div class="calculator-container">
+          <div class="row">
+            <!-- BMR Calculator Card -->
+            <div class="col-md-6">
+              <div class="calculator-card">
+                <div class="calculator-header">
+                  <h2><i class="fas fa-fire"></i> BMR Calculator</h2>
+                  <p>Calculate your Basal Metabolic Rate</p>
+                </div>
+
+                <form id="bmrForm" class="calculator-form">
+                  <div class="form-group">
+                    <label>Gender</label>
+                    <div class="radio">
+                      <label>
+                        <input
+                          type="radio"
+                          name="gender"
+                          value="male"
+                          required
+                        />
+                        Male
+                      </label>
+                      <label style="margin-left: 20px">
+                        <input type="radio" name="gender" value="female" />
+                        Female
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="weight">Weight (kg)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="weight"
+                      required
+                      placeholder="Enter your weight"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="height">Height (cm)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="height"
+                      required
+                      placeholder="Enter your height"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="age">Age (years)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="age"
+                      required
+                      placeholder="Enter your age"
+                    />
+                  </div>
+
+                  <button type="submit" class="btn calculate-btn">
+                    Calculate BMR
+                  </button>
+                </form>
+
+                <div
+                  id="bmrResult"
+                  class="result-section"
+                  style="display: none"
+                >
+                  <div class="result-header">
+                    <h3>Your Results</h3>
+                    <button class="btn recalculate-btn">
+                      <i class="fas fa-redo"></i> Recalculate
+                    </button>
+                  </div>
+
+                  <div class="result-content">
+                    <div class="bmr-score">
+                      <span class="score-label">Your BMR</span>
+                      <span id="bmrValue" class="score-value">0</span>
+                      <span class="score-unit">calories/day</span>
+                    </div>
+
+                    <div id="bmrMessage" class="result-message">
+                      <!-- Message will be inserted here -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BMR Information Card -->
+            <div class="col-md-6">
+              <div class="calculator-card info-card">
+                <div class="calculator-header">
+                  <h2><i class="fas fa-info-circle"></i> About BMR</h2>
+                </div>
+                <div class="info-content">
+                  <h4>What is Basal Metabolic Rate (BMR)?</h4>
+                  <p>
+                    BMR represents the minimum number of calories your body
+                    needs to perform basic life-sustaining functions while at
+                    rest. These functions include:
+                  </p>
+
+                  <ul class="bmr-functions-list">
+                    <li>Breathing</li>
+                    <li>Blood circulation</li>
+                    <li>Cell production</li>
+                    <li>Nutrient processing</li>
+                    <li>Hormone regulation</li>
+                  </ul>
+
+                  <h4>Understanding Your Results:</h4>
+                  <p>
+                    Your BMR is the baseline number of calories you burn at
+                    rest. To determine your total daily calorie needs, multiply
+                    your BMR by your activity level factor:
+                  </p>
+
+                  <ul class="activity-levels-list">
+                    <li><strong>Sedentary:</strong> BMR × 1.2</li>
+                    <li><strong>Light Activity:</strong> BMR × 1.375</li>
+                    <li><strong>Moderate Activity:</strong> BMR × 1.55</li>
+                    <li><strong>Very Active:</strong> BMR × 1.725</li>
+                    <li><strong>Extra Active:</strong> BMR × 1.9</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jquery.1.11.1.js"></script>
+    <script>
+      $(function () {
+        $("#nav-placeholder").load("nav.html");
+      });
+
+      // BMR Calculator Logic
+      $("#bmrForm").on("submit", function (e) {
+        e.preventDefault();
+
+        const weight = parseFloat($("#weight").val());
+        const height = parseFloat($("#height").val());
+        const age = parseInt($("#age").val());
+        const gender = $("input[name='gender']:checked").val();
+
+        // Validation
+        if (weight < 30 || weight > 300) {
+          alert("Please enter a valid weight (30-300 kg)");
+          return;
+        }
+
+        if (height < 120 || height > 250) {
+          alert("Please enter a valid height (120-250 cm)");
+          return;
+        }
+
+        if (age < 15 || age > 120) {
+          alert("Please enter a valid age (15-120 years)");
+          return;
+        }
+
+        // Calculate BMR using Harris-Benedict Equation
+        let bmr;
+        if (gender === "male") {
+          bmr = 66.5 + 13.75 * weight + 5.003 * height - 6.75 * age;
+        } else {
+          bmr = 655.1 + 9.563 * weight + 1.85 * height - 4.676 * age;
+        }
+
+        const roundedBMR = Math.round(bmr);
+
+        // Generate message based on gender
+        const message = `
+                <p>This is your basal metabolic rate (BMR), which represents the calories your body burns at complete rest.</p>
+                <p>To determine your total daily calorie needs, multiply your BMR by your activity level:</p>
+                <ul>
+                    <li>Sedentary (little or no exercise): ${Math.round(
+                      bmr * 1.2
+                    )} calories</li>
+                    <li>Light activity (1-3 days/week): ${Math.round(
+                      bmr * 1.375
+                    )} calories</li>
+                    <li>Moderate activity (3-5 days/week): ${Math.round(
+                      bmr * 1.55
+                    )} calories</li>
+                    <li>Very active (6-7 days/week): ${Math.round(
+                      bmr * 1.725
+                    )} calories</li>
+                    <li>Extra active (very intense exercise): ${Math.round(
+                      bmr * 1.9
+                    )} calories</li>
+                </ul>`;
+
+        // Display results
+        $("#bmrValue").text(roundedBMR);
+        $("#bmrMessage").html(message);
+
+        // Show results section
+        $("#bmrForm").hide();
+        $("#bmrResult").fadeIn();
+      });
+
+      // Recalculate button handler
+      $(".recalculate-btn").click(function () {
+        $("#bmrResult").hide();
+        $("#bmrForm").fadeIn();
+        $("#bmrForm")[0].reset();
+      });
+    </script>
+  </body>
+</html>

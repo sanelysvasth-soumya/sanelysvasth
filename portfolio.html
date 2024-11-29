@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nutrition Blog - Svasth by Soumya</title>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <body>
+    <div id="nav-placeholder"></div>
+
+    <div id="blog-section">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="section-title">
+              <h2>Nutrition & Wellness Blog</h2>
+              <hr />
+            </div>
+            <p>
+              Discover evidence-based nutrition insights, wellness tips, and
+              healthy recipes to support your journey towards optimal health.
+            </p>
+          </div>
+        </div>
+
+        <div class="blog-container">
+          <div class="row">
+            <!-- Main Content Column -->
+            <div class="col-md-8">
+              <!-- Featured Post -->
+              <article class="blog-post featured-post" id="mindful-eating">
+                <div class="post-category">Featured</div>
+                <div class="post-meta">
+                  <span><i class="far fa-calendar"></i> June 15, 2024</span>
+                  <span><i class="far fa-clock"></i> 8 min read</span>
+                </div>
+                <h3>
+                  The Art of Mindful Eating: Transform Your Relationship with
+                  Food
+                </h3>
+                <p>
+                  Discover how practicing mindful eating can help you develop a
+                  healthier relationship with food, improve digestion, and
+                  support your overall wellness journey. Learn practical
+                  techniques to eat with awareness and purpose.
+                </p>
+                <a href="#" class="read-more"
+                  >Read More <i class="fas fa-arrow-right"></i
+                ></a>
+              </article>
+
+              <!-- Regular Posts -->
+              <div class="blog-grid">
+                <div class="col-md-6">
+                  <article class="blog-post" id="superfoods">
+                    <div class="post-category">Nutrition</div>
+                    <div class="post-meta">
+                      <span><i class="far fa-calendar"></i> June 10, 2024</span>
+                      <span><i class="far fa-clock"></i> 5 min read</span>
+                    </div>
+                    <div class="post-content">
+                      <h4>Top 10 Indian Superfoods for Optimal Health</h4>
+                      <p>
+                        Explore the powerful health benefits of traditional
+                        Indian superfoods that have been used for centuries in
+                        Ayurvedic medicine.
+                      </p>
+                      <a href="#" class="read-more"
+                        >Read More <i class="fas fa-arrow-right"></i
+                      ></a>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="col-md-6">
+                  <article class="blog-post" id="meal-prep">
+                    <div class="post-category">Recipes</div>
+                    <div class="post-meta">
+                      <span><i class="far fa-calendar"></i> June 5, 2024</span>
+                      <span><i class="far fa-clock"></i> 6 min read</span>
+                    </div>
+                    <div class="post-content">
+                      <h4>Meal Prep Made Easy: A Beginner's Guide</h4>
+                      <p>
+                        Learn how to efficiently plan and prepare your meals for
+                        the week while maintaining nutritional balance and
+                        variety.
+                      </p>
+                      <a href="#" class="read-more"
+                        >Read More <i class="fas fa-arrow-right"></i
+                      ></a>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="col-md-6">
+                  <article class="blog-post" id="gut-health">
+                    <div class="post-category">Wellness</div>
+                    <div class="post-meta">
+                      <span><i class="far fa-calendar"></i> June 1, 2024</span>
+                      <span><i class="far fa-clock"></i> 7 min read</span>
+                    </div>
+                    <div class="post-content">
+                      <h4>Understanding Gut Health: Your Second Brain</h4>
+                      <p>
+                        Discover the crucial connection between gut health and
+                        overall wellness, including mental health and immune
+                        function.
+                      </p>
+                      <a href="#" class="read-more"
+                        >Read More <i class="fas fa-arrow-right"></i
+                      ></a>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="col-md-6">
+                  <article class="blog-post" id="stress-eating">
+                    <div class="post-category">Mental Health</div>
+                    <div class="post-meta">
+                      <span><i class="far fa-calendar"></i> May 28, 2024</span>
+                      <span><i class="far fa-clock"></i> 6 min read</span>
+                    </div>
+                    <div class="post-content">
+                      <h4>Managing Stress Eating: A Holistic Approach</h4>
+                      <p>
+                        Learn effective strategies to overcome emotional eating
+                        and develop a healthier relationship with food during
+                        stressful times.
+                      </p>
+                      <a href="#" class="read-more"
+                        >Read More <i class="fas fa-arrow-right"></i
+                      ></a>
+                    </div>
+                  </article>
+                </div>
+              </div>
+
+              <!-- Load More Button -->
+              <div class="text-center">
+                <a href="#" class="btn load-more">Load More Articles</a>
+              </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-md-4">
+              <div class="blog-sidebar">
+                <div class="search-box">
+                  <input
+                    type="text"
+                    id="blogSearch"
+                    placeholder="Search articles..."
+                  />
+                  <button onclick="searchBlogs()">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+                <div class="recent-posts-widget">
+                  <h4>Recent Posts</h4>
+                  <ul class="list-unstyled">
+                    <li>
+                      <a href="#mindful-eating">
+                        <h5>The Art of Mindful Eating</h5>
+                        <span>June 15, 2024</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#superfoods">
+                        <h5>Top 10 Indian Superfoods</h5>
+                        <span>June 10, 2024</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#meal-prep">
+                        <h5>Meal Prep Made Easy</h5>
+                        <span>June 5, 2024</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#gut-health">
+                        <h5>Understanding Gut Health</h5>
+                        <span>June 1, 2024</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="copyright">Copyright © 2024. All rights reserved.</div>
+          <div class="business-name">
+            Svasth by Soumya - Dietitian in Bengaluru
+          </div>
+          <div class="brand">SANELY SVASTH</div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/jquery.1.11.1.js"></script>
+    <script>
+      $(function () {
+        $("#nav-placeholder").load("nav.html");
+      });
+
+      // Blog search functionality
+      function searchBlogs() {
+        const searchTerm = document
+          .getElementById("blogSearch")
+          .value.toLowerCase();
+        const blogPosts = document.querySelectorAll(".blog-post");
+        let foundMatch = false;
+
+        blogPosts.forEach((post) => {
+          const title = post.querySelector("h4, h3").textContent.toLowerCase();
+          const content = post.querySelector("p").textContent.toLowerCase();
+
+          if (title.includes(searchTerm) || content.includes(searchTerm)) {
+            post.style.display = "block";
+            if (!foundMatch && searchTerm !== "") {
+              post.scrollIntoView({ behavior: "smooth", block: "center" });
+              foundMatch = true;
+            }
+          } else {
+            post.style.display = "none";
+          }
+        });
+      }
+
+      // Add search on enter key press
+      document
+        .getElementById("blogSearch")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            searchBlogs();
+          }
+        });
+
+      // Smooth scroll for sidebar links
+      document.addEventListener("DOMContentLoaded", function () {
+        const sidebarLinks = document.querySelectorAll(
+          ".recent-posts-widget a"
+        );
+
+        sidebarLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+              });
+            }
+          });
+        });
+
+        // Load More functionality
+        const loadMoreBtn = document.querySelector(".load-more");
+        if (loadMoreBtn) {
+          loadMoreBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            // Add your load more logic here
+            alert(
+              "Load more functionality will be implemented based on your backend setup"
+            );
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

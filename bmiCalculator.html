@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Calculators - HealthScore</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <style>
+    body {
+      padding: 20px;
+      background-color: #f9fafb;
+    }
+  </style>
+  <body>
+    <!-- Navigation -->
+    <div id="nav-placeholder"></div>
+
+    <!-- Main Content Section -->
+    <div id="calculator-section">
+      <div class="container">
+        <div class="calculator-container">
+          <div class="row">
+            <!-- BMI Calculator Card -->
+            <div class="col-md-6">
+              <div class="calculator-card">
+                <div class="calculator-header">
+                  <h2><i class="fas fa-calculator"></i> BMI Calculator</h2>
+                  <p>Calculate your Body Mass Index (BMI)</p>
+                </div>
+
+                <form id="bmiForm" class="calculator-form">
+                  <div class="form-group">
+                    <label for="height">Height (cm)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="height"
+                      required
+                      min="1"
+                      max="300"
+                      placeholder="Enter your height in centimeters"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="weight">Weight (kg)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="weight"
+                      required
+                      min="1"
+                      max="500"
+                      placeholder="Enter your weight in kilograms"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="age">Age (years)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="age"
+                      required
+                      min="18"
+                      max="120"
+                      placeholder="Enter your age"
+                    />
+                  </div>
+
+                  <button type="submit" class="btn calculate-btn">
+                    Calculate BMI
+                  </button>
+                </form>
+
+                <div
+                  id="bmiResult"
+                  class="result-section"
+                  style="display: none"
+                >
+                  <div class="result-header">
+                    <h3>Your Results</h3>
+                    <button class="btn recalculate-btn">
+                      <i class="fas fa-redo"></i> Recalculate
+                    </button>
+                  </div>
+
+                  <div class="result-content">
+                    <div class="bmi-score">
+                      <span class="score-label">Your BMI</span>
+                      <span id="bmiValue" class="score-value">0.0</span>
+                    </div>
+
+                    <div class="bmi-category">
+                      <span class="category-label">Category:</span>
+                      <span id="bmiCategory" class="category-value">-</span>
+                    </div>
+
+                    <div id="bmiMessage" class="result-message">
+                      <!-- Message will be inserted here -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BMI Information Card -->
+            <div class="col-md-6">
+              <div class="calculator-card info-card">
+                <div class="calculator-header">
+                  <h2><i class="fas fa-info-circle"></i> About BMI</h2>
+                </div>
+                <div class="info-content">
+                  <h4>What is BMI?</h4>
+                  <p>
+                    Body Mass Index (BMI) is a simple measure that uses your
+                    height and weight to work out if your weight is healthy.
+                    It's calculated by dividing your weight in kilograms by the
+                    square of your height in meters.
+                  </p>
+
+                  <h4>BMI Categories:</h4>
+                  <ul class="bmi-categories-list">
+                    <li><strong>Below 16.5:</strong> Severely Underweight</li>
+                    <li><strong>16.5 - 18.4:</strong> Underweight</li>
+                    <li><strong>18.5 - 22.9:</strong> Normal Weight</li>
+                    <li><strong>23.0 - 24.9:</strong> Overweight</li>
+                    <li><strong>25.0 - 29.9:</strong> Obesity Class I</li>
+                    <li><strong>30.0 and above:</strong> Obesity Class II</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jquery.1.11.1.js"></script>
+    <script>
+      $(function () {
+        $("#nav-placeholder").load("nav.html");
+      });
+
+      // BMI Calculator Logic
+      $("#bmiForm").on("submit", function (e) {
+        e.preventDefault();
+
+        const height = parseFloat($("#height").val()) / 100; // Convert cm to meters
+        const weight = parseFloat($("#weight").val());
+        const age = parseInt($("#age").val());
+
+        if (age < 18) {
+          alert(
+            "BMI calculator is not applicable for individuals under 18 years of age."
+          );
+          return;
+        }
+
+        const bmi = weight / (height * height);
+        const roundedBMI = Math.round(bmi * 10) / 10;
+
+        let category, message;
+
+        if (bmi < 16.5) {
+          category = "Severely Underweight";
+          message =
+            "You are severely underweight and undernourished. Please consult a healthcare professional.";
+        } else if (bmi < 18.5) {
+          category = "Underweight";
+          message =
+            "You are underweight and at risk of malnutrition. Consider consulting a nutritionist.";
+        } else if (bmi < 23) {
+          category = "Normal Weight";
+          message =
+            "You have a healthy body weight. Keep maintaining a balanced diet and regular exercise.";
+        } else if (bmi < 25) {
+          category = "Overweight";
+          message =
+            "You are overweight and at risk for metabolic conditions. Consider lifestyle modifications.";
+        } else if (bmi < 30) {
+          category = "Obesity Class I";
+          message =
+            "You are in the obesity range, which increases risk of metabolic syndrome and cardiovascular diseases.";
+        } else {
+          category = "Obesity Class II";
+          message =
+            "You are in the high obesity range. Please consult a healthcare professional for guidance.";
+        }
+
+        $("#bmiValue").text(roundedBMI);
+        $("#bmiCategory").text(category);
+        $("#bmiMessage").html(`<p>${message}</p>`);
+
+        $("#bmiForm").hide();
+        $("#bmiResult").fadeIn();
+      });
+
+      $(".recalculate-btn").click(function () {
+        $("#bmiResult").hide();
+        $("#bmiForm").fadeIn();
+        $("#bmiForm")[0].reset();
+      });
+    </script>
+  </body>
+</html>

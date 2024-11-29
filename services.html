@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Services - Svasth by Soumya</title>
+
+    <!-- Include same CSS as index.html -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <style>
+    body {
+      padding: 20px;
+      background-color: #f9fafb;
+    }
+
+    .faq-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      margin: 20px;
+      min-height: 250px;
+    }
+
+    .faq-card h4 {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .faq-card p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: #333;
+      border-radius: 50%;
+      padding: 10px;
+    }
+
+    .faq-card {
+      background: white;
+      padding: 3rem 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+      max-width: 800px;
+      min-height: 300px;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .faq-icon {
+      font-size: 2.5rem;
+      color: #4a90e2;
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-card h4 {
+      color: #333;
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .faq-card p {
+      color: #666;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 5%;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: #4a90e2;
+      border-radius: 50%;
+      padding: 20px;
+      width: 40px;
+      height: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .faq-card {
+        min-height: 350px;
+        margin: 10px;
+        padding: 2rem 1.5rem;
+      }
+
+      .faq-card h4 {
+        font-size: 1.2rem;
+      }
+
+      .faq-card p {
+        font-size: 1rem;
+      }
+    }
+
+    #faq-section {
+      background: url(../img/faq4.png);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      text-align: center;
+    }
+
+    #faq-section .overlay {
+      background: rgba(34, 34, 34, 0.85);
+      height: auto;
+      min-height: 150px;
+      padding: 3% 0;
+      color: #ffffff;
+    }
+
+    #faq-section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+    }
+
+    #faq-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e0e0e0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .carousel-indicators {
+      display: none !important;
+    }
+
+    .section-title h2 {
+      color: #ffffff;
+    }
+
+    .section-title hr {
+      background-color: #c59a6d;
+      height: 2px;
+      width: 100px;
+      margin: 20px auto;
+    }
+
+    /* Add transition effects */
+    .carousel-item {
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .carousel .carousel-item {
+      opacity: 0;
+      transition-duration: 0.6s;
+    }
+
+    .carousel .carousel-item.active {
+      opacity: 1;
+      transition: opacity ease-in-out 0.7s;
+    }
+
+    /* Adjust spacing and typography */
+    .carousel-item h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+    }
+
+    .carousel-item p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e0e0e0;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Style navigation arrows */
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 5%;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    .section-title h2 {
+      color: #ffffff;
+    }
+
+    .section-title hr {
+      background-color: #c59a6d;
+      height: 2px;
+      width: 100px;
+      margin: 20px auto;
+    }
+
+    /* Fixed height and position for carousel content */
+    .carousel-inner {
+      height: auto;
+      min-height: 150px;
+      position: relative;
+      overflow: hidden;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 15px 0;
+    }
+
+    .carousel-content {
+      position: relative;
+      width: 100%;
+      padding: 0 20px;
+      left: 0;
+      top: 0;
+    }
+
+    /* Slide animation */
+    .carousel-item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .carousel-item.active {
+      transform: translateX(0);
+    }
+
+    .carousel-item-next {
+      transform: translateX(100%);
+    }
+
+    .carousel-item-prev {
+      transform: translateX(-100%);
+    }
+
+    /* Typography */
+    .carousel-item h3 {
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
+      color: #ffffff;
+      padding: 0 8px;
+    }
+
+    .carousel-item p {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #e0e0e0;
+      margin: 0 auto;
+      padding: 0 8px;
+    }
+
+    /* Indicators */
+    .carousel-indicators {
+      display: none !important;
+    }
+
+    /* Navigation arrows */
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 5%;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      width: 25px;
+      height: 25px;
+    }
+
+    .section-title h2 {
+      color: #ffffff;
+    }
+
+    .section-title hr {
+      background-color: #c59a6d;
+      height: 2px;
+      width: 100px;
+      margin: 20px auto;
+    }
+
+    .know-procedure-btn {
+      background-color: #c59a6d;
+      color: white;
+      padding: 20px 50px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      margin: 40px 0;
+      font-weight: 600;
+    }
+
+    .know-procedure-btn:hover {
+      background-color: #a47b50;
+      transform: translateY(-2px);
+    }
+
+    .service-detail .detail-item {
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+
+    .service-detail .detail-item:last-child {
+      border-bottom: none;
+    }
+
+    .service-detail .detail-item h4 {
+      color: #333;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .service-detail .detail-item i {
+      color: #c59a6d;
+      margin-right: 10px;
+    }
+
+    .service-detail .detail-item p {
+      color: #666;
+      margin: 0;
+      padding-left: 28px;
+    }
+
+    /* Add media queries for mobile responsiveness */
+    @media (max-width: 768px) {
+      .carousel-inner {
+        min-height: 200px;
+      }
+
+      .carousel-content {
+        padding: 0 15px;
+      }
+
+      /* Adjust navigation arrows for mobile */
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 10%;
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      /* Adjust indicators position */
+      .carousel-indicators {
+        display: none !important;
+      }
+    }
+
+    /* Update services container layout for mobile */
+    @media (max-width: 768px) {
+      .services-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .services-container .col-md-4 {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .service {
+        max-width: 300px;
+        margin: 0 auto 30px;
+        padding: 20px 15px;
+      }
+
+      /* Adjust FAQ carousel for mobile */
+      .carousel-inner {
+        min-height: 300px; /* Increased to accommodate more text */
+      }
+
+      .carousel-item h3 {
+        font-size: 1rem;
+        padding: 0 15px;
+        margin-bottom: 10px;
+      }
+
+      .carousel-item p {
+        font-size: 0.9rem;
+        padding: 0 15px;
+        line-height: 1.5;
+      }
+
+      /* Adjust modal for mobile */
+      .service-modal .modal-content {
+        width: 95%;
+        margin: 20px auto;
+        padding: 15px;
+      }
+
+      .service-detail .detail-item {
+        padding: 12px 0;
+      }
+
+      .service-detail .detail-item h4 {
+        font-size: 1rem;
+      }
+
+      .service-detail .detail-item p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      /* Adjust button for mobile */
+      .know-procedure-btn {
+        padding: 15px 40px;
+        font-size: 1.3rem;
+      }
+    }
+
+    /* Add modal styles if not already present */
+    .service-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 10px;
+      position: relative;
+    }
+  </style>
+  <body>
+    <div id="nav-placeholder"></div>
+
+    <div id="services">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="section-title">
+              <h2>Services</h2>
+              <hr />
+            </div>
+            <p>
+              Our comprehensive nutrition services address diverse needs, from
+              metabolic nutrition that targets conditions like diabetes and
+              obesity to specialized sports nutrition designed to enhance
+              performance and achieve fitness goals.
+            </p>
+          </div>
+        </div>
+
+        <div class="services-container">
+          <div class="col-md-4">
+            <div class="service">
+              <span class="fa fa-heartbeat fa-3x"></span>
+              <h4>Metabolic Nutrition</h4>
+              <p>Strengthen your metabolism and supercharge your life.</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="service">
+              <span class="fa fa-running fa-3x"></span>
+              <h4>Sports Nutrition</h4>
+              <p>Sculpt your body and smash your goals.</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="service">
+              <span class="fa fa-child fa-3x"></span>
+              <h4>Pediatric Nutrition</h4>
+              <p>Saver health and support growth.</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="service">
+              <span class="fa fa-bacteria fa-3x"></span>
+              <h4>Gut Health Nutrition</h4>
+              <p>Guts come from a healthy gut.</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="service">
+              <span class="fa fa-spa fa-3x"></span>
+              <h4>Hair & Skin Wellness</h4>
+              <p>Sustained radiance from within.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add FAQ Carousel Section -->
+    <div id="faq-section">
+      <div class="overlay">
+        <div class="container">
+          <div class="section-title">
+            <h2>Frequently Asked Questions</h2>
+            <hr />
+          </div>
+
+          <div
+            id="faqCarousel"
+            class="carousel slide"
+            data-bs-ride="carousel"
+            data-bs-interval="3000"
+          >
+            <div class="carousel-inner">
+              <!-- Slide 1 -->
+              <div class="carousel-item active">
+                <div class="carousel-content">
+                  <h3>What types of diet plans do you offer?</h3>
+                  <p>
+                    I provide healthy and balanced diet plans that are
+                    customized to fit your current eating habits, making them
+                    easy to follow and maintain over time.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="carousel-item">
+                <div class="carousel-content">
+                  <h3>
+                    How important is diet compared to exercise for weight loss?
+                  </h3>
+                  <p>
+                    Diet is a key factor in weight loss, accounting for 70-80%
+                    of your overall success. While exercise is valuable, proper
+                    nutrition is the primary driver.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="carousel-item">
+                <div class="carousel-content">
+                  <h3>What is your basic approach?</h3>
+                  <p>
+                    Your gut is the foundation of overall health. It influences
+                    the nervous system, endocrine system, and blood nourishment.
+                    Your gut microbiome plays a vital role in regulating
+                    immunity, sleep, mood, blood sugar levels, cholesterol,
+                    autoimmune conditions, and weight gain.
+                  </p>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="carousel-content">
+                  <h3>Will the diet plan require a lot of cooking?</h3>
+                  <p>
+                    The diet plan will be designed according to your cooking
+                    preferences. Whether you like preparing fresh meals every
+                    day or prefer batch cooking for a few days, we'll create a
+                    plan that suits your needs.
+                  </p>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="carousel-content">
+                  <h3>
+                    Can the diet plan be tailored to my specific health goals?
+                  </h3>
+                  <p>
+                    Absolutely! I have experience developing plans for various
+                    health goals, including weight gain, weight loss, pre and
+                    post-pregnancy nutrition, gut health, kidney and
+                    hypertension diets, children's nutrition, and managing PCOD.
+                  </p>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="carousel-content">
+                  <h3>
+                    How long will it take to receive my diet plan after
+                    enrolling?
+                  </h3>
+                  <p>
+                    You will receive your personalized diet plan within 3-4 days
+                    after payment, depending on the current booking schedule.
+                  </p>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="carousel-content">
+                  <h3>What kind of follow-up support do you offer?</h3>
+                  <p>
+                    Once you receive your diet plan, I will personally provide
+                    weekly follow-ups to ensure everything is on track and offer
+                    any support you may need.
+                  </p>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="carousel-content">
+                  <h3>
+                    What makes you qualified to provide effective diet plans for
+                    me and my family?
+                  </h3>
+                  <p>
+                    With six years of formal education and a master's in
+                    Dietetics and Nutrition from the Manipal Academy of Higher
+                    Education, I focus on root-cause health solutions through
+                    functional medicine. Previously at Healthcare Global and
+                    clinical startups, I'm now an independent diet and nutrition
+                    consultant.
+                  </p>
+                </div>
+              </div>
+              <!-- Continue with remaining slides -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery.1.11.1.js"></script>
+    <script>
+      $(function () {
+        $("#nav-placeholder").load("nav.html");
+        $("#footer-placeholder").load("footer.html");
+      });
+    </script>
+
+    <!-- Add this right before the closing body tag -->
+    <div class="service-modal" id="serviceModal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+          <h3 class="modal-title"></h3>
+        </div>
+        <div class="modal-body" id="modalBody">
+          <!-- Content will be loaded dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Service details object containing content for each service
+      const serviceDetails = {
+        "Metabolic Nutrition": `
+                <div class="service-detail">
+                    <div class="detail-item">
+                        <h4><i class="fas fa-clipboard-check"></i> Assess Individual Needs</h4>
+                        <p>Evaluate medical history, body composition, and metabolic health through tests if possible.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-bullseye"></i> Set Clear Goals</h4>
+                        <p>Define specific, measurable health and fitness objectives like weight loss or improved energy.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-balance-scale"></i> Balance Macronutrients</h4>
+                        <p>Determine optimal ratios of carbohydrates, proteins, and fats tailored to individual activity levels and goals.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-clock"></i> Plan Meal Timing</h4>
+                        <p>Schedule meals and snacks strategically around workouts and daily activities to optimize energy and metabolism.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-chart-line"></i> Monitor Progress</h4>
+                        <p>Track dietary intake and energy levels, adjusting the nutrition plan as needed based on individual responses and progress.</p>
+                    </div>
+                </div>
+            `,
+        "Sports Nutrition": `
+                <div class="service-detail">
+                    <div class="detail-item">
+                        <h4><i class="fas fa-running"></i> Performance Assessment</h4>
+                        <p>Evaluate current fitness level, training intensity, and sports-specific nutritional requirements.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-dumbbell"></i> Training Phase Nutrition</h4>
+                        <p>Customize nutrition plans for different training phases: preparation, competition, and recovery.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-bolt"></i> Energy Optimization</h4>
+                        <p>Plan pre, during, and post-workout nutrition to maximize performance and recovery.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-tint"></i> Hydration Strategy</h4>
+                        <p>Develop personalized hydration protocols based on activity intensity and environmental conditions.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-medal"></i> Competition Preparation</h4>
+                        <p>Create specific nutrition strategies for competition days to enhance performance and maintain energy levels.</p>
+                    </div>
+                </div>
+            `,
+        "Pediatric Nutrition": `
+                <div class="service-detail">
+                    <div class="detail-item">
+                        <h4><i class="fas fa-child"></i> Growth Assessment</h4>
+                        <p>Monitor growth patterns and developmental milestones to ensure optimal nutrition support.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-apple-alt"></i> Balanced Meal Planning</h4>
+                        <p>Design age-appropriate meal plans that support healthy growth and development.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-brain"></i> Cognitive Development</h4>
+                        <p>Focus on nutrients essential for brain development and cognitive function.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-shield-alt"></i> Immune Support</h4>
+                        <p>Incorporate immune-boosting foods and nutrients to support children's health.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-utensils"></i> Healthy Eating Habits</h4>
+                        <p>Establish positive relationships with food and develop healthy eating behaviors.</p>
+                    </div>
+                </div>
+            `,
+        "Gut Health Nutrition": `
+                <div class="service-detail">
+                    <div class="detail-item">
+                        <h4><i class="fas fa-microscope"></i> Digestive Assessment</h4>
+                        <p>Evaluate current gut health status and identify potential triggers of digestive issues.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-bacteria"></i> Microbiome Balance</h4>
+                        <p>Develop strategies to support beneficial gut bacteria and overall microbiome health.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-leaf"></i> Anti-inflammatory Diet</h4>
+                        <p>Create meal plans that reduce inflammation and support gut healing.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-seedling"></i> Prebiotics & Probiotics</h4>
+                        <p>Integrate appropriate probiotic foods and supplements to support gut flora.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-heart"></i> Lifestyle Integration</h4>
+                        <p>Implement stress management and lifestyle changes that support digestive health.</p>
+                    </div>
+                </div>
+            `,
+        "Hair & Skin Wellness": `
+                <div class="service-detail">
+                    <div class="detail-item">
+                        <h4><i class="fas fa-check-circle"></i> Nutritional Analysis</h4>
+                        <p>Assess current nutrient intake affecting hair and skin health.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-star"></i> Antioxidant Strategy</h4>
+                        <p>Incorporate powerful antioxidants to protect and enhance skin cells.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-tint"></i> Hydration Protocol</h4>
+                        <p>Develop personalized hydration plans for skin elasticity and hair health.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-spa"></i> Nutrient Optimization</h4>
+                        <p>Focus on key nutrients like biotin, collagen, and omega-3s for hair and skin vitality.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-sun"></i> Protective Nutrition</h4>
+                        <p>Include foods that enhance natural UV protection and skin barrier function.</p>
+                    </div>
+                </div>
+            `,
+        Procedure: `
+                <div class="service-detail">
+                    <div class="detail-item">
+                        <h4><i class="fas fa-comments"></i> Initial Contact</h4>
+                        <p>Reach out via WhatsApp to inquire about services and book an online consultation.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-clipboard-list"></i> Questionnaire</h4>
+                        <p>Complete the online nutritional questionnaire.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-user-md"></i> Assessment</h4>
+                        <p>Undergo a clinical assessment and nutritional consultation.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-file-medical"></i> Personalized Plan</h4>
+                        <p>Enroll in a program that suits your needs and receive a personalized, easy-to-follow Health-diet plan with necessary lifestyle changes.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-phone"></i> Follow-ups</h4>
+                        <p>Get weekly follow-ups calls to track progress.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fab fa-whatsapp"></i> Active Support</h4>
+                        <p>Enjoy 9 hours of active support through WhatsApp.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-chart-line"></i> Progress Tracking</h4>
+                        <p>Monthly Milestone mapping.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4><i class="fas fa-heart"></i> Goal</h4>
+                        <p>Let's get Sanely Svasth!</p>
+                    </div>
+                </div>
+            `,
+      };
+
+      // Get all service cards
+      const serviceCards = document.querySelectorAll(".service");
+      const modal = document.getElementById("serviceModal");
+      const modalBody = document.getElementById("modalBody");
+      const closeBtn = document.querySelector(".close-modal");
+      const modalTitle = document.querySelector(".modal-title");
+
+      // Add click event to each service card
+      serviceCards.forEach((card) => {
+        card.addEventListener("click", () => {
+          const serviceName = card.querySelector("h4").textContent;
+          modalTitle.textContent = serviceName;
+          modalBody.innerHTML = serviceDetails[serviceName];
+          modal.style.display = "block";
+          document.body.style.overflow = "hidden";
+        });
+      });
+
+      // Close modal when clicking the close button
+      closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      });
+
+      // Close modal when clicking outside
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+          document.body.style.overflow = "auto";
+        }
+      });
+
+      // Add this button after your services container
+      document.querySelector(".services-container").insertAdjacentHTML(
+        "afterend",
+        `
+            <div class="text-center mt-4 mb-5">
+                <button class="btn know-procedure-btn" onclick="showProcedure()">
+                    Know Procedure
+                </button>
+            </div>
+        `
+      );
+
+      // Add this function to your existing script
+      function showProcedure() {
+        modalTitle.textContent = "Our Process";
+        modalBody.innerHTML = serviceDetails["Procedure"];
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+      }
+    </script>
+
+    <!-- Add Bootstrap JS before your closing body tag -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <div id="footer-placeholder"></div>
+  </body>
+</html>

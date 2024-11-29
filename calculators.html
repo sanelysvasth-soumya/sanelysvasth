@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Calculators - HealthScore</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <style>
+    body {
+      padding: 20px;
+      background-color: #f9fafb;
+    }
+  </style>
+  <body>
+    <!-- Navigation -->
+    <div id="nav-placeholder"></div>
+
+    <!-- Main Content Section -->
+    <div id="calculators-list-section">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="section-title">
+              <h2 style="padding-top: 20px">Health Calculators</h2>
+              <hr style="margin: 10px auto" />
+              <p style="margin-bottom: 15px">
+                Choose from our range of health calculators to track and
+                understand your health metrics
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="calculators-grid">
+          <!-- First Row -->
+          <div class="row">
+            <!-- BMI Calculator Card -->
+            <div class="col-md-4">
+              <a href="bmiCalculator.html" class="calculator-link">
+                <div class="calculator-list-card">
+                  <div class="card-icon">
+                    <i class="fas fa-calculator"></i>
+                  </div>
+                  <div class="card-content">
+                    <h3>BMI Calculator</h3>
+                    <p>
+                      Calculate your Body Mass Index to assess your weight
+                      relative to your height
+                    </p>
+                  </div>
+                  <div class="card-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Waist-to-Hip Ratio Calculator Card -->
+            <div class="col-md-4">
+              <a href="whrCalculator.html" class="calculator-link">
+                <div class="calculator-list-card">
+                  <div class="card-icon">
+                    <i class="fas fa-ruler-horizontal"></i>
+                  </div>
+                  <div class="card-content">
+                    <h3>Waist-to-Hip Ratio</h3>
+                    <p>
+                      Measure your waist-to-hip ratio to understand your body
+                      fat distribution
+                    </p>
+                  </div>
+                  <div class="card-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Waist-to-Height Ratio Calculator Card -->
+            <div class="col-md-4">
+              <a href="whtrCalculator.html" class="calculator-link">
+                <div class="calculator-list-card">
+                  <div class="card-icon">
+                    <i class="fas fa-ruler-vertical"></i>
+                  </div>
+                  <div class="card-content">
+                    <h3>Waist-to-Height Ratio</h3>
+                    <p>
+                      Calculate your waist-to-height ratio to assess potential
+                      health risks
+                    </p>
+                  </div>
+                  <div class="card-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Second Row -->
+          <div class="row" style="margin-top: 30px">
+            <!-- BMR Calculator Card -->
+            <div class="col-md-4">
+              <a href="bmrCalculator.html" class="calculator-link">
+                <div class="calculator-list-card">
+                  <div class="card-icon">
+                    <i class="fas fa-fire"></i>
+                  </div>
+                  <div class="card-content">
+                    <h3>BMR Calculator</h3>
+                    <p>
+                      Calculate your Basal Metabolic Rate to understand your
+                      daily calorie needs
+                    </p>
+                  </div>
+                  <div class="card-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Protein Intake Calculator Card -->
+            <div class="col-md-4">
+              <a href="proteinCalculator.html" class="calculator-link">
+                <div class="calculator-list-card">
+                  <div class="card-icon">
+                    <i class="fas fa-drumstick-bite"></i>
+                  </div>
+                  <div class="card-content">
+                    <h3>Protein Intake Calculator</h3>
+                    <p>
+                      Determine your daily protein requirements based on your
+                      weight and activity level
+                    </p>
+                  </div>
+                  <div class="card-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Water Intake Calculator Card -->
+            <div class="col-md-4">
+              <a href="waterCalculator.html" class="calculator-link">
+                <div class="calculator-list-card">
+                  <div class="card-icon">
+                    <i class="fas fa-tint"></i>
+                  </div>
+                  <div class="card-content">
+                    <h3>Water Intake Calculator</h3>
+                    <p>
+                      Calculate your recommended daily water intake based on
+                      your weight and activity
+                    </p>
+                  </div>
+                  <div class="card-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jquery.1.11.1.js"></script>
+    <script>
+      $(function () {
+        $("#nav-placeholder").load("nav.html");
+        $("#footer-placeholder").load("footer.html");
+      });
+    </script>
+
+    <div id="footer-placeholder"></div>
+  </body>
+</html>

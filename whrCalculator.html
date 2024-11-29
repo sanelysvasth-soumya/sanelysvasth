@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Waist-to-Hip Ratio Calculator - HealthScore</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <style>
+    body {
+      padding: 20px;
+      background-color: #f9fafb;
+    }
+  </style>
+  <body>
+    <!-- Navigation -->
+    <div id="nav-placeholder"></div>
+
+    <!-- Main Content Section -->
+    <div id="calculator-section">
+      <div class="container">
+        <div class="calculator-container">
+          <div class="row">
+            <!-- WHR Calculator Card -->
+            <div class="col-md-6">
+              <div class="calculator-card">
+                <div class="calculator-header">
+                  <h2>
+                    <i class="fas fa-ruler-horizontal"></i> Waist-to-Hip Ratio
+                    Calculator
+                  </h2>
+                  <p>Calculate your Waist-to-Hip Ratio (WHR)</p>
+                </div>
+
+                <form id="whrForm" class="calculator-form">
+                  <div class="form-group">
+                    <label>Gender</label>
+                    <div class="radio">
+                      <label>
+                        <input
+                          type="radio"
+                          name="gender"
+                          value="male"
+                          required
+                        />
+                        Male
+                      </label>
+                      <label style="margin-left: 20px">
+                        <input type="radio" name="gender" value="female" />
+                        Female
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="waist">Waist Circumference (cm)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="waist"
+                      required
+                      min="40"
+                      max="200"
+                      placeholder="Enter your waist circumference"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="hip">Hip Circumference (cm)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="hip"
+                      required
+                      min="40"
+                      max="200"
+                      placeholder="Enter your hip circumference"
+                    />
+                  </div>
+
+                  <button type="submit" class="btn calculate-btn">
+                    Calculate WHR
+                  </button>
+                </form>
+
+                <div
+                  id="whrResult"
+                  class="result-section"
+                  style="display: none"
+                >
+                  <div class="result-header">
+                    <h3>Your Results</h3>
+                    <button class="btn recalculate-btn">
+                      <i class="fas fa-redo"></i> Recalculate
+                    </button>
+                  </div>
+
+                  <div class="result-content">
+                    <div class="whr-score">
+                      <span class="score-label">Your WHR</span>
+                      <span id="whrValue" class="score-value">0.0</span>
+                    </div>
+
+                    <div class="whr-category">
+                      <span class="category-label">Status:</span>
+                      <span id="whrCategory" class="category-value">-</span>
+                    </div>
+
+                    <div id="whrMessage" class="result-message">
+                      <!-- Message will be inserted here -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- WHR Information Card -->
+            <div class="col-md-6">
+              <div class="calculator-card info-card">
+                <div class="calculator-header">
+                  <h2><i class="fas fa-info-circle"></i> About WHR</h2>
+                </div>
+                <div class="info-content">
+                  <h4>What is Waist-to-Hip Ratio?</h4>
+                  <p>
+                    Waist-to-Hip Ratio (WHR) is a measurement used to determine
+                    if you have a healthy fat distribution. It's calculated by
+                    dividing your waist circumference by your hip circumference.
+                  </p>
+
+                  <h4>WHR Categories:</h4>
+                  <div class="whr-categories-table">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Gender</th>
+                          <th>Normal WHR</th>
+                          <th>Increased Risk</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Female</td>
+                          <td>≤ 0.8</td>
+                          <td>> 0.8</td>
+                        </tr>
+                        <tr>
+                          <td>Male</td>
+                          <td>≤ 0.9</td>
+                          <td>> 0.9</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jquery.1.11.1.js"></script>
+    <script>
+      $(function () {
+        $("#nav-placeholder").load("nav.html");
+      });
+
+      // WHR Calculator Logic
+      $("#whrForm").on("submit", function (e) {
+        e.preventDefault();
+
+        const waist = parseFloat($("#waist").val());
+        const hip = parseFloat($("#hip").val());
+        const gender = $("input[name='gender']:checked").val();
+
+        const whr = waist / hip;
+        const roundedWHR = Math.round(whr * 100) / 100;
+
+        let category, message;
+        const threshold = gender === "female" ? 0.8 : 0.9;
+
+        if (whr > threshold) {
+          category = "Increased Risk";
+          message = `Your WHR indicates an increased risk for cardiovascular diseases and metabolic syndrome. Consider consulting sanely svasth for personalized advice.`;
+        } else {
+          category = "Normal";
+          message = `Your WHR is within the normal range. Keep maintaining a healthy lifestyle with regular exercise and balanced diet.`;
+        }
+
+        $("#whrValue").text(roundedWHR);
+        $("#whrCategory").text(category);
+        $("#whrMessage").html(`<p>${message}</p>`);
+
+        $("#whrForm").hide();
+        $("#whrResult").fadeIn();
+      });
+
+      $(".recalculate-btn").click(function () {
+        $("#whrResult").hide();
+        $("#whrForm").fadeIn();
+        $("#whrForm")[0].reset();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Waist-to-Height Ratio Calculator - HealthScore</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <style>
+    body {
+      padding: 20px;
+      background-color: #f9fafb;
+    }
+  </style>
+  <body>
+    <!-- Navigation -->
+    <div id="nav-placeholder"></div>
+
+    <!-- Main Content Section -->
+    <div id="calculator-section">
+      <div class="container">
+        <div class="calculator-container">
+          <div class="row">
+            <!-- WHtR Calculator Card -->
+            <div class="col-md-6">
+              <div class="calculator-card">
+                <div class="calculator-header">
+                  <h2>
+                    <i class="fas fa-ruler-vertical"></i> Waist-to-Height Ratio
+                    Calculator
+                  </h2>
+                  <p>Calculate your Waist-to-Height Ratio (WHtR)</p>
+                </div>
+
+                <form id="whtrForm" class="calculator-form">
+                  <div class="form-group">
+                    <label>Gender</label>
+                    <div class="radio">
+                      <label>
+                        <input
+                          type="radio"
+                          name="gender"
+                          value="male"
+                          required
+                        />
+                        Male
+                      </label>
+                      <label style="margin-left: 20px">
+                        <input type="radio" name="gender" value="female" />
+                        Female
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="waist">Waist Circumference (cm)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="waist"
+                      required
+                      placeholder="Enter your waist circumference"
+                    />
+                    <small class="form-text text-muted"
+                      >Measure at the narrowest part of your waist</small
+                    >
+                  </div>
+
+                  <div class="form-group">
+                    <label for="height">Height (cm)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="height"
+                      required
+                      placeholder="Enter your height"
+                    />
+                  </div>
+
+                  <button type="submit" class="btn calculate-btn">
+                    Calculate WHtR
+                  </button>
+                </form>
+
+                <div
+                  id="whtrResult"
+                  class="result-section"
+                  style="display: none"
+                >
+                  <div class="result-header">
+                    <h3>Your Results</h3>
+                    <button class="btn recalculate-btn">
+                      <i class="fas fa-redo"></i> Recalculate
+                    </button>
+                  </div>
+
+                  <div class="result-content">
+                    <div class="whtr-score">
+                      <span class="score-label">Your WHtR</span>
+                      <span id="whtrValue" class="score-value">0.0</span>
+                    </div>
+
+                    <div class="whtr-category">
+                      <span class="category-label">Category:</span>
+                      <span id="whtrCategory" class="category-value">-</span>
+                    </div>
+
+                    <div id="whtrMessage" class="result-message">
+                      <!-- Message will be inserted here -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- WHtR Information Card -->
+            <div class="col-md-6">
+              <div class="calculator-card info-card">
+                <div class="calculator-header">
+                  <h2><i class="fas fa-info-circle"></i> About WHtR</h2>
+                </div>
+                <div class="info-content">
+                  <h4>What is Waist-to-Height Ratio?</h4>
+                  <p>
+                    The Waist-to-Height Ratio (WHtR) is a simple measure that
+                    compares your waist circumference to your height. It's an
+                    effective indicator of health risks associated with body fat
+                    distribution.
+                  </p>
+
+                  <h4>WHtR Categories:</h4>
+                  <div class="whtr-categories-table">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Category</th>
+                          <th>Men</th>
+                          <th>Women</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="danger">
+                          <td>Highly Obese</td>
+                          <td>> 0.63</td>
+                          <td>> 0.58</td>
+                        </tr>
+                        <tr class="warning">
+                          <td>Extremely Overweight</td>
+                          <td>0.58 – 0.63</td>
+                          <td>0.54 – 0.58</td>
+                        </tr>
+                        <tr class="info">
+                          <td>Overweight</td>
+                          <td>0.53 – 0.58</td>
+                          <td>0.49 – 0.54</td>
+                        </tr>
+                        <tr class="success">
+                          <td>Healthy</td>
+                          <td>0.46 – 0.53</td>
+                          <td>0.46 – 0.49</td>
+                        </tr>
+                        <tr class="success">
+                          <td>Slender & Healthy</td>
+                          <td>0.43 – 0.46</td>
+                          <td>0.42 – 0.46</td>
+                        </tr>
+                        <tr class="warning">
+                          <td>Extremely Slim</td>
+                          <td>0.35 – 0.43</td>
+                          <td>0.35 – 0.42</td>
+                        </tr>
+                        <tr class="danger">
+                          <td>Abnormally Slim</td>
+                          <td>≤ 0.35</td>
+                          <td>≤ 0.35</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jquery.1.11.1.js"></script>
+    <script>
+      $(function () {
+        $("#nav-placeholder").load("nav.html");
+      });
+
+      // WHtR Calculator Logic
+      $("#whtrForm").on("submit", function (e) {
+        e.preventDefault();
+
+        const waist = parseFloat($("#waist").val());
+        const height = parseFloat($("#height").val());
+        const gender = $("input[name='gender']:checked").val();
+
+        // Validation
+        if (waist < 40 || waist > 200) {
+          alert("Please enter a valid waist circumference (40-200 cm)");
+          return;
+        }
+
+        if (height < 120 || height > 250) {
+          alert("Please enter a valid height (120-250 cm)");
+          return;
+        }
+
+        const whtr = waist / height;
+        const roundedWHtR = Math.round(whtr * 100) / 100;
+
+        let category, message;
+
+        // Determine category based on gender and WHtR
+        if (gender === "male") {
+          if (whtr > 0.63) {
+            category = "Highly Obese";
+            message =
+              "Your WHtR indicates a significantly elevated risk for cardiovascular diseases and metabolic syndrome. Please consult a healthcare professional.";
+          } else if (whtr > 0.58) {
+            category = "Extremely Overweight";
+            message =
+              "Your WHtR suggests a high level of abdominal fat. Consider lifestyle modifications and consult a healthcare provider.";
+          } else if (whtr > 0.53) {
+            category = "Overweight";
+            message =
+              "Your WHtR indicates an increased risk of metabolic syndrome. Consider adopting healthier lifestyle habits.";
+          } else if (whtr > 0.46) {
+            category = "Healthy";
+            message =
+              "Your WHtR is within the healthy range. Maintain your balanced lifestyle with regular exercise and healthy diet.";
+          } else if (whtr > 0.43) {
+            category = "Slender & Healthy";
+            message =
+              "Your WHtR indicates a healthy body composition. Keep maintaining your healthy lifestyle.";
+          } else if (whtr > 0.35) {
+            category = "Extremely Slim";
+            message =
+              "Your WHtR suggests you are very slim. Ensure you're maintaining a balanced diet with adequate nutrition.";
+          } else {
+            category = "Abnormally Slim";
+            message =
+              "Your WHtR indicates you may be underweight. Consider consulting sanely svasth for proper evaluation.";
+          }
+        } else {
+          // female
+          if (whtr > 0.58) {
+            category = "Highly Obese";
+            message =
+              "Your WHtR indicates a significantly elevated risk for cardiovascular diseases and insulin resistance. Please consult a healthcare professional.";
+          } else if (whtr > 0.54) {
+            category = "Extremely Overweight";
+            message =
+              "Your WHtR suggests a high level of abdominal fat. Consider lifestyle modifications and consult a healthcare provider.";
+          } else if (whtr > 0.49) {
+            category = "Overweight";
+            message =
+              "Your WHtR indicates an increased risk of metabolic syndrome. Consider adopting healthier lifestyle habits.";
+          } else if (whtr > 0.46) {
+            category = "Healthy";
+            message =
+              "Your WHtR is within the healthy range. Maintain your balanced lifestyle with regular exercise and healthy diet.";
+          } else if (whtr > 0.42) {
+            category = "Slender & Healthy";
+            message =
+              "Your WHtR indicates a healthy body composition. Keep maintaining your healthy lifestyle.";
+          } else if (whtr > 0.35) {
+            category = "Extremely Slim";
+            message =
+              "Your WHtR suggests you are very slim. Ensure you're maintaining a balanced diet with adequate nutrition.";
+          } else {
+            category = "Abnormally Slim";
+            message =
+              "Your WHtR indicates you may be underweight. Consider consulting a healthcare provider for proper evaluation.";
+          }
+        }
+
+        // Display results
+        $("#whtrValue").text(roundedWHtR);
+        $("#whtrCategory").text(category);
+        $("#whtrMessage").html(`<p>${message}</p>`);
+
+        // Show results section
+        $("#whtrForm").hide();
+        $("#whtrResult").fadeIn();
+      });
+
+      // Recalculate button handler
+      $(".recalculate-btn").click(function () {
+        $("#whtrResult").hide();
+        $("#whtrForm").fadeIn();
+        $("#whtrForm")[0].reset();
+      });
+    </script>
+  </body>
+</html>
