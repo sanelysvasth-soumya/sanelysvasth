@@ -12,6 +12,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="icon" type="image/png" href="../img/other4.png" sizes="12x12" />
 
     <!-- Add this in the <head> section, inside a <style> tag -->
     <style>
@@ -449,56 +450,82 @@
 
       /* Mobile Responsiveness Fixes */
       @media (max-width: 768px) {
+        /* Section adjustments */
+        .questionnaire-section {
+          padding: 50px 0;
+          overflow: hidden; /* Prevent overflow */
+        }
+
         /* Container adjustments */
         .container {
           padding: 10px;
           width: 100%;
+          overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
-        /* Question container */
-        .question-container {
-          padding: 10px;
+        /* Section title adjustments */
+        .section-title {
+          margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+          font-size: 24px;
+          margin-bottom: 15px;
+        }
+
+        .section-title p {
+          font-size: 14px;
+          line-height: 1.6;
           margin-bottom: 20px;
         }
 
-        .question-container h4 {
-          font-size: 16px;
-          line-height: 1.4;
+        /* Calculator card */
+        .calculator-card {
+          width: 95%;
+          min-width: 335px;
+          margin: 0 auto;
+          margin-bottom: 30px;
+          padding: 15px;
+          box-sizing: border-box;
         }
 
-        /* Rating scale adjustments */
+        /* Rating scale adjustments for mobile */
         .rating-scale {
           flex-wrap: wrap;
-          gap: 10px;
           justify-content: center;
+          gap: 10px;
         }
 
         .rating-option {
           width: 50px;
-          min-width: unset;
           margin: 5px;
         }
 
         .rating-circle {
           width: 35px;
           height: 35px;
-          font-size: 14px;
+          font-size: 16px;
         }
 
         .rating-label {
-          font-size: 10px;
+          font-size: 11px;
         }
 
         /* Custom scale adjustments */
         .custom-scale .rating-option {
-          width: auto;
-          min-width: 60px;
+          width: 70px;
+          min-width: 70px;
         }
 
         .custom-scale .rating-circle {
-          width: 45px;
-          height: 45px;
-          font-size: 18px;
+          width: 50px;
+          height: 50px;
+          font-size: 20px;
+        }
+
+        .custom-scale .rating-label {
+          font-size: 11px;
+          max-width: 100px;
         }
 
         /* Three option scale adjustments */
@@ -509,13 +536,39 @@
 
         .three-option-scale .rating-option {
           width: 100%;
-          max-width: 250px;
+          max-width: 280px;
           margin: 0 auto;
+        }
+
+        /* Question container adjustments */
+        .question-container {
+          padding: 15px;
+        }
+
+        .question-container h4 {
+          font-size: 16px;
+          line-height: 1.4;
+          margin-bottom: 20px;
+        }
+
+        /* Progress bar adjustments */
+        .progress-container {
+          margin: 15px 0 25px;
+        }
+
+        /* Navigation buttons adjustments */
+        .question-nav {
+          padding: 0 10px;
+        }
+
+        .calculate-btn {
+          padding: 8px 20px;
+          font-size: 14px;
         }
 
         /* Results container adjustments */
         .results-container {
-          padding: 1rem;
+          padding: 15px;
         }
 
         .score-display {
@@ -523,81 +576,110 @@
           height: 150px;
         }
 
-        #total-score {
-          font-size: 2.5rem;
-        }
-
         .category-text {
           font-size: 1rem;
         }
 
-        /* Navigation buttons */
-        .question-nav {
-          flex-wrap: wrap;
-          gap: 10px;
+        #total-score {
+          font-size: 2.5rem;
         }
 
-        .calculate-btn {
-          width: 100%;
-          margin: 5px 0;
+        .score-interpretation {
+          padding: 1.5rem;
         }
 
-        /* Progress bar */
-        .progress-container {
-          margin: 10px 0 20px;
+        .score-interpretation h3 {
+          font-size: 1.2rem;
+        }
+
+        .score-interpretation p {
+          font-size: 14px;
         }
       }
 
       /* Additional fixes for very small screens */
       @media (max-width: 375px) {
+        .calculator-card {
+          min-width: 300px;
+          width: 98%;
+          padding: 10px;
+        }
+
+        .section-title h2 {
+          font-size: 22px;
+        }
+
+        .section-title p {
+          font-size: 13px;
+        }
+
+        .rating-scale {
+          gap: 5px;
+        }
+
+        .rating-option {
+          width: 45px;
+          margin: 3px;
+        }
+
         .rating-circle {
           width: 30px;
           height: 30px;
-          font-size: 12px;
+          font-size: 14px;
         }
 
         .rating-label {
-          font-size: 9px;
+          font-size: 10px;
         }
       }
 
-      /* Add these styles in your existing <style> tag */
+      /* Start screen and continue button styling */
+      .start-assessment-btn {
+        background: linear-gradient(45deg, #00b09b, #96c93d);
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 30px;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 176, 155, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-      /* Mobile Responsiveness Fixes */
+      .start-assessment-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 176, 155, 0.3);
+      }
+
+      .start-assessment-btn:active {
+        transform: translateY(1px);
+      }
+
+      /* Mobile adjustments for start screen */
       @media (max-width: 768px) {
-        /* Container adjustments */
-        .container {
-          padding: 10px;
-          width: 100%;
-        }
-
-        /* Calculator card */
-        .calculator-card {
-          width: 95%;
-          min-width: 350px;
-          margin: 0 auto;
-        }
-
-        /* Start screen */
         #start-screen {
-          min-height: 200px;
-          width: 100%;
+          min-height: 350px;
           padding: 20px;
         }
 
-        /* Continue button */
-        #continue-btn {
-          width: auto;
-          min-width: 120px;
-          padding: 10px 20px;
+        #start-screen h3 {
+          font-size: 20px;
+          margin-bottom: 20px;
         }
-      }
 
-      /* Additional fixes for very small screens */
-      @media (max-width: 375px) {
-        .calculator-card {
-          min-width: 330px;
-          width: 98%;
+        #start-screen p {
+          font-size: 14px;
+          margin-bottom: 30px;
+          padding: 0 15px;
+        }
+
+        .start-assessment-btn {
+          padding: 12px 30px;
+          font-size: 16px;
         }
       }
     </style>
@@ -614,10 +696,10 @@
             <div class="section-title">
               <h2>Health Assessment</h2>
               <hr />
-              <p>Rate each symptom on a scale of 1 to 5, 1
-being the lowest and 5 being the highest, 
-depending on how severe the symptom
-is.</p>
+              <p>
+                Rate each symptom on a scale of 1 to 5, 1 being the lowest and 5
+                being the highest, depending on how severe the symptom is.
+              </p>
             </div>
           </div>
         </div>
@@ -625,15 +707,35 @@ is.</p>
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <div class="calculator-card">
-              <!-- Initial continue button -->
-              <div id="start-screen" class="text-center" style="min-height: 300px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 40px;">
-                <button id="continue-btn" class="calculate-btn">
-                  Continue
+              <!-- Initial start screen with redesigned continue button -->
+              <div
+                id="start-screen"
+                class="text-center"
+                style="
+                  min-height: 400px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  padding: 40px;
+                "
+              >
+                <h3 style="color: #333; margin-bottom: 30px">
+                  Welcome to Your Health Assessment
+                </h3>
+                <p style="color: #666; margin-bottom: 40px; max-width: 600px">
+                  Take our comprehensive health assessment to understand your
+                  gut health better. This questionnaire will take approximately
+                  3-5 minutes to complete.
+                </p>
+                <button id="continue-btn" class="start-assessment-btn">
+                  Start Assessment
+                  <i class="fas fa-arrow-right" style="margin-left: 10px"></i>
                 </button>
               </div>
 
               <!-- Questions section (initially hidden) -->
-              <div id="questionnaire-content" style="display: none;">
+              <div id="questionnaire-content" style="display: none">
                 <!-- Progress Bar -->
                 <div class="progress-container">
                   <div class="progress">
@@ -654,10 +756,18 @@ is.</p>
                 </div>
 
                 <div class="text-center" style="margin-top: 20px">
-                  <button id="next-btn" class="calculate-btn" style="display: none">
+                  <button
+                    id="next-btn"
+                    class="calculate-btn"
+                    style="display: none"
+                  >
                     Next
                   </button>
-                  <button id="submit-btn" class="calculate-btn" style="display: none">
+                  <button
+                    id="submit-btn"
+                    class="calculate-btn"
+                    style="display: none"
+                  >
                     Submit
                   </button>
                 </div>
@@ -1011,7 +1121,7 @@ is.</p>
                     <div class="score-interpretation">
                         <h3>Your Gut Health Assessment</h3>
                         <p>${interpretation}</p>
-                        <button class="calculate-btn" onclick="window.location.href='services.html'" style="margin-top: 1rem;">
+                        <button class="calculate-btn" onclick="toggleContactInfo()" style="margin-top: 1rem;">
                             Book a Consultation
                         </button>
                     </div>
@@ -1069,17 +1179,30 @@ is.</p>
       });
 
       // Add this to your existing JavaScript
-      document.getElementById('continue-btn').addEventListener('click', function() {
-        // Hide the start screen
-        document.getElementById('start-screen').style.display = 'none';
-        // Show the questionnaire content
-        document.getElementById('questionnaire-content').style.display = 'block';
-        // Initialize the first question
-        displayQuestion(0);
-      });
+      document
+        .getElementById("continue-btn")
+        .addEventListener("click", function () {
+          // Hide the start screen
+          document.getElementById("start-screen").style.display = "none";
+          // Show the questionnaire content
+          document.getElementById("questionnaire-content").style.display =
+            "block";
+          // Initialize the first question
+          displayQuestion(0);
+        });
 
       // Comment out or remove the original displayQuestion(0) call at the bottom of the script
       // displayQuestion(0);  // <- Remove or comment this line
+
+      // Add this function to handle the contact info toggle
+      function toggleContactInfo() {
+        // Get the contact info element from the nav
+        const contactInfo = document.getElementById("contactInfo");
+        // Show the contact info
+        contactInfo.classList.add("show");
+        // Scroll to the contact info
+        contactInfo.scrollIntoView({ behavior: "smooth" });
+      }
     </script>
 
     <!-- Add Bootstrap JS -->
