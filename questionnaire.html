@@ -1096,19 +1096,27 @@
       function displayResults(score) {
         let interpretation = "";
         let category = "";
-        const highSymptoms = getHighScoredSymptoms();
-        const symptomsText =
-          highSymptoms.length > 0 ? `such as ${highSymptoms.join(", ")}` : "";
 
-        if (score > 70) {
-          category = "Category 4";
-          interpretation = `Your gut health score places you in Category 4, indicating significant gut dysbiosis – an imbalance with more harmful bacteria than beneficial ones. Given your symptoms, we believe a personalized approach will support a sustainable recovery. It's important to remember that this gut imbalance developed over time, so healing will also require patience and consistency.<br><br>Our 12-week Gut Health Program is crafted to suit your needs. It will help you identify the triggers behind your symptoms and restore a balanced gut microbiome—all from the comfort of your home, without medications or costly treatments.<br><br>We're excited to support you on your journey to better health!`;
-        } else if (score > 40) {
-          category = "Category 2";
-          interpretation = `Your health currently falls into Category 2, indicating moderate gut dysbiosis. This means that certain food and lifestyle choices are affecting your gut health, which can contribute to hormonal imbalances, stubborn weight, or other symptoms ${symptomsText}.<br><br>The good news is, there's a proven protocol that can begin to improve your gut health in as little as six weeks. Contact us now.`;
-        } else {
+        if (score < 30) {
           category = "Category 1";
-          interpretation = `Your gut health falls in category one, which means you have Little to moderate gut dysbiosis. Changing your habits and lifestyle choices is a proven way to heal your gut before it becomes worse. Sign up now, see your symptoms get better and lead you on an uphill journey to a healthier lifestyle. We Look forward to supporting you every step of the way.`;
+          interpretation = `Your health score currently falls under Category 1: Little or No Gut Dysbiosis.
+            <br><br>
+            A score in this range indicates a balanced gut microbiome, with minimal to no symptoms. The digestive system is functioning optimally, and your overall health is likely good. Maintaining a healthy lifestyle with a well-balanced diet, regular physical activity, and stress management will help sustain this optimal state. Occasional mild digestive issues may still occur, but they are typically short-lived and not a sign of major imbalance.`;
+        } else if (score <= 50) {
+          category = "Category 2";
+          interpretation = `Your current health score falls under Category 2: Little to Moderate Gut Dysbiosis.
+            <br><br>
+            This category suggests a mild to moderate imbalance in the gut microbiome. You may experience some digestive discomfort, fatigue, or skin issues, but these are not constant. Dysbiosis in this range can affect nutrient absorption and immune function, leading to potential long-term effects if left unchecked. Addressing diet, reducing stress, and incorporating probiotics or prebiotics may help to restore balance and prevent further progression.`;
+        } else if (score <= 70) {
+          category = "Category 3";
+          interpretation = `Your health score currently falls under Category 3: Moderate to Severe Gut Dysbiosis.
+            <br><br>
+            A score in this range suggests a significant imbalance in the gut microbiome, which may result in persistent digestive and systemic symptoms. Dysbiosis can lead to chronic inflammation, weakened immunity, and nutrient deficiencies. Without intervention, this level of imbalance can disrupt normal metabolic function, exacerbate autoimmune responses, and increase susceptibility to infections. Targeted dietary changes, stress management, and professional guidance for gut repair protocols are necessary to address these issues and prevent long-term complications. Sign up today!`;
+        } else {
+          category = "Category 4";
+          interpretation = `Your health score currently falls under the Category 4: Severely Dysbiotic Gut.
+            <br><br>
+            A score in this range indicates severe gut dysbiosis, with profound and chronic symptoms that significantly impact overall health. The gut microbiome at this stage is likely contributing to systemic inflammation, compromised immunity, mental health issues, and nutrient malabsorption. If left untreated, severe gut dysbiosis can lead to long-term chronic conditions, such as autoimmune diseases, metabolic disorders, and persistent mood disturbances. Immediate intervention is necessary, involving professional assessment and comprehensive treatment strategies, including dietary modifications, targeted supplements (like probiotics), and possibly medical treatments for underlying conditions.`;
         }
 
         const resultsHTML = `
