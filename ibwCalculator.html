@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Calculators - IBW</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <style>
+    body {
+      padding: 20px;
+      background-color: #f9fafb;
+    }
+  </style>
+  <body>
+    <!-- Navigation -->
+    <div id="nav-placeholder"></div>
+
+    <!-- Main Content Section -->
+    <div id="calculator-section">
+      <div class="container">
+        <div class="calculator-container">
+          <div class="row">
+            <!-- IBW Calculator Card -->
+            <div class="col-md-6">
+              <div class="calculator-card">
+                <div class="calculator-header">
+                  <h2><i class="fas fa-calculator"></i> IBW Calculator</h2>
+                  <p>Calculate your Ideal Body Weight (IBW)</p>
+                </div>
+
+                <form id="ibwForm" class="calculator-form">
+                  <div class="form-group">
+                    <label for="height">Height (cm)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="height"
+                      required
+                      min="1"
+                      max="300"
+                      placeholder="Enter your height in centimeters"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select class="form-control" id="gender" required>
+                      <option value="" disabled selected>Select your gender</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="age">Age (years)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="age"
+                      required
+                      min="18"
+                      max="120"
+                      placeholder="Enter your age"
+                    />
+                  </div>
+
+                  <button type="submit" class="btn calculate-btn">
+                    Calculate IBW
+                  </button>
+                </form>
+
+                <div
+                  id="ibwResult"
+                  class="result-section"
+                  style="display: none"
+                >
+                  <div class="result-header">
+                    <h3>Your Results</h3>
+                    <button class="btn recalculate-btn">
+                      <i class="fas fa-redo"></i> Recalculate
+                    </button>
+                  </div>
+
+                  <div class="result-content">
+                    <div class="ibw-score">
+                      <span class="score-label">Your IBW</span>
+                      <span id="ibwValue" class="score-value">0.0</span>
+                      <span class="score-range">(Range: <span id="ibwRange"></span>)</span>
+                    </div>
+
+                    <div id="ibwMessage" class="result-message">
+                      <!-- Message will be inserted here -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- IBW Information Card -->
+            <div class="col-md-6">
+              <div class="calculator-card info-card">
+                <div class="calculator-header">
+                  <h2><i class="fas fa-info-circle"></i> About IBW</h2>
+                </div>
+                <div class="info-content">
+                  <h4>What is IBW?</h4>
+                  <p>
+                    Ideal Body Weight (IBW) is an estimate of a healthy weight based on height, gender, and age. It provides a range of weight that is considered healthy for an individual. Note that IBW is not a perfect measurement. It does not consider the percentages of body fat and muscle in a person's body. This means that it is possible for highly fit, healthy athletes to be considered overweight based on their IBW. 
+                  </p>
+
+                  <h4>IBW Range:</h4>
+                  <ul class="ibw-range-list">
+                    <li>
+                      <strong>Men:</strong> A range of ± 1.5 - 2 kg around the ideal weight is considered a healthy weight.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jquery.1.11.1.js"></script>
+    <script>
+      $(function () {
+        $("#nav-placeholder").load("nav.html");
+      });
+
+      // IBW Calculator Logic
+      $("#ibwForm").on("submit", function (e) {
+        e.preventDefault();
+
+        const height = parseFloat($("#height").val());
+        const gender = $("#gender").val();
+        const age = parseInt($("#age").val());
+
+        if (age < 18) {
+          alert(
+            "IBW calculator is not applicable for individuals under 18 years of age."
+          );
+          return;
+        }
+
+        let ibw, range;
+
+        if (height >= 152.4) {
+          // For height ≥ 5 feet
+          const heightInInchesAbove5ft = (height - 152.4) / 2.54;
+          if (gender === "male") {
+            ibw = (106 + 6 * heightInInchesAbove5ft) / 2.2;
+          } else if (gender === "female") {
+            ibw = (100 + 5 * heightInInchesAbove5ft) / 2.2;
+          }
+        } else {
+          // For height < 5 feet
+          const adjustedHeight = height - 100;
+          if (gender === "male") {
+            ibw = adjustedHeight - 0.1 * adjustedHeight;
+          } else if (gender === "female") {
+            ibw = adjustedHeight - 0.15 * adjustedHeight;
+          }
+          ibw /= 2.2; // Convert to kg
+        }
+
+        ibw = Math.round(ibw * 10) / 10;
+        range = `${Math.round((ibw - 1.5) * 10) / 10} to ${Math.round((ibw + 1.5) * 10) / 10}`;
+
+        $("#ibwValue").text(ibw);
+        $("#ibwRange").text(range);
+
+        $("#ibwForm").hide();
+        $("#ibwResult").fadeIn();
+      });
+
+      $(".recalculate-btn").click(function () {
+        $("#ibwResult").hide();
+        $("#ibwForm").fadeIn();
+        $("#ibwForm")[0].reset();
+      });
+    </script>
+  </body>
+</html>
