@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Delicious Recipes - Svasth by Soumya</title>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="icon" type="image/png" href="../img/other4.png" sizes="12x12" />
+  </head>
+  <style>
+    body {
+      padding: 20px;
+      background-color: #f9fafb;
+    }
+
+    /* Recipe Cards Styles */
+    .recipe-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      margin-bottom: 30px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      transform-origin: center;
+      animation: fadeIn 0.8s ease-out;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .recipe-card:hover {
+      transform: translateY(-8px) rotate(1deg);
+      box-shadow: 0 12px 30px rgba(197, 154, 109, 0.2);
+    }
+
+    .recipe-image {
+      position: relative;
+      height: 150px;
+      overflow: hidden;
+    }
+
+    .recipe-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    .recipe-card:hover .recipe-image img {
+      transform: scale(1.08);
+    }
+
+    .recipe-time {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: #333;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .recipe-content {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .recipe-tags {
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 12px;
+      margin-right: 8px;
+      background: #f0f7ff;
+      color: #2d87ff;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: 500;
+      transform: translateY(0);
+      transition: all 0.3s ease;
+    }
+
+    .recipe-tags .tag:hover {
+      transform: translateY(-3px);
+      background: #2d87ff;
+      color: white;
+    }
+
+    .recipe-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .recipe-description {
+      color: #666;
+      font-size: 12px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+
+    .recipe-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .recipe-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .recipe-button {
+      display: inline-block;
+      width: 100%;
+      padding: 12px 0;
+      background: #c59a6d;
+      color: white;
+      text-align: center;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .recipe-button:hover {
+      background: #b38a5e;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .recipe-button:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      transition: 0.5s;
+    }
+
+    .recipe-button:hover:before {
+      left: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .recipe-card {
+        margin-bottom: 20px;
+      }
+
+      .recipe-content {
+        padding: 15px;
+      }
+
+      .recipe-title {
+        font-size: 18px;
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Add staggered animation for cards */
+    .col-md-4:nth-child(1) .recipe-card {
+      animation-delay: 0.1s;
+    }
+    .col-md-4:nth-child(2) .recipe-card {
+      animation-delay: 0.3s;
+    }
+    .col-md-4:nth-child(3) .recipe-card {
+      animation-delay: 0.5s;
+    }
+  </style>
+  <body>
+    <div id="nav-placeholder"></div>
+
+    <div id="blog-section">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="section-title">
+              <h2>Explore Our Recipes</h2>
+              <hr />
+            </div>
+            <p>
+              Discover a variety of delicious and healthy recipes to inspire
+              your cooking journey.
+            </p>
+          </div>
+        </div>
+
+        <div class="blog-container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+                <!-- Recipe Card 1 -->
+                <div class="col-md-4">
+                  <div class="recipe-card">
+                    <div class="recipe-image">
+                      <img src="../img/vegetableDosa.jpg" alt="Recipe 1" />
+                      <div class="recipe-time">
+                        <i class="far fa-clock"></i> 30 mins
+                      </div>
+                    </div>
+                    <div class="recipe-content">
+                      <div class="recipe-tags">
+                        <span class="tag">Vegetarian</span>
+                        <span class="tag">Healthy</span>
+                      </div>
+                      <h3 class="recipe-title">Vegetable Dosa</h3>
+                      <p class="recipe-description">
+                        Do you love Dosa/Dose? But are you also struggling to include vegetables in your diet? This is it. 
+                      </p>
+                      <div class="recipe-meta">
+                        <span><i class="fas fa-user-friends"></i> 6 No.s</span>
+                        <span><i class="fas fa-fire"></i> 320 cal</span>
+                      </div>
+                      <a href="recipes/dosa.html" class="recipe-button"
+                        >View Recipe</a
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Recipe Card 2 -->
+                <div class="col-md-4">
+                  <div class="recipe-card">
+                    <div class="recipe-image">
+                      <img src="..\img\uthappa.jpeg" alt="Recipe 1" />
+                      <div class="recipe-time">
+                        <i class="far fa-clock"></i> 45 mins
+                      </div>
+                    </div>
+                    <div class="recipe-content">
+                      <div class="recipe-tags">
+                        <span class="tag">Gluten-free</span>
+                        <span class="tag">Low-carb</span>
+                      </div>
+                      <h3 class="recipe-title">vegetable uthappa</h3>
+                      <p class="recipe-description">
+                        Sneak in the most underrated macronutrient into your life with this delicious vegetable uttappam and see your self getting better everyday.
+                      </p>
+                      <div class="recipe-meta">
+                        <span
+                          ><i class="fas fa-user-friends"></i> 6 servings</span
+                        >
+                        <span><i class="fas fa-fire"></i> 280 cal</span>
+                      </div>
+                      <a href="#recipe2" class="recipe-button">View Recipe</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Recipe Card 3 -->
+                <div class="col-md-4">
+                  <div class="recipe-card">
+                    <div class="recipe-image">
+                      <img src=".\img/Veg.idly.jpg" alt="Recipe 3" />
+                      <div class="recipe-time">
+                        <i class="far fa-clock"></i> 30 mins
+                      </div>
+                    </div>
+                    <div class="recipe-content">
+                      <div class="recipe-tags">
+                        <span class="tag">Vegan</span>
+                        <span class="tag">Sugar-free</span>
+                      </div>
+                      <h3 class="recipe-title">Recipe Title 3</h3>
+                      <p class="recipe-description">
+                        A hassle-free gut healthy dish that makes the healthliest dish, healthiier with a touch of fiber.
+                      </p>
+                      <div class="recipe-meta">
+                        <span
+                          ><i class="fas fa-user-friends"></i> 8 servings</span
+                        >
+                        <span><i class="fas fa-fire"></i> 420 cal</span>
+                      </div>
+                      <a href="#recipe3" class="recipe-button">View Recipe</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery.1.11.1.js"></script>
+    <script>
+      $(function () {
+        $("#nav-placeholder").load("nav.html");
+        $("#footer-placeholder").load("footer.html");
+      });
+
+      // Blog pagination and display functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        // Removed all blog-related JavaScript
+      });
+    </script>
+
+    <!-- Add this CSS for fade-in animation -->
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+
+    <style>
+      .card {
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+
+    <div id="footer-placeholder"></div>
+  </body>
+</html>
