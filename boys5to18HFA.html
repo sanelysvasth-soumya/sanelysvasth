@@ -3,92 +3,150 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Growth Chart Length for Age (5-18 Y) - Boys</title>
+    <title>Height for Age - Boys 5-18 years</title>
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
   </head>
   <style>
     body {
       padding: 20px;
-      background-color: #f9fafb;
+      background-color: #ffffff;
+    }
+
+    .calculator-container {
+      margin-top: 20px;
     }
 
     .chart-container {
-      width: 90%;
-      height: 500px;
+      width: 95%;
+      height: 800px;
       margin: auto;
     }
 
-    .info-section {
-      margin-top: 30px;
+    .result-section {
+      display: none;
+      margin-top: 20px;
     }
   </style>
   <body>
+    <!-- Navigation -->
+    <div id="nav-placeholder"></div>
+
     <!-- Growth Chart Section -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <form id="growthForm" class="calculator-form">
-            <div class="form-group">
-              <label for="age">Age (years)</label>
-              <input
-                type="number"
-                class="form-control"
-                id="age"
-                required
-                min="5"
-                max="15"
-                placeholder="Enter age (5-15)"
-              />
+    <div id="calculator-section">
+      <div class="container">
+        <div class="calculator-container">
+          <div class="row">
+            <!-- Growth Chart Input Card -->
+            <div class="col-md-6">
+              <div class="calculator-card">
+                <div class="calculator-header">
+                  <h2><i class="fas fa-chart-line"></i> Growth Chart</h2>
+                  <p>Length for Age (5-18 Years) - Boys</p>
+                </div>
+
+                <form id="growthForm" class="calculator-form">
+                  <div class="form-group">
+                    <label for="age">Age (Years)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="age"
+                      required
+                      min="5"
+                      max="18"
+                      placeholder="Enter age (5-18 Years)"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="height">Height (cm)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="height"
+                      required
+                      min="80"
+                      max="200"
+                      placeholder="Enter height in cm"
+                    />
+                  </div>
+
+                  <button type="submit" class="btn calculate-btn">
+                    Plot Growth
+                  </button>
+
+                  <button
+                    type="button"
+                    id="clearChart"
+                    class="btn recalculate-btn"
+                  >
+                    Clear Chart
+                  </button>
+                </form>
+              </div>
             </div>
 
-            <div class="form-group">
-              <label for="height">Height (cm)</label>
-              <input
-                type="number"
-                class="form-control"
-                id="height"
-                required
-                min="50"
-                max="200"
-                placeholder="Enter height in cm"
-              />
+            <!-- Growth Chart Info Card -->
+            <div class="col-md-6">
+              <div class="calculator-card info-card">
+                <div class="calculator-header">
+                  <h2><i class="fas fa-info-circle"></i> About Growth Charts</h2>
+                </div>
+                <div class="info-content">
+                  <h4>What Growth Charts Tell Us</h4>
+                  <p>
+                    Growth percentiles by themselves don't say much. What really
+                    matters is the rate of growth:
+                  </p>
+                  <ul class="info-list">
+                    <li>
+                      A normal rate of growth means the child's growth points
+                      closely follow a percentile line on the chart.
+                    </li>
+                    <li>
+                      We usually don't worry about insufficient (or excessive)
+                      growth until a child's growth rate has crossed at least
+                      two percentile lines (e.g., from above the 90th
+                      percentile to below the 50th).
+                    </li>
+                    <li>
+                      If a child's weight, height, or head size is below the
+                      5th percentile, it's important to see if the growth
+                      points have always paralleled the 5th percentile line -
+                      which would mean the growth rate is normal - or if the
+                      child is suddenly falling further behind, which is more
+                      concerning.
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
+          </div>
 
-            <button type="submit" class="btn btn-primary">Plot Growth</button>
-            <button type="button" id="clearChart" class="btn btn-secondary">
-              Clear Chart
-            </button>
-          </form>
+          <!-- Growth Chart Visualization -->
+          <div class="chart-container">
+            <canvas id="growthChart"></canvas>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="chart-container">
-      <canvas id="growthChart"></canvas>
-    </div>
-
-    <div class="info-section" id="growthInfo" style="display: none;">
-      <h4>More Information:</h4>
-      <p>
-        The growth percentiles by themselves don't say much. What really matters is the rate of growth:
-      </p>
-      <ul>
-        <li>
-          A normal rate of growth means the child's growth points closely follow a percentile line on the chart.
-        </li>
-        <li>
-          Insufficient or excessive growth is concerning when a child's growth rate crosses at least two percentile lines (e.g., from above the 90th percentile to below the 50th).
-        </li>
-        <li>
-          If a child's height is below the 5th percentile, check if his growth points have always paralleled that percentile line. If he is suddenly falling further behind, consult a healthcare provider.
-        </li>
-      </ul>
-    </div>
-
+    <!-- Scripts -->
+    <script src="js/jquery.1.11.1.js"></script>
     <script>
+      $(function () {
+        $("#nav-placeholder").load("nav.html");
+      });
+
       const ctx = document.getElementById("growthChart").getContext("2d");
+
+      const labels = Array.from({ length: 25 }, (_, i) => `${i} months`);
 
       const data = {
         labels: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
@@ -98,42 +156,48 @@
             data: [101.2, 106.685, 111.793, 116.642, 121.258, 125.792, 130.454, 135.754, 142.073, 148.714, 154.28, 158.28, 160.784, 162.095],
             backgroundColor: "rgba(255, 99, 132, 0.2)",
             borderColor: "rgba(255, 99, 132, 0.5)",
-            fill: true,
+            fill: false,
+            pointRadius: 0,
           },
           {
             label: "10th Percentile",
             data: [104, 109.637, 114.96, 120.027, 124.861, 129.611, 134.487, 140, 146.524, 153.323, 158.957, 162.937, 165.365, 166.571],
             backgroundColor: "rgba(255, 99, 132, 0.2)",
             borderColor: "rgba(255, 99, 132, 0.5)",
-            fill: true,
+            fill: false,
+            pointRadius: 0,
           },
           {
             label: "25th Percentile",
             data: [106.8, 112.628, 118.169, 123.456, 128.51, 133.481, 138.573, 144.301, 151.033, 157.993, 163.694, 167.655, 170.005, 171.106],
             backgroundColor: "rgba(54, 162, 235, 0.2)",
             borderColor: "rgba(54, 162, 235, 0.5)",
-            fill: true,
+            fill: false,
+            pointRadius: 0,
           },
           {
             label: "50th Percentile",
             data: [110, 115.951, 121.734, 127.265, 132.565, 137.78, 143.113, 149.081, 156.043, 163.182, 168.958, 172.897, 175.161, 176.145],
             backgroundColor: "rgba(75, 192, 192, 0.2)",
             borderColor: "rgba(75, 192, 192, 0.5)",
-            fill: true,
+            fill: false,
+            pointRadius: 0,
           },
           {
             label: "75th Percentile",
             data: [113.1, 119.274, 125.299, 131.075, 136.62, 142.078, 147.652, 153.86, 161.052, 168.37, 174.222, 178.139, 180.317, 181.184],
             backgroundColor: "rgba(153, 102, 255, 0.2)",
             borderColor: "rgba(153, 102, 255, 0.5)",
-            fill: true,
+            fill: false,
+            pointRadius: 0,
           },
           {
             label: "90th Percentile",
             data: [115.9, 122.265, 128.508, 134.503, 140.27, 145.948, 151.738, 158.162, 165.561, 173.04, 178.959, 182.857, 184.957, 185.718],
             backgroundColor: "rgba(255, 206, 86, 0.2)",
             borderColor: "rgba(255, 206, 86, 0.5)",
-            fill: true,
+            fill: false,
+            pointRadius: 0,
           },
           {
             label: "97th Percentile",
@@ -146,6 +210,7 @@
         ],
       };
 
+      const colors = ["#FF0000", "#FFA500", "#FFFF00", "#008000", "#0000FF", "80ffa0", "96c93d", "00b09b", "#9ca120", "#0e7f4b", "#4a979a", "#FFA500","#00f4ff",];
       const options = {
         responsive: true,
         maintainAspectRatio: false,
