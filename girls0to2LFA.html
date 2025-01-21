@@ -3,9 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Growth Chart Length for Age (0-2 Y) - Girls</title>
+    <title>Length for Age - Girls 2-5 years</title>
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
   </head>
   <style>
@@ -14,84 +18,134 @@
       background-color: #f9fafb;
     }
 
+    .calculator-container {
+      margin-top: 20px;
+    }
+
     .chart-container {
       width: 95%;
       height: 800px;
       margin: auto;
     }
 
-    .info-section {
-      margin-top: 30px;
+    .result-section {
+      display: none;
+      margin-top: 20px;
     }
   </style>
   <body>
+    <!-- Navigation -->
+    <div id="nav-placeholder"></div>
+
     <!-- Growth Chart Section -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <form id="growthForm" class="calculator-form">
-            <div class="form-group">
-              <label for="age">Age (months)</label>
-              <input
-                type="number"
-                class="form-control"
-                id="age"
-                required
-                min="0"
-                max="24"
-                placeholder="Enter age (0-24 months)"
-              />
+    <div id="calculator-section">
+      <div class="container">
+        <div class="calculator-container">
+          <div class="row">
+            <!-- Growth Chart Input Card -->
+            <div class="col-md-6">
+              <div class="calculator-card">
+                <div class="calculator-header">
+                  <h2><i class="fas fa-chart-line"></i> Growth Chart</h2>
+                  <p>Length for Age (0-2 Years) - Girls</p>
+                </div>
+
+                <form id="growthForm" class="calculator-form">
+                  <div class="form-group">
+                    <label for="age">Age (months)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="age"
+                      required
+                      min="0"
+                      max="24"
+                      placeholder="Enter age (0-24 months)"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="height">Height (cm)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="height"
+                      required
+                      min="40"
+                      max="100"
+                      placeholder="Enter height in cm"
+                    />
+                  </div>
+
+                  <button type="submit" class="btn calculate-btn">
+                    Plot Growth
+                  </button>
+                  <button
+                    type="button"
+                    id="clearChart"
+                    class="btn recalculate-btn"
+                  >
+                    Clear Chart
+                  </button>
+                </form>
+              </div>
             </div>
 
-            <div class="form-group">
-              <label for="height">Height (cm)</label>
-              <input
-                type="number"
-                class="form-control"
-                id="height"
-                required
-                min="40"
-                max="100"
-                placeholder="Enter height in cm"
-              />
+            <!-- Growth Chart Info Card -->
+            <div class="col-md-6">
+              <div class="calculator-card info-card">
+                <div class="calculator-header">
+                  <h2><i class="fas fa-info-circle"></i> About Growth Charts</h2>
+                </div>
+                <div class="info-content">
+                  <h4>What Growth Charts Tell Us</h4>
+                  <p>
+                    Growth percentiles by themselves don't say much. What really
+                    matters is the rate of growth:
+                  </p>
+                  <ul class="info-list">
+                    <li>
+                      A normal rate of growth means the child's growth points
+                      closely follow a percentile line on the chart.
+                    </li>
+                    <li>
+                      We usually don't worry about insufficient (or excessive)
+                      growth until a child's growth rate has crossed at least
+                      two percentile lines (e.g., from above the 90th
+                      percentile to below the 50th).
+                    </li>
+                    <li>
+                      If a child's weight, height, or head size is below the
+                      5th percentile, it's important to see if the growth
+                      points have always paralleled the 5th percentile line -
+                      which would mean the growth rate is normal - or if the
+                      child is suddenly falling further behind, which is more
+                      concerning.
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
+          </div>
 
-            <button type="submit" class="btn btn-primary">Plot Growth</button>
-            <button type="button" id="clearChart" class="btn btn-secondary">
-              Clear Chart
-            </button>
-          </form>
+          <!-- Growth Chart Visualization -->
+          <div class="chart-container">
+            <canvas id="growthChart"></canvas>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="chart-container">
-      <canvas id="growthChart"></canvas>
-    </div>
-
-    <div class="info-section" id="growthInfo" style="display: none;">
-      <h4>What Growth Charts Tell Us</h4>
-      <p>
-        The growth percentiles by themselves don't say much. What really matters is the rate of growth:
-      </p>
-      <ul>
-        <li>
-          A normal rate of growth means the child's growth points closely follow a percentile line on the chart.
-        </li>
-        <li>
-          We usually don't worry about insufficient (or excessive) growth until a child's growth rate has crossed at least two percentile lines (e.g., from above the 90th percentile to below the 50th).
-        </li>
-        <li>
-          If a child's weight, height, or head size is below the 5th percentile, it's important to see if her growth points have always paralleled the 5th percentile line -- which would mean her growth rate is normal -- or if she is suddenly falling further behind, which is more concerning.
-        </li>
-      </ul>
-    </div>
-
+    <!-- Scripts -->
+    <script src="js/jquery.1.11.1.js"></script>
     <script>
+      $(function () {
+        $("#nav-placeholder").load("nav.html");
+      });
+
       const ctx = document.getElementById("growthChart").getContext("2d");
 
-      // Update labels to display every 3 months from 0 to 24 months
-      const labels = Array.from({ length: 25 }, (_, i) => `${i * 3} months`);
+      const labels = Array.from({ length: 25 }, (_, i) => `${i} months`);
 
       const percentileData = {
         "1st": [44.8, 49.1, 52.3, 54.9, 57.1, 58.9, 60.5, 61.9, 63.2, 64.5, 65.7, 66.9, 68, 69.1, 70.1, 71.1, 72.1, 73, 74, 74.8, 75.7, 76.5, 77.3, 78.1, 78.9],
@@ -109,60 +163,49 @@
         "99th": [53.5, 58.2, 61.8, 64.7, 67.1, 69.2, 71, 72.7, 74.3, 75.8, 77.2, 78.6, 80, 81.3, 82.6, 83.9, 85.1, 86.3, 87.5, 88.6, 89.7, 90.8, 91.9, 92.9, 93.9],
       };
 
-      const datasets = Object.entries(percentileData).map(([label, data], index) => ({
-        label: label,
-        data: data,
-        borderColor: `rgba(${index * 30}, ${255 - index * 15}, ${index * 20}, 1)`,
-        pointBackgroundColor: `rgba(${index * 30}, ${255 - index * 15}, ${index * 20}, 1)`,
-        pointRadius: 0,  // Remove dots
-        borderWidth: 2,
-        fill: false,
-      }));
+      const colors = ["#FF0000", "#FFA500", "#FFA500", "#FFFF00", "#008000", "#0000FF", "80ffa0", "96c93d", "00b09b", "#9ca120", "#0e7f4b", "#4a979a", "#FFA500","#00f4ff",];
 
-      const options = {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          x: {
-            title: { display: true, text: "Age (months)" },
-            ticks: {
-              autoSkip: true,
-              maxTicksLimit: 9,
-            },
-          },
-          y: {
-            title: { display: true, text: "Height (cm)" },
-          },
-        },
-      };
+      const datasets = Object.entries(percentileData).map(([label, data], index) => ({
+        label: `${label} Percentile`,
+        data: data,
+        borderColor: colors[index],
+        borderWidth: 1,
+        fill: false,
+        pointRadius: 0
+      }));
 
       const growthChart = new Chart(ctx, {
         type: "line",
         data: { labels, datasets },
-        options,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: { title: { display: true, text: "Age (months)" } },
+            y: { title: { display: true, text: "Height (cm)" } },
+          },
+        },
       });
 
-      document.getElementById("growthForm").addEventListener("submit", (e) => {
+      $("#growthForm").on("submit", function (e) {
         e.preventDefault();
-        const age = parseInt(document.getElementById("age").value);
-        const height = parseFloat(document.getElementById("height").value);
+        const age = parseInt($("#age").val());
+        const height = parseFloat($("#height").val());
+
         growthChart.data.datasets.push({
-          label: "Current Growth",
-          data: labels.map((label, i) => (i === Math.floor(age / 3) ? height : null)),
-          borderColor: "red",
-          pointBackgroundColor: "red",
-          pointRadius: 0,  // Remove dots
+          label: "Your Entry",
+          data: labels.map((_, i) => (i === age ? height : null)),
+          borderColor: "#8A2BE2",
           borderWidth: 2,
           fill: false,
+          pointRadius: 0
         });
         growthChart.update();
-        document.getElementById("growthInfo").style.display = "block";
       });
 
-      document.getElementById("clearChart").addEventListener("click", () => {
-        growthChart.data.datasets = datasets.slice(0);
+      $("#clearChart").click(function () {
+        growthChart.data.datasets = datasets.slice();
         growthChart.update();
-        document.getElementById("growthInfo").style.display = "none";
       });
     </script>
   </body>
