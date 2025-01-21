@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Growth Chart Length for Age (5-18 Y) - Girls</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  </head>
+  <style>
+    body {
+      padding: 20px;
+      background-color: #f9fafb;
+    }
+
+    .chart-container {
+      width: 90%;
+      height: 500px;
+      margin: auto;
+    }
+
+    .info-section {
+      margin-top: 30px;
+    }
+  </style>
+  <body>
+    <!-- Growth Chart Section -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <form id="growthForm" class="calculator-form">
+            <div class="form-group">
+              <label for="age">Age (years)</label>
+              <input
+                type="number"
+                class="form-control"
+                id="age"
+                required
+                min="5"
+                max="15"
+                placeholder="Enter age (5-15)"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="height">Height (cm)</label>
+              <input
+                type="number"
+                class="form-control"
+                id="height"
+                required
+                min="50"
+                max="200"
+                placeholder="Enter height in cm"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Plot Growth</button>
+            <button type="button" id="clearChart" class="btn btn-secondary">
+              Clear Chart
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="growthChart"></canvas>
+    </div>
+
+    <div class="info-section" id="growthInfo" style="display: none;">
+      <h4>More Information:</h4>
+      <p>
+        The growth percentiles by themselves don't say much. What really matters is the rate of growth:
+      </p>
+      <ul>
+        <li>
+          A normal rate of growth means the child's growth points closely follow a percentile line on the chart.
+        </li>
+        <li>
+          Insufficient or excessive growth is concerning when a child's growth rate crosses at least two percentile lines (e.g., from above the 90th percentile to below the 50th).
+        </li>
+        <li>
+          If a child's height is below the 5th percentile, check if his growth points have always paralleled that percentile line. If he is suddenly falling further behind, consult a healthcare provider.
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      const ctx = document.getElementById("growthChart").getContext("2d");
+
+      const data = {
+        labels: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+        datasets: [
+        {
+            label: "3rd Percentile",
+            data: [100.5, 105.496, 110.529, 115.652, 121.002, 126.605, 132.492, 138.368, 143.319, 146.731, 148.731, 149.751, 150.269, 150.63],
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgba(255, 99, 132, 0.5)",
+            fill: true,
+          },
+          {
+            label: "10th Percentile",
+            data: [103.3, 108.563, 113.805, 119.126, 124.663, 130.439, 136.475, 142.467, 147.479, 150.891, 152.853, 153.818, 154.279, 154.59],
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgba(255, 99, 132, 0.5)",
+            fill: true,
+          },
+          {
+            label: "25th Percentile",
+            data: [106.2, 111.671, 117.123, 122.645, 128.373, 134.322, 140.51, 146.619, 151.693, 155.106, 157.029, 157.938, 158.341, 158.602],
+            backgroundColor: "rgba(54, 162, 235, 0.2)",
+            borderColor: "rgba(54, 162, 235, 0.5)",
+            fill: true,
+          },
+          {
+            label: "50th Percentile",
+            data: [109.4, 115.124, 120.81, 126.556, 132.494, 138.636, 144.993, 151.233, 156.375, 159.789, 161.669, 162.516, 162.854, 163.06],
+            backgroundColor: "rgba(75, 192, 192, 0.2)",
+            borderColor: "rgba(75, 192, 192, 0.5)",
+            fill: true,
+          },
+          {
+            label: "75th Percentile",
+            data: [112.6, 118.578, 124.498, 130.466, 136.616, 142.951, 149.476, 155.846, 161.057, 164.472, 166.309, 167.093, 167.368, 167.517],
+            backgroundColor: "rgba(153, 102, 255, 0.2)",
+            borderColor: "rgba(153, 102, 255, 0.5)",
+            fill: true,
+          },
+          {
+            label: "90th Percentile",
+            data: [115.5, 121.685, 127.816, 133.986, 140.326, 146.834, 153.511, 159.999, 165.271, 168.687, 170.485, 171.213, 171.43, 171.529],
+            backgroundColor: "rgba(255, 206, 86, 0.2)",
+            borderColor: "rgba(255, 206, 86, 0.5)",
+            fill: true,
+          },
+          {
+            label: "97th Percentile",
+            data: [118.4, 124.753, 131.092, 137.46, 143.987, 150.667, 157.494, 164.098, 169.43, 172.847, 174.607, 175.28, 175.44, 175.489],
+            borderColor: "rgba(0, 0, 0, 1)",
+            borderWidth: 2,
+            fill: false,
+            pointRadius: 0,
+          },
+        ],
+      };
+
+      const options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: "Age (years)",
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: "Height (cm)",
+            },
+            beginAtZero: false,
+          },
+        },
+        plugins: {
+          legend: {
+            labels: {
+              filter: function (item) {
+                // Hide the "Current Growth" legend
+                return item.text !== "Current Growth";
+              },
+            },
+          },
+        },
+      };
+
+      const growthChart = new Chart(ctx, {
+        type: "line",
+        data: data,
+        options: options,
+      });
+
+      // Add red dot on form submit
+      document.getElementById("growthForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const age = parseFloat(document.getElementById("age").value);
+        const height = parseFloat(document.getElementById("height").value);
+
+        growthChart.data.datasets.push({
+          label: "Current Growth",
+          data: data.labels.map((x) => (x === age ? height : null)),
+          borderColor: "red",
+          pointBackgroundColor: "red",
+          pointRadius: 5,
+          borderWidth: 0,
+        });
+        growthChart.update();
+
+        // Display more information
+        document.getElementById("growthInfo").style.display = "block";
+      });
+
+      // Clear the chart
+      document.getElementById("clearChart").addEventListener("click", () => {
+        // Remove all datasets except the original ones
+        growthChart.data.datasets = growthChart.data.datasets.slice(0, 5);
+        growthChart.update();
+
+        // Hide more information
+        document.getElementById("growthInfo").style.display = "none";
+      });
+    </script>
+  </body>
+</html>
