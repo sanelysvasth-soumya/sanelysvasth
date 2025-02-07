@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vegetable Ragi Pitha Recipe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+  </head>
+
+  <style>
+    .recipe-header {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url("../img/vRagiPitha.jpg");
+      background-size: cover;
+      background-position: center;
+      padding: 100px 0;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 60px;
+    }
+
+    .recipe-header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.8),
+        rgba(197, 154, 109, 0.4)
+      );
+      z-index: 1;
+    }
+
+    .recipe-header .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .recipe-header h1 {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUpIn 1s forwards 0.5s;
+    }
+
+    .recipe-header .lead {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUpIn 1s forwards 0.8s;
+    }
+
+    .recipe-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      margin-top: -50px;
+      position: relative;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeUpIn 1s forwards 1s;
+    }
+
+    .ingredients-list,
+    .instructions-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .ingredients-list li {
+      padding: 10px 0;
+      border-bottom: 1px dashed #eee;
+      display: flex;
+      align-items: center;
+      animation: fadeIn 0.5s ease-in-out;
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    .ingredients-list li:nth-child(odd) {
+      animation: slideInRight 0.5s forwards;
+    }
+
+    .ingredients-list li:nth-child(even) {
+      animation: slideInLeft 0.5s forwards;
+    }
+
+    .ingredients-list li:hover {
+      background: #f8f9fa;
+      padding-left: 10px;
+      border-radius: 5px;
+    }
+
+    .instructions-list li {
+      padding: 15px 0;
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 40px;
+      animation: fadeIn 0.5s forwards;
+      opacity: 0;
+    }
+
+    .instructions-list li:before {
+      content: counter(step-counter);
+      counter-increment: step-counter;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #c59a6d;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .ingredients-list li i {
+      color: #c59a6d;
+      margin-right: 10px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .recipe-meta {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 30px 0 20px;
+    }
+
+    .recipe-meta-item {
+      text-align: center;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      min-width: 120px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .recipe-meta-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .recipe-meta-item i {
+      color: #c59a6d;
+      font-size: 24px;
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .recipe-meta-item:hover i {
+      transform: scale(1.2);
+      color: #a37c51;
+    }
+
+    @keyframes fadeUpIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .print-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #c59a6d;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .print-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .recipe-meta {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .recipe-meta-item {
+        width: 100%;
+      }
+
+      .print-button {
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .recipe-header {
+        margin-bottom: 60px;
+      }
+
+      .recipe-card {
+        margin-top: -30px;
+      }
+
+      .recipe-meta {
+        margin-top: 20px;
+      }
+    }
+  </style>
+
+  <body>
+    <div class="recipe-header" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/vRagiPitha.jpg'); background-size: cover; background-position: center;">
+      <div class="container">
+        <h1 class="display-4">Vegetable Stuffed Ragi Pitha</h1>
+        <p class="lead">A nutritious and delicious steamed dumpling made with ragi and rice flour, stuffed with a mix of vegetables.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="recipe-card">
+        <div class="recipe-meta">
+          <div class="recipe-meta-item">
+            <i class="fas fa-clock"></i>
+            <p>Prep Time<br /><strong>20 mins</strong></p>
+          </div>
+          <div class="recipe-meta-item">
+            <i class="fas fa-utensils"></i>
+            <p>Cook Time<br /><strong>15 mins</strong></p>
+          </div>
+          <div class="recipe-meta-item">
+            <i class="fas fa-fire"></i>
+            <p>Calories<br /><strong>150-180 kcal</strong></p>
+          </div>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-md-6">
+            <h3><i class="fas fa-shopping-basket"></i> Ingredients</h3>
+            <ul class="ingredients-list">
+              <li><i class="fas fa-check"></i> 1/2 cup rice flour</li>
+              <li><i class="fas fa-check"></i> 2/3 cup ragi flour</li>
+              <li><i class="fas fa-check"></i> Water (as required)</li>
+              <li><i class="fas fa-check"></i> 2 small onions</li>
+              <li><i class="fas fa-check"></i> 1/2 cup chopped cabbage</li>
+              <li><i class="fas fa-check"></i> 1 small capsicum</li>
+              <li><i class="fas fa-check"></i> 1 small carrot</li>
+              <li><i class="fas fa-check"></i> 6 beans</li>
+              <li><i class="fas fa-check"></i> 1 small potato</li>
+              <li><i class="fas fa-check"></i> 2 dsp oil</li>
+              <li><i class="fas fa-check"></i> 1 tsp black pepper powder</li>
+              <li><i class="fas fa-check"></i> 1 green chili</li>
+              <li><i class="fas fa-check"></i> 1/2 tsp ginger paste</li>
+              <li><i class="fas fa-check"></i> 1/2 tsp garlic paste</li>
+              <li><i class="fas fa-check"></i> Salt to taste</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h3><i class="fas fa-list-ol"></i> Instructions</h3>
+            <ol class="instructions-list" style="counter-reset: step-counter">
+              <li>Chop vegetables.</li>
+              <li>Blanch all vegetables except onion.</li>
+              <li>Heat oil, stir-fry chili, onion, ginger, and garlic paste.</li>
+              <li>Add blanched vegetables, salt, and other spices. Cook for 2 minutes.</li>
+              <li>Make dough by mixing flour with water.</li>
+              <li>Divide dough and fillings into six portions.</li>
+              <li>Roll out each dough portion into a small oval shape.</li>
+              <li>Place fillings in the center and bring the edges together in a round shape.</li>
+              <li>Boil water, put the balls into boiling water, and cook for 15 minutes.</li>
+              <li>Serve hot with chutney.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Print Button -->
+    <button class="print-button" onclick="window.print()">
+      <i class="fas fa-print"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
