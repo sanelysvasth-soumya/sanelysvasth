@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Calculators - HOMA-IR & QUICKI</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-container">
+            <div class="row">
+                <!-- HOMA-IR Calculator Card -->
+                <div class="col-md-6">
+                    <div class="calculator-card">
+                        <div class="calculator-header">
+                            <h2><i class="fas fa-calculator"></i> HOMA-IR Calculator</h2>
+                            <p>Calculate your Homeostatic Model Assessment for Insulin Resistance</p>
+                        </div>
+                        <form id="homaForm" class="calculator-form">
+                            <div class="form-group">
+                                <label for="insulin">Fasting Insulin</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="insulin" required min="1" step="0.1" placeholder="Enter fasting insulin">
+                                    <select class="form-control" id="insulinUnit" required>
+                                        <option value="microUI">µIU/mL</option>
+                                        <option value="pmol">pmol/L</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="glucose">Fasting Glucose</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="glucose" required min="1" step="0.1" placeholder="Enter fasting glucose">
+                                    <select class="form-control" id="glucoseUnit" required>
+                                        <option value="mmol">mmol/L</option>
+                                        <option value="mg">mg/dL</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn calculate-btn">Calculate</button>
+                        </form>
+                        <div id="homaResult" class="result-section" style="display: none;">
+                            <h3>Your Results</h3>
+                            <p><strong>HOMA-IR:</strong> <span id="homaValue">0.0</span></p>
+                            <p id="homaInterpretation"></p>
+                            <p><strong>QUICKI Index:</strong> <span id="quickiValue">0.0</span></p>
+                            <p id="quickiInterpretation"></p>
+                            <button class="btn recalculate-btn"><i class="fas fa-redo"></i> Recalculate</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- HOMA-IR Info Card -->
+                <div class="col-md-6">
+                    <div class="calculator-card info-card">
+                        <div class="calculator-header">
+                            <h2><i class="fas fa-info-circle"></i> About HOMA-IR</h2>
+                        </div>
+                        <div class="info-content">
+                            <p>HOMA-IR — Homeostatic Model Assessment for Insulin Resistance — is an index used to determine if insulin resistance is present in a patient. People widely use it because of its simplicity and noninvasive nature.</p>
+                            <h4>What is the QUICKI index?</h4>
+                            <p>QUICKI (Quantitative Insulin Sensitivity Check Index) is an index used to assess insulin resistance, just like HOMA-IR. It uses the same values: fasting glucose and fasting insulin, but the formula is different.</p>
+                            <p>QUICKI = 1/(log(insulin) + log(glucose))</p>
+                            <ul>
+                                <li>QUICKI index >0.45 — You are probably healthy.</li>
+                                <li>QUICKI index between 0.30-0.45 — You might be insulin resistant.</li>
+                                <li>QUICKI index <0.30 — You might be diabetic.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.1.11.1.js"></script>
+    <script>
+        $("#homaForm").on("submit", function (e) {
+            e.preventDefault();
+            const insulin = parseFloat($("#insulin").val());
+            const insulinUnit = $("#insulinUnit").val();
+            const glucose = parseFloat($("#glucose").val());
+            const glucoseUnit = $("#glucoseUnit").val();
+
+            let insulinConverted = insulinUnit === "pmol" ? insulin / 6 : insulin;
+            let glucoseConverted = glucoseUnit === "mmol" ? glucose : glucose / 18;
+
+            let homa_ir = (insulinConverted * glucoseConverted) / 22.5;
+            homa_ir = Math.round(homa_ir * 100) / 100;
+
+            const quicki = 1 / (Math.log10(insulinConverted) + Math.log10(glucoseConverted));
+            const quickiFormatted = Math.round(quicki * 10000) / 10000;
+
+            $("#homaValue").text(homa_ir);
+            $("#quickiValue").text(quickiFormatted);
+
+            let homaInterpretation = homa_ir > 2 ? "You might have insulin resistance." : "Your insulin resistance level is normal.";
+            let quickiInterpretation = quickiFormatted > 0.45 ? "You are probably healthy." : quickiFormatted >= 0.30 ? "You might be insulin resistant." : "You might be diabetic.";
+
+            $("#homaInterpretation").text(homaInterpretation);
+            $("#quickiInterpretation").text(quickiInterpretation);
+
+            $("#homaForm").hide();
+            $("#homaResult").fadeIn();
+        });
+
+        $(".recalculate-btn").click(function () {
+            $("#homaResult").hide();
+            $("#homaForm").fadeIn();
+            $("#homaForm")[0].reset();
+        });
+    </script>
+</body>
+</html>

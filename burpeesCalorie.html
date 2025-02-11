@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Calculators - Burpees Calories</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <style>
+    body {
+      padding: 20px;
+      background-color: #f9fafb;
+    }
+  </style>
+  <body>
+    <!-- Navigation -->
+    <div id="nav-placeholder"></div>
+
+    <!-- Main Content Section -->
+    <div id="calculator-section">
+      <div class="container">
+        <div class="calculator-container">
+          <div class="row">
+            <!-- Burpees Calculator Card -->
+            <div class="col-md-6">
+              <div class="calculator-card">
+                <div class="calculator-header">
+                  <h2><i class="fas fa-calculator"></i> Burpees Calorie Calculator</h2>
+                  <p>Calculate calories burned while doing burpees</p>
+                </div>
+
+                <form id="burpeesForm" class="calculator-form">
+                  <div class="form-group">
+                    <label for="weight">Weight (kg)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="weight"
+                      required
+                      min="1"
+                      max="300"
+                      placeholder="Enter your weight in kg"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="burpees">Number of Burpees</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="burpees"
+                      required
+                      min="1"
+                      max="1000"
+                      placeholder="Enter number of burpees"
+                    />
+                  </div>
+
+                  <button type="submit" class="btn calculate-btn">
+                    Calculate Calories Burned
+                  </button>
+                </form>
+
+                <div id="burpeesResult" class="result-section" style="display: none">
+                  <div class="result-header">
+                    <h3>Your Results</h3>
+                    <button class="btn recalculate-btn">
+                      <i class="fas fa-redo"></i> Recalculate
+                    </button>
+                  </div>
+
+                  <div class="result-content">
+                    <div class="calorie-score">
+                      <span class="score-label">Calories Burned</span>
+                      <span id="caloriesValue" class="score-value">0.0</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Burpees Information Card -->
+            <div class="col-md-6">
+              <div class="calculator-card info-card">
+                <div class="calculator-header">
+                  <h2><i class="fas fa-info-circle"></i> About Burpees</h2>
+                </div>
+                <div class="info-content">
+                  <p>
+                    Burpees are a full-body exercise that burns a significant number of calories. The calories burned per burpee depend on your body weight and intensity of the exercise.
+                  </p>
+                  <p>
+                    On average, one burpee burns between 0.3 and 1 calorie per repetition, depending on weight and intensity. You can estimate the calories burned using the formula:
+                  </p>
+                  <p>
+                    How do you do a burpee exercise:
+                  </p>
+                  <ul>
+                    <li>Stand straight, with your legs about shoulder-width apart.</li>
+                    <li>Lower yourself to a squat, and place your hands on the floor.</li>
+                    <li>Kick your feet back vigorously to a plank. Keep your body straight.</li>
+                    <li>Do a push-up.</li>
+                    <li>Jump the feet back to the starting position.</li>
+                    <li>Jump explosively in the air.</li>
+                    <li>Repeat as many times as you want.</li>
+                  </ul>
+                  <p>
+                    The calculator will give you a result as a range of the burpee calories burned, together with a mean value. Being on the lower or higher side of the range depends primarily on:
+                  </p>
+                  <ul>
+                    <li>The pace of the exercise (fast vs. slow execution).</li>
+                    <li>The effort put into the move (standard push-up vs. knee push-up).</li>
+                  </ul>
+                  <p>
+                    If you are new to fitness, you can try a half burpee (also called beginner burpee or squat thrust), which omits the push-up or jump to help build strength gradually.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jquery.1.11.1.js"></script>
+    <script>
+      $(function () {
+        $("#nav-placeholder").load("nav.html");
+      });
+
+      // Burpees Calculator Logic
+      $("#burpeesForm").on("submit", function (e) {
+        e.preventDefault();
+
+        const weight = parseFloat($("#weight").val()); // Keeping weight in kg
+        const burpees = parseInt($("#burpees").val());
+        
+        const caloriesBurned = (weight / 68) * 0.5 * burpees;
+        const roundedCalories = Math.round(caloriesBurned * 10) / 10;
+
+        $("#caloriesValue").text(roundedCalories);
+
+        $("#burpeesForm").hide();
+        $("#burpeesResult").fadeIn();
+      });
+
+      $(".recalculate-btn").click(function () {
+        $("#burpeesResult").hide();
+        $("#burpeesForm").fadeIn();
+        $("#burpeesForm")[0].reset();
+      });
+    </script>
+  </body>
+</html>

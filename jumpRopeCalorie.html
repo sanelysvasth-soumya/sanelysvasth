@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Calculators - Jump Rope Calories</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <style>
+    body {
+      padding: 20px;
+      background-color: #f9fafb;
+    }
+  </style>
+  <body>
+    <!-- Navigation -->
+    <div id="nav-placeholder"></div>
+
+    <!-- Main Content Section -->
+    <div id="calculator-section">
+      <div class="container">
+        <div class="calculator-container">
+          <div class="row">
+            <!-- Jump Rope Calculator Card -->
+            <div class="col-md-6">
+              <div class="calculator-card">
+                <div class="calculator-header">
+                  <h2><i class="fas fa-calculator"></i> Jump Rope Calorie Calculator</h2>
+                  <p>Calculate calories burned while jumping rope</p>
+                </div>
+
+                <form id="jumpRopeForm" class="calculator-form">
+                  <div class="form-group">
+                    <label for="weight">Weight (kg)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="weight"
+                      required
+                      min="1"
+                      max="300"
+                      placeholder="Enter your weight in kg"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="speed">Skipping Rate</label>
+                    <select class="form-control" id="speed" required>
+                      <option value="" disabled selected>Select your skipping rate</option>
+                      <option value="8.8">100 skips/minute or less</option>
+                      <option value="11.8">100–120 skips/minute</option>
+                      <option value="12.3">120–160 skips/minute</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="duration">Duration (minutes)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="duration"
+                      required
+                      min="1"
+                      max="300"
+                      placeholder="Enter duration in minutes"
+                    />
+                  </div>
+
+                  <button type="submit" class="btn calculate-btn">
+                    Calculate Calories Burned
+                  </button>
+                </form>
+
+                <div id="jumpRopeResult" class="result-section" style="display: none">
+                  <div class="result-header">
+                    <h3>Your Results</h3>
+                    <button class="btn recalculate-btn">
+                      <i class="fas fa-redo"></i> Recalculate
+                    </button>
+                  </div>
+
+                  <div class="result-content">
+                    <div class="calorie-score">
+                      <span class="score-label">Calories Burned</span>
+                      <span id="caloriesValue" class="score-value">0.0</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Jump Rope Information Card -->
+            <div class="col-md-6">
+              <div class="calculator-card info-card">
+                <div class="calculator-header">
+                  <h2><i class="fas fa-info-circle"></i> About Jump Rope</h2>
+                </div>
+                <div class="info-content">
+                  <p>
+                    Jumping rope burns calories efficiently and aids in weight loss. Skipping for one minute at 120 skips/min burns around 17 calories. If you jump for ten minutes, you can burn approximately 150 calories. A 15-minute session can burn between 240 and 300 calories.
+                  </p>
+                  <p>
+                    Jumping rope compares favorably to running in terms of calorie burn. At a pace of 110 skips per minute, it matches the energy expenditure of running at 11 km/h.
+                  </p>
+                  <p>
+                    To see significant changes in your fitness, try skipping regularly. Even a few minutes a day can make a big difference!
+                  </p>
+                  <p>
+                    Jump rope workouts also improve cardiovascular health, endurance, coordination, and agility. It engages multiple muscle groups, including the legs, core, and arms, providing a full-body workout.
+                  </p>
+                  <p>
+                    Additionally, jump rope exercises can be adapted for various fitness levels, from beginners to advanced athletes. It’s a cost-effective workout that requires minimal equipment, making it a convenient option for home workouts.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jquery.1.11.1.js"></script>
+    <script>
+      $(function () {
+        $("#nav-placeholder").load("nav.html");
+      });
+
+      // Jump Rope Calculator Logic
+      $("#jumpRopeForm").on("submit", function (e) {
+        e.preventDefault();
+
+        const weight = parseFloat($("#weight").val());
+        const met = parseFloat($("#speed").val());
+        const duration = parseFloat($("#duration").val());
+
+        const caloriesBurned = ((met * weight * 7) / 400) * duration;
+        const roundedCalories = Math.round(caloriesBurned * 10) / 10;
+
+        $("#caloriesValue").text(roundedCalories);
+
+        $("#jumpRopeForm").hide();
+        $("#jumpRopeResult").fadeIn();
+      });
+
+      $(".recalculate-btn").click(function () {
+        $("#jumpRopeResult").hide();
+        $("#jumpRopeForm").fadeIn();
+        $("#jumpRopeForm")[0].reset();
+      });
+    </script>
+  </body>
+</html>

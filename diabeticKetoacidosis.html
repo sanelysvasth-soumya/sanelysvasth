@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Calculators - DKA Diagnosis</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="calculator-card">
+                        <div class="calculator-header">
+                            <h2><i class="fas fa-procedures"></i> DKA Diagnosis</h2>
+                            <p>Determine if the patient meets the criteria for Diabetic Ketoacidosis</p>
+                        </div>
+                        <form id="dkaForm" class="calculator-form">
+                            <div class="form-group">
+                                <label for="glucose">Blood Glucose >250 mg/dL (13.8 mmol/L)</label>
+                                <select class="form-control" id="glucose">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="bicarbonate">Serum Bicarbonate</label>
+                                <select class="form-control" id="bicarbonate">
+                                    <option value=">18">> 18 mEq/L</option>
+                                    <option value="15-18">15 to 18 mEq/L</option>
+                                    <option value="10-15">10 to <15 mEq/L</option>
+                                    <option value="<10">< 10 mEq/L</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="anionGap">Anion Gap</label>
+                                <select class="form-control" id="anionGap">
+                                    <option value="≤12">Up to 12 mEq/L</option>
+                                    <option value=">12">> 12 mEq/L</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ph">Arterial pH</label>
+                                <select class="form-control" id="ph">
+                                    <option value=">7.30">> 7.30</option>
+                                    <option value="7.24-7.30">7.24-7.30</option>
+                                    <option value="7-7.24">7-7.24</option>
+                                    <option value="<7">< 7.00</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="mentalState">Mental State</label>
+                                <select class="form-control" id="mentalState">
+                                    <option value="alert">Alert</option>
+                                    <option value="drowsy">Alert but drowsy</option>
+                                    <option value="stupor">Stupor/Coma</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="serumKetone">Serum Ketone</label>
+                                <select class="form-control" id="serumKetone">
+                                    <option value="present">Present</option>
+                                    <option value="absent">Absent</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="urineKetone">Urine Ketone (3 mmol/L and over)</label>
+                                <select class="form-control" id="urineKetone">
+                                    <option value="present">Present</option>
+                                    <option value="absent">Absent</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn calculate-btn">Diagnose</button>
+                        </form>
+                        <div id="dkaResult" class="result-section" style="display: none;">
+                            <h3>Diagnosis Result</h3>
+                            <p id="dkaDiagnosis"></p>
+                            <button class="btn recalculate-btn"><i class="fas fa-redo"></i> Recalculate</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="calculator-card info-card">
+                        <div class="calculator-header">
+                            <h2><i class="fas fa-info-circle"></i> About DKA</h2>
+                        </div>
+                        <div class="info-content">
+                            <h4>What is Diabetic Ketoacidosis?</h4>
+                            <p>
+                                Diabetic ketoacidosis (DKA) is a condition where three states—hyperglycemia (serum glucose >250 mg/dL), acidosis (arterial blood pH <7.3 and bicarbonate <15 mEq/L), and ketosis (presence of ketones in blood and/or urine)—combine into a syndrome.
+                            </p>
+                            <p>
+                                DKA is one of the acute complications of diabetes, mainly occurring in type 1 diabetes (DM1). It is often the first presentation of type 1 diabetes.
+                            </p>
+                            <h4>Causes and Symptoms</h4>
+                            <p>
+                                DKA is caused by insufficient insulin, preventing glucose from entering cells for energy. This results in metabolic disturbances affecting acid-base balance and electrolytes. If untreated, it can be life-threatening.
+                            </p>
+                            <p>
+                                Symptoms include fatigue, frequent urination, excessive thirst, nausea, vomiting, and abdominal pain. Additional warning signs include rapid breathing (Kussmaul breathing), dehydration, tachycardia, low blood pressure, and fruity breath odor. Read the blog to know more.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.1.11.1.js"></script>
+    <script>
+        $("#dkaForm").on("submit", function (e) {
+            e.preventDefault();
+            
+            let criteriaMet = 0;
+            let diagnosisText = "The patient has met the following ADA (American Diabetes Association) criteria for diagnosis of diabetic ketoacidosis:<br>";
+            
+            const params = {
+                glucose: $("#glucose").val() === "yes",
+                bicarbonate: $("#bicarbonate").val() !== ">18",
+                anionGap: $("#anionGap").val() === ">12",
+                ph: $("#ph").val() !== ">7.30",
+                serumKetone: $("#serumKetone").val() === "present",
+                urineKetone: $("#urineKetone").val() === "present"
+            };
+            
+            Object.keys(params).forEach(key => {
+                if (params[key]) {
+                    diagnosisText += `✔️ ${key.replace(/([A-Z])/g, ' $1')} met criteria.<br>`;
+                    criteriaMet++;
+                } else {
+                    diagnosisText += `❌ ${key.replace(/([A-Z])/g, ' $1')} not met.<br>`;
+                }
+            });
+            
+            if (criteriaMet >= 3) {
+                diagnosisText += "🔴 The parameters suggest a severe form of diabetic ketoacidosis.";
+            }
+            
+            $("#dkaDiagnosis").html(diagnosisText);
+            $("#dkaForm").hide();
+            $("#dkaResult").fadeIn();
+        });
+    </script>
+</body>
+</html>
