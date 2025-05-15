@@ -2,8 +2,105 @@
 
 <footer class="footer">
   <div class="footer-content">
-    <div class="copyright">Copyright © 2024. All rights reserved.</div>
-    <div class="business-name">Svasth by Soumya - Dietitian in Bengaluru</div>
-    <div class="brand">SANELY SVASTH</div>
+    <div class="copyright fade-in">Copyright © 2024. All rights reserved.</div>
+    <div class="business-name slide-in">Svasth by Soumya - Dietitian in Bengaluru</div>
+    <div class="brand pulse">SANELY SVASTH</div>
   </div>
 </footer>
+
+<style>
+  /* Animation styles */
+  .fade-in {
+    animation: fadeIn 1.5s ease-in-out;
+  }
+  
+  .slide-in {
+    animation: slideIn 1s ease-out;
+  }
+  
+  .pulse {
+    animation: pulse 2s infinite;
+  }
+  
+  /* Animation keyframes */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  /* Enhanced footer styling with better visibility */
+  .footer {
+    background: linear-gradient(135deg, #c59a6d 0%, #a47b50 100%);
+    padding: 15px;
+    color: #fff;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+  
+  .footer:hover {
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .copyright, .business-name {
+    color: #fff;
+    font-size: 1.2rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  }
+  
+  .brand {
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 1.5em;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    margin-top: 3px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .footer {
+      padding: 12px 10px;
+    }
+    
+    .brand {
+      font-size: 1.3em;
+    }
+    
+    .copyright, .business-name {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<!-- Add this to fix FAQ visibility in services.html -->
+<script>
+  // This script helps ensure the FAQ section title is visible
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqTitle = document.querySelector('#faq-section .section-title h2');
+    if (faqTitle) {
+      faqTitle.style.color = '#ffffff';
+      faqTitle.style.textShadow = '0 2px 4px rgba(0,0,0,0.3)';
+      faqTitle.style.fontSize = '2.2rem';
+      faqTitle.style.fontWeight = '700';
+    }
+  });
+</script>
