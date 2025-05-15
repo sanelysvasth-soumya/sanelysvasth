@@ -12,11 +12,49 @@
     />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="icon" type="image/png" href="../img/other4.png" sizes="12x12" />
+    <!-- Add professional Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <style>
+    /* Professional Typography Enhancement */
     body {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      color: #333;
+      line-height: 1.7;
       padding: 20px;
       background-color: #f9fafb;
+      background-image: linear-gradient(rgba(249, 250, 251, 0.97), rgba(249, 250, 251, 0.97)), 
+                        url('data:image/svg+xml,%3Csvg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23c59a6d" fill-opacity="0.05" fill-rule="evenodd"%3E%3Ccircle cx="3" cy="3" r="3"/%3E%3Ccircle cx="13" cy="13" r="3"/%3E%3C/g%3E%3C/svg%3E');
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    /* Section Title Styling */
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    
+    .section-title p {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #666;
     }
 
     /* Recipe Cards Styles */
@@ -31,9 +69,9 @@
       display: flex;
       flex-direction: column;
       transform-origin: center;
-      animation: fadeIn 0.8s ease-out;
       max-width: 300px;
-      margin: 0.5;
+      margin: 0.5rem auto;
+      opacity: 0;
     }
 
     .recipe-card:hover {
@@ -85,6 +123,7 @@
       display: inline-block;
       padding: 4px 12px;
       margin-right: 8px;
+      margin-bottom: 5px;
       background: #f0f7ff;
       color: #2d87ff;
       border-radius: 15px;
@@ -101,6 +140,7 @@
     }
 
     .recipe-title {
+      font-family: 'Playfair Display', serif;
       font-size: 18px;
       font-weight: 600;
       color: #2c3e50;
@@ -171,6 +211,139 @@
       left: 100%;
     }
 
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Apply animations to recipe cards */
+    .section-title h2 {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    }
+
+    .col-md-4:nth-child(odd) .recipe-card {
+      animation: fadeInLeft 0.7s ease-out forwards;
+    }
+
+    .col-md-4:nth-child(even) .recipe-card {
+      animation: fadeInRight 0.7s ease-out forwards;
+    }
+
+    /* Staggered animation delays */
+    .col-md-4:nth-child(1) .recipe-card {
+      animation-delay: 0.3s;
+    }
+    .col-md-4:nth-child(2) .recipe-card {
+      animation-delay: 0.4s;
+    }
+    .col-md-4:nth-child(3) .recipe-card {
+      animation-delay: 0.5s;
+    }
+    .col-md-4:nth-child(4) .recipe-card {
+      animation-delay: 0.6s;
+    }
+    .col-md-4:nth-child(5) .recipe-card {
+      animation-delay: 0.7s;
+    }
+    .col-md-4:nth-child(6) .recipe-card {
+      animation-delay: 0.8s;
+    }
+    .col-md-4:nth-child(7) .recipe-card {
+      animation-delay: 0.9s;
+    }
+    .col-md-4:nth-child(8) .recipe-card {
+      animation-delay: 1.0s;
+    }
+    .col-md-4:nth-child(9) .recipe-card {
+      animation-delay: 1.1s;
+    }
+    .col-md-4:nth-child(10) .recipe-card {
+      animation-delay: 1.2s;
+    }
+    .col-md-4:nth-child(11) .recipe-card {
+      animation-delay: 1.3s;
+    }
+    .col-md-4:nth-child(12) .recipe-card {
+      animation-delay: 1.4s;
+    }
+    .col-md-4:nth-child(13) .recipe-card {
+      animation-delay: 1.5s;
+    }
+    .col-md-4:nth-child(14) .recipe-card {
+      animation-delay: 1.6s;
+    }
+    .col-md-4:nth-child(15) .recipe-card {
+      animation-delay: 1.7s;
+    }
+
+    /* Scroll to top button */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: #c59a6d;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .scroll-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      background: #b38a5e;
+      transform: translateY(-5px);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .col-md-4 {
+        width: 50%;
+      }
+    }
+
     @media (max-width: 768px) {
       .recipe-card {
         margin-bottom: 20px;
@@ -183,28 +356,11 @@
       .recipe-title {
         font-size: 18px;
       }
-    }
 
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
+      .col-md-4 {
+        width: 100%;
+        margin-bottom: 20px;
       }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Add staggered animation for cards */
-    .col-md-4:nth-child(1) .recipe-card {
-      animation-delay: 0.1s;
-    }
-    .col-md-4:nth-child(2) .recipe-card {
-      animation-delay: 0.3s;
-    }
-    .col-md-4:nth-child(3) .recipe-card {
-      animation-delay: 0.5s;
     }
   </style>
   <body>
@@ -1060,7 +1216,7 @@
                         <span class="tag">Vegetarian</span>
                         <span class="tag">Crispy</span>
                       </div>
-                      <h3 class="recipe-title">Okra/Lady’s Finger Fry</h3>
+                      <h3 class="recipe-title">Okra/Lady's Finger Fry</h3>
                       <p class="recipe-description">
                         A crispy and flavorful fried okra dish, lightly coated with spices and gram flour, perfect as a side or snack.
                       </p>
@@ -1117,5 +1273,45 @@
     </style>
 
     <div id="footer-placeholder"></div>
+
+    <!-- Add scroll to top button before closing body tag -->
+    <div class="scroll-top">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Add scroll to top functionality
+        const scrollTopBtn = document.querySelector('.scroll-top');
+        
+        window.addEventListener('scroll', () => {
+          if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('active');
+          } else {
+            scrollTopBtn.classList.remove('active');
+          }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+        
+        // Add intersection observer for smooth animations
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animated');
+            }
+          });
+        }, {threshold: 0.1});
+        
+        document.querySelectorAll('.recipe-card').forEach(card => {
+          observer.observe(card);
+        });
+      });
+    </script>
   </body>
 </html>
