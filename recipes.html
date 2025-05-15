@@ -47,6 +47,19 @@
       font-weight: 700;
       font-size: 2.2rem;
       margin-bottom: 10px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .section-title h2:after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #c59a6d, transparent);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
     }
     
     .section-title p {
@@ -372,7 +385,6 @@
           <div class="col-md-8 col-md-offset-2">
             <div class="section-title">
               <h2>Explore Our Recipes</h2>
-              <hr />
             </div>
             <p>
               Discover a variety of delicious and healthy recipes to inspire
