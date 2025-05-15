@@ -79,6 +79,11 @@
     margin-top: -12px;
     width: auto;
     object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar-brand:hover img {
+    transform: scale(1.05);
   }
 
   .navbar .container {
@@ -106,17 +111,63 @@
     color: #333 !important;
     font-weight: 500;
     padding: 0.5rem 1rem !important;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     text-decoration: none;
+    position: relative;
+  }
+
+  .nav-link:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #c59a6d;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
   }
 
   .nav-link:hover {
     color: #c59a6d !important;
+    transform: translateY(-2px);
+  }
+
+  .nav-link:hover:before {
+    width: 70%;
   }
 
   .nav-item.active .nav-link {
     color: #c59a6d !important;
   }
+  
+  .nav-item.active .nav-link:before {
+    width: 70%;
+  }
+  
+  /* Add subtle entrance animation for nav items */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .nav-item {
+    animation: fadeInDown 0.5s ease forwards;
+    opacity: 0;
+  }
+  
+  .nav-item:nth-child(1) { animation-delay: 0.1s; }
+  .nav-item:nth-child(2) { animation-delay: 0.2s; }
+  .nav-item:nth-child(3) { animation-delay: 0.3s; }
+  .nav-item:nth-child(4) { animation-delay: 0.4s; }
+  .nav-item:nth-child(5) { animation-delay: 0.5s; }
+  .nav-item:nth-child(6) { animation-delay: 0.6s; }
 
   /* Mobile styles */
   @media (max-width: 991px) {
@@ -185,11 +236,25 @@
     border: none;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(197, 154, 109, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(197, 154, 109, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(197, 154, 109, 0);
+    }
   }
 
   .contact-btn:hover {
     transform: scale(1.1);
+    animation: none;
   }
 
   .contact-info {
@@ -202,10 +267,27 @@
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     width: 280px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
 
   .contact-info.show {
     display: block;
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeIn 0.3s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .contact-item {
@@ -253,4 +335,18 @@
     const contactInfo = document.getElementById("contactInfo");
     contactInfo.classList.toggle("show");
   }
+  
+  // Add active class to current page nav item
+  document.addEventListener("DOMContentLoaded", function() {
+    const currentLocation = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+      const linkPath = link.getAttribute('href');
+      if (currentLocation.endsWith(linkPath) || 
+          (currentLocation === '/' && linkPath === '/index.html')) {
+        link.parentElement.classList.add('active');
+      }
+    });
+  });
 </script>
