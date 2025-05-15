@@ -11,12 +11,463 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="icon" type="image/png" href="../img/other4.png" sizes="12x12" />
+
+    <!-- Add professional Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <style>
+    /* Professional Typography Enhancement */
     body {
       padding: 20px;
       background-color: #f9fafb;
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      color: #333;
+      line-height: 1.7;
+      background-image: linear-gradient(
+          rgba(249, 250, 251, 0.97),
+          rgba(249, 250, 251, 0.97)
+        ),
+        url('data:image/svg+xml,%3Csvg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23c59a6d" fill-opacity="0.05" fill-rule="evenodd"%3E%3Ccircle cx="3" cy="3" r="3"/%3E%3Ccircle cx="13" cy="13" r="3"/%3E%3C/g%3E%3C/svg%3E');
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Playfair Display", serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    /* Enhanced section styling */
+    #blog-section {
+      padding: 40px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 10px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+    }
+
+    .section-title h2:after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #c59a6d, transparent);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section-title hr {
+      display: none;
+    }
+
+    .section-title + p {
+      font-family: "Poppins", sans-serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+
+    /* Blog container styling */
+    .blog-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Search box styling */
+    .blog-sidebar {
+      margin-bottom: 40px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      padding: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .search-box {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 12px 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px 0 0 8px;
+      font-family: "Poppins", sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: #c59a6d;
+      box-shadow: 0 0 0 2px rgba(197, 154, 109, 0.2);
+    }
+
+    .search-box button {
+      background: #c59a6d;
+      color: white;
+      border: none;
+      padding: 0 20px;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .search-box button:hover {
+      background: #a47b50;
+    }
+
+    /* Recent posts styling */
+    .recent-posts-widget {
+      padding-top: 10px;
+    }
+
+    .recent-posts-widget h4 {
+      font-family: "Playfair Display", serif;
+      font-weight: 600;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: #333;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .recent-posts-widget h4:after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 2px;
+      background: #c59a6d;
+      bottom: 0;
+      left: 0;
+    }
+
+    .recent-posts-widget a {
+      display: block;
+      padding: 10px 15px;
+      background: #f9f9f9;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .recent-posts-widget a:hover {
+      background: #f0f0f0;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .recent-posts-widget h5 {
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .recent-posts-widget a:hover h5 {
+      color: #c59a6d;
+    }
+
+    .recent-posts-widget span {
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    /* Blog post styling */
+    .blog-post {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      height: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .blog-post:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .blog-post:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: #c59a6d;
+      z-index: 1;
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.4s ease;
+    }
+
+    .blog-post:hover:before {
+      transform: scaleY(1);
+    }
+
+    .post-category {
+      display: inline-block;
+      background: #c59a6d;
+      color: white;
+      font-size: 0.8rem;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin: 20px 0 10px 20px;
+    }
+
+    .post-meta {
+      display: flex;
+      margin: 0 20px 10px;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    .post-meta span {
+      margin-right: 15px;
+    }
+
+    .post-meta i {
+      margin-right: 5px;
+      color: #c59a6d;
+    }
+
+    .post-content {
+      padding: 0 20px 20px;
+    }
+
+    .blog-post h3,
+    .blog-post h4 {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+
+    .blog-post:hover h3,
+    .blog-post:hover h4 {
+      color: #c59a6d;
+    }
+
+    .blog-post p {
+      font-family: "Poppins", sans-serif;
+      font-weight: 300;
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .read-more {
+      display: inline-block;
+      color: #c59a6d;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .read-more i {
+      margin-left: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .read-more:hover {
+      color: #a47b50;
+      text-decoration: none;
+    }
+
+    .read-more:hover i {
+      transform: translateX(5px);
+    }
+
+    /* Featured post styling */
+    .featured-post {
+      background: linear-gradient(
+          rgba(255, 255, 255, 0.9),
+          rgba(255, 255, 255, 0.9)
+        ),
+        url('data:image/svg+xml,%3Csvg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23c59a6d" fill-opacity="0.1" fill-rule="evenodd"%3E%3Ccircle cx="3" cy="3" r="3"/%3E%3Ccircle cx="13" cy="13" r="3"/%3E%3C/g%3E%3C/svg%3E');
+      padding: 30px;
+      margin-bottom: 40px;
+      border-left: 5px solid #c59a6d;
+    }
+
+    .featured-post h3 {
+      font-size: 1.8rem;
+    }
+
+    /* Load more button */
+    .load-more {
+      background: #c59a6d;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(197, 154, 109, 0.3);
+    }
+
+    .load-more:hover {
+      background: #a47b50;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(197, 154, 109, 0.4);
+      color: white;
+    }
+
+    /* Highlight styling */
+    .highlight {
+      background-color: rgba(197, 154, 109, 0.2);
+      padding: 0 2px;
+      border-radius: 2px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Apply animations */
+    .section-title {
+      animation: fadeIn 0.8s ease-out 0.2s both;
+    }
+
+    .section-title + p {
+      animation: fadeIn 0.8s ease-out 0.4s both;
+    }
+
+    .blog-sidebar {
+      animation: fadeIn 0.8s ease-out 0.6s both;
+    }
+
+    .featured-post {
+      animation: fadeIn 0.8s ease-out 0.8s both;
+    }
+
+    .blog-grid .col-md-6:nth-child(odd) {
+      animation: fadeInLeft 0.7s ease-out forwards;
+    }
+
+    .blog-grid .col-md-6:nth-child(even) {
+      animation: fadeInRight 0.7s ease-out forwards;
+    }
+
+    /* Staggered animation delays */
+    .blog-grid .col-md-6:nth-child(1) {
+      animation-delay: 1s;
+    }
+
+    .blog-grid .col-md-6:nth-child(2) {
+      animation-delay: 1.1s;
+    }
+
+    .blog-grid .col-md-6:nth-child(3) {
+      animation-delay: 1.2s;
+    }
+
+    .blog-grid .col-md-6:nth-child(4) {
+      animation-delay: 1.3s;
+    }
+
+    .blog-grid .col-md-6:nth-child(5) {
+      animation-delay: 1.4s;
+    }
+
+    .blog-grid .col-md-6:nth-child(6) {
+      animation-delay: 1.5s;
+    }
+
+    .blog-grid .col-md-6:nth-child(7) {
+      animation-delay: 1.6s;
+    }
+
+    .blog-grid .col-md-6:nth-child(8) {
+      animation-delay: 1.7s;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .section-title h2 {
+        font-size: 2rem;
+      }
+
+      .featured-post h3 {
+        font-size: 1.5rem;
+      }
+
+      .blog-post h4 {
+        font-size: 1.2rem;
+      }
+
+      .recent-posts-widget .col-md-4 {
+        margin-bottom: 15px;
+      }
     }
   </style>
   <body>
@@ -59,7 +510,7 @@
                     <div class="col-md-4">
                       <a href="#gut-superfoods">
                         <h5>Boost Your Gut Health With These 5 Superfoods</h5>
-                        <span>September 15, 2024</span>
+                        <span>August 15, 2024</span>
                       </a>
                     </div>
                     <div class="col-md-4">
@@ -71,524 +522,500 @@
                     <div class="col-md-4">
                       <a href="#fasting-health-impact">
                         <h5>Can Fasting Improve Your Health?</h5>
-                        <span>October 10, 2024</span>
+                        <span>August 10, 2024</span>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Main Content Column - Now Full Width -->
-            <div class="col-md-12">
-              <!-- Featured Post -->
-              <article class="blog-post featured-post" id="gut-superfoods">
-                <div class="post-category">Featured</div>
-                <div class="post-meta">
-                  <span><i class="far fa-calendar"></i> August 15, 2024</span>
-                  <span><i class="far fa-clock"></i> 8 min read</span>
-                </div>
-                <h3>10 Benefits of Barefoot Walking: Reconnect with Nature for a Happier, Healthier You</h3>
-                <p>
-                  This ancient practice, known as grounding or earthing, involves making direct skin contact with natural surfaces such as grass, soil, sand, or even rocks. Over the years, research has highlighted numerous physical and mental health benefits associated with this simple activity. From reducing stress to improving circulation, grounding can be an incredibly powerful way to boost your well-being.
-
-                </p>
-                <a href="blog-posts/Benefits of barefoot walking.html" class="read-more"
-                  >Read More <i class="fas fa-arrow-right"></i
-                ></a>
-              </article>
-
-              <!-- Regular Posts -->
-              <div class="blog-grid">
-                <div class="col-md-6">
-                  <article class="blog-post" id="diabetic-breakfast">
-                    <div class="post-category">artificial-sweeteners-health</div>
-                    <div class="post-meta">
-                      <span><i class="far fa-calendar"></i> Nov 12, 2024</span>
-                      <span><i class="far fa-clock"></i> 20 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>The Truth Behind Artificial Sweeteners; Impact on the Gut-Brain Axis and Health</h4>
-                      <p>
-                        Discover how these "Healthier" sweeteners, such as aspartame, sucralose, saccharin, and stevia, have found their way into various food and beverage products, including sodas, dairy items, snacks, and even medicines.
-                        Are they really Harmless?
-                      </p>
-                      <a
-                        href="blog-posts/Artificial sweetners - detail.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article class="blog-post" id="sugarcane">
-                    <div class="post-category">sugarcane</div>
-                    <div class="post-meta">
-                      <span><i class="far fa-calendar"></i> January 12, 2025</span>
-                      <span><i class="far fa-clock"></i> 20 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>Why should you consume Sugarcane this January</h4>
-                      <p>
-                        Consuming sugarcane during these cooler months offers a variety of health benefits, supported by both modern science and ancient Ayurvedic principles. In this blog, we’ll explore why eating sugarcane is especially beneficial during this time, what science says about it, and how Ayurveda views its impact on the body.                        Are they really Harmless?
-                      </p>
-                      <a
-                        href="blog-posts/Sugarcane.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-                
-                <div class="col-md-6">
-                  <article class="blog-post" id="moringa-nutrition">
-                    <div class="post-category">Nutrition Science</div>
-                    <div class="post-meta">
-                      <span><i class="far fa-calendar"></i> January 20, 2025</span>
-                      <span><i class="far fa-clock"></i> 8 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>
-                        What is  Detoxing and how does it impact Your Body’s Health: A Dietitian’s Comprehensive Guide                      </h4>
-                      <p>
-                        Our bodies, much like machines, need regular maintenance to function optimally. Imagine a borewell motor clogged with rust or dirt—it can’t pump water effectively, right? Similarly, when our body's detox systems are overwhelmed or sluggish, it struggles to function at its best. Learn moreabout how you can support your body’s detox pathways and achieve better overall health. 
-                      </p>
-                      <a
-                        href="blog-posts/detox.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article class="blog-post" id="diabetic-breakfast">
-                    <div class="post-category">Diabetes Management</div>
-                    <div class="post-meta">
-                      <span><i class="far fa-calendar"></i> June 10, 2024</span>
-                      <span><i class="far fa-clock"></i> 5 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>Why Add Veggies to Your Diabetic Breakfast?</h4>
-                      <p>
-                        Discover how incorporating vegetables into traditional
-                        breakfast items like idli and dosa can help manage blood
-                        sugar levels and improve overall metabolic health.
-                      </p>
-                      <a
-                        href="blog-posts/diabetic-breakfast-veggies.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article class="blog-post" id="sitting-science">
-                    <div class="post-category">Wellness</div>
-                    <div class="post-meta">
-                      <span><i class="far fa-calendar"></i> June 20, 2024</span>
-                      <span><i class="far fa-clock"></i> 7 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>
-                        The Science Behind Sitting While Eating and Drinking
-                      </h4>
-                      <p>
-                        Explore the scientific reasons why sitting while eating
-                        promotes better digestion, mindful eating, and overall
-                        health. Learn how this simple practice can transform
-                        your relationship with food.
-                      </p>
-                      <a
-                        href="blog-posts/science-behind-sitting.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article class="blog-post" id="hepatotoxic-effects">
-                    <div class="post-category">Nutrition Science</div>
-                    <div class="post-meta">
-                      <span><i class="far fa-calendar"></i> June 30, 2024</span>
-                      <span><i class="far fa-clock"></i> 10 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>Understanding the Hepatotoxic Effects of Fructose</h4>
-                      <p>
-                        Explore the complex relationship between fructose
-                        consumption and liver health, including its metabolic
-                        pathways and potential risks when consumed in excess.
-                      </p>
-                      <a
-                        href="blog-posts/hepatotoxic-effects-fructose.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article class="blog-post" id="artificial-sweeteners">
-                    <div class="post-category">Nutrition Science</div>
-                    <div class="post-meta">
-                      <span><i class="far fa-calendar"></i> July 5, 2024</span>
-                      <span><i class="far fa-clock"></i> 8 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>The Impact of Artificial Sweeteners on Health</h4>
-                      <p>
-                        Explore the complex relationship between artificial
-                        sweeteners and health, including their effects on
-                        metabolism, gut health, and potential risks of
-                        overconsumption.
-                      </p>
-                      <a
-                        href="blog-posts/artificial-sweeteners-health.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article class="blog-post" id="calcium-rich-leafy">
-                    <div class="post-category">Nutrition Science</div>
-                    <div class="post-meta">
-                      <span><i class="far fa-calendar"></i> July 10, 2024</span>
-                      <span><i class="far fa-clock"></i> 10 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>
-                        Unveiling the Calcium-Rich Leafy Treasures of India
-                      </h4>
-                      <p>
-                        Discover India's rich variety of calcium-packed leafy
-                        vegetables and learn how these nutritional powerhouses
-                        can enhance your health and well-being.
-                      </p>
-                      <a
-                        href="blog-posts/calcium-rich-leafy-vegetables.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article class="blog-post" id="moringa-nutrition">
-                    <div class="post-category">Nutrition Science</div>
-                    <div class="post-meta">
-                      <span><i class="far fa-calendar"></i> July 15, 2024</span>
-                      <span><i class="far fa-clock"></i> 8 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>
-                        Discovering the Nutritional Wonders of Moringa Leaves
-                      </h4>
-                      <p>
-                        Explore the incredible health benefits of moringa leaves
-                        and learn delicious Indian recipes to incorporate this
-                        nutritional powerhouse into your diet.
-                      </p>
-                      <a
-                        href="blog-posts/moringa-leaves-nutrition.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article class="blog-post" id="fruit-salad-science">
-                    <div class="post-category">Nutrition Science</div>
-                    <div class="post-meta">
-                      <span><i class="far fa-calendar"></i> July 20, 2024</span>
-                      <span><i class="far fa-clock"></i> 10 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>
-                        The Science Behind Fruit Salad: Separating Acidic and
-                        Basic Fruits
-                      </h4>
-                      <p>
-                        Discover the Ayurvedic principles and scientific
-                        reasoning behind combining fruits in your salad for
-                        optimal digestion and health benefits.
-                      </p>
-                      <a
-                        href="blog-posts/fruit-salad-science.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article class="blog-post" id="coconut-oil-weight-loss">
-                    <div class="post-category">Nutrition Science</div>
-                    <div class="post-meta">
-                      <span><i class="far fa-calendar"></i> July 25, 2024</span>
-                      <span><i class="far fa-clock"></i> 12 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>
-                        Unlocking the Weight Loss Potential of Coconut Oil
-                      </h4>
-                      <p>
-                        Discover how coconut oil's unique composition and
-                        properties can contribute to weight loss and overall
-                        health benefits.
-                      </p>
-                      <a
-                        href="blog-posts/coconut-oil-weight-loss.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article class="blog-post" id="delete-calorie-calculators">
-                    <div class="post-category">Nutrition Science</div>
-                    <div class="post-meta">
-                      <span><i class="far fa-calendar"></i> July 28, 2024</span>
-                      <span><i class="far fa-clock"></i> 10 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>
-                        Why Should You Delete MyFitnessPal and Other Online
-                        Calorie Calculators
-                      </h4>
-                      <p>
-                        Discover why relying solely on calorie tracking apps
-                        might be hindering your health journey and explore
-                        better alternatives for sustainable nutrition.
-                      </p>
-                      <a
-                        href="blog-posts/delete-calorie-calculators.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article class="blog-post" id="set-point-weight-theory">
-                    <div class="post-category">Nutrition Science</div>
-                    <div class="post-meta">
-                      <span><i class="far fa-calendar"></i> July 30, 2024</span>
-                      <span><i class="far fa-clock"></i> 8 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>What is the Set Point Weight Theory?</h4>
-                      <p>
-                        Explore the science behind your body's natural weight
-                        regulation system and understand why sustainable weight
-                        management goes beyond simple calorie counting.
-                      </p>
-                      <a
-                        href="blog-posts/set-point-weight-theory.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article
-                    class="blog-post"
-                    id="comprehensive-weight-loss-guide"
-                  >
-                    <div class="post-category">Weight Management</div>
-                    <div class="post-meta">
-                      <span
-                        ><i class="far fa-calendar"></i> August 1, 2024</span
-                      >
-                      <span><i class="far fa-clock"></i> 15 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>A Comprehensive Guide to Weight Loss</h4>
-                      <p>
-                        Explore the science behind weight gain, health risks of
-                        obesity, and evidence-based strategies for sustainable
-                        weight management.
-                      </p>
-                      <a
-                        href="blog-posts/comprehensive-weight-loss-guide.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article class="blog-post" id="intermittent-fasting-guide">
-                    <div class="post-category">Nutrition Science</div>
-                    <div class="post-meta">
-                      <span
-                        ><i class="far fa-calendar"></i> August 5, 2024</span
-                      >
-                      <span><i class="far fa-clock"></i> 12 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>A Comprehensive Guide to Intermittent Fasting</h4>
-                      <p>
-                        Discover the science behind intermittent fasting, its
-                        benefits, and how to implement it safely into your
-                        lifestyle.
-                      </p>
-                      <a
-                        href="blog-posts/intermittent-fasting-guide.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article class="blog-post" id="fasting-foods-guide">
-                    <div class="post-category">Nutrition Science</div>
-                    <div class="post-meta">
-                      <span
-                        ><i class="far fa-calendar"></i> August 8, 2024</span
-                      >
-                      <span><i class="far fa-clock"></i> 10 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>
-                        The Ultimate Guide to Fasting: Foods That Won't Break
-                        Your Fast
-                      </h4>
-                      <p>
-                        Learn about the foods and drinks you can consume while
-                        fasting, their benefits, and how to maximize your
-                        fasting results.
-                      </p>
-                      <a
-                        href="blog-posts/fasting-foods-guide.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article class="blog-post" id="fasting-health-impact">
-                    <div class="post-category">Health Science</div>
-                    <div class="post-meta">
-                      <span
-                        ><i class="far fa-calendar"></i> August 10, 2024</span
-                      >
-                      <span><i class="far fa-clock"></i> 15 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>Can Fasting Improve Your Health?</h4>
-                      <p>
-                        Explore the scientific evidence behind fasting's impact
-                        on mitochondrial health, hormones, and cellular repair
-                        mechanisms.
-                      </p>
-                      <a
-                        href="blog-posts/fasting-health-impact.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article class="blog-post" id="fasting-complexities">
-                    <div class="post-category">Health Science</div>
-                    <div class="post-meta">
-                      <span
-                        ><i class="far fa-calendar"></i> August 12, 2024</span
-                      >
-                      <span><i class="far fa-clock"></i> 10 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>Navigating the Complexities of Fasting</h4>
-                      <p>
-                        Explore the intricate relationships between fasting,
-                        fertility, athletic performance, and various health
-                        implications.
-                      </p>
-                      <a
-                        href="blog-posts/fasting-complexities.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="col-md-6">
-                  <article class="blog-post" id="nutritional-edge">
-                    <div class="post-category">Sports Nutrition</div>
-                    <div class="post-meta">
-                      <span><i class="far fa-calendar"></i> June 25, 2024</span>
-                      <span><i class="far fa-clock"></i> 8 min read</span>
-                    </div>
-                    <div class="post-content">
-                      <h4>
-                        The Nutritional Edge: Comparing a Bowl of Fruit to a
-                        Plate of Meat for Various Sports
-                      </h4>
-                      <p>
-                        Explore the scientific comparison between fruits and
-                        meat in sports nutrition, and learn how to optimize your
-                        diet based on your athletic needs.
-                      </p>
-                      <a
-                        href="blog-posts/nutritional-edge-sports.html"
-                        class="read-more"
-                        >Read More <i class="fas fa-arrow-right"></i
-                      ></a>
-                    </div>
-                  </article>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <article class="blog-post" id="sitting-science">
-                  <div class="post-category">Wellness</div>
+              <!-- Main Content Column - Now Full Width -->
+              <div class="col-md-12">
+                <!-- Featured Post -->
+                <article class="blog-post featured-post" id="barefoot-walking">
+                  <div class="post-category">Featured</div>
                   <div class="post-meta">
-                    <span><i class="far fa-calendar"></i> June 20, 2024</span>
-                    <span><i class="far fa-clock"></i> 7 min read</span>
+                    <span><i class="far fa-calendar"></i> August 15, 2024</span>
+                    <span><i class="far fa-clock"></i> 8 min read</span>
                   </div>
-                  <div class="post-content">
-                    <h4>Boost Your Gut Health With These 5 Superfoods</h4>
-                <p>
-                  Discover the power of superfoods in enhancing your gut health.
-                  From probiotic-rich yogurt to fiber-packed chia seeds, learn
-                  how these nutritional powerhouses can transform your digestive
-                  wellness and overall health.
-                </p>
-                <a href="blog-posts/gut-superfoods.html" class="read-more"
-                  >Read More <i class="fas fa-arrow-right"></i
-                ></a>
-                  </div>
+                  <h3>
+                    10 Benefits of Barefoot Walking: Reconnect with Nature for a
+                    Happier, Healthier You
+                  </h3>
+                  <p>
+                    This ancient practice, known as grounding or earthing,
+                    involves making direct skin contact with natural surfaces
+                    such as grass, soil, sand, or even rocks. Over the years,
+                    research has highlighted numerous physical and mental health
+                    benefits associated with this simple activity. From reducing
+                    stress to improving circulation, grounding can be an
+                    incredibly powerful way to boost your well-being.
+                  </p>
+                  <a
+                    href="blog-posts/benefitsOfBarefootWalking.html"
+                    class="read-more"
+                    >Read More <i class="fas fa-arrow-right"></i
+                  ></a>
                 </article>
+
+                <!-- Regular Posts -->
+                <div class="blog-grid">
+                  <div class="col-md-6">
+                    <article class="blog-post" id="gut-superfoods">
+                      <div class="post-category">Gut Health</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> August 15, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 8 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>Boost Your Gut Health With These 5 Superfoods</h4>
+                        <p>
+                          Discover the power of superfoods in enhancing your gut
+                          health. From probiotic-rich yogurt to fiber-packed
+                          chia seeds, learn how these nutritional powerhouses
+                          can transform your digestive wellness and overall
+                          health.
+                        </p>
+                        <a
+                          href="blog-posts/gut-superfoods.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+
+                  <div class="col-md-6">
+                    <article class="blog-post" id="diabetic-breakfast">
+                      <div class="post-category">Diabetes Management</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> June 10, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 5 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>Why Add Veggies to Your Diabetic Breakfast?</h4>
+                        <p>
+                          Discover how incorporating vegetables into traditional
+                          breakfast items like idli and dosa can help manage
+                          blood sugar levels and improve overall metabolic
+                          health.
+                        </p>
+                        <a
+                          href="blog-posts/diabetic-breakfast-veggies.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+
+                  <div class="col-md-6">
+                    <article class="blog-post" id="sitting-science">
+                      <div class="post-category">Wellness</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> June 20, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 7 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>
+                          The Science Behind Sitting While Eating and Drinking
+                        </h4>
+                        <p>
+                          Explore the scientific reasons why sitting while
+                          eating promotes better digestion, mindful eating, and
+                          overall health. Learn how this simple practice can
+                          transform your relationship with food.
+                        </p>
+                        <a
+                          href="blog-posts/science-behind-sitting.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+
+                  <div class="col-md-6">
+                    <article class="blog-post" id="hepatotoxic-effects">
+                      <div class="post-category">Nutrition Science</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> June 30, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 10 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>
+                          Understanding the Hepatotoxic Effects of Fructose
+                        </h4>
+                        <p>
+                          Explore the complex relationship between fructose
+                          consumption and liver health, including its metabolic
+                          pathways and potential risks when consumed in excess.
+                        </p>
+                        <a
+                          href="blog-posts/hepatotoxic-effects-fructose.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+
+                  <div class="col-md-6">
+                    <article class="blog-post" id="artificial-sweeteners">
+                      <div class="post-category">Nutrition Science</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> July 5, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 8 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>The Impact of Artificial Sweeteners on Health</h4>
+                        <p>
+                          Explore the complex relationship between artificial
+                          sweeteners and health, including their effects on
+                          metabolism, gut health, and potential risks of
+                          overconsumption.
+                        </p>
+                        <a
+                          href="blog-posts/artificial-sweeteners-health.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+
+                  <div class="col-md-6">
+                    <article class="blog-post" id="calcium-rich-leafy">
+                      <div class="post-category">Nutrition Science</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> July 10, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 10 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>
+                          Unveiling the Calcium-Rich Leafy Treasures of India
+                        </h4>
+                        <p>
+                          Discover India's rich variety of calcium-packed leafy
+                          vegetables and learn how these nutritional powerhouses
+                          can enhance your health and well-being.
+                        </p>
+                        <a
+                          href="blog-posts/calcium-rich-leafy-vegetables.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+
+                  <div class="col-md-6">
+                    <article class="blog-post" id="moringa-nutrition">
+                      <div class="post-category">Nutrition Science</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> July 15, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 8 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>
+                          Discovering the Nutritional Wonders of Moringa Leaves
+                        </h4>
+                        <p>
+                          Explore the incredible health benefits of moringa
+                          leaves and learn delicious Indian recipes to
+                          incorporate this nutritional powerhouse into your
+                          diet.
+                        </p>
+                        <a
+                          href="blog-posts/moringa-leaves-nutrition.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+
+                  <div class="col-md-6">
+                    <article class="blog-post" id="fruit-salad-science">
+                      <div class="post-category">Nutrition Science</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> July 20, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 10 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>
+                          The Science Behind Fruit Salad: Separating Acidic and
+                          Basic Fruits
+                        </h4>
+                        <p>
+                          Discover the Ayurvedic principles and scientific
+                          reasoning behind combining fruits in your salad for
+                          optimal digestion and health benefits.
+                        </p>
+                        <a
+                          href="blog-posts/fruit-salad-science.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+
+                  <div class="col-md-6">
+                    <article class="blog-post" id="coconut-oil-weight-loss">
+                      <div class="post-category">Nutrition Science</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> July 25, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 12 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>
+                          Unlocking the Weight Loss Potential of Coconut Oil
+                        </h4>
+                        <p>
+                          Discover how coconut oil's unique composition and
+                          properties can contribute to weight loss and overall
+                          health benefits.
+                        </p>
+                        <a
+                          href="blog-posts/coconut-oil-weight-loss.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+
+                  <div class="col-md-6">
+                    <article class="blog-post" id="delete-calorie-calculators">
+                      <div class="post-category">Nutrition Science</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> July 28, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 10 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>
+                          Why Should You Delete MyFitnessPal and Other Online
+                          Calorie Calculators
+                        </h4>
+                        <p>
+                          Discover why relying solely on calorie tracking apps
+                          might be hindering your health journey and explore
+                          better alternatives for sustainable nutrition.
+                        </p>
+                        <a
+                          href="blog-posts/delete-calorie-calculators.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+
+                  <div class="col-md-6">
+                    <article class="blog-post" id="set-point-weight-theory">
+                      <div class="post-category">Nutrition Science</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> July 30, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 8 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>What is the Set Point Weight Theory?</h4>
+                        <p>
+                          Explore the science behind your body's natural weight
+                          regulation system and understand why sustainable
+                          weight management goes beyond simple calorie counting.
+                        </p>
+                        <a
+                          href="blog-posts/set-point-weight-theory.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+
+                  <div class="col-md-6">
+                    <article
+                      class="blog-post"
+                      id="comprehensive-weight-loss-guide"
+                    >
+                      <div class="post-category">Weight Management</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> August 1, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 15 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>A Comprehensive Guide to Weight Loss</h4>
+                        <p>
+                          Explore the science behind weight gain, health risks
+                          of obesity, and evidence-based strategies for
+                          sustainable weight management.
+                        </p>
+                        <a
+                          href="blog-posts/comprehensive-weight-loss-guide.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+
+                  <div class="col-md-6">
+                    <article class="blog-post" id="intermittent-fasting-guide">
+                      <div class="post-category">Nutrition Science</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> August 5, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 12 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>A Comprehensive Guide to Intermittent Fasting</h4>
+                        <p>
+                          Discover the science behind intermittent fasting, its
+                          benefits, and how to implement it safely into your
+                          lifestyle.
+                        </p>
+                        <a
+                          href="blog-posts/intermittent-fasting-guide.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+
+                  <div class="col-md-6">
+                    <article class="blog-post" id="fasting-foods-guide">
+                      <div class="post-category">Nutrition Science</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> August 8, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 10 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>
+                          The Ultimate Guide to Fasting: Foods That Won't Break
+                          Your Fast
+                        </h4>
+                        <p>
+                          Learn about the foods and drinks you can consume while
+                          fasting, their benefits, and how to maximize your
+                          fasting results.
+                        </p>
+                        <a
+                          href="blog-posts/fasting-foods-guide.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+
+                  <div class="col-md-6">
+                    <article class="blog-post" id="fasting-health-impact">
+                      <div class="post-category">Health Science</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> August 10, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 15 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>Can Fasting Improve Your Health?</h4>
+                        <p>
+                          Explore the scientific evidence behind fasting's
+                          impact on mitochondrial health, hormones, and cellular
+                          repair mechanisms.
+                        </p>
+                        <a
+                          href="blog-posts/fasting-health-impact.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+
+                  <div class="col-md-6">
+                    <article class="blog-post" id="fasting-complexities">
+                      <div class="post-category">Health Science</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> August 12, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 10 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>Navigating the Complexities of Fasting</h4>
+                        <p>
+                          Explore the intricate relationships between fasting,
+                          fertility, athletic performance, and various health
+                          implications.
+                        </p>
+                        <a
+                          href="blog-posts/fasting-complexities.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+
+                  <div class="col-md-6">
+                    <article class="blog-post" id="nutritional-edge">
+                      <div class="post-category">Sports Nutrition</div>
+                      <div class="post-meta">
+                        <span
+                          ><i class="far fa-calendar"></i> June 25, 2024</span
+                        >
+                        <span><i class="far fa-clock"></i> 8 min read</span>
+                      </div>
+                      <div class="post-content">
+                        <h4>
+                          The Nutritional Edge: Comparing a Bowl of Fruit to a
+                          Plate of Meat for Various Sports
+                        </h4>
+                        <p>
+                          Explore the scientific comparison between fruits and
+                          meat in sports nutrition, and learn how to optimize
+                          your diet based on your athletic needs.
+                        </p>
+                        <a
+                          href="blog-posts/nutritional-edge-sports.html"
+                          class="read-more"
+                          >Read More <i class="fas fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </article>
+                  </div>
+                </div>
               </div>
 
               <!-- Load More Button -->
@@ -817,6 +1244,40 @@
         }
       }
     </style>
+
+    <!-- Add intersection observer for animations -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Add animation classes to blog posts
+        const blogPosts = document.querySelectorAll(".blog-post");
+        blogPosts.forEach((post, index) => {
+          // Ensure each post has the proper styling
+          if (!post.querySelector(".post-content")) {
+            // If post doesn't have proper structure, fix it
+            const title = post.querySelector("h3, h4");
+            const content = post.querySelector("p");
+            const link = post.querySelector("a");
+
+            if (title && content) {
+              // Wrap content in proper structure if needed
+              const contentDiv = document.createElement("div");
+              contentDiv.className = "post-content";
+
+              // Move elements into content div
+              post.appendChild(contentDiv);
+              contentDiv.appendChild(title);
+              contentDiv.appendChild(content);
+
+              if (link && !link.classList.contains("read-more")) {
+                link.className = "read-more";
+                link.innerHTML += ' <i class="fas fa-arrow-right"></i>';
+                contentDiv.appendChild(link);
+              }
+            }
+          }
+        });
+      });
+    </script>
 
     <div id="footer-placeholder"></div>
   </body>
