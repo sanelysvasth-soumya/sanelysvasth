@@ -12,7 +12,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="icon" type="image/png" href="../img/other4.png" sizes="12x12" />
   </head>
   <style>
     body {
@@ -113,7 +112,7 @@
     }
 
     #faq-section {
-      background: url(../img/faq4.png);
+      background: url(../img/48.png);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -454,6 +453,257 @@
       border-radius: 10px;
       position: relative;
     }
+
+    /* Enhanced service cards with animations - with more transparent overlay */
+    .service {
+      transition: all 0.4s ease;
+      padding: 30px 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .service:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #c59a6d 0%, #a47b50 100%);
+      z-index: -1;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+      opacity: 0.7; /* More transparent overlay */
+    }
+
+    .service:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .service:hover:before {
+      transform: translateY(0);
+    }
+
+    .service:hover h4, .service:hover p {
+      color: white;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Adding text shadow for better readability */
+    }
+
+    .service:hover .fa {
+      color: white;
+      transform: scale(1.2);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .service .fa {
+      transition: all 0.4s ease;
+      color: #c59a6d;
+      margin-bottom: 20px;
+    }
+
+    .service h4 {
+      font-weight: 600;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .service p {
+      transition: all 0.3s ease;
+      margin-bottom: 0;
+    }
+
+    /* Improved section spacing */
+    #services {
+      padding: 80px 0 60px;
+      background-color: #f9fafb;
+    }
+
+    .section-title {
+      margin-bottom: 50px;
+    }
+
+    .services-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-container .col-md-4 {
+      padding: 0 15px;
+      margin-bottom: 30px;
+    }
+
+    /* Enhanced FAQ section */
+    #faq-section {
+      margin-top: 40px;
+    }
+
+    #faq-section .overlay {
+      padding: 80px 0;
+    }
+
+    /* Animated know procedure button */
+    .know-procedure-btn {
+      background: linear-gradient(135deg, #c59a6d 0%, #a47b50 100%);
+      color: white;
+      padding: 18px 45px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.3rem;
+      transition: all 0.4s ease;
+      margin: 60px 0 40px;
+      font-weight: 600;
+      box-shadow: 0 5px 15px rgba(197, 154, 109, 0.4);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .know-procedure-btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #a47b50 0%, #c59a6d 100%);
+      z-index: -1;
+      transition: opacity 0.4s ease;
+      opacity: 0;
+    }
+
+    .know-procedure-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(197, 154, 109, 0.5);
+    }
+
+    .know-procedure-btn:hover:before {
+      opacity: 1;
+    }
+
+    /* Enhanced modal styling */
+    .service-modal {
+      perspective: 1000px;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 30px;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 15px;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      transform-origin: center;
+      animation: modalOpen 0.5s ease forwards;
+    }
+
+    @keyframes modalOpen {
+      from {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: #666;
+    }
+
+    .close-modal:hover {
+      color: #c59a6d;
+      transform: rotate(90deg);
+    }
+
+    .modal-header {
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .modal-title {
+      color: #333;
+      font-weight: 600;
+      font-size: 1.8rem;
+    }
+
+    .service-detail .detail-item {
+      padding: 18px 0;
+      border-bottom: 1px solid #eee;
+      transition: all 0.3s ease;
+    }
+
+    .service-detail .detail-item:hover {
+      background-color: #f9f9f9;
+      padding-left: 10px;
+    }
+
+    .service-detail .detail-item h4 {
+      color: #333;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .service-detail .detail-item i {
+      color: #c59a6d;
+      margin-right: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .service-detail .detail-item:hover i {
+      transform: scale(1.2);
+    }
+
+    /* Improved carousel animations */
+    .carousel-item {
+      transition: transform 0.8s ease, opacity 0.6s ease;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      #services {
+        padding: 60px 0 40px;
+      }
+
+      .service {
+        padding: 25px 15px;
+      }
+
+      .know-procedure-btn {
+        padding: 15px 35px;
+        font-size: 1.2rem;
+        margin: 40px 0 30px;
+      }
+
+      .modal-content {
+        padding: 20px;
+        margin: 10% auto;
+      }
+
+      .modal-title {
+        font-size: 1.5rem;
+      }
+    }
   </style>
   <body>
     <div id="nav-placeholder"></div>
@@ -490,6 +740,7 @@
               <h4>Sports Nutrition</h4>
               <p>Sculpt your body and smash your goals.</p>
             </div>
+   
           </div>
 
           <div class="col-md-4">
