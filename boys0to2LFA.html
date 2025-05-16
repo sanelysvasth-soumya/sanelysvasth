@@ -11,31 +11,350 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Added Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <style>
     body {
       padding: 20px;
-      background-color: #f9fafb;
+      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+    }
+
+    h2, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
     }
 
     .calculator-container {
-      margin-top: 20px;
+      margin-top: 30px;
+      margin-bottom: 40px;
     }
 
     .chart-container {
-      width: 95%;
-      height: 800px;
+      width: 100%;
+      height: 500px;
       margin: auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      
+      .chart-container {
+        height: 350px;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+      }
+      
+      .page-title {
+        font-size: 1.4rem;
+        margin: 15px 0;
+        text-align: center;
+      }
+      
+      .calculator-card {
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+      }
+      
+      .calculator-header h2 {
+        font-size: 1.3rem;
+      }
+      
+      .calculator-header p {
+        font-size: 0.9rem;
+      }
+      
+      .form-group label {
+        font-size: 0.9rem;
+      }
+      
+      .form-control {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+      
+      .btn {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+      }
+      
+      .result-section {
+        padding: 12px;
+        border-radius: 8px;
+        margin-top: 15px;
+      }
+      
+      #percentileResult {
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+      
+      .percentile-legend {
+        padding: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+      
+      .percentile-item {
+        margin: 3px;
+        flex-basis: 45%;
+      }
+      
+      .percentile-color {
+        width: 15px;
+        height: 8px;
+        margin-right: 5px;
+      }
+      
+      .percentile-item span {
+        font-size: 0.8rem;
+      }
     }
 
     .result-section {
       display: none;
       margin-top: 20px;
+      padding: 15px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    
+    .calculator-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 25px;
+      margin-bottom: 25px;
+      transition: transform 0.3s ease;
+    }
+    
+    .calculator-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .calculator-header {
+      margin-bottom: 20px;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 15px;
+    }
+    
+    .calculator-header h2 {
+      color: #2c3e50;
+      font-size: 1.8rem;
+    }
+    
+    .calculator-header p {
+      color: #7f8c8d;
+      font-size: 1.1rem;
+    }
+    
+    .calculator-form .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .calculator-form label {
+      font-weight: 500;
+      color: #34495e;
+      margin-bottom: 8px;
+    }
+    
+    .calculator-form input {
+      border-radius: 8px;
+      padding: 12px;
+      border: 1px solid #e0e0e0;
+      transition: all 0.3s ease;
+    }
+    
+    .calculator-form input:focus {
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    }
+    
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 25px;
+      width: 100%;
+    }
+    
+    .btn {
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+    }
+    
+    .btn i {
+      margin-right: 10px;
+      font-size: 16px;
+    }
+    
+    .calculate-btn {
+      background: linear-gradient(135deg, #c59a6d 0%, #b38a5d 100%);
+      color: white;
+    }
+    
+    .calculate-btn:hover {
+      box-shadow: 0 6px 12px rgba(197, 154, 109, 0.3);
+      transform: translateY(-3px);
+    }
+    
+    .calculate-btn:active {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 6px rgba(197, 154, 109, 0.2);
+    }
+    
+    .recalculate-btn {
+      background: linear-gradient(135deg, #d1aa7f 0%, #c59a6d 100%);
+      color: white;
+    }
+    
+    .recalculate-btn:hover {
+      box-shadow: 0 6px 12px rgba(209, 170, 127, 0.3);
+      transform: translateY(-3px);
+    }
+    
+    .recalculate-btn:active {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 6px rgba(209, 170, 127, 0.2);
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: -1;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s ease;
+    }
+    
+    .btn:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    
+    @media (max-width: 576px) {
+      .btn-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .btn {
+        width: 100%;
+        padding: 14px 20px;
+        justify-content: center;
+      }
+      
+      .btn i {
+        font-size: 18px;
+      }
+    }
+    
+    .info-card {
+      background-color: #f8f9ff;
+    }
+    
+    .info-content {
+      padding: 10px 0;
+    }
+    
+    .info-list {
+      padding-left: 20px;
+    }
+    
+    .info-list li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+    
+    .page-title {
+      text-align: center;
+      margin: 30px 0;
+      color: #2c3e50;
+      font-weight: 700;
+    }
+    
+    .percentile-legend {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 15px;
+      padding: 15px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .percentile-item {
+      display: flex;
+      align-items: center;
+      margin: 5px 10px;
+    }
+    
+    .percentile-color {
+      width: 25px;
+      height: 10px;
+      margin-right: 10px;
+      border-radius: 3px;
+    }
+    
+    @media (max-width: 768px) {
+      .percentile-legend {
+        padding: 10px;
+      }
+      
+      .percentile-item {
+        margin: 3px 5px;
+        flex-basis: 45%;
+      }
+      
+      .percentile-color {
+        width: 20px;
+        height: 8px;
+        margin-right: 5px;
+      }
+      
+      .percentile-item span {
+        font-size: 11px;
+      }
     }
   </style>
   <body>
     <!-- Navigation -->
     <div id="nav-placeholder"></div>
+    
+    <!-- Page Title -->
+    <h1 class="page-title">Boys Length-for-Age Growth Chart (0-2 Years)</h1>
 
     <!-- Growth Chart Section -->
     <div id="calculator-section">
@@ -77,16 +396,19 @@
                     />
                   </div>
 
-                  <button type="submit" class="btn calculate-btn">
-                    Plot Growth
-                  </button>
-                  <button
-                    type="button"
-                    id="clearChart"
-                    class="btn recalculate-btn"
-                  >
-                    Clear Chart
-                  </button>
+                  <div class="btn-container">
+                    <button type="submit" class="btn calculate-btn">
+                      <i class="fas fa-chart-bar"></i> Plot Growth
+                    </button>
+
+                    <button
+                      type="button"
+                      id="clearChart"
+                      class="btn recalculate-btn"
+                    >
+                      <i class="fas fa-eraser"></i> Clear Chart
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
@@ -132,6 +454,16 @@
           <div class="chart-container">
             <canvas id="growthChart"></canvas>
           </div>
+          
+          <div id="growthInfo" class="result-section">
+            <h4>Growth Analysis</h4>
+            <p id="percentileResult"></p>
+          </div>
+          
+          <!-- Percentile Legend -->
+          <div class="percentile-legend">
+            <!-- Will be populated by JavaScript -->
+          </div>
         </div>
       </div>
     </div>
@@ -144,8 +476,25 @@
       });
 
       const ctx = document.getElementById("growthChart").getContext("2d");
+      
+      // Define better colors for percentile lines with a more modern palette
+      const percentileColors = {
+        "1st": "#FF6B6B",
+        "3rd": "#FF7E67",
+        "5th": "#FFB563",
+        "10th": "#FFD166",
+        "15th": "#E9FF70",
+        "25th": "#A0E548",
+        "50th": "#06D6A0",
+        "75th": "#54C6EB",
+        "85th": "#4A8FE7",
+        "90th": "#5D67E9",
+        "95th": "#9656E7",
+        "97th": "#BB3FDD",
+        "99th": "#8A2BE2"
+      };
 
-      const labels = Array.from({ length: 25 }, (_, i) => `${i} months`);
+      const labels = Array.from({ length: 25 }, (_, i) => i);
 
       const percentileData = {
          "1st": [45.5, 50.2, 53.8, 56.7, 59, 61, 62.6, 64.1, 65.5, 66.8, 68, 69.1, 70.2, 71.3, 72.3, 73.3, 74.2, 75.1, 76, 76.8, 77.7, 78.4, 79.2, 80, 80.7],
@@ -163,17 +512,19 @@
         "99th": [54.3, 59.3, 63.1, 66.2, 68.7, 70.8, 72.6, 74.2, 75.7, 77.2, 78.6, 80, 81.3, 82.6, 83.8, 85, 86.2, 87.4, 88.5, 89.7, 90.7, 91.8, 92.9, 93.9, 94.9],
       };
 
-      const colors = ["#FF0000", "#FFA500", "#FFA500", "#FFFF00", "#008000", "#0000FF", "80ffa0", "96c93d", "00b09b", "#9ca120", "#0e7f4b", "#4a979a", "#FFA500","#00f4ff",];
-
-      const datasets = Object.entries(percentileData).map(([label, data], index) => ({
+      // Create datasets with improved styling
+      const datasets = Object.entries(percentileData).map(([label, data]) => ({
         label: `${label} Percentile`,
         data: data,
-        borderColor: colors[index],
-        borderWidth: 1,
+        borderColor: percentileColors[label] || "#000000",
+        backgroundColor: "transparent",
+        borderWidth: label === "50th" ? 3 : 2,
+        tension: 0.4,
         fill: false,
         pointRadius: 0
       }));
 
+      // Chart configuration with improved styling
       const growthChart = new Chart(ctx, {
         type: "line",
         data: { labels, datasets },
@@ -181,31 +532,183 @@
           responsive: true,
           maintainAspectRatio: false,
           scales: {
-            x: { title: { display: true, text: "Age (months)" } },
-            y: { title: { display: true, text: "Height (cm)" } },
+            x: { 
+              title: { 
+                display: true, 
+                text: "Age (months)",
+                font: {
+                  size: 14,
+                  weight: 'bold',
+                  family: "'Montserrat', sans-serif"
+                }
+              },
+              grid: {
+                color: 'rgba(200, 200, 200, 0.15)',
+                borderDash: [5, 5]
+              }
+            },
+            y: { 
+              title: { 
+                display: true, 
+                text: "Length (cm)",
+                font: {
+                  size: 14,
+                  weight: 'bold',
+                  family: "'Montserrat', sans-serif"
+                }
+              },
+              grid: {
+                color: 'rgba(200, 200, 200, 0.15)',
+                borderDash: [5, 5]
+              }
+            },
           },
+          plugins: {
+            tooltip: {
+              backgroundColor: 'rgba(255, 255, 255, 0.9)',
+              titleColor: '#333',
+              bodyColor: '#333',
+              borderColor: '#ddd',
+              borderWidth: 1,
+              padding: 10,
+              cornerRadius: 8,
+              displayColors: true,
+              callbacks: {
+                label: function(context) {
+                  return `${context.dataset.label}: ${context.raw} cm`;
+                }
+              }
+            },
+            legend: {
+              display: false,
+              position: 'bottom',
+              labels: {
+                usePointStyle: true,
+                padding: 15,
+                font: {
+                  family: "'Poppins', sans-serif"
+                }
+              }
+            }
+          },
+          interaction: {
+            mode: 'index',
+            intersect: false,
+          }
         },
       });
 
+      // Create percentile legend
+      const legendContainer = document.querySelector('.percentile-legend');
+      Object.keys(percentileColors).forEach(percentile => {
+        const item = document.createElement('div');
+        item.className = 'percentile-item';
+        
+        const colorBox = document.createElement('div');
+        colorBox.className = 'percentile-color';
+        colorBox.style.backgroundColor = percentileColors[percentile];
+        
+        const label = document.createElement('span');
+        label.textContent = `${percentile} Percentile`;
+        
+        item.appendChild(colorBox);
+        item.appendChild(label);
+        legendContainer.appendChild(item);
+      });
+
+      // Enhanced form submission with mobile optimization
       $("#growthForm").on("submit", function (e) {
         e.preventDefault();
         const age = parseInt($("#age").val());
         const height = parseFloat($("#height").val());
 
+        // Remove previous point if exists
+        const currentGrowthIndex = growthChart.data.datasets.findIndex(dataset => dataset.label === "Your Growth");
+        if (currentGrowthIndex > -1) {
+          growthChart.data.datasets.splice(currentGrowthIndex, 1);
+        }
+
+        // Add new point with better styling
         growthChart.data.datasets.push({
-          label: "Your Entry",
+          label: "Your Growth",
           data: labels.map((_, i) => (i === age ? height : null)),
-          borderColor: "#8A2BE2",
-          borderWidth: 2,
-          fill: false,
-          pointRadius: 0
+          borderColor: "#e74c3c",
+          backgroundColor: "#e74c3c",
+          pointBackgroundColor: "#e74c3c",
+          pointBorderColor: "#fff",
+          pointBorderWidth: 2,
+          pointRadius: 8,
+          pointHoverRadius: 10,
+          borderWidth: 0
         });
         growthChart.update();
+        
+        // Calculate percentile
+        let percentile = "below 1st";
+        let percentileColor = percentileColors["1st"];
+        
+        for (const [label, data] of Object.entries(percentileData)) {
+          if (height >= data[age]) {
+            percentile = label;
+            percentileColor = percentileColors[label];
+          } else {
+            break;
+          }
+        }
+        
+        // Display percentile information
+        document.getElementById("percentileResult").innerHTML = 
+          `At age <strong>${age} months</strong>, a length of <strong>${height} cm</strong> is at approximately the <strong style="color:${percentileColor}">${percentile}</strong> percentile.`;
+        
+        const growthInfo = document.getElementById("growthInfo");
+        growthInfo.style.display = "block";
+        
+        // Scroll to results on mobile
+        if (window.innerWidth <= 768) {
+          setTimeout(() => {
+            growthInfo.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 300);
+        }
       });
 
+      // Adjust chart responsiveness for mobile
+      function updateChartForScreenSize() {
+        if (window.innerWidth <= 768) {
+          // Mobile optimizations
+          growthChart.options.scales.x.ticks.maxRotation = 0;
+          growthChart.options.scales.x.ticks.autoSkip = true;
+          growthChart.options.scales.x.ticks.maxTicksLimit = 12;
+          growthChart.options.plugins.tooltip.titleFont.size = 12;
+          growthChart.options.plugins.tooltip.bodyFont.size = 12;
+          growthChart.options.plugins.tooltip.padding = 8;
+        } else {
+          // Desktop settings
+          growthChart.options.scales.x.ticks.maxRotation = 0;
+          growthChart.options.scales.x.ticks.autoSkip = false;
+          growthChart.options.scales.x.ticks.maxTicksLimit = undefined;
+          growthChart.options.plugins.tooltip.titleFont.size = 14;
+          growthChart.options.plugins.tooltip.bodyFont.size = 14;
+          growthChart.options.plugins.tooltip.padding = 10;
+        }
+        growthChart.update();
+      }
+      
+      // Call on load and resize
+      updateChartForScreenSize();
+      window.addEventListener('resize', updateChartForScreenSize);
+
+      // Clear the chart
       $("#clearChart").click(function () {
+        // Remove the growth point
         growthChart.data.datasets = datasets.slice();
         growthChart.update();
+        
+        // Hide result section
+        document.getElementById("growthInfo").style.display = "none";
+        
+        // Clear form inputs
+        document.getElementById("age").value = "";
+        document.getElementById("height").value = "";
       });
     </script>
   </body>
