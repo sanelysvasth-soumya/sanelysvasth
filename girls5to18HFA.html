@@ -373,56 +373,6 @@
         font-size: 0.75rem;
       }
     }
-
-    /* Styles for the data points table */
-    .data-points-container {
-      margin-top: 20px;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      padding: 15px 20px;
-      margin-bottom: 20px;
-    }
-
-    .table-header {
-      border-bottom: 1px solid #eee;
-      padding-bottom: 15px;
-      margin-bottom: 15px;
-    }
-
-    .table-header h4 {
-      margin: 0;
-      color: #2c3e50;
-    }
-
-    .color-swatch {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      margin-right: 5px;
-    }
-
-    .delete-point-btn {
-      padding: 2px 6px;
-      font-size: 0.8rem;
-    }
-
-    /* Mobile adjustments */
-    @media (max-width: 768px) {
-      .data-points-container {
-        padding: 10px;
-      }
-
-      .table-responsive {
-        font-size: 0.85rem;
-      }
-
-      .delete-point-btn {
-        padding: 1px 4px;
-        font-size: 0.7rem;
-      }
-    }
   </style>
   <body>
     <!-- Navigation -->
@@ -545,33 +495,6 @@
           <div class="percentile-bands-legend">
             <h5>Percentile Ranges</h5>
             <div class="percentile-legend-container"></div>
-          </div>
-
-          <!-- Add a data table to show all the added points -->
-          <div
-            id="dataPointsTableContainer"
-            class="data-points-container"
-            style="display: none"
-          >
-            <div class="table-header">
-              <h4>Added Data Points</h4>
-            </div>
-            <div class="table-responsive">
-              <table class="table table-sm table-hover">
-                <thead>
-                  <tr>
-                    <th>Label</th>
-                    <th>Age (years)</th>
-                    <th>Height (cm)</th>
-                    <th>Percentile</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody id="dataPointsTableBody">
-                  <!-- Data points will be added here dynamically -->
-                </tbody>
-              </table>
-            </div>
           </div>
 
           <!-- Result Section -->
@@ -1049,6 +972,32 @@
             },
           ],
         },
+
+        // Add/Modify exporting options
+        exporting: {
+          enabled: true, // Ensure exporting is enabled
+          buttons: {
+            contextButton: {
+              // Specify the menu items to keep
+              menuItems: [
+                "downloadPNG",
+                "downloadJPEG",
+                "downloadPDF",
+                "downloadSVG",
+                "separator",
+                "printChart",
+              ],
+            },
+          },
+          fallbackToExportServer: false, // Optional: set to true if you have a server for complex exports
+          filename: "girls_height_for_age_5-18_years", // Optional: set a default filename
+          chartOptions: {
+            // Optional: override chart options for export (e.g., white background)
+            chart: {
+              backgroundColor: "white",
+            },
+          },
+        },
       });
 
       // Create custom legend
@@ -1161,13 +1110,6 @@
           zIndex: 10,
         });
 
-        // Update the data table
-        updateDataTable();
-
-        // Show the data table container if it was hidden
-        document.getElementById("dataPointsTableContainer").style.display =
-          "block";
-
         // Display percentile information for the latest point
         document.getElementById("percentileResult").innerHTML =
           `At age <strong>${age} years</strong>, a height of <strong>${height} cm</strong> is at approximately the ` +
@@ -1192,51 +1134,6 @@
         updateChartView();
       }
 
-      // Function to update the data table with all points
-      function updateDataTable() {
-        const tableBody = document.getElementById("dataPointsTableBody");
-        tableBody.innerHTML = "";
-
-        dataPoints.forEach((point) => {
-          const row = document.createElement("tr");
-
-          const labelCell = document.createElement("td");
-          const labelColorSwatch = document.createElement("span");
-          labelColorSwatch.className = "color-swatch";
-          labelColorSwatch.style.backgroundColor = point.color;
-          labelCell.appendChild(labelColorSwatch);
-          labelCell.appendChild(document.createTextNode(` ${point.label}`));
-
-          const ageCell = document.createElement("td");
-          ageCell.textContent = point.age;
-
-          const heightCell = document.createElement("td");
-          heightCell.textContent = point.height;
-
-          const percentileCell = document.createElement("td");
-          percentileCell.innerHTML = `<span style="color:${point.percentileColor}">${point.percentile}</span>`;
-
-          const actionCell = document.createElement("td");
-          const deleteButton = document.createElement("button");
-          deleteButton.className =
-            "btn btn-sm btn-outline-danger delete-point-btn";
-          deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
-          deleteButton.setAttribute("data-point-id", point.id);
-          deleteButton.addEventListener("click", function () {
-            removeDataPoint(point.id);
-          });
-          actionCell.appendChild(deleteButton);
-
-          row.appendChild(labelCell);
-          row.appendChild(ageCell);
-          row.appendChild(heightCell);
-          row.appendChild(percentileCell);
-          row.appendChild(actionCell);
-
-          tableBody.appendChild(row);
-        });
-      }
-
       // Function to remove a data point
       function removeDataPoint(pointId) {
         // Remove from the chart
@@ -1251,13 +1148,8 @@
           dataPoints.splice(index, 1);
         }
 
-        // Update the table
-        updateDataTable();
-
-        // Hide the table if no points left
+        // Hide the result section if no points left
         if (dataPoints.length === 0) {
-          document.getElementById("dataPointsTableContainer").style.display =
-            "none";
           document.getElementById("growthInfo").style.display = "none";
         } else {
           // Update the percentile info to show the last data point
@@ -1285,12 +1177,7 @@
         // Clear our data points array
         dataPoints = [];
 
-        // Update the table (will be empty)
-        updateDataTable();
-
         // Hide containers
-        document.getElementById("dataPointsTableContainer").style.display =
-          "none";
         document.getElementById("growthInfo").style.display = "none";
 
         // Clear form inputs
