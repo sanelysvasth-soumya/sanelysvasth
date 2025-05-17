@@ -10,7 +10,12 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Replace Chart.js with Highcharts Scripts -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <!-- Added Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -393,63 +398,10 @@
         font-size: 0.75rem;
       }
     }
-
-    /* Styles for the data points table */
-    .data-points-container {
-      margin-top: 20px;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      padding: 15px 20px;
-      margin-bottom: 20px;
-    }
-
-    .table-header {
-      border-bottom: 1px solid #eee;
-      padding-bottom: 15px;
-      margin-bottom: 15px;
-    }
-
-    .table-header h4 {
-      margin: 0;
-      color: #2c3e50;
-    }
-
-    .color-swatch {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      margin-right: 5px;
-    }
-
-    .delete-point-btn {
-      padding: 2px 6px;
-      font-size: 0.8rem;
-    }
-
-    /* Mobile adjustments */
-    @media (max-width: 768px) {
-      .data-points-container {
-        padding: 10px;
-      }
-
-      .table-responsive {
-        font-size: 0.85rem;
-      }
-
-      .delete-point-btn {
-        padding: 1px 4px;
-        font-size: 0.7rem;
-      }
-    }
   </style>
   <body>
     <!-- Navigation -->
     <div id="nav-placeholder"></div>
-
-    <!-- Page Title -->
-    <h1 class="page-title">Girls Length-for-Age Growth Chart (0-2 Years)</h1>
 
     <!-- Growth Chart Section -->
     <div id="calculator-section">
@@ -573,44 +525,12 @@
             <h4>Growth Assessment</h4>
             <p id="percentileResult"></p>
           </div>
-
-          <!-- Add a data table to show all the added points -->
-          <div
-            id="dataPointsTableContainer"
-            class="data-points-container"
-            style="display: none"
-          >
-            <div class="table-header">
-              <h4>Added Data Points</h4>
-            </div>
-            <div class="table-responsive">
-              <table class="table table-sm table-hover">
-                <thead>
-                  <tr>
-                    <th>Label</th>
-                    <th>Age (months)</th>
-                    <th>Height (cm)</th>
-                    <th>Percentile</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody id="dataPointsTableBody">
-                  <!-- Data points will be added here dynamically -->
-                </tbody>
-              </table>
-            </div>
-          </div>
         </div>
       </div>
     </div>
 
     <!-- Scripts -->
     <script src="js/jquery.1.11.1.js"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
     <script>
       $(function () {
@@ -1080,6 +1000,20 @@
             },
           ],
         },
+
+        exporting: {
+          enabled: true,
+          buttons: {
+            contextButton: {
+              menuItems: ['downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG', 'separator', 'printChart']
+            }
+          },
+          fallbackToExportServer: false,
+          filename: "girls_length_for_age_0-2_years",
+          chartOptions: {
+            chart: { backgroundColor: 'white' }
+          }
+        },
       });
 
       // Create custom legend
@@ -1191,13 +1125,6 @@
           },
           zIndex: 10,
         });
-
-        // Update the data table
-        updateDataTable();
-
-        // Show the data table container if it was hidden
-        document.getElementById("dataPointsTableContainer").style.display =
-          "block";
 
         // Display percentile information for the latest point
         document.getElementById("percentileResult").innerHTML =
