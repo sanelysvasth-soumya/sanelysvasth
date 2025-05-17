@@ -6,6 +6,21 @@
     <title>
       A Comprehensive Guide to Intermittent Fasting - Svasth by Soumya
     </title>
+    <meta name="description" content="Explore the benefits, methods, and practical tips for intermittent fasting. Understand the science behind it and learn if it's right for you.">
+    <meta name="keywords" content="intermittent fasting, IF, time-restricted feeding, TRF, weight loss, nutrition, health, Svasth by Soumya">
+    <meta name="author" content="Svasth by Soumya">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="YOUR_PAGE_URL_HERE"> <!-- Replace with actual URL -->
+    <meta property="og:title" content="A Comprehensive Guide to Intermittent Fasting - Svasth by Soumya">
+    <meta property="og:description" content="Explore the benefits, methods, and practical tips for intermittent fasting. Understand the science behind it and learn if it's right for you.">
+    <!-- <meta property="og:image" content="YOUR_FEATURE_IMAGE_URL_HERE"> --> <!-- Add a feature image URL -->
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="YOUR_PAGE_URL_HERE"> <!-- Replace with actual URL -->
+    <meta property="twitter:title" content="A Comprehensive Guide to Intermittent Fasting - Svasth by Soumya">
+    <meta property="twitter:description" content="Explore the benefits, methods, and practical tips for intermittent fasting.">
+    <!-- <meta property="twitter:image" content="YOUR_FEATURE_IMAGE_URL_HERE"> --> <!-- Add a feature image URL -->
 
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
@@ -13,263 +28,389 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body>
+    <div id="progress-bar-container"><div id="progress-bar"></div></div>
     <div id="nav-placeholder"></div>
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i><i class="fas fa-sun"></i>
+    </button>
 
-    <article class="blog-post-content">
-      <div class="blog-header">
-        <h1 class="blog-title">
-          A Comprehensive Guide to Intermittent Fasting: Benefits, Differences,
-          and Practical Tips
-        </h1>
+    <main>
+      <article class="blog-post-content">
+        <header class="blog-header">
+          <h1 class="blog-title">
+            A Comprehensive Guide to Intermittent Fasting: Benefits, Differences,
+            and Practical Tips
+          </h1>
 
-        <div class="post-meta">
-          <span><i class="far fa-calendar"></i> August 5, 2024</span>
-          <span><i class="far fa-clock"></i> 12 min read</span>
-          <span><i class="fas fa-tag"></i> Nutrition Science</span>
-        </div>
-      </div>
+          <div class="post-meta">
+            <span><i class="far fa-calendar"></i> August 5, 2024</span>
+            <span><i class="far fa-clock"></i> 12 min read</span>
+            <span><i class="fas fa-tag"></i> Nutrition Science</span>
+          </div>
+        </header>
 
-      <div class="blog-content">
-        <h2>What is Intermittent Fasting?</h2>
-        <div class="alert-info">
+        <section id="toc-container" aria-labelledby="toc-heading">
+          <h2 id="toc-heading" class="toc-title">Table of Contents</h2>
+          <ul id="toc-list"></ul>
+        </section>
+
+        <div class="blog-content">
+          <h2 id="what-is-intermittent-fasting">What is Intermittent Fasting?</h2>
+          <div class="alert-info">
+            <p>
+              Intermittent Fasting (IF) is a structured eating pattern based on
+              timing rather than a strict focus on calorie restriction. It
+              involves alternating periods of eating and fasting, allowing insulin
+              levels to drop and encouraging the body to burn fat for fuel.
+              Studies on animals and humans show that IF can be effective for
+              weight loss, especially when combined with a nutritious diet and
+              regular physical activity. IF might be easier to maintain than
+              traditional calorie restriction methods, offering potential
+              metabolic benefits like increased fat loss and preservation of lean
+              muscle mass.
+            </p>
+          </div>
+
+          <h2 id="fasting-vs-starvation">Fasting vs. Starvation: Understanding the Difference</h2>
           <p>
-            Intermittent Fasting (IF) is a structured eating pattern based on
-            timing rather than a strict focus on calorie restriction. It
-            involves alternating periods of eating and fasting, allowing insulin
-            levels to drop and encouraging the body to burn fat for fuel.
-            Studies on animals and humans show that IF can be effective for
-            weight loss, especially when combined with a nutritious diet and
-            regular physical activity. IF might be easier to maintain than
-            traditional calorie restriction methods, offering potential
-            metabolic benefits like increased fat loss and preservation of lean
-            muscle mass.
+            While fasting and starvation both involve going without food, their
+            physiological impacts differ significantly. Fasting is a voluntary,
+            controlled practice, often with a specific health goal, and does not
+            harm the body. Starvation, on the other hand, is an involuntary lack
+            of food that can lead to severe depletion of energy stores, causing
+            the body to break down muscle and protein for survival. During
+            prolonged starvation, the body shifts to using fat reserves for
+            energy, and once depleted, muscle breakdown accelerates, potentially
+            leading to life-threatening consequences.
           </p>
+
+          <h2 id="is-it-just-about-eating-less">Is It Just About Eating Less?</h2>
+          <p>
+            Fasting isn't merely about reducing food intake; it focuses on the
+            timing of eating. While both eating less and fasting may reduce
+            calorie intake, fasting involves deliberate periods of food
+            abstinence, which triggers unique physiological responses in the body.
+            For instance, fasting can lead to increased fat metabolism and
+            autophagy (cellular cleanup), whereas simply eating less might not
+            elicit these specific benefits. Moreover, fasting is structured with
+            clear periods of eating and not eating, making it more of a
+            disciplined approach rather than a general reduction in portion sizes.
+          </p>
+
+          <h2 id="if-vs-trf">Intermittent Fasting vs. Time-Restricted Feeding</h2>
+          <div class="alert-info">
+            <p>
+              Intermittent Fasting (IF) involves restricting calorie intake on
+              certain days or alternating days. For example, the 5:2 diet reduces
+              calorie intake to about 500-600 calories on two non-consecutive days
+              per week. Time-Restricted Feeding (TRF), on the other hand, involves
+              limiting the daily eating window to 8-10 hours. Studies suggest that
+              consuming most calories earlier in the day might enhance weight loss
+              due to better alignment with our natural circadian rhythms, leading
+              to more efficient metabolism during these hours.
+            </p>
+          </div>
+
+          <h2 id="physiology">The Physiology: What Happens in Your Body?</h2>
+          <p>
+            When you fast, your body's metabolism adapts to maintain energy
+            levels. Initially, insulin levels drop, triggering glycogenolysis
+            (breaking down glycogen stores) and gluconeogenesis (creating glucose
+            from non-carbohydrate sources) to maintain blood sugar. As fasting
+            continues, the body shifts to burning stored fat, increasing the
+            production of ketone bodies as an alternative energy source,
+            especially for the brain. This adaptation reduces the need for
+            gluconeogenesis, sparing muscle protein, and enhances fat
+            utilization.
+          </p>
+
+          <h2 id="who-should-consider-fasting">Who Should Consider Fasting?</h2>
+          <p>
+            Intermittent fasting has shown potential benefits for various health
+            conditions, particularly those linked to inflammation, such as
+            Alzheimer's disease, arthritis, and asthma. It may also help in
+            reducing the risk of chronic diseases like type 2 diabetes, heart
+            disease, and obesity. However, it is essential to consult with a
+            healthcare provider before starting any fasting regimen, especially if
+            you have pre-existing health conditions.
+          </p>
+
+          <h2 id="who-should-avoid-fasting">Who Should Avoid Intermittent Fasting?</h2>
+          <div class="alert-info">
+            <p>
+              Certain groups of people should avoid fasting due to health risks.
+              This includes:
+            </p>
+            <ul>
+              <li>Pregnant or breastfeeding women</li>
+              <li>Individuals with type 1 diabetes who require insulin</li>
+              <li>Those with a history of eating disorders</li>
+              <li>People experiencing low blood pressure or amenorrhea</li>
+            </ul>
+            <p>
+              In these cases, fasting can potentially lead to complications or
+              exacerbate existing health issues.
+            </p>
+          </div>
+
+          <h2 id="how-to-begin">How to Begin Intermittent Fasting</h2>
+          <p>
+            Starting intermittent fasting requires careful planning. Choose a
+            fasting method that aligns with your lifestyle, such as the 16/8
+            method (16 hours fasting, 8 hours eating window). It's wise to
+            gradually increase fasting periods and consult a healthcare
+            professional if you have medical concerns. Staying hydrated, eating
+            balanced meals during non-fasting periods, and monitoring your
+            progress can help ease the transition and make the practice
+            sustainable over time.
+          </p>
+
+          <h2 id="breaking-a-fast-safely">Breaking a Fast Safely</h2>
+          <div class="alert-info">
+            <p>
+              The way you break your fast is crucial. Start with a small meal to
+              ease your digestive system back into processing food. Opt for
+              nutrient-dense options like whole grains, lean proteins, and
+              vegetables. Avoid refined sugars and processed foods, as they can
+              cause discomfort or negate some of the benefits of fasting. The
+              longer the fasting period, the gentler you should be when
+              reintroducing food.
+            </p>
+          </div>
+
+          <h2 id="short-vs-long-term-fasting">Short-term vs. Long-term Fasting</h2>
+          <p>
+            Short-term fasting (12-24 hours) is generally safe for most people and
+            can lead to immediate benefits like lower insulin levels, fat
+            metabolism, and increased human growth hormone (HGH). Long-term
+            fasting (several days to weeks) requires more discipline and may lead
+            to deeper physiological changes like ketosis and enhanced cellular
+            repair. However, it also carries risks such as nutrient deficiencies
+            and muscle loss, making it essential to ensure proper nutrition and
+            hydration throughout the process.
+          </p>
+
+          <h2 id="fasting-and-muscle-loss">Does Fasting Lead to Muscle Loss?</h2>
+          <p>
+            Short-term fasting does not significantly impact muscle mass, as the
+            body primarily uses stored fat for energy. In contrast, long-term
+            fasting can increase the risk of muscle loss, especially if fat
+            reserves are depleted. Maintaining adequate protein intake during
+            refeeding periods and incorporating strength training can help
+            minimize muscle loss during extended fasting periods.
+          </p>
+
+          <h2 id="fasting-for-weight-loss">Fasting for Weight Loss</h2>
+          <div class="alert-info">
+            <p>
+              Fasting can be an effective tool for weight loss. Short-term calorie
+              restriction can lead to a 5-8% reduction in body weight over 8-12
+              weeks, which is sufficient to improve biomarkers like LDL
+              cholesterol and blood glucose levels. The weight loss benefits of
+              intermittent fasting are comparable to those of daily calorie
+              restriction but may be easier to sustain for many individuals due to
+              the structured eating windows.
+            </p>
+          </div>
+
+          <h2 id="fasting-and-gut-health">Fasting and Gut Health</h2>
+          <p>
+            Intermittent fasting may positively impact gut health by promoting the
+            diversity of the gut microbiome. Time-restricted feeding helps restore
+            the natural circadian rhythms of gut bacteria, which can be disrupted
+            by irregular eating patterns. This oscillation in the gut microbiota
+            contributes to better digestive health and may improve nutrient
+            absorption and overall metabolism.
+          </p>
+
+          <h2 id="fasting-for-athletes">Fasting for Athletes: Enhancing Performance</h2>
+          <div class="alert-info">
+            <p>
+              For athletes, fasting offers benefits like better recovery times,
+              improved endurance, and enhanced fat utilization during workouts.
+              Training in a fasted state might increase the body's ability to
+              oxidize fat as a fuel source, making it a popular strategy among
+              endurance athletes and bodybuilders aiming for low body fat while
+              maintaining muscle mass.
+            </p>
+          </div>
+
+          <h2 id="skipping-breakfast-vs-dinner">Skipping Breakfast vs. Skipping Dinner: Which is Better?</h2>
+          <p>
+            Skipping breakfast can disrupt the body's natural circadian rhythm and
+            lead to overeating later in the day. In contrast, skipping dinner
+            aligns better with the body's metabolism, as eating earlier in the day
+            supports natural hormonal cycles. However, the best approach depends
+            on individual preferences and lifestyle. The key is to space out meals
+            and avoid late-night eating to maximize fat burning and digestion
+            efficiency.
+          </p>
+
+          <section class="conclusion-section">
+            <h2 id="conclusion">Conclusion</h2>
+            <p>
+              Intermittent fasting can be a powerful tool for weight management
+              and overall health when done correctly. It offers numerous potential
+              benefits, from enhanced fat loss and improved gut health to better
+              athletic performance and cellular repair. However, it is crucial to
+              choose a fasting plan that fits your lifestyle and health needs,
+              consult a healthcare professional if necessary, and maintain
+              balanced nutrition to ensure safe and sustainable results.
+            </p>
+          </section>
         </div>
 
-        <h2>Fasting vs. Starvation: Understanding the Difference</h2>
-        <p>
-          While fasting and starvation both involve going without food, their
-          physiological impacts differ significantly. Fasting is a voluntary,
-          controlled practice, often with a specific health goal, and does not
-          harm the body. Starvation, on the other hand, is an involuntary lack
-          of food that can lead to severe depletion of energy stores, causing
-          the body to break down muscle and protein for survival. During
-          prolonged starvation, the body shifts to using fat reserves for
-          energy, and once depleted, muscle breakdown accelerates, potentially
-          leading to life-threatening consequences.
-        </p>
+        <section class="author-bio">
+          <h3>About the Author</h3>
+          <img src="../img/me.jpg" alt="Soumya - Author" class="author-image">
+          <p>Soumya is a passionate writer and researcher in the field of nutrition and wellness. With a focus on evidence-based practices, Soumya aims to empower readers to make informed decisions for a healthier lifestyle. <a href="#">Read more articles by Soumya.</a></p>
+        </section>
 
-        <h2>Is It Just About Eating Less?</h2>
-        <p>
-          Fasting isn't merely about reducing food intake; it focuses on the
-          timing of eating. While both eating less and fasting may reduce
-          calorie intake, fasting involves deliberate periods of food
-          abstinence, which triggers unique physiological responses in the body.
-          For instance, fasting can lead to increased fat metabolism and
-          autophagy (cellular cleanup), whereas simply eating less might not
-          elicit these specific benefits. Moreover, fasting is structured with
-          clear periods of eating and not eating, making it more of a
-          disciplined approach rather than a general reduction in portion sizes.
-        </p>
+        <section class="social-sharing">
+          <h3>Share this post:</h3>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_PAGE_URL_HERE" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com/intent/tweet?url=YOUR_PAGE_URL_HERE&text=A Comprehensive Guide to Intermittent Fasting" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=YOUR_PAGE_URL_HERE&title=A Comprehensive Guide to Intermittent Fasting" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:?subject=Check out this article on Intermittent Fasting&body=YOUR_PAGE_URL_HERE" aria-label="Share via Email"><i class="fas fa-envelope"></i></a>
+        </section>
 
-        <h2>Intermittent Fasting vs. Time-Restricted Feeding</h2>
-        <div class="alert-info">
-          <p>
-            Intermittent Fasting (IF) involves restricting calorie intake on
-            certain days or alternating days. For example, the 5:2 diet reduces
-            calorie intake to about 500-600 calories on two non-consecutive days
-            per week. Time-Restricted Feeding (TRF), on the other hand, involves
-            limiting the daily eating window to 8-10 hours. Studies suggest that
-            consuming most calories earlier in the day might enhance weight loss
-            due to better alignment with our natural circadian rhythms, leading
-            to more efficient metabolism during these hours.
-          </p>
-        </div>
+      </article>
 
-        <h2>The Physiology: What Happens in Your Body?</h2>
-        <p>
-          When you fast, your body's metabolism adapts to maintain energy
-          levels. Initially, insulin levels drop, triggering glycogenolysis
-          (breaking down glycogen stores) and gluconeogenesis (creating glucose
-          from non-carbohydrate sources) to maintain blood sugar. As fasting
-          continues, the body shifts to burning stored fat, increasing the
-          production of ketone bodies as an alternative energy source,
-          especially for the brain. This adaptation reduces the need for
-          gluconeogenesis, sparing muscle protein, and enhancing fat
-          utilization.
-        </p>
+      <section class="comments-section">
+        <h2>Comments</h2>
+        <p><em>Comments are not enabled yet. Check back soon!</em></p>
+        <!-- Placeholder for a comment system like Disqus or custom implementation -->
+        <!-- Example: <div id="disqus_thread"></div> -->
+      </section>
 
-        <h2>Who Should Consider Fasting?</h2>
-        <p>
-          Intermittent fasting has shown potential benefits for various health
-          conditions, particularly those linked to inflammation, such as
-          Alzheimer's disease, arthritis, and asthma. It may also help in
-          reducing the risk of chronic diseases like type 2 diabetes, heart
-          disease, and obesity. However, it is essential to consult with a
-          healthcare provider before starting any fasting regimen, especially if
-          you have pre-existing health conditions.
-        </p>
-
-        <h2>Who Should Avoid Intermittent Fasting?</h2>
-        <div class="alert-info">
-          <p>
-            Certain groups of people should avoid fasting due to health risks.
-            This includes:
-          </p>
-          <ul>
-            <li>Pregnant or breastfeeding women</li>
-            <li>Individuals with type 1 diabetes who require insulin</li>
-            <li>Those with a history of eating disorders</li>
-            <li>People experiencing low blood pressure or amenorrhea</li>
-          </ul>
-          <p>
-            In these cases, fasting can potentially lead to complications or
-            exacerbate existing health issues.
-          </p>
-        </div>
-
-        <h2>How to Begin Intermittent Fasting</h2>
-        <p>
-          Starting intermittent fasting requires careful planning. Choose a
-          fasting method that aligns with your lifestyle, such as the 16/8
-          method (16 hours fasting, 8 hours eating window). It's wise to
-          gradually increase fasting periods and consult a healthcare
-          professional if you have medical concerns. Staying hydrated, eating
-          balanced meals during non-fasting periods, and monitoring your
-          progress can help ease the transition and make the practice
-          sustainable over time.
-        </p>
-
-        <h2>Breaking a Fast Safely</h2>
-        <div class="alert-info">
-          <p>
-            The way you break your fast is crucial. Start with a small meal to
-            ease your digestive system back into processing food. Opt for
-            nutrient-dense options like whole grains, lean proteins, and
-            vegetables. Avoid refined sugars and processed foods, as they can
-            cause discomfort or negate some of the benefits of fasting. The
-            longer the fasting period, the gentler you should be when
-            reintroducing food.
-          </p>
-        </div>
-
-        <h2>Short-term vs. Long-term Fasting</h2>
-        <p>
-          Short-term fasting (12-24 hours) is generally safe for most people and
-          can lead to immediate benefits like lower insulin levels, fat
-          metabolism, and increased human growth hormone (HGH). Long-term
-          fasting (several days to weeks) requires more discipline and may lead
-          to deeper physiological changes like ketosis and enhanced cellular
-          repair. However, it also carries risks such as nutrient deficiencies
-          and muscle loss, making it essential to ensure proper nutrition and
-          hydration throughout the process.
-        </p>
-
-        <h2>Does Fasting Lead to Muscle Loss?</h2>
-        <p>
-          Short-term fasting does not significantly impact muscle mass, as the
-          body primarily uses stored fat for energy. In contrast, long-term
-          fasting can increase the risk of muscle loss, especially if fat
-          reserves are depleted. Maintaining adequate protein intake during
-          refeeding periods and incorporating strength training can help
-          minimize muscle loss during extended fasting periods.
-        </p>
-
-        <h2>Fasting for Weight Loss</h2>
-        <div class="alert-info">
-          <p>
-            Fasting can be an effective tool for weight loss. Short-term calorie
-            restriction can lead to a 5-8% reduction in body weight over 8-12
-            weeks, which is sufficient to improve biomarkers like LDL
-            cholesterol and blood glucose levels. The weight loss benefits of
-            intermittent fasting are comparable to those of daily calorie
-            restriction but may be easier to sustain for many individuals due to
-            the structured eating windows.
-          </p>
-        </div>
-
-        <h2>Fasting and Gut Health</h2>
-        <p>
-          Intermittent fasting may positively impact gut health by promoting the
-          diversity of the gut microbiome. Time-restricted feeding helps restore
-          the natural circadian rhythms of gut bacteria, which can be disrupted
-          by irregular eating patterns. This oscillation in the gut microbiota
-          contributes to better digestive health and may improve nutrient
-          absorption and overall metabolism.
-        </p>
-
-        <h2>Fasting for Athletes: Enhancing Performance</h2>
-        <div class="alert-info">
-          <p>
-            For athletes, fasting offers benefits like better recovery times,
-            improved endurance, and enhanced fat utilization during workouts.
-            Training in a fasted state might increase the body's ability to
-            oxidize fat as a fuel source, making it a popular strategy among
-            endurance athletes and bodybuilders aiming for low body fat while
-            maintaining muscle mass.
-          </p>
-        </div>
-
-        <h2>Skipping Breakfast vs. Skipping Dinner: Which is Better?</h2>
-        <p>
-          Skipping breakfast can disrupt the body's natural circadian rhythm and
-          lead to overeating later in the day. In contrast, skipping dinner
-          aligns better with the body's metabolism, as eating earlier in the day
-          supports natural hormonal cycles. However, the best approach depends
-          on individual preferences and lifestyle. The key is to space out meals
-          and avoid late-night eating to maximize fat burning and digestion
-          efficiency.
-        </p>
-
-        <div class="call-to-action">
-          <h2>Conclusion</h2>
-          <p>
-            Intermittent fasting can be a powerful tool for weight management
-            and overall health when done correctly. It offers numerous potential
-            benefits, from enhanced fat loss and improved gut health to better
-            athletic performance and cellular repair. However, it is crucial to
-            choose a fasting plan that fits your lifestyle and health needs,
-            consult a healthcare professional if necessary, and maintain
-            balanced nutrition to ensure safe and sustainable results.
-          </p>
-        </div>
-      </div>
-    </article>
-
-    <!-- ... existing content ... -->
+    </main>
 
     <style>
-      /* Overall page styling */
-      body {
-        padding: 20px;
-        background-color: #f9fafb;
+      :root {
+        --background-color-light: #f9fafb;
+        --text-color-light: #2c3e50;
+        --card-bg-light: white;
+        --border-color-light: #eee;
+        --accent-color-light: #c59a6d;
+        --accent-hover-light: #a67c4e;
+        --meta-text-light: #666;
+        --alert-bg-light: #f3f4f6;
+
+        --background-color-dark: #1a202c; /* Dark gray */
+        --text-color-dark: #edf2f7; /* Light gray */
+        --card-bg-dark: #2d3748; /* Darker card */
+        --border-color-dark: #4a5568; /* Medium gray */
+        --accent-color-dark: #e5b889; /* Lighter accent */
+        --accent-hover-dark: #d4a06a;
+        --meta-text-dark: #a0aec0; /* Lighter meta */
+        --alert-bg-dark: #252d3a;
       }
+
+      body {
+        font-family: 'Lora', serif; /* Changed to Lora for body */
+        padding: 20px;
+        padding-top: 60px; /* Space for progress bar and toggle */
+        background-color: var(--background-color-light);
+        color: var(--text-color-light);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      body.dark-mode {
+        background-color: var(--background-color-dark);
+        color: var(--text-color-dark);
+      }
+
+      #progress-bar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px; /* Height of the progress bar */
+        background-color: var(--border-color-light); /* Light background for the container */
+        z-index: 1000;
+      }
+      body.dark-mode #progress-bar-container {
+        background-color: var(--border-color-dark);
+      }
+
+      #progress-bar {
+        height: 100%;
+        width: 0%; /* Initial width */
+        background-color: var(--accent-color-light);
+        transition: width 0.1s ease-out;
+      }
+      body.dark-mode #progress-bar {
+        background-color: var(--accent-color-dark);
+      }
+
+      #dark-mode-toggle {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        background-color: var(--card-bg-light);
+        color: var(--text-color-light);
+        border: 1px solid var(--border-color-light);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        cursor: pointer;
+        z-index: 1001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      body.dark-mode #dark-mode-toggle {
+        background-color: var(--card-bg-dark);
+        color: var(--text-color-dark);
+        border: 1px solid var(--border-color-dark);
+      }
+      #dark-mode-toggle .fa-sun { display: none; }
+      body.dark-mode #dark-mode-toggle .fa-moon { display: none; }
+      body.dark-mode #dark-mode-toggle .fa-sun { display: inline; }
+
 
       /* Main content container */
       .blog-post-content {
         max-width: 800px;
         margin: 40px auto;
         padding: 40px;
-        background: white;
+        background: var(--card-bg-light);
         border-radius: 12px;
         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        transition: background-color 0.3s ease;
+      }
+      body.dark-mode .blog-post-content {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 15px rgba(255,255,255,0.05);
       }
 
       /* Header section */
       .blog-header {
-        margin-bottom: 40px;
+        margin-bottom: 30px; /* Adjusted */
         padding-bottom: 20px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode .blog-header {
+        border-bottom: 1px solid var(--border-color-dark);
       }
 
       /* Title and meta styling */
       .blog-title {
-        color: #2c3e50;
+        font-family: 'Montserrat', sans-serif; /* Heading font */
+        color: var(--text-color-light);
         font-size: 2.5rem;
         margin-bottom: 20px;
         text-align: center;
+      }
+      body.dark-mode .blog-title {
+        color: var(--text-color-dark);
       }
 
       .post-meta {
@@ -278,12 +419,62 @@
         display: flex;
         justify-content: center;
         gap: 20px;
+        flex-wrap: wrap; /* Added for responsiveness */
       }
 
       .post-meta span {
-        margin-right: 20px;
-        color: #666;
+        color: var(--meta-text-light);
       }
+      body.dark-mode .post-meta span {
+        color: var(--meta-text-dark);
+      }
+
+      /* Table of Contents */
+      #toc-container {
+        background: var(--alert-bg-light);
+        padding: 20px 25px;
+        border-radius: 8px;
+        margin: 30px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+      body.dark-mode #toc-container {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+      .toc-title {
+        font-family: 'Montserrat', sans-serif;
+        margin-top: 0 !important; /* Override general h2 margin */
+        margin-bottom: 15px !important;
+        font-size: 1.5rem !important;
+        border-bottom: none !important; /* Override general h2 border */
+        color: var(--text-color-light);
+      }
+      body.dark-mode .toc-title {
+        color: var(--text-color-dark);
+      }
+      #toc-list {
+        list-style: none;
+        padding-left: 0;
+      }
+      #toc-list li {
+        margin-bottom: 10px;
+      }
+      #toc-list li a {
+        text-decoration: none;
+        color: var(--accent-color-light);
+        font-weight: 500;
+      }
+      #toc-list li a:hover {
+        text-decoration: underline;
+        color: var(--accent-hover-light);
+      }
+      body.dark-mode #toc-list li a {
+        color: var(--accent-color-dark);
+      }
+      body.dark-mode #toc-list li a:hover {
+        color: var(--accent-hover-dark);
+      }
+
 
       /* Content styling */
       .blog-content {
@@ -293,36 +484,56 @@
       .lead {
         font-size: 1.2rem;
         line-height: 1.6;
-        color: #4a5568;
+        color: var(--text-color-light); /* Adjusted */
         margin-bottom: 2rem;
+      }
+      body.dark-mode .lead {
+        color: var(--text-color-dark);
       }
 
       h2 {
-        color: #2c3e50;
+        font-family: 'Montserrat', sans-serif; /* Heading font */
+        color: var(--text-color-light);
         margin-top: 40px;
-        margin-bottom: 20px;
-        padding-top: 20px;
+        margin-bottom: 20px; /* Adjusted */
+        padding-bottom: 10px;
         font-size: 1.8rem;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode h2 {
+        color: var(--text-color-dark);
+        border-bottom: 1px solid var(--border-color-dark);
       }
 
       h3 {
-        color: #2c3e50;
+        font-family: 'Montserrat', sans-serif; /* Heading font */
+        color: var(--text-color-light);
         margin-top: 30px;
         margin-bottom: 15px;
         font-size: 1.4rem;
       }
+      body.dark-mode h3 {
+        color: var(--text-color-dark);
+      }
 
       h4 {
-        color: #2c3e50;
+        font-family: 'Montserrat', sans-serif; /* Heading font */
+        color: var(--text-color-light);
         margin-top: 20px;
         margin-bottom: 10px;
         font-size: 1.2rem;
+      }
+      body.dark-mode h4 {
+        color: var(--text-color-dark);
       }
 
       p {
         margin-bottom: 20px;
         line-height: 1.8;
-        color: #2c3e50;
+        color: var(--text-color-light);
+      }
+      body.dark-mode p {
+        color: var(--text-color-dark);
       }
 
       /* List styling - Fixed bullet points */
@@ -338,14 +549,20 @@
         line-height: 1.6;
         position: relative;
         padding-left: 25px;
-        color: #2c3e50;
+        color: var(--text-color-light);
+      }
+      body.dark-mode .blog-content li {
+        color: var(--text-color-dark);
       }
 
       .blog-content ul li:before {
         content: "•";
         position: absolute;
         left: 0;
-        color: #c59a6d;
+        color: var(--accent-color-light);
+      }
+      body.dark-mode .blog-content ul li:before {
+        color: var(--accent-color-dark);
       }
 
       .blog-content ol {
@@ -360,70 +577,156 @@
         content: counter(item) ".";
         position: absolute;
         left: 0;
-        color: #c59a6d;
+        color: var(--accent-color-light);
+      }
+      body.dark-mode .blog-content ol li:before {
+        color: var(--accent-color-dark);
       }
 
-      /* Alert and call-to-action styling */
-      .alert-info {
-        background: #f3f4f6;
+      /* Alert and conclusion styling */
+      .alert-info, .conclusion-section {
+        background: var(--alert-bg-light);
         padding: 35px;
         border-radius: 8px;
         margin: 40px 0 20px 0;
-        border-left: 4px solid #c59a6d;
+        border-left: 4px solid var(--accent-color-light);
+      }
+      body.dark-mode .alert-info, body.dark-mode .conclusion-section {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
       }
 
-      .alert-info h3 {
+      .alert-info h3, .conclusion-section h2 { /* Combined for consistency */
         margin-top: 0;
         padding-top: 0;
-        color: #2c3e50;
+        color: var(--text-color-light);
+        border-bottom: none; /* Ensure no double border */
+      }
+      body.dark-mode .alert-info h3, body.dark-mode .conclusion-section h2 {
+        color: var(--text-color-dark);
       }
 
-      .alert-info p:last-child {
-        margin-bottom: 0;
-      }
-
-      .call-to-action {
-        background: #f3f4f6;
-        padding: 35px;
-        border-radius: 8px;
-        margin: 40px 0 20px 0;
-        border-left: 4px solid #c59a6d;
-      }
-
-      .call-to-action h2 {
-        margin-top: 0;
-        padding-top: 0;
-        color: #2c3e50;
-      }
-
-      .call-to-action p:last-child {
+      .alert-info p:last-child, .conclusion-section p:last-child {
         margin-bottom: 0;
       }
 
       /* Links styling */
       a {
-        color: #c59a6d;
+        color: var(--accent-color-light);
         text-decoration: none;
         transition: color 0.3s ease;
       }
+      body.dark-mode a {
+        color: var(--accent-color-dark);
+      }
 
       a:hover {
-        color: #a67c4e;
+        color: var(--accent-hover-light);
+        text-decoration: underline; /* Added for better affordance */
+      }
+      body.dark-mode a:hover {
+        color: var(--accent-hover-dark);
       }
 
       /* Strong text styling */
       strong {
-        color: #2c3e50;
-        font-weight: 600;
+        color: var(--text-color-light);
+        font-weight: 600; /* Adjusted for Lora */
       }
+      body.dark-mode strong {
+        color: var(--text-color-dark);
+      }
+
+      /* Author Bio Section */
+      .author-bio {
+        margin-top: 40px;
+        padding: 25px;
+        background-color: var(--alert-bg-light);
+        border-radius: 8px;
+        border-left: 4px solid var(--accent-color-light);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      body.dark-mode .author-bio {
+        background-color: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+      .author-bio .author-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .author-bio h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+
+      /* Social Sharing Section */
+      .social-sharing {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color-light);
+        text-align: center;
+      }
+      body.dark-mode .social-sharing {
+        border-top: 1px solid var(--border-color-dark);
+      }
+      .social-sharing h3 {
+        margin-bottom: 15px;
+      }
+      .social-sharing a {
+        margin: 0 10px;
+        font-size: 1.5rem;
+        color: var(--meta-text-light);
+      }
+      .social-sharing a:hover {
+        color: var(--accent-color-light);
+      }
+      body.dark-mode .social-sharing a {
+        color: var(--meta-text-dark);
+      }
+      body.dark-mode .social-sharing a:hover {
+        color: var(--accent-color-dark);
+      }
+
+      /* Related Posts & Comments Section (outside article, inside main) */
+      .comments-section {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 30px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+      body.dark-mode .comments-section {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 10px rgba(255,255,255,0.05);
+      }
+      .comments-section h2 {
+        margin-top: 0;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode .comments-section h2 {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+
 
       /* Responsive adjustments */
       @media (max-width: 768px) {
         body {
           padding: 10px;
+          padding-top: 50px; /* Adjust for progress bar */
         }
 
-        .blog-post-content {
+        #dark-mode-toggle {
+          top: 10px;
+          right: 10px;
+        }
+
+        .blog-post-content, .comments-section {
           padding: 25px;
           margin: 20px auto;
         }
@@ -433,9 +736,14 @@
         }
 
         .alert-info,
-        .call-to-action {
-          padding: 25px;
+        .conclusion-section,
+        .author-bio {
+          padding: 20px; /* Adjusted padding */
           margin: 30px 0 15px 0;
+        }
+        .author-bio {
+            flex-direction: column;
+            text-align: center;
         }
 
         .post-meta {
@@ -467,6 +775,111 @@
     </style>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // --- Table of Contents (TOC) Generation ---
+        const tocList = document.getElementById('toc-list');
+        const blogContent = document.querySelector('.blog-content');
+        if (tocList && blogContent) {
+          const headings = blogContent.querySelectorAll('h2[id]');
+          if (headings.length > 0) {
+            headings.forEach(heading => {
+              if (heading.id && heading.textContent.trim() !== '') {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = '#' + heading.id;
+                link.textContent = heading.textContent;
+                listItem.appendChild(link);
+                tocList.appendChild(listItem);
+              }
+            });
+          } else {
+            const tocContainer = document.getElementById('toc-container');
+            if(tocContainer) tocContainer.style.display = 'none'; // Hide TOC if no headings
+          }
+        }
+
+        // --- Reading Progress Bar ---
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+          window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollProgress = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = scrollProgress + '%';
+          });
+        }
+
+        // --- Dark Mode Toggle ---
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        const moonIcon = darkModeToggle ? darkModeToggle.querySelector('.fa-moon') : null;
+        const sunIcon = darkModeToggle ? darkModeToggle.querySelector('.fa-sun') : null;
+
+        // Function to apply theme
+        function applyTheme(theme) {
+          if (theme === 'dark') {
+            body.classList.add('dark-mode');
+            if (moonIcon) moonIcon.style.display = 'none';
+            if (sunIcon) sunIcon.style.display = 'inline';
+          } else {
+            body.classList.remove('dark-mode');
+            if (moonIcon) moonIcon.style.display = 'inline';
+            if (sunIcon) sunIcon.style.display = 'none';
+          }
+        }
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          applyTheme(savedTheme);
+        } else {
+          // Optional: Check system preference
+          // if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          //   applyTheme('dark');
+          // } else {
+             applyTheme('light'); // Default to light
+          // }
+        }
+        
+        if (darkModeToggle) {
+            // Initial icon state based on current theme
+            if (body.classList.contains('dark-mode')) {
+                if (moonIcon) moonIcon.style.display = 'none';
+                if (sunIcon) sunIcon.style.display = 'inline';
+            } else {
+                if (moonIcon) moonIcon.style.display = 'inline';
+                if (sunIcon) sunIcon.style.display = 'none';
+            }
+
+            darkModeToggle.addEventListener('click', () => {
+                if (body.classList.contains('dark-mode')) {
+                    applyTheme('light');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    applyTheme('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+        }
+
+        // Smooth scroll for TOC links
+        if (tocList) {
+            tocList.querySelectorAll('a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+      });
+    </script>
   </body>
 </html>
