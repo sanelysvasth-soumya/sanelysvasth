@@ -955,22 +955,15 @@
                       : ""
                   }
                   ${
-                    !isLast
-                      ? `<button class="calculate-btn ${
-                          !answers[question.id] ? "disabled" : ""
-                        }" 
-                          id="next-button-${question.id}" 
-                          onclick="validateAndProceed(${question.id})">
-                          Next <i class="fas fa-chevron-right"></i>
-                      </button>`
-                      : `<button class="calculate-btn ${
-                          !answers[question.id] ? "disabled" : ""
-                        }" 
-                          id="submit-button-${question.id}" 
-                          onclick="validateAndSubmit(${question.id})">
-                          Submit <i class="fas fa-check"></i>
-                      </button>`
-                  }
+       !isLast
+    ? `` /* no next button */
+    : `<button class="calculate-btn ${!answers[question.id] ? "disabled" : ""}" 
+        id="submit-button-${question.id}" 
+        onclick="validateAndSubmit(${question.id})">
+        Submit <i class="fas fa-check"></i>
+    </button>`
+              }
+
               </div>
           </div>
         `;
@@ -1022,50 +1015,58 @@
       }
 
       function updateRating(questionId, value) {
-        answers[questionId] = parseInt(value);
+  answers[questionId] = parseInt(value);
 
-        const question = questions.find((q) => q.id === questionId);
+  const question = questions.find((q) => q.id === questionId);
 
-        // Update visual feedback
-        document
-          .querySelectorAll(`#question-${questionId} .rating-circle`)
-          .forEach((circle) => {
-            circle.classList.remove("selected");
-          });
+  // Update visual feedback
+  document
+    .querySelectorAll(`#question-${questionId} .rating-circle`)
+    .forEach((circle) => {
+      circle.classList.remove("selected");
+    });
 
-        const selectedCircle = document.querySelector(
-          `#question-${questionId} .rating-${value}`
-        );
-        if (selectedCircle) {
-          selectedCircle.classList.add("selected");
-        }
+  const selectedCircle = document.querySelector(
+    `#question-${questionId} .rating-${value}`
+  );
+  if (selectedCircle) {
+    selectedCircle.classList.add("selected");
+  }
 
-        // Update answer summary
-        const summaryDiv = document.querySelector(
-          `#question-${questionId} .answer-summary`
-        );
-        const answerText = question.isCustomScale
-          ? question.values[value - 1]
-          : getRatingLabel(value);
-        summaryDiv.innerHTML = `Your answer: <strong>${answerText}</strong>`;
-        summaryDiv.classList.add("show");
+  // Update answer summary
+  const summaryDiv = document.querySelector(
+    `#question-${questionId} .answer-summary`
+  );
+  const answerText = question.isCustomScale
+    ? question.values[value - 1]
+    : getRatingLabel(value);
+  summaryDiv.innerHTML = `Your answer: <strong>${answerText}</strong>`;
+  summaryDiv.classList.add("show");
 
-        // Hide error message if shown
-        const errorMessage = document.getElementById(`error-${questionId}`);
-        if (errorMessage) {
-          errorMessage.style.display = "none";
-        }
+  // Hide error message if shown
+  const errorMessage = document.getElementById(`error-${questionId}`);
+  if (errorMessage) {
+    errorMessage.style.display = "none";
+  }
 
-        // Enable next/submit button
-        const nextButton = document.getElementById(`next-button-${questionId}`);
-        const submitButton = document.getElementById(
-          `submit-button-${questionId}`
-        );
-        if (nextButton) nextButton.classList.remove("disabled");
-        if (submitButton) submitButton.classList.remove("disabled");
+  // Enable submit button on last question
+  const submitButton = document.getElementById(
+    `submit-button-${questionId}`
+  );
+  if (submitButton) submitButton.classList.remove("disabled");
 
-        document.getElementById(`rating-${questionId}`).value = value;
-      }
+  document.getElementById(`rating-${questionId}`).value = value;
+
+  // Auto advance after short delay
+  setTimeout(() => {
+    if (currentQuestion < questions.length - 1) {
+      nextQuestion();
+    } else {
+      displayResultsPrompt();
+    }
+  }, 200);
+}
+
 
       function previousQuestion() {
         if (currentQuestion > 0) {
@@ -1154,6 +1155,16 @@
         // Log the data for debugging
         console.log("Data sent to Google Sheets:", data);
       }
+
+      function displayResultsPrompt() {
+  // Show submit button if on last question
+  const submitBtn = document.getElementById(
+    `submit-button-${questions[currentQuestion].id}`
+  );
+  if (submitBtn) {
+    submitBtn.style.display = "inline-block";
+  }
+}
 
       function calculateScore() {
         let totalScore = 0;
