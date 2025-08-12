@@ -3,30 +3,90 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Health Assessment - Svasth by Soumya</title>
+    <title>PCOS Root Cause Assessment - Svasth by Soumya</title>
 
-    <!-- Include same CSS as services.html -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="icon" type="image/png" href="../img/other4.png" sizes="12x12" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Add this in the <head> section, inside a <style> tag -->
     <style>
       body {
         padding: 20px;
         background-color: #f9fafb;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        color: #333;
+        line-height: 1.7;
+        background-image: linear-gradient(
+            rgba(249, 250, 251, 0.97),
+            rgba(249, 250, 251, 0.97)
+          ),
+          url('data:image/svg+xml,%3Csvg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23c59a6d" fill-opacity="0.05" fill-rule="evenodd"%3E%3Ccircle cx="3" cy="3" r="3"/%3E%3Ccircle cx="13" cy="13" r="3"/%3E%3C/g%3E%3C/svg%3E');
       }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .section-title h2 {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 10px;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 15px;
+      }
+
+      .section-title h2:after {
+        content: "";
+        position: absolute;
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(to right, #c59a6d, transparent);
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .section-title hr {
+        display: none;
+      }
+
+      .section-title + p {
+        font-family: "Poppins", sans-serif;
+        font-weight: 300;
+        font-size: 1.1rem;
+        color: #666;
+        max-width: 700px;
+        margin: 0 auto 40px;
+        text-align: center;
+      }
+
+      /* Keep existing styles but update colors and animations */
       .results-container {
         padding: 2rem;
         text-align: center;
       }
 
       .score-display {
-        background: linear-gradient(135deg, #00b09b, #96c93d);
+        background: linear-gradient(135deg, #c59a6d, #e6c9a8);
         color: white;
         border-radius: 50%;
         width: 200px;
@@ -61,7 +121,7 @@
       }
 
       .score-interpretation h3 {
-        color: #00b09b;
+        color: #c59a6d;
         margin-bottom: 1.5rem;
         text-align: center;
       }
@@ -77,26 +137,21 @@
         color: #e74c3c;
       }
 
-      @keyframes fadeInScale {
-        from {
-          opacity: 0;
-          transform: scale(0.8);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
       /* Rating Scale Styling */
       .question-container {
         padding: 20px;
         margin-bottom: 30px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        animation: fadeIn 0.8s ease-out both;
       }
 
       .question-container h4 {
         margin-bottom: 25px;
         color: #333;
+        font-family: "Georgia", serif;
       }
 
       .rating-scale {
@@ -138,31 +193,26 @@
         color: #666;
       }
 
-      /* Color scheme for rating circles */
+      /* Color scheme for rating circles - updated to match site theme */
       .rating-1 {
-        background-color: #4caf50;
+        background-color: #c59a6d;
       }
       .rating-2 {
-        background-color: #8bc34a;
+        background-color: #d1aa7f;
       }
       .rating-3 {
-        background-color: #ffc107;
+        background-color: #deba91;
       }
       .rating-4 {
-        background-color: #ff9800;
+        background-color: #eacaa3;
       }
       .rating-5 {
-        background-color: #f44336;
+        background-color: #f6dab5;
       }
 
       .rating-circle.selected {
         transform: scale(1.2);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      }
-
-      /* Hide default range input */
-      input[type="range"] {
-        display: none;
       }
 
       /* Progress Bar Styling */
@@ -180,7 +230,7 @@
       }
 
       .progress-bar {
-        background: linear-gradient(45deg, #00b09b, #96c93d);
+        background: linear-gradient(45deg, #c59a6d, #e6c9a8);
         height: 100%;
         border-radius: 20px;
         transition: width 0.5s ease;
@@ -211,45 +261,6 @@
         color: #666;
       }
 
-      @keyframes shimmer {
-        0% {
-          transform: translateX(-100%);
-        }
-        100% {
-          transform: translateX(100%);
-        }
-      }
-
-      /* Enhanced Rating Scale Styling */
-      .rating-option {
-        position: relative;
-        padding: 10px;
-      }
-
-      .rating-circle {
-        width: 50px;
-        height: 50px;
-        font-size: 18px;
-        position: relative;
-      }
-
-      .rating-circle.selected::after {
-        content: "✓";
-        position: absolute;
-        top: -5px;
-        right: -5px;
-        background: #fff;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-        font-size: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #00b09b;
-        border: 2px solid #00b09b;
-      }
-
       /* Question Navigation */
       .question-nav {
         display: flex;
@@ -264,7 +275,7 @@
         font-size: 14px;
         border-radius: 25px;
         border: none;
-        background: linear-gradient(45deg, #00b09b, #96c93d);
+        background: linear-gradient(45deg, #c59a6d, #e6c9a8);
         color: white;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -288,244 +299,203 @@
       }
 
       .calculate-btn.previous-btn {
-        background: #6c757d;
+        background: #c59a6d;
       }
 
-      /* Answer Summary */
-      .answer-summary {
-        margin-top: 15px;
-        padding: 10px;
-        background: #f8f9fa;
-        border-radius: 8px;
-        text-align: left;
-        font-size: 14px;
-        color: #666;
-        display: none;
-      }
-
-      .answer-summary.show {
-        display: block;
-      }
-
-      /* Add styles for error message and disabled button */
-      .error-message {
-        color: #dc3545;
-        font-size: 14px;
-        margin-top: 10px;
-        display: none;
-        animation: fadeIn 0.3s ease;
-      }
-
+      /* Enhanced animations */
       @keyframes fadeIn {
         from {
           opacity: 0;
+          transform: translateY(20px);
         }
         to {
           opacity: 1;
+          transform: translateY(0);
         }
       }
 
-      /* Add styles for required indicator */
-      .question-required {
-        color: #dc3545;
-        margin-left: 5px;
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
 
-      /* Update the question navigation HTML in displayQuestion function */
-      .question-nav-wrapper {
-        max-width: 300px;
-        margin: 0 auto;
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
       }
 
-      /* Custom Scale Styling */
-      .custom-scale .rating-option {
-        width: auto;
-        min-width: 80px;
-        margin: 0 5px;
+      /* Keep all other existing styles */
+      .results-container {
+        padding: 2rem;
+        text-align: center;
       }
 
-      .custom-scale .rating-circle {
-        width: 60px;
-        height: 60px;
-        font-size: 24px;
-      }
-
-      .custom-scale .rating-label {
-        font-size: 12px;
-        max-width: 120px;
-        margin-top: 10px;
-        line-height: 1.3;
-      }
-
-      /* Color scheme for custom rating circles */
-      .custom-scale .rating-1 {
-        background-color: #f44336;
-      }
-      .custom-scale .rating-2 {
-        background-color: #ff9800;
-      }
-      .custom-scale .rating-3 {
-        background-color: #4caf50;
-      }
-      .custom-scale .rating-4 {
-        background-color: #2196f3;
-      }
-      .custom-scale .rating-5 {
-        background-color: #9c27b0;
-      }
-
-      /* Three-option scale styling */
-      .three-option-scale {
+      .score-display {
+        background: linear-gradient(135deg, #c59a6d, #e6c9a8);
+        color: white;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        gap: 20px;
-        margin: 30px 0;
+        align-items: center;
+        margin: 0 auto;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        animation: fadeInScale 0.5s ease-out;
       }
 
-      .three-option-scale .rating-option {
-        width: 150px;
-        padding: 15px;
-        border-radius: 10px;
-        background: white;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-        cursor: pointer;
-      }
-
-      .three-option-scale .rating-option:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      }
-
-      .three-option-scale .rating-circle {
-        width: 100%;
-        height: auto;
-        padding: 15px;
-        border-radius: 8px;
+      .category-text {
+        font-size: 1.2rem;
         margin-bottom: 10px;
-        font-size: 16px;
         font-weight: 500;
       }
 
-      /* Color scheme for three options */
-      .three-option-scale .rating-1 {
-        background-color: #4caf50;
-      } /* Green for rarely */
-      .three-option-scale .rating-2 {
-        background-color: #ffc107;
-      } /* Yellow for sometimes */
-      .three-option-scale .rating-3 {
-        background-color: #ff5722;
-      } /* Orange-red for very often */
-
-      .three-option-scale .rating-option.selected {
-        border: 2px solid #00b09b;
+      #total-score {
+        font-size: 3.5rem;
+        font-weight: bold;
       }
 
-      .three-option-scale .rating-label {
-        font-size: 14px;
-        color: #333;
+      .score-interpretation {
+        margin-top: 2rem;
+        padding: 2rem;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        text-align: left;
+      }
+
+      .score-interpretation h3 {
+        color: #c59a6d;
+        margin-bottom: 1.5rem;
         text-align: center;
-        margin-top: 8px;
       }
 
-      .rating-guide {
-        text-align: center;
-        margin: 20px auto;
-        padding: 8px 20px;
-        background: #f8f9fa;
-        border-radius: 20px;
-        display: inline-block;
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
+      .score-interpretation p {
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
       }
 
-      .rating-guide p {
-        margin: 0;
-        color: #666;
-        font-size: 14px;
+      .symptom-list {
+        margin: 1rem 0;
+        padding-left: 1.2rem;
+        color: #e74c3c;
+      }
+
+      .score-display {
+        background: linear-gradient(135deg, #c59a6d, #e6c9a8);
+        color: white;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        animation: fadeInScale 0.5s ease-out;
+      }
+
+      .category-text {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
         font-weight: 500;
+      }
+
+      #total-score {
+        font-size: 3.5rem;
+        font-weight: bold;
+      }
+
+      .score-interpretation {
+        margin-top: 2rem;
+        padding: 2rem;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        text-align: left;
+      }
+
+      .score-interpretation h3 {
+        color: #c59a6d;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .score-interpretation p {
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .symptom-list {
+        margin: 1rem 0;
+        padding-left: 1.2rem;
+        color: #e74c3c;
       }
 
       /* Mobile Responsiveness Fixes */
       @media (max-width: 768px) {
-        /* Section adjustments */
-        .questionnaire-section {
-          padding: 50px 0;
-          overflow: hidden; /* Prevent overflow */
-        }
-
         /* Container adjustments */
         .container {
           padding: 10px;
           width: 100%;
-          overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
-        /* Section title adjustments */
-        .section-title {
-          margin-bottom: 30px;
-        }
-
-        .section-title h2 {
-          font-size: 24px;
-          margin-bottom: 15px;
-        }
-
-        .section-title p {
-          font-size: 14px;
-          line-height: 1.6;
+        /* Question container */
+        .question-container {
+          padding: 10px;
           margin-bottom: 20px;
         }
 
-        /* Calculator card */
-        .calculator-card {
-          width: 95%;
-          min-width: 335px;
-          margin: 0 auto;
-          margin-bottom: 30px;
-          padding: 15px;
-          box-sizing: border-box;
+        .question-container h4 {
+          font-size: 16px;
+          line-height: 1.4;
         }
 
-        /* Rating scale adjustments for mobile */
+        /* Rating scale adjustments */
         .rating-scale {
           flex-wrap: wrap;
-          justify-content: center;
           gap: 10px;
+          justify-content: center;
         }
 
         .rating-option {
           width: 50px;
+          min-width: unset;
           margin: 5px;
         }
 
         .rating-circle {
           width: 35px;
           height: 35px;
-          font-size: 16px;
+          font-size: 14px;
         }
 
         .rating-label {
-          font-size: 11px;
+          font-size: 10px;
         }
 
         /* Custom scale adjustments */
         .custom-scale .rating-option {
-          width: 70px;
-          min-width: 70px;
+          width: auto;
+          min-width: 60px;
         }
 
         .custom-scale .rating-circle {
-          width: 50px;
-          height: 50px;
-          font-size: 20px;
-        }
-
-        .custom-scale .rating-label {
-          font-size: 11px;
-          max-width: 100px;
+          width: 45px;
+          height: 45px;
+          font-size: 18px;
         }
 
         /* Three option scale adjustments */
@@ -536,39 +506,13 @@
 
         .three-option-scale .rating-option {
           width: 100%;
-          max-width: 280px;
+          max-width: 250px;
           margin: 0 auto;
-        }
-
-        /* Question container adjustments */
-        .question-container {
-          padding: 15px;
-        }
-
-        .question-container h4 {
-          font-size: 16px;
-          line-height: 1.4;
-          margin-bottom: 20px;
-        }
-
-        /* Progress bar adjustments */
-        .progress-container {
-          margin: 15px 0 25px;
-        }
-
-        /* Navigation buttons adjustments */
-        .question-nav {
-          padding: 0 10px;
-        }
-
-        .calculate-btn {
-          padding: 8px 20px;
-          font-size: 14px;
         }
 
         /* Results container adjustments */
         .results-container {
-          padding: 15px;
+          padding: 1rem;
         }
 
         .score-display {
@@ -576,201 +520,191 @@
           height: 150px;
         }
 
-        .category-text {
-          font-size: 1rem;
-        }
-
         #total-score {
           font-size: 2.5rem;
         }
 
-        .score-interpretation {
-          padding: 1.5rem;
+        .category-text {
+          font-size: 1rem;
         }
 
-        .score-interpretation h3 {
-          font-size: 1.2rem;
+        /* Navigation buttons */
+        .question-nav {
+          flex-wrap: wrap;
+          gap: 10px;
         }
 
-        .score-interpretation p {
-          font-size: 14px;
+        .calculate-btn {
+          width: 100%;
+          margin: 5px 0;
+        }
+
+        /* Progress bar */
+        .progress-container {
+          margin: 10px 0 20px;
         }
       }
 
       /* Additional fixes for very small screens */
       @media (max-width: 375px) {
-        .calculator-card {
-          min-width: 300px;
-          width: 98%;
-          padding: 10px;
-        }
-
-        .section-title h2 {
-          font-size: 22px;
-        }
-
-        .section-title p {
-          font-size: 13px;
-        }
-
-        .rating-scale {
-          gap: 5px;
-        }
-
-        .rating-option {
-          width: 45px;
-          margin: 3px;
-        }
-
         .rating-circle {
           width: 30px;
           height: 30px;
-          font-size: 14px;
+          font-size: 12px;
         }
 
         .rating-label {
-          font-size: 10px;
+          font-size: 9px;
         }
       }
 
-      /* Start screen and continue button styling */
-      .start-assessment-btn {
-        background: linear-gradient(45deg, #00b09b, #96c93d);
-        color: white;
-        border: none;
-        padding: 15px 40px;
-        border-radius: 30px;
-        font-size: 18px;
-        font-weight: 500;
-        cursor: pointer;
+      /* Start Screen Styling */
+      .start-container {
+        padding: 40px;
+        margin-bottom: 30px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        animation: fadeIn 0.8s ease-out both;
+      }
+
+      .start-container h3 {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .start-container p {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 15px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #start-btn {
+        margin-top: 20px;
+        padding: 12px 30px;
+        font-size: 16px;
+        animation: pulse 1.5s infinite;
+      }
+
+      /* Name input styling */
+      .name-input-container {
+        margin: 20px auto;
+        max-width: 400px;
+      }
+
+      .name-input-container input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 176, 155, 0.2);
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
 
-      .start-assessment-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 176, 155, 0.3);
+      .name-input-container input:focus {
+        border-color: #c59a6d;
+        box-shadow: 0 0 0 2px rgba(197, 154, 109, 0.2);
+        outline: none;
       }
 
-      .start-assessment-btn:active {
-        transform: translateY(1px);
+      .name-error {
+        color: #e74c3c;
+        font-size: 14px;
+        margin-top: 5px;
+        display: none;
       }
 
-      /* Mobile adjustments for start screen */
-      @media (max-width: 768px) {
-        #start-screen {
-          min-height: 350px;
-          padding: 20px;
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(197, 154, 109, 0.4);
         }
+        70% {
+          box-shadow: 0 0 0 10px rgba(197, 154, 109, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(197, 154, 109, 0);
+        }
+      }
 
-        #start-screen h3 {
-          font-size: 20px;
-          margin-bottom: 20px;
-        }
+      /* Email sending notification */
+      .email-notification {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid #c59a6d;
+        font-size: 14px;
+        color: #666;
+      }
 
-        #start-screen p {
-          font-size: 14px;
-          margin-bottom: 30px;
-          padding: 0 15px;
-        }
-
-        .start-assessment-btn {
-          padding: 12px 30px;
-          font-size: 16px;
-        }
+      .email-notification i {
+        margin-right: 8px;
+        color: #c59a6d;
       }
     </style>
   </head>
   <body>
-    <!-- Use the same nav placeholder as services.html -->
     <div id="nav-placeholder"></div>
-
-    <!-- Questionnaire Section -->
     <section id="services" class="questionnaire-section">
       <div class="container text-center">
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <div class="section-title">
-              <h2>Health Assessment</h2>
-              <hr />
-              <p>
-                Rate each symptom on a scale of 1 to 5, 1 being the lowest and 5
-                being the highest, depending on how severe the symptom is.
-              </p>
+              <h2>Want to know what your PCOS root cause is?</h2>
+              <p>Please rate how much each symptom applies to you on a scale of 1 to 5</p>
             </div>
           </div>
         </div>
-
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <div class="calculator-card">
-              <!-- Initial start screen with redesigned continue button -->
-              <div
-                id="start-screen"
-                class="text-center"
-                style="
-                  min-height: 400px;
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                  justify-content: center;
-                  padding: 40px;
-                "
-              >
-                <h3 style="color: #333; margin-bottom: 30px">
-                  Welcome to Your Health Assessment
-                </h3>
-                <p style="color: #666; margin-bottom: 40px; max-width: 600px">
-                  Take our comprehensive health assessment to understand your
-                  gut health better. This questionnaire will take approximately
-                  3-5 minutes to complete.
-                </p>
-                <button id="continue-btn" class="start-assessment-btn">
-                  Start Assessment
-                  <i class="fas fa-arrow-right" style="margin-left: 10px"></i>
-                </button>
+
+              <!-- Start Screen -->
+              <div id="start-screen" class="text-center">
+                <div class="start-container">
+                  <h3>Find Your PCOS Root Cause</h3>
+                  <p>This short quiz will help uncover your PCOS root cause, so your management can be more individualized.</p>
+                  <div class="name-input-container">
+                    <input type="text" id="user-name" placeholder="Enter your name" required />
+                    <div class="name-error" id="name-error">Please enter your name to continue</div>
+                  </div>
+                  <div class="name-input-container" style="margin-top: 15px">
+                    <input type="text" id="user-contact" placeholder="Enter your email or phone number" required />
+                    <div class="name-error" id="contact-error">Please enter your contact information to continue</div>
+                  </div>
+                  <button id="start-btn" class="calculate-btn">Find my root cause now</button>
+                </div>
               </div>
 
-              <!-- Questions section (initially hidden) -->
-              <div id="questionnaire-content" style="display: none">
-                <!-- Progress Bar -->
-                <div class="progress-container">
-                  <div class="progress">
-                    <div
-                      id="progress-bar"
-                      class="progress-bar"
-                      role="progressbar"
-                      style="width: 0%"
-                      aria-valuenow="0"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                    ></div>
-                  </div>
+              <!-- Progress Bar (initially hidden) -->
+              <div class="progress-container" style="display: none">
+                <div class="progress">
+                  <div
+                    id="progress-bar"
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
                 </div>
+              </div>
 
-                <div id="question-container">
-                  <!-- Questions will be dynamically inserted here -->
-                </div>
+              <div id="question-container" style="display: none"></div>
 
-                <div class="text-center" style="margin-top: 20px">
-                  <button
-                    id="next-btn"
-                    class="calculate-btn"
-                    style="display: none"
-                  >
-                    Next
-                  </button>
-                  <button
-                    id="submit-btn"
-                    class="calculate-btn"
-                    style="display: none"
-                  >
-                    Submit
-                  </button>
-                </div>
+              <div class="text-center" style="margin-top: 20px">
+                <button id="next-btn" class="calculate-btn" style="display: none">Next</button>
+                <button id="submit-btn" class="calculate-btn" style="display: none">Submit</button>
               </div>
             </div>
           </div>
@@ -778,7 +712,6 @@
       </div>
     </section>
 
-    <!-- Include same scripts as services.html -->
     <script src="js/jquery.1.11.1.js"></script>
     <script>
       $(function () {
@@ -788,276 +721,190 @@
     </script>
 
     <script>
+      // PCOS root cause questions as per your instructions:
       const questions = [
-        { id: 1, text: "Gassy?" },
-        { id: 2, text: "Bloating?" },
-        { id: 3, text: "Heaviness after meals?" },
-        { id: 4, text: "Stomach pain?" },
-        { id: 5, text: "Lethargy or feeling tired?" },
-        { id: 6, text: "Brain fog?" },
-        { id: 7, text: "Constipation (without laxative)?" },
-        {
-          id: 8,
-          text: "How often do you poop?",
-          isCustomScale: true,
-          labels: [
-            { emoji: "💩", text: "Less than three times a week" },
-            { emoji: "💩💫", text: "Once every other day" },
-            { emoji: "💩✨", text: "Once a day" },
-            { emoji: "💩💩", text: "Twice a day" },
-            { emoji: "💩💩➕", text: "More than two times a day" },
-          ],
-          values: [
-            "Less than three times a week",
-            "Once every other day",
-            "Once a day",
-            "Twice a day",
-            "More than two times a day",
-          ],
-        },
-        { id: 9, text: "Mucus in stools?" },
-        {
-          id: 10,
-          text: "Floating stools?",
-          isCustomScale: true,
-          labels: [
-            { text: "Rarely or not noticed" },
-            { text: "Sometimes" },
-            { text: "Very often" },
-          ],
-          values: ["Rarely or not noticed", "Sometimes", "Very often"],
-        },
-        { id: 11, text: "Smelly stools?" },
-        { id: 12, text: "Bad breath?" },
-        { id: 13, text: "Oral thrush/ white layer on your tongue?" },
-        { id: 14, text: "Acne?" },
-        { id: 15, text: "Eczema/ psoriasis/ rosacea/ rashes?" },
-        { id: 16, text: "Excessive hairfall?" },
-        { id: 17, text: "Dry and Brittle hair?" },
-        { id: 18, text: "Acidity/heartburn/ reflux?" },
-        { id: 19, text: "Nausea?" },
-        { id: 20, text: "Burping/Belching?" },
-        { id: 21, text: "Sweet cravings?" },
-        { id: 22, text: "Disturbed sleep?" },
-        { id: 23, text: "How would you rate your anxiety or stress?" },
-        { id: 24, text: "Stubborn weight/ resistant metabolism?" },
+        // Insulin Resistance group: Q1-13
+        {id: 1, text: "I have problems with blood sugar levels.", group: "Insulin Resistance"},
+        {id: 2, text: "I have been diagnosed with insulin resistance, pre-diabetes, or diabetes.", group: "Insulin Resistance"},
+        {id: 3, text: "I have a family history of diabetes (e.g. my mother, father, grandparents, siblings, aunts, or uncles).", group: "Insulin Resistance"},
+        {id: 4, text: "My fasting glucose is greater than 99 mg/dl.", group: "Insulin Resistance"},
+        {id: 5, text: "I have dark, velvety patches in my skin folds.", group: "Insulin Resistance"},
+        {id: 6, text: "I struggle with weight gain around my waist or mid-section.", group: "Insulin Resistance"},
+        {id: 7, text: "I experience strong sugar or sweet cravings.", group: "Insulin Resistance"},
+        {id: 8, text: "I experience increased thirst and need to urinate frequently.", group: "Insulin Resistance"},
+        {id: 9, text: "I often feel fatigued or low in energy after meals (post-meal fatigue).", group: "Insulin Resistance"},
+        {id: 10, text: "I struggle to lose weight despite following a healthy diet and exercising regularly.", group: "Insulin Resistance"},
+        {id: 11, text: "My blood pressure is often elevated, and my doctor has noted it as a concern.", group: "Insulin Resistance"},
+        {id: 12, text: "My blood work shows elevated triglycerides or cholesterol levels.", group: "Insulin Resistance"},
+        {id: 13, text: "I experience symptoms like increased thirst and frequent urination.", group: "Insulin Resistance"},
+
+        // Inflammatory PCOS: Q14-20
+        {id: 14, text: "I suffer from digestive issues (e.g. IBS, bloating, irregular bowel habits, constipation, or heartburn).", group: "Inflammatory"},
+        {id: 15, text: "I have food sensitivities, food allergies, or chronic skin conditions like eczema, hives, or psoriasis.", group: "Inflammatory"},
+        {id: 16, text: "I suffer from headaches, migraines, or unexplained fatigue.", group: "Inflammatory"},
+        {id: 17, text: "I often experience unexplained fatigue and/or joint pain.", group: "Inflammatory"},
+        {id: 18, text: "My blood tests show low vitamin D, high inflammatory markers (e.g. CRP), thyroid antibodies, or gluten antibodies.", group: "Inflammatory"},
+        {id: 19, text: "I frequently experience cold or flu-like symptoms, or tend to catch infections more often.", group: "Inflammatory"},
+        {id: 20, text: "I sometimes notice swollen or tender lymph nodes, especially when I’m not feeling well.", group: "Inflammatory"},
+
+        // Post-birth control: Q21-29
+        {id: 21, text: "I have taken Birth control pill in the past.", group: "Post-Birth Control"},
+        {id: 22, text: "I stopped taking the pill or using another form of hormonal birth control in the last 12 months.", group: "Post-Birth Control"},
+        {id: 23, text: "My PCOS symptoms began after I stopped using birth control.", group: "Post-Birth Control"},
+        {id: 24, text: "I may have had acne, but my cycles were regular before starting birth control.", group: "Post-Birth Control"},
+        {id: 25, text: "My acne worsened after I stopped using birth control, especially cystic acne around my chin or jawline.", group: "Post-Birth Control"},
+        {id: 26, text: "I’ve noticed increased hair thinning or hair loss since discontinuing birth control.", group: "Post-Birth Control"},
+        {id: 27, text: "I had regular periods before starting the pill, but since stopping it, my cycles have become irregular.", group: "Post-Birth Control"},
+        {id: 28, text: "I struggle with mood swings, irritability, or emotional instability after stopping birth control.", group: "Post-Birth Control"},
+        {id: 29, text: "I gained weight shortly after starting birth control, and it hasn’t been easy to lose it since.", group: "Post-Birth Control"},
+        {id: 30, text: "Since coming off the pill, I’ve had trouble getting pregnant or noticed a delay in my ability to conceive.", group: "Post-Birth Control"},
+
+        // Adrenal PCOS: Q31-37
+        {id: 31, text: "I respond abnormally to stress. I have trouble sleeping even when I’m tired.", group: "Adrenal"},
+        {id: 32, text: "I often have my best energy after 6 PM.", group: "Adrenal"},
+        {id: 33, text: "I gain weight when I’m stressed.", group: "Adrenal"},
+        {id: 34, text: "I have had abnormal thyroid hormones and cortisol levels on my blood tests.", group: "Adrenal"},
+        {id: 35, text: "I have dark circles under my eyes, which I’ve noticed are more prominent when I’m stressed or tired.", group: "Adrenal"},
+        {id: 36, text: "I often miss periods or have irregular cycles, especially when I’m going through stressful times.", group: "Adrenal"},
+        {id: 37, text: "I often feel low on energy, and I need caffeine or other stimulants to get through the day, especially after 3-4 PM.", group: "Adrenal"}
+      ];
+
+      // Group mapping for scoring
+      const groups = [
+        {name: "Insulin Resistance", key: "Insulin Resistance"},
+        {name: "Inflammatory", key: "Inflammatory"},
+        {name: "Post-Birth Control", key: "Post-Birth Control"},
+        {name: "Adrenal", key: "Adrenal"}
       ];
 
       let currentQuestion = 0;
       const answers = {};
+      let userName = "";
+      let userContact = "";
 
-      function displayQuestion(index) {
-        const question = questions[index];
-        const isLast = index === questions.length - 1;
+     function displayQuestion(index) {
+    // Skip Post-Birth Control questions if Q21 answer is "No"
+    if (
+        questions[index].id > 21 &&
+        questions[index].id <= 30 &&
+        answers[21] === 1
+    ) {
+        currentQuestion = questions.findIndex(q => q.id === 31);
+        displayQuestion(currentQuestion);
+        return;
+    }
 
-        // Update progress bar
-        const progressPercentage = ((index + 1) / questions.length) * 100;
-        document.getElementById(
-          "progress-bar"
-        ).style.width = `${progressPercentage}%`;
-        document
-          .getElementById("progress-bar")
-          .setAttribute("aria-valuenow", progressPercentage);
+    const question = questions[index];
+    const isLast = index === questions.length - 1;
+    const progressPercentage = ((index + 1) / questions.length) * 100;
+    document.getElementById("progress-bar").style.width = `${progressPercentage}%`;
+    document.getElementById("progress-bar").setAttribute("aria-valuenow", progressPercentage);
 
-        let optionsHTML;
-        if (question.id === 10) {
-          // Floating stools question
-          optionsHTML = `
-                    <div class="rating-scale three-option-scale">
-                        ${question.labels
-                          .map(
-                            (label, idx) => `
-                            <div class="rating-option ${
-                              answers[question.id] === idx + 1 ? "selected" : ""
-                            }" 
-                                 onclick="updateRating(${question.id}, ${
-                              idx + 1
-                            })">
-                                <div class="rating-circle rating-${idx + 1}">
-                                    ${label.text}
-                                </div>
-                            </div>
-                        `
-                          )
-                          .join("")}
-                    </div>
-                `;
-        } else if (question.isCustomScale) {
-          // Custom scale HTML for other custom questions (like question 8)
-          optionsHTML = `
-                    <div class="rating-scale custom-scale">
-                        ${question.labels
-                          .map(
-                            (label, idx) => `
-                            <div class="rating-option" onclick="updateRating(${
-                              question.id
-                            }, ${idx + 1})">
-                                <div class="rating-circle rating-${idx + 1} ${
-                              answers[question.id] === idx + 1 ? "selected" : ""
-                            }">
-                                    ${label.emoji || ""}
-                                </div>
-                                <div class="rating-label">
-                                    ${label.text}
-                                </div>
-                            </div>
-                        `
-                          )
-                          .join("")}
-                    </div>
-                `;
-        } else {
-          // Original rating scale HTML for standard questions...
-          optionsHTML = `
-                    <div class="rating-scale">
-                        ${[1, 2, 3, 4, 5]
-                          .map(
-                            (num) => `
-                            <div class="rating-option" onclick="updateRating(${
-                              question.id
-                            }, ${num})">
-                                <div class="rating-circle rating-${num} ${
-                              answers[question.id] === num ? "selected" : ""
-                            }">
-                                    ${num}
-                                </div>
-                                <div class="rating-label">
-                                    ${getRatingLabel(num)}
-                                </div>
-                            </div>
-                        `
-                          )
-                          .join("")}
-                    </div>
-                `;
-        }
-
-        const navigationHTML = `
-                <div class="question-nav-wrapper">
-                    <div class="question-nav">
-                        ${
-                          index > 0
-                            ? `<button class="calculate-btn previous-btn" onclick="previousQuestion()">
-                                <i class="fas fa-chevron-left"></i> Prev
-                            </button>`
-                            : ""
-                        }
-                        ${
-                          !isLast
-                            ? `<button class="calculate-btn ${
-                                !answers[question.id] ? "disabled" : ""
-                              }" 
-                                id="next-button-${question.id}" 
-                                onclick="validateAndProceed(${question.id})">
-                                Next <i class="fas fa-chevron-right"></i>
-                            </button>`
-                            : `<button class="calculate-btn ${
-                                !answers[question.id] ? "disabled" : ""
-                              }" 
-                                id="submit-button-${question.id}" 
-                                onclick="validateAndSubmit(${question.id})">
-                                Submit <i class="fas fa-check"></i>
-                            </button>`
-                        }
-                    </div>
+    let optionsHTML = '';
+    if (question.id === 21) {
+        // Yes/No options for Q21
+        optionsHTML = `
+        <div class="rating-scale">
+            <div class="rating-option" onclick="updateRating(${question.id}, 2)">
+                <div class="rating-circle rating-5 ${answers[question.id] === 2 ? "selected" : ""}">Yes</div>
+                <div class="rating-label">Have taken</div>
+            </div>
+            <div class="rating-option" onclick="updateRating(${question.id}, 1)">
+                <div class="rating-circle rating-1 ${answers[question.id] === 1 ? "selected" : ""}">No</div>
+                <div class="rating-label">Never taken</div>
+            </div>
+        </div>
+        `;
+    } else {
+        // Standard 1–5 rating
+        optionsHTML = `
+        <div class="rating-scale">
+            ${[1, 2, 3, 4, 5].map(num => `
+                <div class="rating-option" onclick="updateRating(${question.id}, ${num})">
+                    <div class="rating-circle rating-${num} ${answers[question.id] === num ? "selected" : ""}">${num}</div>
+                    <div class="rating-label">${getRatingLabel(num)}</div>
                 </div>
-            `;
+            `).join('')}
+        </div>
+        `;
+    }
 
-        const questionHTML = `
-                <div class="question-counter">
-                    Question ${index + 1} of ${questions.length}
-                </div>
-                <div class="question-container" id="question-${question.id}">
-                    <h4>${
-                      question.text
-                    }<span class="question-required">*</span></h4>
-                    <input type="hidden" id="rating-${question.id}" value="${
-          answers[question.id] || ""
-        }">
-                    ${optionsHTML}
-                    <div class="answer-summary ${
-                      answers[question.id] ? "show" : ""
-                    }">
-                        Your answer: <strong>${
-                          question.isCustomScale && answers[question.id]
-                            ? question.values[answers[question.id] - 1]
-                            : answers[question.id]
-                            ? getRatingLabel(answers[question.id])
-                            : ""
-                        }</strong>
-                    </div>
-                    <div class="error-message" id="error-${question.id}">
-                        Please select an option before proceeding
-                    </div>
-                </div>
-                ${navigationHTML}
-            `;
+    const navigationHTML = `
+      <div class="question-nav-wrapper">
+        <div class="question-nav">
+          ${index > 0 ? `<button class="calculate-btn previous-btn" onclick="previousQuestion()"><i class="fas fa-chevron-left"></i> Prev</button>` : ""}
+          ${!isLast
+          ? ``  /* No next button */
+         : `<button class="calculate-btn ${!answers[question.id] ? "disabled" : ""}" id="submit-button-${question.id}" onclick="validateAndSubmit(${question.id})">Submit <i class="fas fa-check"></i></button>`}
+       </div>
+      </div>
+    `;
 
-        document.getElementById("question-container").innerHTML = questionHTML;
-      }
+    const questionHTML = `
+      <div class="question-counter">
+        Question ${index + 1} of ${questions.length}
+      </div>
+      <div class="question-container" id="question-${question.id}">
+        <h4>${question.text}<span class="question-required">*</span></h4>
+        <input type="hidden" id="rating-${question.id}" value="${answers[question.id] || ""}">
+        ${optionsHTML}
+        <div class="answer-summary ${answers[question.id] ? "show" : ""}">
+          Your answer: <strong>${answers[question.id] ? getRatingLabel(answers[question.id]) : ""}</strong>
+        </div>
+        <div class="error-message" id="error-${question.id}" style="display:none">
+          Please select an option before proceeding
+        </div>
+      </div>
+      ${navigationHTML}
+    `;
+
+    document.getElementById("question-container").innerHTML = questionHTML;
+}
+
 
       function getRatingLabel(value) {
         switch (value) {
-          case 1:
-            return "Not at all";
-          case 2:
-            return "Mild";
-          case 3:
-            return "Moderate";
-          case 4:
-            return "Significant";
-          case 5:
-            return "Severe";
-          default:
-            return "";
+          case 1: return "Not at all";
+          case 2: return "Occasionally";
+          case 3: return "Sometimes";
+          case 4: return "Often";
+          case 5: return "Almost always";
+          default: return "";
         }
       }
 
       function updateRating(questionId, value) {
-        answers[questionId] = parseInt(value);
+    answers[questionId] = value;
 
-        const question = questions.find((q) => q.id === questionId);
+    // Visual feedback
+    document.querySelectorAll(`#question-${questionId} .rating-circle`).forEach(circle => {
+        circle.classList.remove("selected");
+    });
+    let selectedCircle = document.querySelector(`#question-${questionId} .rating-${value}`);
+    if (selectedCircle) selectedCircle.classList.add("selected");
 
-        // Update visual feedback
-        document
-          .querySelectorAll(`#question-${questionId} .rating-circle`)
-          .forEach((circle) => {
-            circle.classList.remove("selected");
-          });
+    // Update answer summary
+    const summaryDiv = document.querySelector(`#question-${questionId} .answer-summary`);
+    summaryDiv.innerHTML = `Your answer: <strong>${getRatingLabel(value)}</strong>`;
+    summaryDiv.classList.add("show");
 
-        const selectedCircle = document.querySelector(
-          `#question-${questionId} .rating-${value}`
-        );
-        if (selectedCircle) {
-          selectedCircle.classList.add("selected");
+    // Hide error
+    const errorMessage = document.getElementById(`error-${questionId}`);
+    if (errorMessage) errorMessage.style.display = "none";
+
+    // Store value in hidden field
+    document.getElementById(`rating-${questionId}`).value = value;
+
+    // Auto advance after short delay
+    setTimeout(() => {
+        if (currentQuestion < questions.length - 1) {
+            nextQuestion();
+        } else {
+            displayResults();
         }
+    }, 200);
+}
 
-        // Update answer summary
-        const summaryDiv = document.querySelector(
-          `#question-${questionId} .answer-summary`
-        );
-        const answerText = question.isCustomScale
-          ? question.values[value - 1]
-          : getRatingLabel(value);
-        summaryDiv.innerHTML = `Your answer: <strong>${answerText}</strong>`;
-        summaryDiv.classList.add("show");
-
-        // Hide error message if shown
-        const errorMessage = document.getElementById(`error-${questionId}`);
-        if (errorMessage) {
-          errorMessage.style.display = "none";
-        }
-
-        // Enable next/submit button
-        const nextButton = document.getElementById(`next-button-${questionId}`);
-        const submitButton = document.getElementById(
-          `submit-button-${questionId}`
-        );
-        if (nextButton) nextButton.classList.remove("disabled");
-        if (submitButton) submitButton.classList.remove("disabled");
-
-        document.getElementById(`rating-${questionId}`).value = value;
-      }
 
       function previousQuestion() {
         if (currentQuestion > 0) {
@@ -1073,77 +920,151 @@
         }
       }
 
-      function calculateScore() {
-        let totalScore = 0;
-        Object.values(answers).forEach((value) => {
-          totalScore += value;
-        });
+      // Scoring logic per group
+      function countGroupScore(key) {
+    // Only count strong symptoms (rated 4 or 5)
+    return questions.filter(q => q.group === key && answers[q.id] && answers[q.id] >= 4).length;
+  }
+  function getHighSymptoms(key) {
+    return questions
+      .filter(q => q.group === key && answers[q.id] && answers[q.id] >= 4)
+      .map(q => q.text.replace(/\.$/, ""));
+  }
 
-        displayResults(totalScore);
-      }
+  function getScores() {
+    const scores = {};
+    groups.forEach(g => { scores[g.key] = countGroupScore(g.key); });
+    return scores;
+  }
 
-      function getHighScoredSymptoms() {
-        const highSymptoms = [];
-        questions.forEach((q, index) => {
-          if (answers[q.id] >= 4) {
-            // Get symptoms rated 4 or 5
-            highSymptoms.push(q.text.replace("?", ""));
-          }
-        });
-        return highSymptoms;
-      }
+  function getTopResult(scores) {
+    const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+    if (sorted[0][1] === 0) return "Mixed"; // No strong category
+    // Check for tie or "winner" too close
+    if (
+      (sorted[0][1] === sorted[1][1]) ||
+      ((sorted[0][1] - sorted[1][1]) <= 1 && sorted[1][1] > 0)
+    ) {
+      return "Mixed";
+    }
+    // Otherwise highest is clear
+    return sorted[0][0];
+  }
 
-      function displayResults(score) {
-        let interpretation = "";
-        let category = "";
+    function getResultExplanation(resultKey) {
+  switch (resultKey) {
+    case "Inflammatory":
+      return `<b>Inflammatory PCOS</b><br>
+      Based on your answers, it seems likely that Chronic, low-grade inflammation is a primary cause of your PCOS symptoms. While inflammation is present in all types of PCOS, in your case, it plays a key role in triggering hormonal imbalances and worsen PCOS symptoms such as acne, weight gain, irregular periods or missed periods, fertility struggles, and changes in hair growth.<br>
+      Over time, persistent inflammation can cause your ovaries to produce excessive testosterone, leading to these symptoms. Reducing inflammation through dietary changes, stress management, and specific supplements can be highly effective in alleviating symptoms.<br>
+      To create a personalized plan that fits your unique needs, I recommend a consultation where we can explore the best strategies to help you feel your best.`;
 
-        if (score < 30) {
-          category = "Category 1";
-          interpretation = `Your health score currently falls under Category 1: Little or No Gut Dysbiosis.
-            <br><br>
-            A score in this range indicates a balanced gut microbiome, with minimal to no symptoms. The digestive system is functioning optimally, and your overall health is likely good. Maintaining a healthy lifestyle with a well-balanced diet, regular physical activity, and stress management will help sustain this optimal state. Occasional mild digestive issues may still occur, but they are typically short-lived and not a sign of major imbalance.`;
-        } else if (score <= 50) {
-          category = "Category 2";
-          interpretation = `Your current health score falls under Category 2: Little to Moderate Gut Dysbiosis.
-            <br><br>
-            This category suggests a mild to moderate imbalance in the gut microbiome. You may experience some digestive discomfort, fatigue, or skin issues, but these are not constant. Dysbiosis in this range can affect nutrient absorption and immune function, leading to potential long-term effects if left unchecked. Addressing diet, reducing stress, and incorporating probiotics or prebiotics may help to restore balance and prevent further progression.`;
-        } else if (score <= 70) {
-          category = "Category 3";
-          interpretation = `Your health score currently falls under Category 3: Moderate to Severe Gut Dysbiosis.
-            <br><br>
-            A score in this range suggests a significant imbalance in the gut microbiome, which may result in persistent digestive and systemic symptoms. Dysbiosis can lead to chronic inflammation, weakened immunity, and nutrient deficiencies. Without intervention, this level of imbalance can disrupt normal metabolic function, exacerbate autoimmune responses, and increase susceptibility to infections. Targeted dietary changes, stress management, and professional guidance for gut repair protocols are necessary to address these issues and prevent long-term complications. Sign up today!`;
-        } else {
-          category = "Category 4";
-          interpretation = `Your health score currently falls under the Category 4: Severely Dysbiotic Gut.
-            <br><br>
-            A score in this range indicates severe gut dysbiosis, with profound and chronic symptoms that significantly impact overall health. The gut microbiome at this stage is likely contributing to systemic inflammation, compromised immunity, mental health issues, and nutrient malabsorption. If left untreated, severe gut dysbiosis can lead to long-term chronic conditions, such as autoimmune diseases, metabolic disorders, and persistent mood disturbances. Immediate intervention is necessary, involving professional assessment and comprehensive treatment strategies, including dietary modifications, targeted supplements (like probiotics), and possibly medical treatments for underlying conditions.`;
-        }
+    case "Insulin Resistance":
+      return `<b>Insulin Resistance PCOS</b><br>
+      Based on your symptoms, it appears that insulin resistance may be the underlying cause of your PCOS.<br>
+      Insulin resistance is the root cause of about 80% of PCOS cases, making it the most common cause of symptoms like acne, irregular periods, fertility challenges, and changes in hair growth.<br>
+      Insulin resistance can lead to higher insulin levels, which in turn may cause hormonal imbalances, weight gain, and irregular cycles. When insulin levels are elevated, your ovaries may produce more testosterone, leading to these symptoms.<br>
+      A personalized plan involving dietary and lifestyle changes focused on improving insulin sensitivity can help you manage these symptoms. I recommend scheduling a consultation to discuss a tailored approach that includes dietary adjustments, lifestyle changes, and, if needed, supplementation to support your overall health.`;
 
-        const resultsHTML = `
-                <div class="results-container">
-                    <div class="score-display">
-                        <span class="category-text">${category}</span>
-                        <span id="total-score">${score}</span>
-                        <span class="category-text">out of 120</span>
-                    </div>
-                    <div class="score-interpretation">
-                        <h3>Your Gut Health Assessment</h3>
-                        <p>${interpretation}</p>
-                        <button class="calculate-btn" onclick="toggleContactInfo()" style="margin-top: 1rem;">
-                            Book a Consultation
-                        </button>
-                    </div>
-                </div>
-            `;
+    case "Adrenal":
+      return `<b>Adrenal PCOS</b><br>
+      Based on your answers, it seems highly likely that you may have Adrenal imbalance induced PCOS.<br>
+      Your body appears to have an abnormal response to stress hormones, leading to hormonal imbalances. When cortisol levels are elevated due to stress, they can disrupt other hormones, contributing to symptoms such as acne, irregular or missed periods, fertility challenges, and hair growth changes.<br>
+      Adrenal PCOS affects around 50% of individuals with PCOS and is the second most common root cause. Adrenal support through stress management, proper sleep, and targeted nutrition may help restore balance and alleviate symptoms. I recommend scheduling a consultation to dive deeper into a tailored approach to restore adrenal function.`;
 
-        document.getElementById("question-container").innerHTML = resultsHTML;
-        document.getElementById("submit-btn").style.display = "none";
-        document.getElementById("next-btn").style.display = "none";
-      }
+    case "Pill-Induced":
+      return `<b>Pill-Induced PCOS</b><br>
+      After stopping hormonal birth control, it’s common to experience a temporary surge in androgens (male hormones like testosterone).<br>
+      If your symptoms began after discontinuing the pill or another form of hormonal birth control, they are likely temporary. The increase in androgens can lead to symptoms like acne, hair changes, and irregular or missed periods. If you are experiencing symptoms of PCOS after discontinuing birth control, this could indicate that your body is adjusting hormonally post-pill. Birth control can mask underlying hormonal imbalances, and once stopped, those imbalances may resurface. It is important to give your body time to regulate itself, but addressing any underlying hormonal disruptions through diet, lifestyle changes, and possible hormone testing may be necessary for recovery.<br>
+      I would recommend a consultation to help you navigate this transition and develop a personalized program that supports long-term health.`;
+
+    case "Mixed":
+      return `<b>Mixed Results</b><br>
+      It appears that your symptoms reflect a combination of factors, which may involve insulin resistance, inflammation, hormonal imbalances, or adrenal dysfunction. Since your symptoms appear to be multifactorial, a personalized consultation will allow us to pinpoint the exact causes and develop a comprehensive, individualized nutrition and lifestyle plan. This will provide you with the best chance of managing your symptoms effectively and restoring hormonal balance. I encourage you to book a session to create a plan that’s right for you.`;
+
+    default:
+      return "";
+  }
+}
+
+
+  function displayResults() {
+    const scores = getScores();
+    const topType = getTopResult(scores);
+    const explanation = getResultExplanation(topType);
+    const displayType = (topType === "Mixed") ? "Multiple, see below" : topType.replace("-", " ") + " PCOS";
+    const highSymptomsText = (topType === "Mixed")
+      ? groups.map(g =>
+          `<li><b>${g.name}:</b> ${getHighSymptoms(g.key).join(", ") || "None marked as frequent"}</li>`
+        ).join("")
+      : `<ul>${getHighSymptoms(topType).map(symp => `<li>${symp}</li>`).join("") || "<li>None marked as frequent</li>"}</ul>`;
+
+    const resultsHTML = `
+      <div class="results-container">
+        <div class="score-display">
+          <span class="category-text">Your Result</span>
+          <span style="font-size:1.25rem;margin-bottom:5px">${displayType}</span>
+        </div>
+        <div class="score-interpretation">
+          <h3>PCOS Root Cause Analysis</h3>
+          <p>${explanation}</p>
+          
+          <div class="email-notification">
+            <i class="fas fa-check-circle"></i> Your assessment has been recorded. Thank you, ${userName}!
+          </div>
+          <button class="calculate-btn" onclick="window.location.href='services.html'" style="margin-top: 1rem;">
+            Book a Consultation
+          </button>
+        </div>
+      </div>
+    `;
+    document.getElementById("question-container").innerHTML = resultsHTML;
+    document.getElementById("submit-btn").style.display = "none";
+    document.getElementById("next-btn").style.display = "none";
+    sendReportToGoogleSheets({resultText: displayType, scores});
+  }
+
+  function sendReportToGoogleSheets(resultObj) {
+    const scores = getScores();
+    const data = {
+      name: userName,
+      contact: userContact,
+      timestamp: new Date().toISOString(),
+      result: resultObj.resultText || "",
+      InsulinResistanceScore: scores["Insulin Resistance"],
+      InflammatoryScore: scores["Inflammatory"],
+      PillInducedScore: scores["Pill-Induced"],
+      AdrenalScore: scores["Adrenal"],
+    };
+    groups.forEach((g) => {
+      data[`frequentSymptoms_${g.key}`] = getHighSymptoms(g.key).join(", ");
+    });
+    questions.forEach((q) => {
+      if (answers[q.id]) data[`Q${q.id}`] = answers[q.id];
+    });
+    // Google reporting (replace with your endpoint if needed)
+    const iframe = document.createElement("iframe");
+    iframe.style.display = "none";
+    document.body.appendChild(iframe);
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "https://script.google.com/macros/s/AKfycbxnoC_XAIFqfPIOnjPacmXPx9HQ6HacPx8CtTU6OvcoQMI1idx9tqixLBJ3ZJ8EuAKg2g/exec";
+    for (const [key, value] of Object.entries(data)) {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = key;
+      input.value = value;
+      form.appendChild(input);
+    }
+    iframe.contentDocument.body.appendChild(form);
+    form.submit();
+    setTimeout(() => {
+      document.body.removeChild(iframe);
+    }, 5000);
+  }
 
       function validateAndProceed(questionId) {
         if (!answers[questionId]) {
-          // Show error message
           const errorMessage = document.getElementById(`error-${questionId}`);
           errorMessage.style.display = "block";
           return;
@@ -1153,72 +1074,33 @@
 
       function validateAndSubmit(questionId) {
         if (!answers[questionId]) {
-          // Show error message
           const errorMessage = document.getElementById(`error-${questionId}`);
           errorMessage.style.display = "block";
           return;
         }
-        calculateScore();
+        displayResults();
       }
 
-      document.getElementById("next-btn").addEventListener("click", () => {
-        // Ensure the current question's value is captured or default is used
-        const slider = document.getElementById(
-          `rating-${questions[currentQuestion].id}`
-        );
-        if (slider && !answers.hasOwnProperty(questions[currentQuestion].id)) {
-          answers[questions[currentQuestion].id] = parseInt(slider.value) || 3;
-        }
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("question-container").style.display = "none";
+        document.getElementById("start-screen").style.display = "block";
+        document.querySelector(".progress-container").style.display = "none";
 
-        currentQuestion++;
-        displayQuestion(currentQuestion);
-      });
+        document.getElementById("start-btn").addEventListener("click", function () {
+          userName = document.getElementById("user-name").value.trim();
+          userContact = document.getElementById("user-contact").value.trim();
+          if (!userName) { document.getElementById("name-error").style.display = "block"; return; }
+          if (!userContact) { document.getElementById("contact-error").style.display = "block"; return; }
 
-      document.getElementById("submit-btn").addEventListener("click", () => {
-        // Ensure the last question's value is captured or default is used
-        const slider = document.getElementById(
-          `rating-${questions[currentQuestion].id}`
-        );
-        if (slider && !answers.hasOwnProperty(questions[currentQuestion].id)) {
-          answers[questions[currentQuestion].id] = parseInt(slider.value) || 3;
-        }
-
-        calculateScore();
-      });
-
-      // Add this to your existing JavaScript
-      document
-        .getElementById("continue-btn")
-        .addEventListener("click", function () {
-          // Hide the start screen
           document.getElementById("start-screen").style.display = "none";
-          // Show the questionnaire content
-          document.getElementById("questionnaire-content").style.display =
-            "block";
-          // Initialize the first question
+          document.querySelector(".progress-container").style.display = "block";
+          document.getElementById("question-container").style.display = "block";
           displayQuestion(0);
         });
-
-      // Comment out or remove the original displayQuestion(0) call at the bottom of the script
-      // displayQuestion(0);  // <- Remove or comment this line
-
-      // Add this function to handle the contact info toggle
-      function toggleContactInfo() {
-        // Get the contact info element from the nav
-        const contactInfo = document.getElementById("contactInfo");
-        // Show the contact info
-        contactInfo.classList.add("show");
-        // Scroll to the contact info
-        contactInfo.scrollIntoView({ behavior: "smooth" });
-      }
+      });
     </script>
-
-    <!-- Add Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
     <div id="results-section"></div>
-
-    <!-- Footer placeholder -->
     <div id="footer-placeholder"></div>
   </body>
 </html>
