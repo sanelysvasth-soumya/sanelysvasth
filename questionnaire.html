@@ -1,97 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Svasth Quiz</title>
-    <link rel="stylesheet" href="css/bootstrap.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
-    <link rel="icon" type="image/png" href="../img/other4.png" sizes="12x12" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Svasth Questionnaires</title>
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <link rel="icon" type="image/png" href="../img/other4.png" sizes="12x12" />
   <style>
     body {
       padding: 20px;
       background-color: #f9fafb;
     }
+    /* Full height with flex column to keep footer down */
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    #calculators-list-section {
+      flex: 1 0 auto;
+      padding-bottom: 40px;
+    }
+    #footer-placeholder {
+      flex-shrink: 0;
+    }
+    /* Vertically stacked full width cards */
+    .calculators-grid .row {
+      display: flex;
+      flex-direction: column; /* vertical stack */
+      align-items: center;
+      gap: 25px; /* slightly increased spacing between cards */
+    }
+    .calculators-grid .col-md-4 {
+      width: 100%; /* full width */
+      max-width: 600px; /* increased max width for wider boxes */
+      display: flex;
+    }
+    .calculator-list-card {
+      display: flex;
+      flex-direction: row; /* icon + content side by side */
+      align-items: center;
+      justify-content: flex-start;
+      height: auto;
+      padding: 25px 30px;
+      background: #fff;
+      border-radius: 8px;
+      text-align: left;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      width: 100%;
+      gap: 20px;
+      transition: box-shadow 0.3s ease;
+    }
+    .calculator-list-card:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    /* Icon container with round background */
+    .calculator-list-card .card-icon {
+      min-width: 70px;
+      min-height: 70px;
+      border-radius: 50%;
+      background-color: #c59a6d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.5rem;
+      flex-shrink: 0;
+      box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+    }
+    /* Card content with increased font sizes */
+    .calculator-list-card .card-content {
+      flex: 1;
+    }
+    .calculator-list-card .card-content h3 {
+      font-size: 1.75rem; /* increased title size */
+      margin-bottom: 12px;
+      font-weight: 700;
+      color: #333;
+    }
+    .calculator-list-card .card-content p {
+      margin-bottom: 0;
+      white-space: normal;
+      color: #555;
+      font-size: 1.4rem; /* increased paragraph size */
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+    /* Card arrow aligned right */
+    .calculator-list-card .card-arrow {
+      margin-left: 15px;
+      color: #c59a6d;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      transition: color 0.3s ease;
+    }
+    .calculator-list-card:hover .card-arrow {
+      color: #a6704f;
+    }
+    /* Mobile stacking: boxes become full width, icon above text, arrow below */
+    @media (max-width: 768px) {
+      .calculators-grid .row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 30px;
+      }
+      .calculators-grid .col-md-4 {
+        max-width: 100%;
+      }
+      .calculator-list-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 30px 20px;
+        gap: 15px;
+      }
+      .calculator-list-card .card-icon {
+        min-width: 90px;
+        min-height: 90px;
+        font-size: 3rem;
+      }
+      .calculator-list-card .card-content h3 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+      .calculator-list-card .card-content p {
+        font-size: 1.15rem;
+      }
+      .calculator-list-card .card-arrow {
+        margin-left: 0;
+        margin-top: 15px;
+        font-size: 1.7rem;
+      }
+    }
   </style>
-  <body>
-    <!-- Navigation -->
-    <div id="nav-placeholder"></div>
+</head>
+<body>
+  <!-- Navigation -->
+  <div id="nav-placeholder"></div>
 
-    <!-- Main Content Section -->
-    <div id="calculators-list-section">
-      <div class="container">
-        <div class="row text-center">
-          <div class="col-md-8 col-md-offset-2">
-            <div class="section-title">
-              <h2 style="padding-top: 20px">Svasth Quiz</h2>
-              <hr style="margin: 10px auto" />
-              <p style="margin-bottom: 15px">
-                Choose from our range of health questionniars to track and
-                understand your health and root causes of your problems.
-              </p>
-            </div>
+  <!-- Main Content -->
+  <div id="calculators-list-section">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="section-title">
+            <h2 style="padding-top: 20px">Svasth Questionniares</h2>
+            <hr style="margin: 10px auto"/>
+            <p style="margin-bottom: 15px">
+              Choose from our range of health questionnaires to track and understand your health and root causes of your problems.
+            </p>
           </div>
         </div>
+      </div>
 
-        <h2>Gut health Questionniare</h2>
-        <div class="calculators-grid">
-          <!-- First Row -->
-          <div class="row">
-            <!-- Gut Health Quiz -->
-            <div class="col-md-4">
-              <a href="questionnaireGut.html" class="calculator-link">
-                <div class="calculator-list-card">
-                  <div class="card-icon">
-                    <i class="fas fa-calculator"></i>
-                  </div>
-                  <div class="card-content">
-                    <h3>Know your gut Health</h3>
-                    <p>
-                      This questionnaire will help evaluate your gut health based on your symptoms. It takes about 5 minutes to complete.
-                    </p>
-                  </div>
-                  <div class="card-arrow">
-                    <i class="fas fa-arrow-right"></i>
-                  </div>
+
+      <div class="calculators-grid">
+        <div class="row">
+          <!-- Gut Health Quiz -->
+          <div class="col-md-4">
+            <a href="questionnaireGut.html" class="calculator-link" style="width:100%;">
+              <div class="calculator-list-card">
+                <div class="card-icon">
+                  <i class="fas fa-drumstick-bite" title="Gut Health Icon"></i>
                 </div>
-              </a>
-            </div>
-
-            <!-- PCOS quiz -->
-            <div class="col-md-4">
-              <a href="questionniarePCOS.html" class="calculator-link">
-                <div class="calculator-list-card">
-                  <div class="card-icon">
-                    <i class="fas fa-calculator"></i>
-                  </div>
-                  <div class="card-content">
-                    <h3>Know the Root Cause of your PCOS</h3>
-                    <p>
-                      You cant cure somthing you dont understand. Idenifying is your first step.
-                    </p>
-                  </div>
-                  <div class="card-arrow">
-                    <i class="fas fa-arrow-right"></i>
-                  </div>
+                <div class="card-content">
+                  <h3>Know Your Gut Health</h3>
+                  <p>
+                    This questionnaire will help evaluate your gut health based on your symptoms.
+                    It takes about 5 minutes to complete.
+                  </p>
                 </div>
-              </a>
-            </div>
+                <div class="card-arrow" aria-hidden="true">
+                  <i class="fas fa-arrow-right"></i>
+                </div>
+              </div>
+            </a>
+          </div>
 
-    <!-- Scripts -->
-    <script src="js/jquery.1.11.1.js"></script>
-    <script>
-      $(function () {
-        $("#nav-placeholder").load("nav.html");
-        $("#footer-placeholder").load("footer.html");
-      });
-    </script>
+          <!-- PCOS Quiz -->
+          <div class="col-md-4">
+            <a href="questionniarePCOS.html" class="calculator-link" style="width:100%;">
+              <div class="calculator-list-card">
+                <div class="card-icon">
+                  <i class="fas fa-female" title="PCOS Icon"></i>
+                </div>
+                <div class="card-content">
+                  <h3>Know the Root Cause of Your PCOS</h3>
+                  <p>
+                    You can't cure something you don't understand. Identifying it is the first step towards PCOS reversal.
+                  </p>
+                </div>
+                <div class="card-arrow" aria-hidden="true">
+                  <i class="fas fa-arrow-right"></i>
+                </div>
+              </div>
+            </a>
+          </div>
 
-    <div id="footer-placeholder"></div>
-  </body>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="js/jquery.1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#nav-placeholder").load("nav.html");
+      $("#footer-placeholder").load("footer.html");
+    });
+  </script>
+</body>
 </html>
-
