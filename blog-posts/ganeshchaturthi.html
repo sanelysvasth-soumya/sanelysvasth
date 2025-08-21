@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ganesh Chaturthi: Savoring Tradition with Smarter Ingredients</title>
+    <meta name="description" content="Celebrate Ganesh Chaturthi with healthier traditional recipes and Ayurvedic wisdom on seasonal eating. Discover spices, sugar swaps, and expert dietitian tips for a balanced festive feast." />
+    <meta name="keywords" content="Ganesh Chaturthi, Ayurveda, festive recipes, dietitian tips, spices, sugar swaps, modak, puran poli, monsoon season, Agni, Panchamrit" />
+    <meta name="author" content="Svasth by Soumya" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="YOUR_PAGE_URL_HERE" />
+    <meta property="og:title" content="Ganesh Chaturthi: Savoring Tradition with Smarter Ingredients" />
+    <meta property="og:description" content="Celebrate Ganesh Chaturthi with healthier traditional recipes and Ayurvedic wisdom on seasonal eating. Discover spices, sugar swaps, and expert dietitian tips for a balanced festive feast." />
+    <!-- <meta property="og:image" content="YOUR_FEATURE_IMAGE_URL_HERE" /> -->
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="YOUR_PAGE_URL_HERE" />
+    <meta property="twitter:title" content="Ganesh Chaturthi: Savoring Tradition with Smarter Ingredients" />
+    <meta property="twitter:description" content="Celebrate Ganesh Chaturthi with healthier traditional recipes and Ayurvedic wisdom on seasonal eating. Discover spices, sugar swaps, and expert dietitian tips for a balanced festive feast." />
+    <!-- <meta property="twitter:image" content="YOUR_FEATURE_IMAGE_URL_HERE" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --background-color-light: #f9fafb;
+        --text-color-light: #2c3e50;
+        --card-bg-light: white;
+        --border-color-light: #eee;
+        --accent-color-light: #c59a6d;
+        --accent-hover-light: #a67c4e;
+        --meta-text-light: #666;
+        --alert-bg-light: #f3f4f6;
+        --background-color-dark: #1a202c;
+        --text-color-dark: #edf2f7;
+        --card-bg-dark: #2d3748;
+        --border-color-dark: #4a5568;
+        --accent-color-dark: #e5b889;
+        --accent-hover-dark: #d4a06a;
+        --meta-text-dark: #a0aec0;
+        --alert-bg-dark: #252d3a;
+      }
+      body {
+        font-family: 'Lora', serif;
+        padding: 20px;
+        padding-top: 60px;
+        background-color: var(--background-color-light);
+        color: var(--text-color-light);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      body.dark-mode {
+        background-color: var(--background-color-dark);
+        color: var(--text-color-dark);
+      }
+      #progress-bar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: var(--border-color-light);
+        z-index: 1000;
+      }
+      body.dark-mode #progress-bar-container {
+        background-color: var(--border-color-dark);
+      }
+      #progress-bar {
+        height: 100%;
+        width: 0%;
+        background-color: var(--accent-color-light);
+        transition: width 0.1s ease-out;
+      }
+      body.dark-mode #progress-bar {
+        background-color: var(--accent-color-dark);
+      }
+      #dark-mode-toggle {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        background-color: var(--card-bg-light);
+        color: var(--text-color-light);
+        border: 1px solid var(--border-color-light);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        cursor: pointer;
+        z-index: 1001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      body.dark-mode #dark-mode-toggle {
+        background-color: var(--card-bg-dark);
+        color: var(--text-color-dark);
+        border: 1px solid var(--border-color-dark);
+      }
+      #dark-mode-toggle .fa-sun { display: none; }
+      body.dark-mode #dark-mode-toggle .fa-moon { display: none; }
+      body.dark-mode #dark-mode-toggle .fa-sun { display: inline; }
+      .blog-post-content {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        transition: background-color 0.3s ease;
+      }
+      body.dark-mode .blog-post-content {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 15px rgba(255,255,255,0.05);
+      }
+      .blog-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode .blog-header {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+      .blog-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-align: center;
+        color: var(--text-color-light);
+      }
+      body.dark-mode .blog-title {
+        color: var(--text-color-dark);
+      }
+      .post-meta {
+        margin: 20px 0;
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .post-meta span {
+        color: var(--meta-text-light);
+      }
+      body.dark-mode .post-meta span {
+        color: var(--meta-text-dark);
+      }
+      #toc-container {
+        background: var(--alert-bg-light);
+        padding: 20px 25px;
+        border-radius: 8px;
+        margin: 30px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+      body.dark-mode #toc-container {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+      .toc-title {
+        font-family: 'Montserrat', sans-serif;
+        margin-top: 0 !important;
+        margin-bottom: 15px !important;
+        font-size: 1.5rem !important;
+        border-bottom: none !important;
+        color: var(--text-color-light);
+      }
+      body.dark-mode .toc-title {
+        color: var(--text-color-dark);
+      }
+      #toc-list {
+        list-style: none;
+        padding-left: 0;
+      }
+      #toc-list li {
+        margin-bottom: 10px;
+      }
+      #toc-list li a {
+        text-decoration: none;
+        color: var(--accent-color-light);
+        font-weight: 500;
+      }
+      #toc-list li a:hover {
+        text-decoration: underline;
+        color: var(--accent-hover-light);
+      }
+      body.dark-mode #toc-list li a {
+        color: var(--accent-color-dark);
+      }
+      body.dark-mode #toc-list li a:hover {
+        color: var(--accent-hover-dark);
+      }
+      .blog-content {
+        line-height: 1.8;
+      }
+      .lead {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: var(--text-color-light);
+        margin-bottom: 2rem;
+      }
+      body.dark-mode .lead {
+        color: var(--text-color-dark);
+      }
+      h2 {
+        font-family: 'Montserrat', sans-serif;
+        color: var(--text-color-light);
+        margin-top: 40px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        font-size: 1.8rem;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode h2 {
+        color: var(--text-color-dark);
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+      h3 {
+        font-family: 'Montserrat', sans-serif;
+        color: var(--text-color-light);
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+      }
+      body.dark-mode h3 {
+        color: var(--text-color-dark);
+      }
+      p {
+        margin-bottom: 20px;
+        line-height: 1.8;
+        color: var(--text-color-light);
+      }
+      body.dark-mode p {
+        color: var(--text-color-dark);
+      }
+      ul,
+      ol {
+        padding-left: 20px;
+        margin-bottom: 20px;
+        list-style: none;
+      }
+      li {
+        margin-bottom: 15px;
+        line-height: 1.6;
+        position: relative;
+        padding-left: 25px;
+        color: var(--text-color-light);
+      }
+      body.dark-mode li {
+        color: var(--text-color-dark);
+      }
+      ul li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color-light);
+      }
+      body.dark-mode ul li:before {
+        color: var(--accent-color-dark);
+      }
+      ol {
+        counter-reset: item;
+      }
+      ol li {
+        counter-increment: item;
+      }
+      ol li:before {
+        content: counter(item) ".";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color-light);
+      }
+      body.dark-mode ol li:before {
+        color: var(--accent-color-dark);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        font-family: 'Montserrat', sans-serif;
+      }
+      th,
+      td {
+        border: 1px solid var(--border-color-light);
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: var(--accent-color-light);
+        color: white;
+      }
+      body.dark-mode th {
+        background-color: var(--accent-color-dark);
+      }
+      body.dark-mode td,
+      body.dark-mode th {
+        border-color: var(--border-color-dark);
+      }
+      .alert-info,
+      .conclusion-section {
+        background: var(--alert-bg-light);
+        padding: 35px;
+        border-radius: 8px;
+        margin: 40px 0 20px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+      body.dark-mode .alert-info,
+      body.dark-mode .conclusion-section {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+      .alert-info h3,
+      .conclusion-section h2 {
+        margin-top: 0;
+        padding-top: 0;
+        color: var(--text-color-light);
+        border-bottom: none;
+      }
+      body.dark-mode .alert-info h3,
+      body.dark-mode .conclusion-section h2 {
+        color: var(--text-color-dark);
+      }
+      .alert-info p:last-child,
+      .conclusion-section p:last-child {
+        margin-bottom: 0;
+      }
+      a {
+        color: var(--accent-color-light);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      body.dark-mode a {
+        color: var(--accent-color-dark);
+      }
+      a:hover {
+        color: var(--accent-hover-light);
+        text-decoration: underline;
+      }
+      body.dark-mode a:hover {
+        color: var(--accent-hover-dark);
+      }
+      strong {
+        color: var(--text-color-light);
+        font-weight: 600;
+      }
+      body.dark-mode strong {
+        color: var(--text-color-dark);
+      }
+      .social-sharing {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color-light);
+        text-align: center;
+      }
+      body.dark-mode .social-sharing {
+        border-top: 1px solid var(--border-color-dark);
+      }
+      .social-sharing h3 {
+        margin-bottom: 15px;
+      }
+      .social-sharing a {
+        margin: 0 10px;
+        font-size: 1.5rem;
+        color: var(--meta-text-light);
+      }
+      .social-sharing a:hover {
+        color: var(--accent-color-light);
+      }
+      body.dark-mode .social-sharing a {
+        color: var(--meta-text-dark);
+      }
+      body.dark-mode .social-sharing a:hover {
+        color: var(--accent-hover-dark);
+      }
+      .comments-section {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 30px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+      body.dark-mode .comments-section {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 10px rgba(255,255,255,0.05);
+      }
+      .comments-section h2 {
+        margin-top: 0;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode .comments-section h2 {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+          padding-top: 50px;
+        }
+        #dark-mode-toggle {
+          top: 10px;
+          right: 10px;
+        }
+        .blog-post-content,
+        .comments-section {
+          padding: 25px;
+          margin: 20px auto;
+        }
+        .blog-title {
+          font-size: 2rem;
+        }
+        .alert-info,
+        .conclusion-section,
+        .author-bio {
+          padding: 20px;
+          margin: 30px 0 15px 0;
+        }
+        .author-bio {
+          flex-direction: column;
+          text-align: center;
+        }
+        .post-meta {
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+        .post-meta span {
+          margin-right: 0;
+        }
+        h2 {
+          font-size: 1.6rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+        }
+        p,
+        li {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="progress-bar-container"><div id="progress-bar"></div></div>
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i><i class="fas fa-sun"></i>
+    </button>
+    <main>
+      <article class="blog-post-content">
+        <header class="blog-header">
+          <h1 class="blog-title">Ganesh Chaturthi: Savoring Tradition with Smarter Ingredients</h1>
+          <div class="post-meta">
+            <span><i class="far fa-calendar"></i> August 20, 2025</span>
+            <span><i class="far fa-clock"></i> 8 min read</span>
+            <span><i class="fas fa-tag"></i> Ganesh Chaturthi, Ayurveda, Festive Recipes</span>
+          </div>
+        </header>
+        <section id="toc-container" aria-labelledby="toc-heading">
+          <h2 id="toc-heading" class="toc-title">Table of Contents</h2>
+          <ul id="toc-list"></ul>
+        </section>
+        <div class="blog-content">
+          <p class="lead">
+            Festivals like Ganesh Chaturthi fill our hearts—not just with devotion but also with food that brings us together. But enjoying mithais doesn’t have to mean feeling heavy, bloated, or guilty. Let’s rediscover festive eating with tradition, science, and a dietitian’s wisdom—especially during Shravan and Bhadrapada, the monsoon season known in Ayurveda as Varsha Ritucharya.
+          </p>
+
+          <h2 id="seasonal-context">Seasonal Context & Ayurvedic Wisdom (Shravan, Bhadrapada, Varsha Ritucharya)</h2>
+          <p>
+            Ganesh Chaturthi arrives just as monsoon clouds linger—this is <strong>Varsha Ritucharya</strong>, when the air is damp and heavy. Ayurveda teaches that our digestive fire (<em>Agni</em>) is naturally weakened now. That means we can’t digest rich, oily, or sugary foods as easily. Overindulgence not only slows metabolism but aggravates <em>vata</em>—which is why you might notice bloating, sluggishness, or irregular appetite during this season.
+          </p>
+          <p>
+            The cultural wisdom here? Eat mindfully, emphasize lighter and easier-to-digest foods, and balance festive joy with gentle nourishment. That’s how you keep your gut happy and immunity strong.
+          </p>
+
+          <h2 id="festival-unity">Ganesh Chaturthi</h2>
+          <p>
+            Ganesh Chaturthi, as we celebrate it today, was revived by Lokmanya Tilak during British rule to encourage unity and cultural pride. Food and prasad are at its core—not just for ritual, but for connection.
+          </p>
+
+          <h2 id="why-add-spices">The Science of Flavor & Wellness</h2>
+          <p>
+            Spices like cinnamon, cardamom, nutmeg, and ginger are more than flavor enhancers—they’re digestive helpers and nutritional allies:
+          </p>
+          <ul>
+            <li><strong>Spices & Digestion:</strong> Ginger, cardamom, and nutmeg stimulate digestive enzymes. This supports the weakened Agni of the monsoon, making heavy foods easier on your system.</li>
+            <li><strong>Blood Sugar Balance:</strong> Cinnamon can help improve insulin sensitivity, blunting blood sugar spikes from sweets.</li>
+            <li><strong>Less Sugar Needed:</strong> Flavors like vanilla, cacao, coffee, or intense spices “trick” the brain into perceiving greater sweetness. This reduces the need to add extra sugar—your mithais are still delicious, but lighter on the glycemic load.</li>
+            <li><strong>Antioxidant Power:</strong> Most Indian spices are rich in antioxidants and anti-inflammatory compounds, supporting long-term health and even helping counteract the oxidative stress of occasional festival indulgence.</li>
+          </ul>
+          <p>
+            Refined sugar is absorbed rapidly and can spike blood sugar, leaving you tired, irritable, and at risk for weight gain if eaten in excess. By <strong>flavoring foods with spices and extracts</strong>, you make them tastier and more satisfying, needing less sweetener overall. This is especially vital during Varsha when Agni is weak.
+          </p>
+
+          <h2 id="sugar-swaps">Smart Sugar Swaps for Festivals</h2>
+          <ul>
+            <li>Reach for jaggery, coconut sugar, monk fruit, or dry dates powder instead of refined white sugar.</li>
+            <li>These options bring minerals, fiber, and lower glycemic index—so energy is steadier, cravings drop, and you still get that festive flavor.</li>
+            <li>Extracts like vanilla, coffee, and cacao are calorie-light ways to amp up taste satisfaction.</li>
+          </ul>
+
+          <h2 id="dietitian-tips">Pro Dietitian Tips for Smarter Festive Eating</h2>
+          <ul>
+            <li>Enjoy heavier festive meals only <strong>twice a day</strong>; eat lighter at other times to support Agni recovery and avoid overload.</li>
+            <li><strong>Portion prasad as sacred, not as a main meal</strong>—this keeps both stomach and spirit content.</li>
+            <li>If you eat a heavy lunch (think puran poli or modak), let dinner be simple—dal, khichdi, soup, or buttermilk.</li>
+            <li><strong>No daytime naps immediately after big meals</strong>—this further weakens digestion in monsoon and encourages heaviness.</li>
+            <li><strong>Add fiber, use healthy fats, and balance sweets with protein</strong> (like pairing ladoos with nuts or milk).</li>
+            <li>Move around! A gentle post-meal walk supports circulation and digestion.</li>
+          </ul>
+
+          <h2 id="recipes">Healthier Ganesh Chaturthi Recipes</h2>
+          <ul>
+            <li><strong>Steamed Modak</strong><br />
+              Shell: rice flour, ragi flour, or moong dal .<br />
+              Filling: coconut, jaggery, cardamom, cinnamon, nuts.<br />
+              Steam, don’t fry.
+            </li>
+            <li><strong>Puran Poli</strong><br />
+              Whole wheat/multigrain crust.<br />
+              Filling: chana dal, jaggery, dry ginger, nutmeg, cardamom.<br />
+              Minimal ghee.
+            </li>
+            <li><strong>Besan, Ragi, or Dry Fruit Ladoo</strong><br />
+              Toast besan/ragi, little ghee.<br />
+              Sweeten with dry dates powder or coconut sugar.<br />
+              Flavor with cinnamon, cardamom, nutmeg, and nuts.
+            </li>
+            <li><strong>Makhana Kheer</strong><br />
+              Makhana simmered in low-fat or plant milk.<br />
+              Dry dates powder, cardamom, saffron, vanilla, ginger.<br />
+              Topped with nuts.
+            </li>
+            <li><strong>Shrikhand</strong><br />
+              Hung curd, lightly sweetened with monk fruit or honey.<br />
+              Add cardamom, fruit, coffee, or cacao for twists.
+            </li>
+            
+            </li>
+            <li><strong>Coconut Buttermilk</strong><br />
+              Coconut water, yogurt, coriander, ginger, cumin, served chilled.
+            </li>
+          </ul>
+
+          <h2 id="panchamrit">Embracing Panchamrit—The Sacred Festive Blend</h2>
+          <p>
+            Why offer & sip Panchamrit? Its blend (milk, curd, honey, ghee, sugar) provides proteins, probiotics, healthy fats, and quick energy. One small serving supports immunity and digestion during these challenging, damp monsoon weeks.
+          </p>
+
+          <h2 id="final-takeaway">Final Takeaway</h2>
+          <p>
+            Ganesh Chaturthi is about more than sweets—it's about unity, joy, and celebrating tradition wisely. This monsoon, let your ingredients blend science and legacy. Use spices and smart sugar swaps, honor your Agni and the season, and make the most of every festive bite. Happy Ganesh Chaturthi—may your joys multiply, and your digestion stay strong!
+          </p>
+        </div>
+
+        <section class="social-sharing" aria-label="Share this post">
+          <h3>Share this post:</h3>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_PAGE_URL_HERE" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com/intent/tweet?url=YOUR_PAGE_URL_HERE&text=Ganesh Chaturthi: Savoring Tradition with Smarter Ingredients" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=YOUR_PAGE_URL_HERE&title=Ganesh Chaturthi: Savoring Tradition with Smarter Ingredients" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:?subject=Ganesh Chaturthi: Savoring Tradition with Smarter Ingredients&body=Check out this article: YOUR_PAGE_URL_HERE" aria-label="Share via Email"><i class="fas fa-envelope"></i></a>
+        </section>
+      </article>
+      <section class="comments-section" aria-label="Comments">
+        <h2>Comments</h2>
+        <p><em>Comments are not enabled yet. Check back soon!</em></p>
+      </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Table of Contents generation from h2[id]
+        const tocList = document.getElementById('toc-list');
+        const blogContent = document.querySelector('.blog-content');
+        if (tocList && blogContent) {
+          const headings = blogContent.querySelectorAll('h2[id]');
+          if (headings.length > 0) {
+            headings.forEach(heading => {
+              if (heading.id && heading.textContent.trim() !== '') {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = '#' + heading.id;
+                link.textContent = heading.textContent;
+                listItem.appendChild(link);
+                tocList.appendChild(listItem);
+              }
+            });
+          } else {
+            const tocContainer = document.getElementById('toc-container');
+            if(tocContainer) tocContainer.style.display = 'none';
+          }
+        }
+        // Reading progress bar
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+          window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollProgress = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = scrollProgress + '%';
+          });
+        }
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        const moonIcon = darkModeToggle ? darkModeToggle.querySelector('.fa-moon') : null;
+        const sunIcon = darkModeToggle ? darkModeToggle.querySelector('.fa-sun') : null;
+        function applyTheme(theme) {
+          if (theme === 'dark') {
+            body.classList.add('dark-mode');
+            if (moonIcon) moonIcon.style.display = 'none';
+            if (sunIcon) sunIcon.style.display = 'inline';
+          } else {
+            body.classList.remove('dark-mode');
+            if (moonIcon) moonIcon.style.display = 'inline';
+            if (sunIcon) sunIcon.style.display = 'none';
+          }
+        }
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          applyTheme(savedTheme);
+        } else {
+          applyTheme('light');
+        }
+        if (darkModeToggle) {
+          if (body.classList.contains('dark-mode')) {
+            if (moonIcon) moonIcon.style.display = 'none';
+            if (sunIcon) sunIcon.style.display = 'inline';
+          } else {
+            if (moonIcon) moonIcon.style.display = 'inline';
+            if (sunIcon) sunIcon.style.display = 'none';
+          }
+          darkModeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+              applyTheme('light');
+              localStorage.setItem('theme', 'light');
+            } else {
+              applyTheme('dark');
+              localStorage.setItem('theme', 'dark');
+            }
+          });
+        }
+        // Smooth scroll for TOC links
+        if (tocList) {
+          tocList.querySelectorAll('a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              const targetId = this.getAttribute('href').substring(1);
+              const targetElement = document.getElementById(targetId);
+              if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+              }
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
