@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A Journey Through Life: How Your Gut Changes From Birth to Old Age</title>
+    <meta name="description" content="Explore the fascinating journey of gut health from birth to old age, the impact of lifestyle, diet, and how to protect future generations from autoimmunity with a holistic approach." />
+    <meta name="keywords" content="Gut health, lifecycle nutrition, microbiome, autoimmunity, Indian diet, probiotics, child gut health, fermented foods" />
+    <meta name="author" content="Svasth by Soumya" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="YOUR_PAGE_URL_HERE" />
+    <meta property="og:title" content="A Journey Through Life: How Your Gut Changes From Birth to Old Age" />
+    <meta property="og:description" content="From infancy to old age, understand your gut health’s evolution, impact of diet and lifestyle, and how to nurture the microbiome across generations." />
+    <!-- <meta property="og:image" content="YOUR_FEATURE_IMAGE_URL_HERE" /> -->
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="YOUR_PAGE_URL_HERE" />
+    <meta property="twitter:title" content="A Journey Through Life: How Your Gut Changes From Birth to Old Age" />
+    <meta property="twitter:description" content="Learn how gut health evolves through life stages and strategies to keep it robust, including protecting children from autoimmune risks." />
+    <!-- <meta property="twitter:image" content="YOUR_FEATURE_IMAGE_URL_HERE" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --background-color-light: #f9fafb;
+        --text-color-light: #2c3e50;
+        --card-bg-light: white;
+        --border-color-light: #eee;
+        --accent-color-light: #c59a6d;
+        --accent-hover-light: #a67c4e;
+        --meta-text-light: #666;
+        --alert-bg-light: #f3f4f6;
+        --background-color-dark: #1a202c;
+        --text-color-dark: #edf2f7;
+        --card-bg-dark: #2d3748;
+        --border-color-dark: #4a5568;
+        --accent-color-dark: #e5b889;
+        --accent-hover-dark: #d4a06a;
+        --meta-text-dark: #a0aec0;
+        --alert-bg-dark: #252d3a;
+      }
+      body {
+        font-family: 'Lora', serif;
+        padding: 20px;
+        padding-top: 60px;
+        background-color: var(--background-color-light);
+        color: var(--text-color-light);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      body.dark-mode {
+        background-color: var(--background-color-dark);
+        color: var(--text-color-dark);
+      }
+      #progress-bar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: var(--border-color-light);
+        z-index: 1000;
+      }
+      body.dark-mode #progress-bar-container {
+        background-color: var(--border-color-dark);
+      }
+      #progress-bar {
+        height: 100%;
+        width: 0%;
+        background-color: var(--accent-color-light);
+        transition: width 0.1s ease-out;
+      }
+      body.dark-mode #progress-bar {
+        background-color: var(--accent-color-dark);
+      }
+      #dark-mode-toggle {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        background-color: var(--card-bg-light);
+        color: var(--text-color-light);
+        border: 1px solid var(--border-color-light);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        cursor: pointer;
+        z-index: 1001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      body.dark-mode #dark-mode-toggle {
+        background-color: var(--card-bg-dark);
+        color: var(--text-color-dark);
+        border: 1px solid var(--border-color-dark);
+      }
+      #dark-mode-toggle .fa-sun { display: none; }
+      body.dark-mode #dark-mode-toggle .fa-moon { display: none; }
+      body.dark-mode #dark-mode-toggle .fa-sun { display: inline; }
+      .blog-post-content {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        transition: background-color 0.3s ease;
+      }
+      body.dark-mode .blog-post-content {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 15px rgba(255,255,255,0.05);
+      }
+      .blog-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode .blog-header {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+      .blog-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-align: center;
+        color: var(--text-color-light);
+      }
+      body.dark-mode .blog-title {
+        color: var(--text-color-dark);
+      }
+      .post-meta {
+        margin: 20px 0;
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .post-meta span {
+        color: var(--meta-text-light);
+      }
+      body.dark-mode .post-meta span {
+        color: var(--meta-text-dark);
+      }
+      #toc-container {
+        background: var(--alert-bg-light);
+        padding: 20px 25px;
+        border-radius: 8px;
+        margin: 30px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+      body.dark-mode #toc-container {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+      .toc-title {
+        font-family: 'Montserrat', sans-serif;
+        margin-top: 0 !important;
+        margin-bottom: 15px !important;
+        font-size: 1.5rem !important;
+        border-bottom: none !important;
+        color: var(--text-color-light);
+      }
+      body.dark-mode .toc-title {
+        color: var(--text-color-dark);
+      }
+      #toc-list {
+        list-style: none;
+        padding-left: 0;
+      }
+      #toc-list li {
+        margin-bottom: 10px;
+      }
+      #toc-list li a {
+        text-decoration: none;
+        color: var(--accent-color-light);
+        font-weight: 500;
+      }
+      #toc-list li a:hover {
+        text-decoration: underline;
+        color: var(--accent-hover-light);
+      }
+      body.dark-mode #toc-list li a {
+        color: var(--accent-color-dark);
+      }
+      body.dark-mode #toc-list li a:hover {
+        color: var(--accent-hover-dark);
+      }
+      .blog-content {
+        line-height: 1.8;
+      }
+      .lead {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: var(--text-color-light);
+        margin-bottom: 2rem;
+      }
+      body.dark-mode .lead {
+        color: var(--text-color-dark);
+      }
+      h2 {
+        font-family: 'Montserrat', sans-serif;
+        color: var(--text-color-light);
+        margin-top: 40px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        font-size: 1.8rem;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode h2 {
+        color: var(--text-color-dark);
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+      h3 {
+        font-family: 'Montserrat', sans-serif;
+        color: var(--text-color-light);
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+      }
+      body.dark-mode h3 {
+        color: var(--text-color-dark);
+      }
+      p {
+        margin-bottom: 20px;
+        line-height: 1.8;
+        color: var(--text-color-light);
+      }
+      body.dark-mode p {
+        color: var(--text-color-dark);
+      }
+      ul,
+      ol {
+        padding-left: 20px;
+        margin-bottom: 20px;
+        list-style: none;
+      }
+      li {
+        margin-bottom: 15px;
+        line-height: 1.6;
+        position: relative;
+        padding-left: 25px;
+        color: var(--text-color-light);
+      }
+      body.dark-mode li {
+        color: var(--text-color-dark);
+      }
+      ul li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color-light);
+      }
+      body.dark-mode ul li:before {
+        color: var(--accent-color-dark);
+      }
+      ol {
+        counter-reset: item;
+      }
+      ol li {
+        counter-increment: item;
+      }
+      ol li:before {
+        content: counter(item) ".";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color-light);
+      }
+      body.dark-mode ol li:before {
+        color: var(--accent-color-dark);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        font-family: 'Montserrat', sans-serif;
+      }
+      th,
+      td {
+        border: 1px solid var(--border-color-light);
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: var(--accent-color-light);
+        color: white;
+      }
+      body.dark-mode th {
+        background-color: var(--accent-color-dark);
+      }
+      body.dark-mode td,
+      body.dark-mode th {
+        border-color: var(--border-color-dark);
+      }
+      .alert-info,
+      .conclusion-section {
+        background: var(--alert-bg-light);
+        padding: 35px;
+        border-radius: 8px;
+        margin: 40px 0 20px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+      body.dark-mode .alert-info,
+      body.dark-mode .conclusion-section {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+      .alert-info h3,
+      .conclusion-section h2 {
+        margin-top: 0;
+        padding-top: 0;
+        color: var(--text-color-light);
+        border-bottom: none;
+      }
+      body.dark-mode .alert-info h3,
+      body.dark-mode .conclusion-section h2 {
+        color: var(--text-color-dark);
+      }
+      .alert-info p:last-child,
+      .conclusion-section p:last-child {
+        margin-bottom: 0;
+      }
+      a {
+        color: var(--accent-color-light);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      body.dark-mode a {
+        color: var(--accent-color-dark);
+      }
+      a:hover {
+        color: var(--accent-hover-light);
+        text-decoration: underline;
+      }
+      body.dark-mode a:hover {
+        color: var(--accent-hover-dark);
+      }
+      strong {
+        color: var(--text-color-light);
+        font-weight: 600;
+      }
+      body.dark-mode strong {
+        color: var(--text-color-dark);
+      }
+      .social-sharing {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color-light);
+        text-align: center;
+      }
+      body.dark-mode .social-sharing {
+        border-top: 1px solid var(--border-color-dark);
+      }
+      .social-sharing h3 {
+        margin-bottom: 15px;
+      }
+      .social-sharing a {
+        margin: 0 10px;
+        font-size: 1.5rem;
+        color: var(--meta-text-light);
+      }
+      .social-sharing a:hover {
+        color: var(--accent-color-light);
+      }
+      body.dark-mode .social-sharing a {
+        color: var(--meta-text-dark);
+      }
+      body.dark-mode .social-sharing a:hover {
+        color: var(--accent-hover-dark);
+      }
+      .comments-section {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 30px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+      body.dark-mode .comments-section {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 10px rgba(255,255,255,0.05);
+      }
+      .comments-section h2 {
+        margin-top: 0;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode .comments-section h2 {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+          padding-top: 50px;
+        }
+        #dark-mode-toggle {
+          top: 10px;
+          right: 10px;
+        }
+        .blog-post-content,
+        .comments-section {
+          padding: 25px;
+          margin: 20px auto;
+        }
+        .blog-title {
+          font-size: 2rem;
+        }
+        .alert-info,
+        .conclusion-section,
+        .author-bio {
+          padding: 20px;
+          margin: 30px 0 15px 0;
+        }
+        .author-bio {
+          flex-direction: column;
+          text-align: center;
+        }
+        .post-meta {
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+        .post-meta span {
+          margin-right: 0;
+        }
+        h2 {
+          font-size: 1.6rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+        }
+        p,
+        li {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+    <body>
+      <div id="progress-bar-container"><div id="progress-bar"></div></div>
+      <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i><i class="fas fa-sun"></i>
+      </button>
+      <main>
+        <article class="blog-post-content">
+          <header class="blog-header">
+            <h1 class="blog-title">A Journey Through Life: How Your Gut Changes From Birth to Old Age</h1>
+            <div class="post-meta">
+              <span><i class="far fa-calendar"></i> August 21, 2025</span>
+              <span><i class="far fa-clock"></i> 12 min read</span>
+              <span><i class="fas fa-tag"></i> Gut Health, Microbiome, Lifespan Nutrition</span>
+            </div>
+          </header>
+          <section id="toc-container" aria-labelledby="toc-heading">
+            <h2 id="toc-heading" class="toc-title">Table of Contents</h2>
+            <ul id="toc-list"></ul>
+          </section>
+          <div class="blog-content">
+            <p class="lead">
+              In the heart of India, where family, food, and traditions intertwine, every individual’s journey is a story of growth and transformation — especially when it comes to gut health. From birth through old age, our gut evolves, influencing overall wellbeing in many subtle and powerful ways.
+            </p>
+            <h2 id="chapter1">Chapter 1: The Beginnings – Birth to Childhood</h2>
+            <p>
+             Our story begins the moment we are born. As infants, our gut is sterile and free of bacteria, but as we are exposed to the world, the process of colonization begins. By the time we’re a few months old, we begin to develop our unique microbiome, a community of bacteria that will live inside us for the rest of our lives.            </p>
+           <p>Breastfeeding is a cherished tradition, and it plays an essential role in establishing a healthy gut. Mother’s milk is rich in probiotics and nutrients that nourish the gut and build the foundation for a robust immune system. As we begin eating solid foods—mashed daal, rice, soft rotis, and fruit purees—our gut continues to grow and adapt. Spices like cumin, ginger, and turmeric, which are common in Indian cuisine, also begin to shape our gut health, introducing beneficial compounds that aid digestion and fight inflammation.
+             </p> 
+             <p>However, even in childhood, the gut is still learning to adjust to the different foods we eat. Many children in India begin to experience mild stomach upset or indigestion as they adjust to new foods, especially those rich in fiber and dairy. But with the right diet, full of fresh vegetables, fruits, and traditional fermented foods like curd and buttermilk, their guts flourish, becoming stronger and more resilient.</p>
+           <h2 id="chapter2">Chapter 2: The Teenage Years – Growth and Change</h2>
+            <p>As we enter our teenage years, our body begins to undergo many changes. Puberty brings growth spurts, hormonal fluctuations, and increased energy, but it also brings new challenges for the digestive system. During this time, the body needs more nutrients to support growth, and the gut becomes more efficient at absorbing these nutrients. This is also when we begin to experience the full diversity of flavors and foods, especially in India, where food is an integral part of festivals, gatherings, and family meals.
+            </p>
+            <p>Teenagers often indulge in street foods, sweets, and spicy snacks—chole bhature, samosas, pakoras, or even burgers, pizza, donuts, pastas and more. While delicious, these foods can sometimes overwhelm the digestive system, leading to issues like indigestion, bloating, or heartburn. In some cases, this is the time when food sensitivities may first emerge. It could be the introduction of dairy products or high-fat foods, leading to mild discomfort or bloating. But with the help of home remedies like ginger tea or warm lemon water, and a return to more balanced meals, the gut typically bounces back.
+            </p>
+            <p> The microbiome continues to develop, and by this time, it has already established a strong foundation of good bacteria. However, the gut can still be easily disturbed by irregular eating habits, stress, and a lack of hydration. Teenagers, particularly in fast-paced urban environments, may struggle with stress and irregular eating patterns, which can negatively impact digestion.
+            </p>
+            </p>
+            <h2 id="chapter3">Chapter 3: Adulthood – The Prime Years</h2>
+            <p> Adulthood marks the peak of physical health and energy. At this stage, we are at our most active, and our digestive system is functioning at its prime. Our diet in India is often diverse and rich in fiber, with daily meals consisting of whole grains, pulses, vegetables, and spices. We embrace a variety of tastes—from the spicy curries of the south to the rich gravies of the north.
+            </p>
+            <p> During adulthood, the gut is quite resilient and efficient at handling the foods we consume, but it’s also during this period that digestive issues may begin to surface. Work stress, irregular sleep, and the pressures of daily life can take a toll on our gut. Conditions like acid reflux, bloating, and indigestion may become more common, especially if we indulge in spicy or fried foods regularly or drink alcohol in excess. Additionally, stress-related gut issues such as Irritable Bowel Syndrome (IBS) may start to appear.
+            </p>
+            <p> This is also the time when many adults begin to experience the first signs of gut imbalances. The gut microbiome, although still robust, can be influenced by external factors like antibiotics, processed foods, and high-fat diets. To keep the gut in check, many turn to probiotics, like those found in fermented foods such as yogurt, lassi, and pickles, and try to maintain a balanced diet rich in vegetables, fruits, and fiber.
+            </p>
+            <h2 id="chapter4">Chapter 4: Middle Age – Slowing Down and the First Signs of Change</h2>
+            <p> As we enter middle age, typically in our 40s or 50s, our body starts to show the first signs of aging. The digestive system, while still functional, starts to slow down. The production of stomach acid and digestive enzymes begins to decrease, making it harder to break down food and absorb nutrients. This can lead to issues like bloating, gas, and constipation.
+            </p>
+            <p> In India, the diet remains diverse, but the way we eat may start to shift. Many people at this age may find themselves eating out less and opting for simpler, home-cooked meals, but they may also start to experience discomfort after eating heavy or spicy foods. Conditions like acid reflux or a more pronounced sensitivity to certain foods—especially dairy and fried items—become more common. The body may also start to struggle with nutrient absorption, leading to deficiencies in vitamins like B12, calcium, and vitamin D.
+            </p>
+            <p> A slowing metabolism can make weight management more challenging, and the combination of slower digestion and reduced physical activity can increase the risk of constipation. Fiber-rich foods, especially traditional Indian dishes like khichdi (a comforting mix of rice and lentils) or sabzis (vegetables), along with staying hydrated with drinks like buttermilk, are essential to support digestion and maintain gut health.
+            </p>
+            <h2 id="chapter5">Chapter 5: Old Age – The Final Chapter of Gut Health</h2>
+            <p> In old age, the body experiences significant changes, and the gut is no exception. The muscles of the gastrointestinal tract become weaker, and digestion becomes slower. Conditions like constipation, indigestion, and bloating become more frequent, and the risk of gut inflammation and imbalance increases. The gut flora, which has evolved and adapted over the years, may start to decline in diversity, making the gut more susceptible to harmful bacteria and less efficient at absorbing nutrients.
+            </p>
+            <p> In India, where eldercare is deeply rooted in family tradition, older individuals often receive great care through food. Traditional healing foods like turmeric milk, ginger tea, and the use of ghee in cooking are believed to support digestion and reduce inflammation. However, older adults may find certain foods, particularly those that are rich in fiber or fat, harder to tolerate. This is the time when simple, easily digestible foods like khichdi, soups, and stews become crucial to maintaining gut health.
+            </p>
+            <p> At this stage, the importance of maintaining a balanced gut microbiome becomes more pronounced. Probiotics, such as curd, and prebiotics like garlic and onions, play an important role in supporting digestive health. Staying hydrated and including gentle, restorative exercises like yoga or walking can help maintain the digestive system’s function.
+            </p>
+            <h2 id="passing-torch">Passing the Torch of Gut Health: Protecting Our Children from Autoimmunity</h2>
+            <p> Gut health is a legacy passed down through generations, not only from the mother but from everyone a child is exposed to—from family members to the environment around them. The microbiome, which is the collection of microbes in our digestive system, plays a vital role in digestion, immunity, and overall health. From the moment a child is born, their gut is influenced by the microbes around them, including those from family members, the environment, and the food they eat.
+            </p>
+            <p> A child’s gut microbiome begins to develop at birth and is shaped by several factors. The mode of delivery (vaginal or cesarean), the family’s diet, and exposure to different environments all contribute to building the child’s microbiome. The family’s gut health also plays a role, as their microbiome can influence the child through direct contact, shared meals, and even the environment of the home.
+            </p>
+            <p> Breastfeeding, of course, plays an important role in introducing beneficial bacteria to the child’s gut. But even as children grow, they continue to be influenced by the gut health of those around them—whether it’s family members, caregivers, or the community they interact with.
+            </p>
+            <h2 id="autoimmunity-rise">The Rise of Autoimmunity and Gut Health</h2>
+            <p>
+              Autoimmune diseases like Type 1 diabetes, rheumatoid arthritis, and eczema are increasingly linked to gut microbiome disruptions, amplified by lifestyle changes away from traditional fiber-rich diets toward processed foods and sedentary habits.
+            </p>
+            <h2 id="protect-future">How to Protect Future Generations from Autoimmunity</h2>
+            <ul>
+              <li>A Holistic Approach to Gut Health: A child’s gut health is influenced by everyone around them. This includes not only the mother but the father, grandparents, siblings, and caregivers. When family members maintain a healthy gut through a balanced diet rich in fiber, probiotics, and fermented foods, they pass on a strong microbiome to the child</li>
+              <li>Breastfeeding and Healthy Feeding Practices: Breastfeeding introduces beneficial bacteria into the baby’s gut, but as children grow, it’s important to encourage a diet full of whole foods like vegetables, legumes, and fermented products. Family meals made from fresh, home-cooked ingredients help ensure the child’s microbiome remains balanced.</li>
+              <li>Reduce Antibiotic Overuse: Antibiotics can disrupt the gut microbiome, so they should be used judiciously. Encourage natural immunity-building practices like healthy eating, regular exercise, and enough sleep.</li>
+              <li>Diet and Lifestyle: It’s essential to promote a healthy, balanced diet for children. Focus on fresh, whole foods, reduce processed and sugary snacks, and encourage fermented foods that nurture the gut. Regular physical activity and stress reduction practices, such as yoga or outdoor play, can also maintain a healthy gut.</li>
+              <li>A Community Approach to Gut Health: In a close-knit society like India, extended family and community interactions shape a child’s world. These interactions—whether sharing meals, spending time with grandparents, or following cultural traditions—help to pass down healthy gut habits. The child’s environment, including clean water, fresh air, and a connection to nature, also plays a key role.</li>
+            </ul>
+            <h2 id="conclusion">Conclusion: The Legacy of Gut Health</h2>
+            <p>
+             The health of our gut is more than an individual matter; it’s a shared legacy. Gut health is influenced by our interactions with others, and it’s passed down through family, food, and lifestyle. By prioritizing a a balanced, fiber-rich diet, plenty of hydration, physical activity, and stress management, we can ensure that our children inherit not just a strong immune system but a thriving microbiome. In this way, we can protect the next generation from the growing burden of autoimmune diseases and give them the gift of lifelong health.
+            </p>
+          </div>
+          <section class="social-sharing" aria-label="Share this post">
+            <h3>Share this post:</h3>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_PAGE_URL_HERE" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/intent/tweet?url=YOUR_PAGE_URL_HERE&text=A Journey Through Life: How Your Gut Changes From Birth to Old Age" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=YOUR_PAGE_URL_HERE&title=A Journey Through Life: How Your Gut Changes From Birth to Old Age" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:?subject=A Journey Through Life: How Your Gut Changes From Birth to Old Age&body=Check out this article: YOUR_PAGE_URL_HERE" aria-label="Share via Email"><i class="fas fa-envelope"></i></a>
+          </section>
+        </article>
+
+        <section class="comments-section" aria-label="Comments">
+          <h2>Comments</h2>
+          <p><em>Comments are not enabled yet. Check back soon!</em></p>
+        </section>
+      </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Table of Contents generation from h2[id]
+        const tocList = document.getElementById('toc-list');
+        const blogContent = document.querySelector('.blog-content');
+        if (tocList && blogContent) {
+          const headings = blogContent.querySelectorAll('h2[id]');
+          if (headings.length > 0) {
+            headings.forEach(heading => {
+              if (heading.id && heading.textContent.trim() !== '') {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = '#' + heading.id;
+                link.textContent = heading.textContent;
+                listItem.appendChild(link);
+                tocList.appendChild(listItem);
+              }
+            });
+          } else {
+            const tocContainer = document.getElementById('toc-container');
+            if(tocContainer) tocContainer.style.display = 'none';
+          }
+        }
+        // Reading progress bar
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+          window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollProgress = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = scrollProgress + '%';
+          });
+        }
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        const moonIcon = darkModeToggle ? darkModeToggle.querySelector('.fa-moon') : null;
+        const sunIcon = darkModeToggle ? darkModeToggle.querySelector('.fa-sun') : null;
+        function applyTheme(theme) {
+          if (theme === 'dark') {
+            body.classList.add('dark-mode');
+            if (moonIcon) moonIcon.style.display = 'none';
+            if (sunIcon) sunIcon.style.display = 'inline';
+          } else {
+            body.classList.remove('dark-mode');
+            if (moonIcon) moonIcon.style.display = 'inline';
+            if (sunIcon) sunIcon.style.display = 'none';
+          }
+        }
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          applyTheme(savedTheme);
+        } else {
+          applyTheme('light');
+        }
+        if (darkModeToggle) {
+          if (body.classList.contains('dark-mode')) {
+            if (moonIcon) moonIcon.style.display = 'none';
+            if (sunIcon) sunIcon.style.display = 'inline';
+          } else {
+            if (moonIcon) moonIcon.style.display = 'inline';
+            if (sunIcon) sunIcon.style.display = 'none';
+          }
+          darkModeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+              applyTheme('light');
+              localStorage.setItem('theme', 'light');
+            } else {
+              applyTheme('dark');
+              localStorage.setItem('theme', 'dark');
+            }
+          });
+        }
+        // Smooth scroll for TOC links
+        if (tocList) {
+          tocList.querySelectorAll('a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              const targetId = this.getAttribute('href').substring(1);
+              const targetElement = document.getElementById(targetId);
+              if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+              }
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
