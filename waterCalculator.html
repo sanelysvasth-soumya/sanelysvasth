@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Water Intake Calculator - HealthScore</title>
+    <title>Fluid Intake Calculator - HealthScore</title>
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link
@@ -20,7 +20,6 @@
   <body>
     <!-- Navigation -->
     <div id="nav-placeholder"></div>
-
     <!-- Main Content Section -->
     <div id="calculator-section">
       <div class="container">
@@ -30,10 +29,9 @@
             <div class="col-md-6">
               <div class="calculator-card">
                 <div class="calculator-header">
-                  <h2><i class="fas fa-tint"></i> Water Intake Calculator</h2>
-                  <p>Calculate your daily water requirements</p>
+                  <h2><i class="fas fa-tint"></i> Fluid Intake Calculator</h2>
+                  <p>Calculate your daily hydration requirements</p>
                 </div>
-
                 <form id="waterForm" class="calculator-form">
                   <div class="form-group">
                     <label for="age">Age (years)</label>
@@ -45,7 +43,6 @@
                       placeholder="Enter your age"
                     />
                   </div>
-
                   <div class="form-group">
                     <label>Gender</label>
                     <div class="radio">
@@ -64,7 +61,6 @@
                       </label>
                     </div>
                   </div>
-
                   <div class="form-group">
                     <label for="height">Height (cm)</label>
                     <input
@@ -75,7 +71,6 @@
                       placeholder="Enter your height"
                     />
                   </div>
-
                   <div class="form-group">
                     <label for="weight">Weight (kg)</label>
                     <input
@@ -86,7 +81,6 @@
                       placeholder="Enter your weight"
                     />
                   </div>
-
                   <div class="form-group">
                     <label for="environment">Environment</label>
                     <select class="form-control" id="environment" required>
@@ -97,7 +91,6 @@
                       <option value="normal">Normal</option>
                     </select>
                   </div>
-
                   <div class="form-group">
                     <label for="activity">Activity Level</label>
                     <select class="form-control" id="activity" required>
@@ -108,12 +101,10 @@
                       <option value="very">Very Active</option>
                     </select>
                   </div>
-
                   <button type="submit" class="btn calculate-btn">
-                    Calculate Water Intake
+                    Calculate Required Fluid Intake
                   </button>
                 </form>
-
                 <div
                   id="waterResult"
                   class="result-section"
@@ -125,10 +116,9 @@
                       <i class="fas fa-redo"></i> Recalculate
                     </button>
                   </div>
-
                   <div class="result-content">
                     <div class="water-score">
-                      <span class="score-label">Daily Water Requirement</span>
+                      <span class="score-label">Daily Fluid Requirement</span>
                       <span id="waterValue" class="score-value">0</span>
                       <span class="score-unit">milliliters (ml)</span>
                       <span id="waterLiters" class="score-unit-alt"
@@ -138,7 +128,6 @@
                         >0 glasses (250ml)</span
                       >
                     </div>
-
                     <div id="waterMessage" class="result-message">
                       <!-- Message will be inserted here -->
                     </div>
@@ -146,12 +135,11 @@
                 </div>
               </div>
             </div>
-
             <!-- Water Information Card -->
             <div class="col-md-6">
               <div class="calculator-card info-card">
                 <div class="calculator-header">
-                  <h2><i class="fas fa-info-circle"></i> About Water Intake</h2>
+                  <h2><i class="fas fa-info-circle"></i> About hydration</h2>
                 </div>
                 <div class="info-content">
                   <h4>Why is Proper Hydration Important?</h4>
@@ -169,77 +157,82 @@
         </div>
       </div>
     </div>
-
     <!-- Scripts -->
     <script src="js/jquery.1.11.1.js"></script>
     <script>
       $(function () {
         $("#nav-placeholder").load("nav.html");
       });
-
       // Water Calculator Logic
       $("#waterForm").on("submit", function (e) {
         e.preventDefault();
-
         const weight = parseFloat($("#weight").val());
         const height = parseFloat($("#height").val());
         const age = parseInt($("#age").val());
         const gender = $("input[name='gender']:checked").val();
         const environment = $("#environment").val();
         const activity = $("#activity").val();
-
         // Validation
         if (weight < 30 || weight > 300) {
           alert("Please enter a valid weight (30-300 kg)");
           return;
         }
-
         if (height < 120 || height > 250) {
           alert("Please enter a valid height (120-250 cm)");
           return;
         }
-
         if (age < 15 || age > 120) {
           alert("Please enter a valid age (15-120 years)");
           return;
         }
-
         // Activity Level Factors
         const activityFactors = {
           sedentary: 1.2,
-          lightly: 1.375,
-          moderately: 1.55,
-          very: 1.725,
+          lightly: 1.3,
+          moderately: 1.5,
+          very: 1.7,
         };
-
         // Environment Factors
         const environmentFactors = {
-          hot: 1.3,
+          hot: 1.2,
           cold: 0.9,
-          humid: 1.18,
+          humid: 1.1,
           normal: 1.0,
         };
-
         // Calculate water intake
-        const waterIntake =
+        let waterIntake =
           weight *
           30 *
           activityFactors[activity] *
           environmentFactors[environment];
+
+        // Apply upper limit of 4000 ml (4 liters)
+        if (waterIntake > 4000) {
+          waterIntake = 4000;
+        }
+
         const roundedWater = Math.round(waterIntake);
         const waterLiters = (roundedWater / 1000).toFixed(1);
         const waterGlasses = Math.round(roundedWater / 250);
 
-        // Generate message
+        // Generate message with bifurcation if intake is above 2800 ml
         let message = `<p>Based on your ${activity.replace(
           "_",
           " "
-        )} activity level and ${environment} environment, 
-                          you should drink approximately:</p>
+        )} activity level and ${environment} environment, you should drink approximately:</p>
                           <ul>
                               <li>${roundedWater} ml (${waterLiters} liters) of water per day</li>
                               <li>This equals about ${waterGlasses} glasses (250ml each)</li>
                           </ul>`;
+
+        if (roundedWater > 2800) {
+          message += `<p>We recommend dividing your daily fluid intake approximately as follows:</p>
+                      <ol>
+                        <li><strong>Water (Plain Drinking Water):</strong> about 50% of total intake</li>
+                        <li><strong>Fluids from Other Drinks (like juices, buttermilk, coconut water):</strong> about 30%</li>
+                        <li><strong>Fluids from Food (fruits, vegetables, soups, etc.):</strong> about 20%</li>
+                      </ol>`;
+        }
 
         // Display results
         $("#waterValue").text(roundedWater);
@@ -251,7 +244,6 @@
         $("#waterForm").hide();
         $("#waterResult").fadeIn();
       });
-
       // Recalculate button handler
       $(".recalculate-btn").click(function () {
         $("#waterResult").hide();
