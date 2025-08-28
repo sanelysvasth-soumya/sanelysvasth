@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Daily Care Planner - Final Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  body {
+    background: #f9fafb;
+    font-family: 'Poppins', sans-serif;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px 60px 20px;
+    color: #333;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.8rem;
+    color: #333;
+  }
+  form {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    padding: 30px 35px;
+  }
+  /* Header as text with date and day */
+  .header-row {
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #c59a6d;
+    font-weight: 700;
+  }
+  .header-row div {
+    display: flex;
+    flex-direction: column;
+  }
+  .header-label {
+    margin-bottom: 5px;
+  }
+  input#name {
+    width: 210px;
+    padding: 6px 8px;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    outline: none;
+  }
+  .date-text, .day-text {
+    font-size: 1.15rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #c59a6d;
+    margin-bottom: 12px;
+  }
+  hr.separator {
+    border: none;
+    border-top: 1px solid #c59a6d;
+    margin: 24px 0;
+  }
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #c59a6d;
+  }
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #a67c52;
+    transition: background-color 0.25s ease;
+  }
+  input[type="checkbox"]:checked {
+    background-color: #c59a6d;
+    border-color: #c59a6d;
+  }
+  .hydration-section {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    user-select: none;
+  }
+  .hydration-glasses {
+    display: flex;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .glass {
+    width: 24px;
+    height: 32px;
+    border: 2px solid #c59a6d;
+    border-radius: 5px 5px 7px 7px;
+    background: white;
+    position: relative;
+    transition: background 0.3s ease;
+  }
+  .glass.fill::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #c59a6d, #e6c9a8);
+    border-radius: 0 0 7px 7px;
+    animation: fillAnim 0.5s ease forwards;
+  }
+  .lifestyle-group {
+    margin-bottom: 20px;
+    color: #c59a6d;
+  }
+  .checkbox-group.lifestyle {
+    margin-bottom: 30px;
+  }
+  .sleep-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  .sleep-inputs label {
+    font-weight: 600;
+    color: #c59a6d;
+  }
+  .sleep-time-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  #sleepTime {
+    width: 140px;
+    padding: 7px 8px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+  }
+  #sleepAmPm {
+    width: 60px;
+    padding: 6px 8px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    margin-top: 0;
+  }
+  #screenTime {
+    width: 180px;
+    padding: 6px 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+  }
+  #sleepQuality {
+    width: 100%;
+    height: 14px;
+    border-radius: 8px;
+    background: #eee;
+    -webkit-appearance: none;
+    margin-bottom: 6px;
+  }
+  #sleepQuality::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    background: linear-gradient(45deg, #c59a6d, #e6c9a8);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 28px;
+  }
+  .slider-labels span:last-child {
+    text-align: right;
+  }
+  .mood-energy-section {
+    margin-bottom: 35px;
+  }
+  .mood-energy-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #c59a6d;
+    margin-bottom: 8px;
+  }
+  .mood-energy-slider {
+    width: 100%;
+    height: 14px;
+    border-radius: 8px;
+    background: #eee;
+    -webkit-appearance: none;
+    margin-bottom: 6px;
+  }
+  .mood-energy-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    background: linear-gradient(45deg, #c59a6d, #e6c9a8);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .slider-labels-small {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 35px;
+  }
+  .slider-labels-small span {
+    width: 20%;
+    text-align: center;
+  }
+  .achievement-item {
+    margin-bottom: 18px;
+  }
+  .achievement-label {
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #c59a6d;
+  }
+  .progress-bar {
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 18px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(45deg, #c59a6d, #e6c9a8);
+    width: 0%;
+    transition: width 0.35s ease-in-out;
+  }
+  .progress-text {
+    margin-top: 4px;
+    font-weight: 600;
+    color: #555;
+  }
+  hr.separator {
+    border: none;
+    border-top: 1px solid #c59a6d;
+    margin: 30px 0;
+  }
+  button#submitBtn {
+    display: block;
+    width: 100%;
+    margin-top: 40px;
+    padding: 14px 0;
+    font-size: 20px;
+    background: linear-gradient(45deg, #c59a6d, #e6c9a8);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 3px 8px rgba(197, 154, 109, 0.7);
+    text-transform: uppercase;
+    transition: background 0.3s ease;
+  }
+  button#submitBtn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  .self-kindness-section {
+    margin-top: 25px;
+  }
+  textarea#selfKindness {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid #c59a6d;
+    resize: vertical;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+  <h1>Daily Care Planner</h1>
+  <form id="trackerForm" autocomplete="off" onsubmit="return false;">
+    <div class="header-row">
+      <div>
+        <label for="name" class="header-label">Name:</label>
+        <input type="text" id="name" />
+      </div>
+      <div>
+        <div class="header-label">Day:</div>
+        <div id="dayDisplay" class="day-text"></div>
+      </div>
+      <div>
+        <div class="header-label">Date:</div>
+        <div id="dateDisplay" class="date-text"></div>
+      </div>
+    </div>
+
+    <section class="grouped">
+      <div class="section-title">Nutrition</div>
+      <div class="checkbox-group" role="group" aria-label="Meals eaten">
+        <label class="checkbox-label"><input type="checkbox" id="meal1" /> Breakfast</label>
+        <label class="checkbox-label"><input type="checkbox" id="meal2" /> Lunch</label>
+        <label class="checkbox-label"><input type="checkbox" id="meal3" /> Dinner</label>
+      </div>
+      <div class="hydration-section" aria-label="Hydration">
+        <div class="section-title" style="margin-top: 18px; margin-bottom: 6px;">Water Intake Log (8 glasses)</div>
+        <div id="hydrationGlasses" class="hydration-glasses"></div>
+      </div>
+      <hr class="separator" />
+    </section>
+
+    <section class="grouped">
+      <div class="section-title">Movement</div>
+      <div class="checkbox-group" role="group" aria-label="Movement related questions">
+        <label class="checkbox-label"><input type="checkbox" id="movementSession" /> Attended guided movement session</label>
+        <label class="checkbox-label"><input type="checkbox" id="slowWalk" /> 5-minute slow paced walk after meals</label>
+      </div>
+      <hr class="separator" />
+    </section>
+
+    <section class="grouped lifestyle-group">
+      <div class="section-title">Lifestyle</div>
+      <div class="checkbox-group lifestyle" role="group" aria-label="Lifestyle related questions">
+        <label class="checkbox-label"><input type="checkbox" id="barefootWalk" /> Walk barefoot on ground/mud</label>
+        <label class="checkbox-label"><input type="checkbox" id="sunlightMorning" /> Sunlight for 10 mins after waking</label>
+        <label class="checkbox-label"><input type="checkbox" id="sunlightDay" /> Sunlight between 10am-2pm for 10 mins</label>
+      </div>
+
+      <div class="sleep-inputs">
+        <div class="sleep-time-line">
+          <label for="sleepTime">Sleep Time:</label>
+          <input type="time" id="sleepTime" aria-label="Sleep time" />
+          <select id="sleepAmPm" aria-label="AM or PM sleep time">
+            <option value="pm">PM</option>
+            <option value="am">AM</option>
+          </select>
+        </div>
+
+        <label for="screenTime">Screen Time Before Bed:</label>
+        <select id="screenTime" aria-label="Screen time before bed">
+          <option value="0">0 hrs</option>
+          <option value="0.5">0.5 hrs</option>
+          <option value="1">1 hr</option>
+          <option value="1.5">1.5 hrs</option>
+          <option value="2">2 hrs</option>
+          <option value="2.5">2.5 hrs</option>
+          <option value="3">3 hrs</option>
+          <option value="3.5">3.5 hrs</option>
+          <option value="4">4 hrs</option>
+          <option value="4.5">4.5 hrs</option>
+          <option value="5">5 hrs</option>
+          <option value="6">6+ hrs</option>
+        </select>
+
+        <label for="sleepQuality" style="margin-top: 25px;">Sleep Quality</label>
+        <input type="range" id="sleepQuality" min="1" max="5" value="3" aria-valuemin="1" aria-valuemax="5" aria-valuenow="3" tabindex="0" />
+        <div class="slider-labels">
+          <span>1 - Bad</span><span style="text-align:right; width: 50%;">5 - Good</span>
+        </div>
+
+        <div class="mood-energy-section">
+          <div class="mood-energy-label">Mood after sleep</div>
+          <input type="range" id="moodSlider" min="1" max="5" value="3" class="mood-energy-slider" aria-label="Mood after sleep slider" />
+          <div class="slider-labels-small">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+          </div>
+
+          <div class="mood-energy-label">Energy after sleep</div>
+          <input type="range" id="energySlider" min="1" max="5" value="3" class="mood-energy-slider" aria-label="Energy after sleep slider" />
+          <div class="slider-labels-small">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+          </div>
+        </div>
+      </div>
+      <hr class="separator" />
+    </section>
+
+    <section class="section self-kindness-section">
+      <div class="section-title">One Thing I Did for Myself</div>
+      <textarea id="selfKindness" placeholder="Write here..."></textarea>
+    </section>
+
+    <button id="submitBtn" type="submit" disabled>Submit</button>
+
+    <section class="section achievement">
+      <div class="section-title">Daily Achievement</div>
+
+      <div class="achievement-item">
+        <div class="achievement-label">Nutrition</div>
+        <div class="progress-bar" aria-label="Nutrition achievement progress">
+          <div class="progress-fill" id="nutritionScore"></div>
+        </div>
+        <div class="progress-text" id="nutritionText">0%</div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-label">Lifestyle</div>
+        <div class="progress-bar" aria-label="Lifestyle achievement progress">
+          <div class="progress-fill" id="lifestyleScore"></div>
+        </div>
+        <div class="progress-text" id="lifestyleText">0%</div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-label">Movement</div>
+        <div class="progress-bar" aria-label="Movement achievement progress">
+          <div class="progress-fill" id="movementScore"></div>
+        </div>
+        <div class="progress-text" id="movementText">0%</div>
+      </div>
+    </section>
+  </form>
+
+<script>
+  // Set current IST date as text on load and update Day and Date fields accordingly
+  function setCurrentISTDate() {
+    const dayDisplay = document.getElementById('dayDisplay');
+    const dateDisplay = document.getElementById('dateDisplay');
+
+    function getISTDate() {
+      // IST = UTC + 5:30
+      const now = new Date();
+      const utcMillis = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const istMillis = utcMillis + (5.5 * 3600000);
+      return new Date(istMillis);
+    }
+
+    const istDate = getISTDate();
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    dateDisplay.textContent = istDate.toLocaleDateString('en-CA', options); // "yyyy-mm-dd"
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    dayDisplay.textContent = days[istDate.getDay()];
+  }
+  setCurrentISTDate();
+
+  const answers = {
+    meal1: false,
+    meal2: false,
+    meal3: false,
+    hydration: 0,
+    movementSession: false,
+    slowWalk: false,
+    barefootWalk: false,
+    sunlightMorning: false,
+    sunlightDay: false,
+    sleepTime: '',
+    sleepAmPm: 'pm',
+    sleepQuality: 3,
+    screenTime: '0',
+    moodAfterSleep: 3,
+    energyAfterSleep: 3,
+    selfKindness: '',
+    name: '',
+  };
+
+  const submitBtn = document.getElementById('submitBtn');
+
+  function updateUI() {
+    updateHydration();
+    updateAchievements();
+submitBtn.disabled = false;
+  }
+
+  function bindCheckbox(id, answerKey) {
+    const el = document.getElementById(id);
+    el.addEventListener('change', e => {
+      answers[answerKey] = e.target.checked;
+      updateUI();
+    });
+  }
+  ['meal1','meal2','meal3'].forEach(k => bindCheckbox(k,k));
+  bindCheckbox('movementSession', 'movementSession');
+  bindCheckbox('slowWalk', 'slowWalk');
+  bindCheckbox('barefootWalk', 'barefootWalk');
+  bindCheckbox('sunlightMorning', 'sunlightMorning');
+  bindCheckbox('sunlightDay', 'sunlightDay');
+
+  document.getElementById('name').addEventListener('input', e => {
+    answers.name = e.target.value.trim();
+    updateUI();
+  });
+
+  document.getElementById('sleepTime').addEventListener('input', e => {
+    answers.sleepTime = e.target.value;
+    updateUI();
+  });
+  document.getElementById('sleepAmPm').addEventListener('change', e => {
+    answers.sleepAmPm = e.target.value;
+    updateUI();
+  });
+  document.getElementById('sleepQuality').addEventListener('input', e => {
+    answers.sleepQuality = parseInt(e.target.value);
+    updateUI();
+  });
+  document.getElementById('screenTime').addEventListener('change', e => {
+    answers.screenTime = e.target.value;
+    updateUI();
+  });
+  document.getElementById('moodSlider').addEventListener('input', e => {
+    answers.moodAfterSleep = parseInt(e.target.value);
+    updateUI();
+  });
+  document.getElementById('energySlider').addEventListener('input', e => {
+    answers.energyAfterSleep = parseInt(e.target.value);
+    updateUI();
+  });
+  document.getElementById('selfKindness').addEventListener('input', e => {
+    answers.selfKindness = e.target.value.trim();
+    updateUI();
+  });
+
+  // Hydration glasses setup
+  const hydrationContainer = document.getElementById('hydrationGlasses');
+  hydrationContainer.innerHTML = '';
+  for(let i=1; i<=8; i++) {
+    const glass = document.createElement('div');
+    glass.classList.add('glass');
+    glass.setAttribute('tabindex', '0');
+    glass.setAttribute('aria-label', `Glass ${i} of water`);
+    glass.addEventListener('click', () => {
+      answers.hydration = i;
+      updateUI();
+    });
+    glass.addEventListener('keydown', e => {
+      if(e.key==='Enter' || e.key===' ') {
+        e.preventDefault();
+        answers.hydration = i;
+        updateUI();
+      }
+    });
+    hydrationContainer.appendChild(glass);
+  }
+  function updateHydration() {
+    const glasses = hydrationContainer.children;
+    for(let i=0; i<glasses.length; i++) {
+      if(i < answers.hydration) glasses[i].classList.add('fill');
+      else glasses[i].classList.remove('fill');
+    }
+  }
+
+  function isFormComplete() {
+    if(!answers.name) return false;
+    if(!(answers.meal1 || answers.meal2 || answers.meal3)) return false;
+    if(!answers.hydration || answers.hydration===0) return false;
+    if(!answers.barefootWalk) return false;
+    if(!answers.sunlightMorning) return false;
+    if(!answers.sunlightDay) return false;
+    if(!answers.sleepTime || !answers.sleepAmPm) return false;
+    if(!answers.sleepQuality) return false;
+    if(!answers.screenTime) return false;
+    if(!answers.moodAfterSleep) return false;
+    if(!answers.energyAfterSleep) return false;
+    return true;
+  }
+
+  function calculateScores() {
+    // Nutrition = 3 meals yes * 16.6 + hydration proportion * 50
+    let nutrition = 0;
+    nutrition += (answers.meal1 ? 16.6 : 0) + (answers.meal2 ? 16.6 : 0) + (answers.meal3 ? 16.6 : 0);
+    nutrition += (answers.hydration / 8) * 50;
+    nutrition = Math.min(100, nutrition);
+
+    // Movement = movement session 50 + slowWalk 20
+    let movement = 0;
+    if(answers.movementSession) movement += 50;
+    if(answers.slowWalk) movement += 20;
+    movement = Math.min(100, movement);
+
+    // Lifestyle = sleep quality 30 + barefoot 20 + sunlight morning 10 + sunlight day 10 - screen time penalty
+    let lifestyle = 0;
+    lifestyle += (answers.sleepQuality / 5) * 30;
+    if(answers.barefootWalk) lifestyle += 20;
+    if(answers.sunlightMorning) lifestyle += 10;
+    if(answers.sunlightDay) lifestyle += 10;
+    const st = parseFloat(answers.screenTime);
+    if(st > 2) lifestyle -= (st - 2) * 5;
+    lifestyle = Math.max(0, Math.min(100, lifestyle));
+
+    return { nutrition, movement, lifestyle };
+  }
+
+  function updateAchievements() {
+    const scores = calculateScores();
+    const nutritionBar = document.getElementById('nutritionScore');
+    const movementBar = document.getElementById('movementScore');
+    const lifestyleBar = document.getElementById('lifestyleScore');
+    const nutritionText = document.getElementById('nutritionText');
+    const movementText = document.getElementById('movementText');
+    const lifestyleText = document.getElementById('lifestyleText');
+
+    nutritionBar.style.width = scores.nutrition + '%';
+    movementBar.style.width = scores.movement + '%';
+    lifestyleBar.style.width = scores.lifestyle + '%';
+
+    nutritionText.textContent = Math.round(scores.nutrition) + '%';
+    movementText.textContent = Math.round(scores.movement) + '%';
+    lifestyleText.textContent = Math.round(scores.lifestyle) + '%';
+  }
+
+  function updateUI() {
+    updateHydration();
+    updateAchievements();
+    submitBtn.disabled = !isFormComplete();
+  }
+
+  updateUI();
+
+  document.getElementById('trackerForm').addEventListener('submit', e => {
+    e.preventDefault();
+    if(!isFormComplete()) {
+      alert('Please complete all required fields.');
+      return;
+    }
+    // Prepare CSV
+    const rows = [
+      ['Name', answers.name],
+      ['Date (IST)', document.getElementById('dateDisplay').textContent],
+      ['Day', document.getElementById('dayDisplay').textContent],
+      ['Meals', ['Breakfast','Lunch','Dinner'].filter((m,i) => answers[`meal${i+1}`]).join('; ')],
+      ['Hydration (glasses)', answers.hydration],
+      ['Movement Session', answers.movementSession ? 'Yes' : 'No'],
+      ['Slow Walk', answers.slowWalk ? 'Yes' : 'No'],
+      ['Barefoot Walk', answers.barefootWalk ? 'Yes' : 'No'],
+      ['Sunlight Morning', answers.sunlightMorning ? 'Yes' : 'No'],
+      ['Sunlight Day', answers.sunlightDay ? 'Yes' : 'No'],
+      ['Sleep Time', answers.sleepTime + ' ' + answers.sleepAmPm],
+      ['Screen Time', answers.screenTime],
+      ['Sleep Quality', answers.sleepQuality],
+      ['Mood after Sleep', answers.moodAfterSleep],
+      ['Energy after Sleep', answers.energyAfterSleep],
+      ['One Thing I Did for Myself', answers.selfKindness],
+    ];
+
+    let csvContent = rows.map(r => `"${r[0]}","${r[1]}"`).join('\n');
+
+    const blob = new Blob([csvContent], {type:'text/csv'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Daily_Care_Data_${document.getElementById('dateDisplay').textContent.replace(/\//g,'-')}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    alert('Thank you for submitting your Daily Care data!\nCSV file downloaded.');
+  });
+</script>
+</body>
+</html>
