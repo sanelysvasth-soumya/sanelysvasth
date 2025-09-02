@@ -117,7 +117,7 @@ a:focus {
 }
 
 .carousel-background .slide:nth-child(1) {
-  background-image: url(../img/IMG_1819.NEF);
+  background-image: url(../img/about.jpg);
 }
 /* 
 .carousel-background .slide:nth-child(2) {
@@ -125,7 +125,7 @@ a:focus {
 } */
 
 .carousel-background .slide:nth-child(2) {
-  background-image: url(../img/4.png);
+  background-image: url(../img/logo.png);
   background-size: cover; /* default setting */
 }
 
