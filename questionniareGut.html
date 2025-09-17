@@ -1090,6 +1090,7 @@
 
         // Create a data object with all the information
         const data = {
+          sheetName: "Sheet1", // Specify Sheet1 for Gut health responses
           name: userName,
           contact: userContact,
           score: score,
@@ -1120,7 +1121,7 @@
         const form = document.createElement("form");
         form.method = "POST";
         form.action =
-          "https://script.google.com/macros/s/AKfycbxnoC_XAIFqfPIOnjPacmXPx9HQ6HacPx8CtTU6OvcoQMI1idx9tqixLBJ3ZJ8EuAKg2g/exec";
+          "https://script.google.com/macros/s/AKfycbzWpa98yHvCTYfp0aiOrScOgGhXxZ5EXR6v2cSUtTnhEQpj9fzYhyOWlIacKgxA53vGBA/exec";
 
         // Add all data as hidden form fields
         for (const [key, value] of Object.entries(data)) {
