@@ -972,7 +972,7 @@
       Your body appears to have an abnormal response to stress hormones, leading to hormonal imbalances. When cortisol levels are elevated due to stress, they can disrupt other hormones, contributing to symptoms such as acne, irregular or missed periods, fertility challenges, and hair growth changes.<br>
       Adrenal PCOS affects around 50% of individuals with PCOS and is the second most common root cause. Adrenal support through stress management, proper sleep, and targeted nutrition may help restore balance and alleviate symptoms. I recommend scheduling a consultation to dive deeper into a tailored approach to restore adrenal function.`;
 
-    case "Pill-Induced":
+    case "Post-Birth Control":
       return `<b>Pill-Induced PCOS</b><br>
       After stopping hormonal birth control, it’s common to experience a temporary surge in androgens (male hormones like testosterone).<br>
       If your symptoms began after discontinuing the pill or another form of hormonal birth control, they are likely temporary. The increase in androgens can lead to symptoms like acne, hair changes, and irregular or missed periods. If you are experiencing symptoms of PCOS after discontinuing birth control, this could indicate that your body is adjusting hormonally post-pill. Birth control can mask underlying hormonal imbalances, and once stopped, those imbalances may resurface. It is important to give your body time to regulate itself, but addressing any underlying hormonal disruptions through diet, lifestyle changes, and possible hormone testing may be necessary for recovery.<br>
@@ -1027,13 +1027,14 @@
   function sendReportToGoogleSheets(resultObj) {
     const scores = getScores();
     const data = {
+      sheetName: "Sheet2", // Specify Sheet2 for PCOS responses
       name: userName,
       contact: userContact,
       timestamp: new Date().toISOString(),
       result: resultObj.resultText || "",
       InsulinResistanceScore: scores["Insulin Resistance"],
       InflammatoryScore: scores["Inflammatory"],
-      PillInducedScore: scores["Pill-Induced"],
+      PillInducedScore: scores["Post-Birth Control"],
       AdrenalScore: scores["Adrenal"],
     };
     groups.forEach((g) => {
@@ -1048,7 +1049,7 @@
     document.body.appendChild(iframe);
     const form = document.createElement("form");
     form.method = "POST";
-    form.action = "https://script.google.com/macros/s/AKfycbxnoC_XAIFqfPIOnjPacmXPx9HQ6HacPx8CtTU6OvcoQMI1idx9tqixLBJ3ZJ8EuAKg2g/exec";
+    form.action = "https://script.google.com/macros/s/AKfycbzWpa98yHvCTYfp0aiOrScOgGhXxZ5EXR6v2cSUtTnhEQpj9fzYhyOWlIacKgxA53vGBA/exec";
     for (const [key, value] of Object.entries(data)) {
       const input = document.createElement("input");
       input.type = "hidden";
