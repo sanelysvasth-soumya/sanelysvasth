@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Planning Your Pregnancy? Here’s What You Absolutely Need to Know</title>
+    <meta name="description" content="A complete guide on preconception and pregnancy nutrition, gut health, parental roles, and modern lifestyle impacts to help you plan a healthier pregnancy and child." />
+    <meta name="keywords" content="Pregnancy Planning, Preconception Tests, Gut Health, Trimester Nutrition, Parental Health, Epigenetics, Pregnancy Risks, Lifestyle" />
+    <meta name="author" content="Svasth by Soumya" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="YOUR_PAGE_URL_HERE" />
+    <meta property="og:title" content="Planning Your Pregnancy? Here’s What You Absolutely Need to Know" />
+    <meta property="og:description" content="A complete guide on preconception and pregnancy nutrition, gut health, parental roles, and modern lifestyle impacts to help you plan a healthier pregnancy and child." />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="YOUR_PAGE_URL_HERE" />
+    <meta property="twitter:title" content="Planning Your Pregnancy? Here’s What You Absolutely Need to Know" />
+    <meta property="twitter:description" content="A complete guide on preconception and pregnancy nutrition, gut health, parental roles, and modern lifestyle impacts to help you plan a healthier pregnancy and child." />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --background-color-light: #f9fafb;
+        --text-color-light: #2c3e50;
+        --card-bg-light: white;
+        --border-color-light: #eee;
+        --accent-color-light: #c59a6d;
+        --accent-hover-light: #a67c4e;
+        --meta-text-light: #666;
+        --alert-bg-light: #f3f4f6;
+        --background-color-dark: #1a202c;
+        --text-color-dark: #edf2f7;
+        --card-bg-dark: #2d3748;
+        --border-color-dark: #4a5568;
+        --accent-color-dark: #e5b889;
+        --accent-hover-dark: #d4a06a;
+        --meta-text-dark: #a0aec0;
+        --alert-bg-dark: #252d3a;
+      }
+      body {
+        font-family: 'Lora', serif;
+        padding: 20px;
+        padding-top: 60px;
+        background-color: var(--background-color-light);
+        color: var(--text-color-light);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      body.dark-mode {
+        background-color: var(--background-color-dark);
+        color: var(--text-color-dark);
+      }
+      #progress-bar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: var(--border-color-light);
+        z-index: 1000;
+      }
+      body.dark-mode #progress-bar-container {
+        background-color: var(--border-color-dark);
+      }
+      #progress-bar {
+        height: 100%;
+        width: 0%;
+        background-color: var(--accent-color-light);
+        transition: width 0.1s ease-out;
+      }
+      body.dark-mode #progress-bar {
+        background-color: var(--accent-color-dark);
+      }
+      #dark-mode-toggle {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        background-color: var(--card-bg-light);
+        color: var(--text-color-light);
+        border: 1px solid var(--border-color-light);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        cursor: pointer;
+        z-index: 1001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      body.dark-mode #dark-mode-toggle {
+        background-color: var(--card-bg-dark);
+        color: var(--text-color-dark);
+        border: 1px solid var(--border-color-dark);
+      }
+      #dark-mode-toggle .fa-sun { display: none; }
+      body.dark-mode #dark-mode-toggle .fa-moon { display: none; }
+      body.dark-mode #dark-mode-toggle .fa-sun { display: inline; }
+      .blog-post-content {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        transition: background-color 0.3s ease;
+      }
+      body.dark-mode .blog-post-content {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 15px rgba(255,255,255,0.05);
+      }
+      .blog-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode .blog-header {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+      .blog-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-align: center;
+        color: var(--text-color-light);
+      }
+      body.dark-mode .blog-title {
+        color: var(--text-color-dark);
+      }
+      .post-meta {
+        margin: 20px 0;
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .post-meta span {
+        color: var(--meta-text-light);
+      }
+      body.dark-mode .post-meta span {
+        color: var(--meta-text-dark);
+      }
+      #toc-container {
+        background: var(--alert-bg-light);
+        padding: 20px 25px;
+        border-radius: 8px;
+        margin: 30px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+      body.dark-mode #toc-container {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+      .toc-title {
+        font-family: 'Montserrat', sans-serif;
+        margin-top: 0 !important;
+        margin-bottom: 15px !important;
+        font-size: 1.5rem !important;
+        border-bottom: none !important;
+        color: var(--text-color-light);
+      }
+      body.dark-mode .toc-title {
+        color: var(--text-color-dark);
+      }
+      #toc-list {
+        list-style: none;
+        padding-left: 0;
+      }
+      #toc-list li {
+        margin-bottom: 10px;
+      }
+      #toc-list li a {
+        text-decoration: none;
+        color: var(--accent-color-light);
+        font-weight: 500;
+      }
+      #toc-list li a:hover {
+        text-decoration: underline;
+        color: var(--accent-hover-light);
+      }
+      body.dark-mode #toc-list li a {
+        color: var(--accent-color-dark);
+      }
+      body.dark-mode #toc-list li a:hover {
+        color: var(--accent-hover-dark);
+      }
+      .blog-content {
+        line-height: 1.8;
+      }
+      .lead {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: var(--text-color-light);
+        margin-bottom: 2rem;
+      }
+      body.dark-mode .lead {
+        color: var(--text-color-dark);
+      }
+      h2 {
+        font-family: 'Montserrat', sans-serif;
+        color: var(--text-color-light);
+        margin-top: 40px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        font-size: 1.8rem;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode h2 {
+        color: var(--text-color-dark);
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+      h3 {
+        font-family: 'Montserrat', sans-serif;
+        color: var(--text-color-light);
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+      }
+      body.dark-mode h3 {
+        color: var(--text-color-dark);
+      }
+      p {
+        margin-bottom: 20px;
+        line-height: 1.8;
+        color: var(--text-color-light);
+      }
+      body.dark-mode p {
+        color: var(--text-color-dark);
+      }
+      ul,
+      ol {
+        padding-left: 20px;
+        margin-bottom: 20px;
+        list-style: none;
+      }
+      li {
+        margin-bottom: 15px;
+        line-height: 1.6;
+        position: relative;
+        padding-left: 25px;
+        color: var(--text-color-light);
+      }
+      body.dark-mode li {
+        color: var(--text-color-dark);
+      }
+      ul li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color-light);
+      }
+      body.dark-mode ul li:before {
+        color: var(--accent-color-dark);
+      }
+      ol {
+        counter-reset: item;
+      }
+      ol li {
+        counter-increment: item;
+      }
+      ol li:before {
+        content: counter(item) ".";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color-light);
+      }
+      body.dark-mode ol li:before {
+        color: var(--accent-color-dark);
+      }
+      .alert-info,
+      .conclusion-section {
+        background: var(--alert-bg-light);
+        padding: 35px;
+        border-radius: 8px;
+        margin: 40px 0 20px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+      body.dark-mode .alert-info,
+      body.dark-mode .conclusion-section {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+      .alert-info h3,
+      .conclusion-section h2 {
+        margin-top: 0;
+        padding-top: 0;
+        color: var(--text-color-light);
+        border-bottom: none;
+      }
+      body.dark-mode .alert-info h3,
+      body.dark-mode .conclusion-section h2 {
+        color: var(--text-color-dark);
+      }
+      a {
+        color: var(--accent-color-light);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      body.dark-mode a {
+        color: var(--accent-color-dark);
+      }
+      a:hover {
+        color: var(--accent-hover-light);
+        text-decoration: underline;
+      }
+      body.dark-mode a:hover {
+        color: var(--accent-hover-dark);
+      }
+      strong {
+        color: var(--text-color-light);
+        font-weight: 600;
+      }
+      body.dark-mode strong {
+        color: var(--text-color-dark);
+      }
+      .social-sharing {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color-light);
+        text-align: center;
+      }
+      body.dark-mode .social-sharing {
+        border-top: 1px solid var(--border-color-dark);
+      }
+      .social-sharing h3 {
+        margin-bottom: 15px;
+      }
+      .social-sharing a {
+        margin: 0 10px;
+        font-size: 1.5rem;
+        color: var(--meta-text-light);
+      }
+      .social-sharing a:hover {
+        color: var(--accent-color-light);
+      }
+      body.dark-mode .social-sharing a {
+        color: var(--meta-text-dark);
+      }
+      body.dark-mode .social-sharing a:hover {
+        color: var(--accent-hover-dark);
+      }
+      .comments-section {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 30px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+      body.dark-mode .comments-section {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 10px rgba(255,255,255,0.05);
+      }
+      .comments-section h2 {
+        margin-top: 0;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode .comments-section h2 {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+          padding-top: 50px;
+        }
+        #dark-mode-toggle {
+          top: 10px;
+          right: 10px;
+        }
+        .blog-post-content,
+        .comments-section {
+          padding: 25px;
+          margin: 20px auto;
+        }
+        .blog-title {
+          font-size: 2rem;
+        }
+        .alert-info,
+        .conclusion-section,
+        .author-bio {
+          padding: 20px;
+          margin: 30px 0 15px 0;
+        }
+        .author-bio {
+          flex-direction: column;
+          text-align: center;
+        }
+        .post-meta {
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+        .post-meta span {
+          margin-right: 0;
+        }
+        h2 {
+          font-size: 1.6rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+        }
+        p,
+        li {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="progress-bar-container"><div id="progress-bar"></div></div>
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i><i class="fas fa-sun"></i>
+    </button>
+    <main>
+      <article class="blog-post-content">
+        <header class="blog-header">
+          <h1 class="blog-title">Planning Your Pregnancy? Here’s What You Absolutely Need to Know</h1>
+          <div class="post-meta">
+            <span><i class="far fa-calendar"></i> November 27, 2025</span>
+            <span><i class="far fa-clock"></i> 11 min read</span>
+            <span><i class="fas fa-tag"></i> Pregnancy, Preconception, Gut Health, Nutrition</span>
+          </div>
+        </header>
+        <section id="toc-container" aria-labelledby="toc-heading">
+          <h2 id="toc-heading" class="toc-title">Table of Contents</h2>
+          <ul id="toc-list"></ul>
+        </section>
+        <div class="blog-content">
+          <p class="lead">
+            I want to say this plainly: what you eat, how your gut works, the medicines you take, and even what the father eats before conception — all of it changes the baby’s biology long before birth. I see the consequences every week: toddlers with eczema, frequent infections, food allergies, even small bald patches (alopecia) and early signs of immune problems. These aren’t random. They often trace back to parental metabolic and gut health at conception and during gestation.
+          </p>
+          <p>Below I’ll walk you through what to test for, what to fix, how gut health transfers to the child, what complications can happen, and the exact practical steps couples should follow — especially in an urban lifestyle with night shifts, ordering food, and limited time.</p>
+
+          <h2>1) Stop Guessing — Test Yourself Before You Even Try to Conceive</h2>
+          <p>These are the core blood tests and checks I ask every client to get <em>before trying to conceive</em>. If anything is off, fix it now — it’s far easier than trying to correct during pregnancy.</p>
+
+          <h3>Essential lab panel (both partners — where applicable):</h3>
+          <ul>
+            <li><strong>Thyroid:</strong> TSH, Free T4, Free T3, thyroid antibodies (anti-TPO). Thyroid antibodies or subclinical changes change pregnancy risk and need monitoring.</li>
+            <li><strong>Glucose/insulin:</strong> fasting glucose, HbA1c, fasting insulin (if available) — to check insulin resistance. Even “skinny” people can have metabolic risk.</li>
+            <li><strong>Iron status:</strong> hemoglobin and <em>ferritin</em> (ferritin is more telling than Hb alone).</li>
+            <li><strong>Micronutrients:</strong> serum <em>vitamin D, <strong>B12,</strong> <strong>folate</strong></em> (Red cell folate if possible), <em>zinc, <strong>[translate: आयोडीन]</strong></em> (urine spot if indicated).</li>
+            <li><strong>Inflammation:</strong> hs-CRP (gives a quick idea of systemic inflammation). Persistent inflammation increases pregnancy complications.</li>
+            <li><strong>Liver &amp; kidney function:</strong> basic metabolic panel / LFTs. Fatty liver is common and matters.</li>
+            <li><strong>Lipid profile</strong> (helps understand metabolic health).</li>
+            <li><strong>Optional but useful:</strong> stool history/symptom screen (bloating, constipation, urgency, antibiotic history) and a targeted gut panel only if symptomatic.</li>
+          </ul>
+          <p>For the father: a preconception check of diet/nutrition and a basic health screen (lipids, glucose, vitamin D, B12, hs-CRP) — sperm quality and epigenetic signals are responsive to diet and inflammation in the months leading up to conception.</p>
+
+          <h2>2) Fix Your Gut Now, or Your Baby Will Inherit the Mess</h2>
+          <p>Your gut is not just digestion. It decides:</p>
+          <ul>
+            <li>how well you absorb vitamins</li>
+            <li>how stable your blood sugar remains</li>
+            <li>how much inflammation is circulating</li>
+            <li>how your thyroid functions</li>
+            <li>how your immune system behaves</li>
+          </ul>
+          <p>And the gut you have → becomes the gut your baby inherits.</p>
+
+          <h3>When your gut is healthy:</h3>
+          <ul>
+            <li>nutrient absorption is strong</li>
+            <li>inflammation stays low</li>
+            <li>blood sugar is stable</li>
+            <li>immunity stays balanced</li>
+          </ul>
+
+          <h3>When your gut is compromised (very common today):</h3>
+          <ul>
+            <li>you stay bloated</li>
+            <li>iron &amp; B12 don’t go up</li>
+            <li>inflammation increases</li>
+            <li>sugar spikes are common</li>
+            <li>thyroid slows down</li>
+            <li>your immunity becomes hypersensitive</li>
+          </ul>
+
+          <h3>How the baby inherits this:</h3>
+          <ul>
+            <li>During pregnancy, maternal microbial environment and metabolites influence fetal immune programming.</li>
+            <li>During delivery (especially vaginal) and in the early postpartum period (breastfeeding, skin contact), the baby acquires much of the mother’s microbial signature. That becomes the newborn’s first immune teacher. If that teacher is imbalanced, the baby’s immune system tends toward hypersensitivity or poor pathogen handling.</li>
+          </ul>
+
+          <h3>How it shows up in different organs:</h3>
+          <ul>
+            <li><em>Skin:</em> early eczema, persistent rashes</li>
+            <li><em>Respiratory:</em> early wheeze or recurrent coughs</li>
+            <li><em>Gut:</em> colic, reflux, constipation, food intolerance</li>
+            <li><em>Hair/scalp:</em> patchy hair loss (alopecia areata)</li>
+            <li><em>Systemic:</em> frequent infections, repeated antibiotics → increased autoimmune risk</li>
+          </ul>
+
+          <h2>3) Yes, Dad Matters Too — His Health Affects Your Baby</h2>
+          <p>The father contributes genes, yes — but also:</p>
+          <ul>
+            <li>epigenetic markers</li>
+            <li>sperm quality</li>
+            <li>gut-influenced immunity</li>
+            <li>metabolic tendencies</li>
+          </ul>
+          <p>If he has inflammation, poor diet, alcohol, smoking, gut issues, or insulin resistance, those signals transfer to the baby too.</p>
+          <p><em>Practical advice for men: improve diet, reduce alcohol, stop smoking, correct vitamin D/B12, reduce processed food — this improves sperm quality and reduces negative epigenetic signals.</em></p>
+
+          <h2>4) Trimester Secrets: What Your Baby Needs, Month by Month</h2>
+
+          <h3>First trimester (weeks 1–12) — organogenesis</h3>
+          <ul>
+            <li>Neural tube, primitive heart, major organs form</li>
+            <li>Micronutrients needed: folate, B12, <strong>[translate: आयोडीन]</strong>, iron, DHA, protein</li>
+            <li>Warning: low micronutrients or thyroid issues increase miscarriage and developmental risks</li>
+          </ul>
+
+          <h3>Second trimester (weeks 13–26) — growth</h3>
+          <ul>
+            <li>Bones, muscles, nerve connections, blood volume expand</li>
+            <li>Needs: protein, calcium, magnesium, choline, DHA, stable glucose</li>
+            <li>Poor gut absorption now → anemia, fatigue, cramps</li>
+          </ul>
+
+          <h3>Third trimester (weeks 27–40) — immunity &amp; brain wiring</h3>
+          <ul>
+            <li>Lung maturation, immune system signalling, fat stores</li>
+            <li>Needs: DHA, omega-3, fiber, probiotics, nutrient-dense meals</li>
+            <li>Poor lifestyle here → preeclampsia, preterm labor, macrosomia</li>
+          </ul>
+
+          <h2>5) What Happens When Your Gut Is Unhealthy — And How It Shows in Your Child</h2>
+          <p>Parental gut health programs immunity. Poor gut = child inherits a limited, inflammatory microbiome.</p>
+
+          <h3>Childhood expressions of poor parental gut health:</h3>
+          <ul>
+            <li><em>Skin:</em> eczema, chronic rashes</li>
+            <li><em>Allergic:</em> food allergies, dust/pollen sensitivity</li>
+            <li><em>Respiratory:</em> wheeze, asthma tendencies</li>
+            <li><em>Gut:</em> colic, reflux, constipation, food intolerance</li>
+            <li><em>Immune:</em> repeated infections, more antibiotics</li>
+            <li><em>Hair/scalp:</em> bald patches (alopecia)</li>
+            <li><em>Autoimmune signals:</em> juvenile thyroiditis, type 1 diabetes, psoriasis</li>
+          </ul>
+
+          <h2>6) Antibiotics Are Not Innocent — Here’s Why Every Dose Counts</h2>
+          <ul>
+            <li>Prenatal antibiotics → higher risk of eczema, asthma, allergies</li>
+            <li>Early-life antibiotics → blunt vaccine responses, reduce immune maturation</li>
+            <li>Practical rule: avoid unnecessary antibiotics, and rebuild gut with fiber, fermented foods, and probiotics if prescribed</li>
+          </ul>
+
+          <h2>7) Modern Lifestyle Is Making Pregnancy Riskier Than Ever</h2>
+          <p>Urban lifestyles — night shifts, processed foods, stress, irregular meals, limited sleep — naturally increase:</p>
+          <ul>
+            <li>insulin resistance</li>
+            <li>thyroid issues</li>
+            <li>vitamin deficiencies</li>
+            <li>chronic inflammation</li>
+            <li>gut dysbiosis</li>
+          </ul>
+          <p>Pregnancy on top of this? Risk increases for both mother and baby.</p>
+
+          <h2>8) Step-by-Step Preconception &amp; Pregnancy Plan That Actually Works</h2>
+          <p><strong>Timeline: start 3–6 months before trying.</strong></p>
+
+          <h3>Immediate actions (weeks 1–4):</h3>
+          <ul>
+            <li>Preconception labs</li>
+            <li>Stop/reduce alcohol &amp; smoking</li>
+            <li>Replace one processed snack/week with real food</li>
+            <li>Night-shift meal strategy: heavy cooked meal before shift, light warm meal mid-shift, no midnight grazing</li>
+            <li>Review antibiotic history</li>
+          </ul>
+
+          <h3>Weeks 4–12 preconception:</h3>
+          <ul>
+            <li>Correct folate, B12, vitamin D, ferritin</li>
+            <li>Daily protein &amp; healthy fats</li>
+            <li>Fiber + fermented foods for gut diversity</li>
+          </ul>
+
+          <h3>During pregnancy:</h3>
+          <ul>
+            <li>Nutrient-dense meals</li>
+            <li>Cooked food first: soup/vegetables/protein before carbs</li>
+            <li>Avoid cross-cuisine combos in one meal</li>
+            <li>Stable glucose, regular movement</li>
+            <li>Monitor labs regularly</li>
+          </ul>
+
+          <h3>Postpartum:</h3>
+          <ul>
+            <li>Continue nutrient-dense diet</li>
+            <li>Support gut &amp; immunity</li>
+            <li>Limit antibiotics unless necessary</li>
+            <li>Breastfeeding + proper maternal nutrition continues baby’s immune programming</li>
+          </ul>
+
+          <h2>9) If Something Is Already Off — How to Prioritize Fixes Before You Conceive</h2>
+          <ol>
+            <li>Fix inflammation first: diet, sleep, stress, fiber, anti-inflammatory foods</li>
+            <li>Stabilize glucose: protein at every meal, low glycemic carbs, movement</li>
+            <li>Restore micronutrients: vitamin D, ferritin, B12, folate under supervision</li>
+            <li>Repair gut: stop unnecessary antibiotics, fiber, fermented foods, probiotics if symptomatic</li>
+            <li>Recheck labs after 8–12 weeks before conception</li>
+          </ol>
+
+          <h2>10) Over 33? Here’s Why You Need to Be Extra Careful</h2>
+          <p>Planning after 33 is common — but cumulative lifestyle exposures (years of poor sleep, processed food, stress, antibiotics) increase risk. Pregnancy requires intentional preparation: labs, micronutrients, gut repair, and glucose/thyroid management.</p>
+
+          <h2>11) Here Are The Childhood Conditions You Can Prevent Before Pregnancy</h2>
+          <ul>
+            <li>Eczema</li>
+            <li>Food allergies</li>
+            <li>Allergic rhinitis</li>
+            <li>Asthma / wheeze tendencies</li>
+            <li>Alopecia areata (patchy hair loss)</li>
+            <li>Type 1 diabetes</li>
+            <li>Juvenile thyroiditis / Hashimoto’s</li>
+            <li>Celiac disease</li>
+            <li>Psoriasis / chronic urticaria</li>
+          </ul>
+          <p>Most are preventable or mitigated by parental preconception and maternal pregnancy nutrition, gut repair, and avoiding unnecessary antibiotics.</p>
+
+          <h2>12) The Big Truth: Your Lifestyle Can Rewrite Your Child’s Genes</h2>
+          <p>Yes, genetics matter.<br />But <em>epigenetics</em> matters more.</p>
+          <ul>
+            <li>Healthy diet, gut, and lifestyle → protective gene expression</li>
+            <li>Inflammation, poor diet, stress → risk genes activated</li>
+          </ul>
+          <p>Even if you inherited risk from your parents, <em>you can break the cycle</em>. Healthy parents create healthier pregnancies and children. Most of it is under your control.</p>
+        </div>
+
+        <section class="social-sharing" aria-label="Share this post">
+          <h3>Share this post:</h3>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_PAGE_URL_HERE" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com/intent/tweet?url=YOUR_PAGE_URL_HERE&text=Planning Your Pregnancy? Here’s What You Absolutely Need to Know" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=YOUR_PAGE_URL_HERE&title=Planning Your Pregnancy? Here’s What You Absolutely Need to Know" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:?subject=Planning Your Pregnancy? Here’s What You Absolutely Need to Know&body=Check out this article: YOUR_PAGE_URL_HERE" aria-label="Share via Email"><i class="fas fa-envelope"></i></a>
+        </section>
+      </article>
+      <section class="comments-section" aria-label="Comments">
+        <h2>Comments</h2>
+        <p><em>Comments are not enabled yet. Check back soon!</em></p>
+      </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Table of Contents generation from h2[id]
+        const tocList = document.getElementById('toc-list');
+        const blogContent = document.querySelector('.blog-content');
+        if (tocList && blogContent) {
+          const headings = blogContent.querySelectorAll('h2[id]');
+          if (headings.length > 0) {
+            headings.forEach((heading) => {
+              if (heading.id && heading.textContent.trim() !== '') {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = '#' + heading.id;
+                link.textContent = heading.textContent;
+                listItem.appendChild(link);
+                tocList.appendChild(listItem);
+              }
+            });
+          } else {
+            const tocContainer = document.getElementById('toc-container');
+            if (tocContainer) tocContainer.style.display = 'none';
+          }
+        }
+        // Reading progress bar
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+          window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollProgress = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = scrollProgress + '%';
+          });
+        }
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        const moonIcon = darkModeToggle ? darkModeToggle.querySelector('.fa-moon') : null;
+        const sunIcon = darkModeToggle ? darkModeToggle.querySelector('.fa-sun') : null;
+        function applyTheme(theme) {
+          if (theme === 'dark') {
+            body.classList.add('dark-mode');
+            if (moonIcon) moonIcon.style.display = 'none';
+            if (sunIcon) sunIcon.style.display = 'inline';
+          } else {
+            body.classList.remove('dark-mode');
+            if (moonIcon) moonIcon.style.display = 'inline';
+            if (sunIcon) sunIcon.style.display = 'none';
+          }
+        }
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          applyTheme(savedTheme);
+        } else {
+          applyTheme('light');
+        }
+        if (darkModeToggle) {
+          if (body.classList.contains('dark-mode')) {
+            if (moonIcon) moonIcon.style.display = 'none';
+            if (sunIcon) sunIcon.style.display = 'inline';
+          } else {
+            if (moonIcon) moonIcon.style.display = 'inline';
+            if (sunIcon) sunIcon.style.display = 'none';
+          }
+          darkModeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+              applyTheme('light');
+              localStorage.setItem('theme', 'light');
+            } else {
+              applyTheme('dark');
+              localStorage.setItem('theme', 'dark');
+            }
+          });
+        }
+        // Smooth scroll for TOC links
+        if (tocList) {
+          tocList.querySelectorAll('a').forEach((anchor) => {
+            anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              const targetId = this.getAttribute('href').substring(1);
+              const targetElement = document.getElementById(targetId);
+              if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+              }
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
