@@ -162,6 +162,27 @@ img {
   font-weight: 300;
 }
 
+/* Hero Section */
+.hero-header {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.hero-title {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Grid System */
 .grid {
   display: grid;
@@ -629,14 +650,20 @@ img {
   }
 
   /* Home Page Hero Mobile Fix */
-  header[style*="100vh"] {
+  .hero-header {
     align-items: flex-end !important;
     padding-bottom: 25vh !important;
   }
   
-  p[style*="1.5rem"] {
-    font-size: 1.1rem !important;
+  .hero-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.0rem !important;
     margin-bottom: 20px !important;
+    line-height: 1.4;
   }
 }
 
