@@ -162,27 +162,6 @@ img {
   font-weight: 300;
 }
 
-/* Hero Section */
-.hero-header {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  color: white;
-}
-
-.hero-title {
-  color: white;
-  margin-bottom: 20px;
-}
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  margin-bottom: 40px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 /* Grid System */
 .grid {
   display: grid;
@@ -647,23 +626,6 @@ img {
   .modal-content {
     padding: 20px !important;
     margin: 15% auto !important;
-  }
-
-  /* Home Page Hero Mobile Fix */
-  .hero-header {
-    align-items: flex-end !important;
-    padding-bottom: 25vh !important;
-  }
-  
-  .hero-title {
-    font-size: 1.5rem !important;
-    margin-bottom: 15px !important;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.0rem !important;
-    margin-bottom: 20px !important;
-    line-height: 1.4;
   }
 }
 
