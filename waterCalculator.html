@@ -1,255 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fluid Intake Calculator - HealthScore</title>
-    <link rel="stylesheet" href="css/bootstrap.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
-  </head>
-  <style>
-    body {
-      padding: 10px;
-      background-color: #f9fafb;
-    }
-  </style>
-  <body>
-    <!-- Navigation -->
-    <div id="nav-placeholder"></div>
-    <!-- Main Content Section -->
-    <div id="calculator-section">
-      <div class="container">
-        <div class="calculator-container">
-          <div class="row">
-            <!-- Water Calculator Card -->
-            <div class="col-md-6">
-              <div class="calculator-card">
-                <div class="calculator-header">
-                  <h2><i class="fas fa-tint"></i> Fluid Intake Calculator</h2>
-                  <p>Calculate your daily hydration requirements</p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluid Intake Calculator - HealthScore</title>
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<style>
+  body {
+    padding: 0;
+    background-color: #f9fafb;
+  }
+</style>
+
+<body>
+  <!-- Navigation -->
+  <div id="nav-placeholder"></div>
+
+  <!-- Page Header -->
+  <header class="section"
+    style="background: linear-gradient(rgba(30, 36, 41, 0.8), rgba(30, 36, 41, 0.8)), url('img/bg3.jpg') no-repeat center center/cover; padding: 140px 0 20px; color: white; text-align: center;">
+    <div class="container fade-in">
+      <h1 style="color: white; margin-bottom: 10px;">Fluid Intake Calculator</h1>
+      <p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+        Calculate your recommended daily water intake based on your weight and activity level.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Content Section -->
+  <div id="calculator-section" class="section">
+    <div class="container">
+      <div class="calculator-container">
+        <div class="row">
+          <!-- Water Calculator Card -->
+          <div class="col-md-6">
+            <div class="calculator-card">
+              <div class="calculator-header">
+                <h2><i class="fas fa-tint"></i> Fluid Intake Calculator</h2>
+                <p>Calculate your daily hydration requirements</p>
+              </div>
+              <form id="waterForm" class="calculator-form">
+                <div class="form-group">
+                  <label for="age">Age (years)</label>
+                  <input type="number" class="form-control" id="age" required placeholder="Enter your age" />
                 </div>
-                <form id="waterForm" class="calculator-form">
-                  <div class="form-group">
-                    <label for="age">Age (years)</label>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="age"
-                      required
-                      placeholder="Enter your age"
-                    />
+                <div class="form-group">
+                  <label>Gender</label>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="gender" value="male" required />
+                      Male
+                    </label>
+                    <label style="margin-left: 20px">
+                      <input type="radio" name="gender" value="female" />
+                      Female
+                    </label>
                   </div>
-                  <div class="form-group">
-                    <label>Gender</label>
-                    <div class="radio">
-                      <label>
-                        <input
-                          type="radio"
-                          name="gender"
-                          value="male"
-                          required
-                        />
-                        Male
-                      </label>
-                      <label style="margin-left: 20px">
-                        <input type="radio" name="gender" value="female" />
-                        Female
-                      </label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="height">Height (cm)</label>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="height"
-                      required
-                      placeholder="Enter your height"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="weight">Weight (kg)</label>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="weight"
-                      required
-                      placeholder="Enter your weight"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="environment">Environment</label>
-                    <select class="form-control" id="environment" required>
-                      <option value="">Select your environment</option>
-                      <option value="hot">Hot/Summer</option>
-                      <option value="cold">Cold/Winter</option>
-                      <option value="humid">Humid</option>
-                      <option value="normal">Normal</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="activity">Activity Level</label>
-                    <select class="form-control" id="activity" required>
-                      <option value="">Select your activity level</option>
-                      <option value="sedentary">Sedentary</option>
-                      <option value="lightly">Lightly Active</option>
-                      <option value="moderately">Moderately Active</option>
-                      <option value="very">Very Active</option>
-                    </select>
-                  </div>
-                  <button type="submit" class="btn calculate-btn">
-                    Calculate Required Fluid Intake
+                </div>
+                <div class="form-group">
+                  <label for="height">Height (cm)</label>
+                  <input type="number" class="form-control" id="height" required placeholder="Enter your height" />
+                </div>
+                <div class="form-group">
+                  <label for="weight">Weight (kg)</label>
+                  <input type="number" class="form-control" id="weight" required placeholder="Enter your weight" />
+                </div>
+                <div class="form-group">
+                  <label for="environment">Environment</label>
+                  <select class="form-control" id="environment" required>
+                    <option value="">Select your environment</option>
+                    <option value="hot">Hot/Summer</option>
+                    <option value="cold">Cold/Winter</option>
+                    <option value="humid">Humid</option>
+                    <option value="normal">Normal</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="activity">Activity Level</label>
+                  <select class="form-control" id="activity" required>
+                    <option value="">Select your activity level</option>
+                    <option value="sedentary">Sedentary</option>
+                    <option value="lightly">Lightly Active</option>
+                    <option value="moderately">Moderately Active</option>
+                    <option value="very">Very Active</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn calculate-btn">
+                  Calculate Required Fluid Intake
+                </button>
+              </form>
+              <div id="waterResult" class="result-section" style="display: none">
+                <div class="result-header">
+                  <h3>Your Results</h3>
+                  <button class="btn recalculate-btn">
+                    <i class="fas fa-redo"></i> Recalculate
                   </button>
-                </form>
-                <div
-                  id="waterResult"
-                  class="result-section"
-                  style="display: none"
-                >
-                  <div class="result-header">
-                    <h3>Your Results</h3>
-                    <button class="btn recalculate-btn">
-                      <i class="fas fa-redo"></i> Recalculate
-                    </button>
+                </div>
+                <div class="result-content">
+                  <div class="water-score">
+                    <span class="score-label">Daily Fluid Requirement</span>
+                    <span id="waterValue" class="score-value">0</span>
+                    <span class="score-unit">milliliters (ml)</span>
+                    <span id="waterLiters" class="score-unit-alt">0 liters</span>
+                    <span id="waterGlasses" class="score-unit-alt">0 glasses (250ml)</span>
                   </div>
-                  <div class="result-content">
-                    <div class="water-score">
-                      <span class="score-label">Daily Fluid Requirement</span>
-                      <span id="waterValue" class="score-value">0</span>
-                      <span class="score-unit">milliliters (ml)</span>
-                      <span id="waterLiters" class="score-unit-alt"
-                        >0 liters</span
-                      >
-                      <span id="waterGlasses" class="score-unit-alt"
-                        >0 glasses (250ml)</span
-                      >
-                    </div>
-                    <div id="waterMessage" class="result-message">
-                      <!-- Message will be inserted here -->
-                    </div>
+                  <div id="waterMessage" class="result-message">
+                    <!-- Message will be inserted here -->
                   </div>
                 </div>
               </div>
             </div>
-            <!-- Water Information Card -->
-            <div class="col-md-6">
-              <div class="calculator-card info-card">
-                <div class="calculator-header">
-                  <h2><i class="fas fa-info-circle"></i> About hydration</h2>
-                </div>
-                <div class="info-content">
-                  <h4>Why is Proper Hydration Important?</h4>
-                  <ul class="water-benefits-list">
-                    <li>Regulates body temperature</li>
-                    <li>Maintains blood volume</li>
-                    <li>Supports digestion</li>
-                    <li>Removes waste products</li>
-                    <li>Protects organs and tissues</li>
-                  </ul>
-                </div>
+          </div>
+          <!-- Water Information Card -->
+          <div class="col-md-6">
+            <div class="calculator-card info-card">
+              <div class="calculator-header">
+                <h2><i class="fas fa-info-circle"></i> About hydration</h2>
+              </div>
+              <div class="info-content">
+                <h4>Why is Proper Hydration Important?</h4>
+                <ul class="water-benefits-list">
+                  <li>Regulates body temperature</li>
+                  <li>Maintains blood volume</li>
+                  <li>Supports digestion</li>
+                  <li>Removes waste products</li>
+                  <li>Protects organs and tissues</li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Scripts -->
-    <script src="js/jquery.1.11.1.js"></script>
-    <script>
-      $(function () {
-        $("#nav-placeholder").load("nav.html");
-      });
-      // Water Calculator Logic
-      $("#waterForm").on("submit", function (e) {
-        e.preventDefault();
-        const weight = parseFloat($("#weight").val());
-        const height = parseFloat($("#height").val());
-        const age = parseInt($("#age").val());
-        const gender = $("input[name='gender']:checked").val();
-        const environment = $("#environment").val();
-        const activity = $("#activity").val();
-        // Validation
-        if (weight < 30 || weight > 300) {
-          alert("Please enter a valid weight (30-300 kg)");
-          return;
-        }
-        if (height < 120 || height > 250) {
-          alert("Please enter a valid height (120-250 cm)");
-          return;
-        }
-        if (age < 15 || age > 120) {
-          alert("Please enter a valid age (15-120 years)");
-          return;
-        }
-        // Activity Level Factors
-        const activityFactors = {
-          sedentary: 1.2,
-          lightly: 1.3,
-          moderately: 1.5,
-          very: 1.7,
-        };
-        // Environment Factors
-        const environmentFactors = {
-          hot: 1.2,
-          cold: 0.9,
-          humid: 1.1,
-          normal: 1.0,
-        };
-        // Calculate water intake
-        let waterIntake =
-          weight *
-          30 *
-          activityFactors[activity] *
-          environmentFactors[environment];
+  </div>
 
-        // Apply upper limit of 4000 ml (4 liters)
-        if (waterIntake > 4000) {
-          waterIntake = 4000;
-        }
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
 
-        const roundedWater = Math.round(waterIntake);
-        const waterLiters = (roundedWater / 1000).toFixed(1);
-        const waterGlasses = Math.round(roundedWater / 250);
+  <!-- Scripts -->
+  <script src="js/jquery.1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#nav-placeholder").load("nav.html");
+      $("#footer-placeholder").load("footer.html");
+    });
+    // Water Calculator Logic
+    $("#waterForm").on("submit", function (e) {
+      e.preventDefault();
+      const weight = parseFloat($("#weight").val());
+      const height = parseFloat($("#height").val());
+      const age = parseInt($("#age").val());
+      const gender = $("input[name='gender']:checked").val();
+      const environment = $("#environment").val();
+      const activity = $("#activity").val();
+      // Validation
+      if (weight < 30 || weight > 300) {
+        alert("Please enter a valid weight (30-300 kg)");
+        return;
+      }
+      if (height < 120 || height > 250) {
+        alert("Please enter a valid height (120-250 cm)");
+        return;
+      }
+      if (age < 15 || age > 120) {
+        alert("Please enter a valid age (15-120 years)");
+        return;
+      }
+      // Activity Level Factors
+      const activityFactors = {
+        sedentary: 1.2,
+        lightly: 1.3,
+        moderately: 1.5,
+        very: 1.7,
+      };
+      // Environment Factors
+      const environmentFactors = {
+        hot: 1.2,
+        cold: 0.9,
+        humid: 1.1,
+        normal: 1.0,
+      };
+      // Calculate water intake
+      let waterIntake =
+        weight *
+        30 *
+        activityFactors[activity] *
+        environmentFactors[environment];
 
-        // Generate message with bifurcation if intake is above 2800 ml
-        let message = `<p>Based on your ${activity.replace(
-          "_",
-          " "
-        )} activity level and ${environment} environment, you should drink approximately:</p>
+      // Apply upper limit of 4000 ml (4 liters)
+      if (waterIntake > 4000) {
+        waterIntake = 4000;
+      }
+
+      const roundedWater = Math.round(waterIntake);
+      const waterLiters = (roundedWater / 1000).toFixed(1);
+      const waterGlasses = Math.round(roundedWater / 250);
+
+      // Generate message with bifurcation if intake is above 2800 ml
+      let message = `<p>Based on your ${activity.replace(
+        "_",
+        " "
+      )} activity level and ${environment} environment, you should drink approximately:</p>
                           <ul>
                               <li>${roundedWater} ml (${waterLiters} liters) of water per day</li>
                               <li>This equals about ${waterGlasses} glasses (250ml each)</li>
                           </ul>`;
 
-        if (roundedWater > 2800) {
-          message += `<p>We recommend dividing your daily fluid intake approximately as follows:</p>
+      if (roundedWater > 2800) {
+        message += `<p>We recommend dividing your daily fluid intake approximately as follows:</p>
                       <ol>
                         <li><strong>Water (Plain Drinking Water):</strong> about 50% of total intake</li>
                         <li><strong>Fluids from Other Drinks (like juices, buttermilk, coconut water):</strong> about 30%</li>
                         <li><strong>Fluids from Food (fruits, vegetables, soups, etc.):</strong> about 20%</li>
                       </ol>`;
-        }
+      }
 
-        // Display results
-        $("#waterValue").text(roundedWater);
-        $("#waterLiters").text(`${waterLiters} liters`);
-        $("#waterGlasses").text(`${waterGlasses} glasses (250ml)`);
-        $("#waterMessage").html(message);
+      // Display results
+      $("#waterValue").text(roundedWater);
+      $("#waterLiters").text(`${waterLiters} liters`);
+      $("#waterGlasses").text(`${waterGlasses} glasses (250ml)`);
+      $("#waterMessage").html(message);
 
-        // Show results section
-        $("#waterForm").hide();
-        $("#waterResult").fadeIn();
-      });
-      // Recalculate button handler
-      $(".recalculate-btn").click(function () {
-        $("#waterResult").hide();
-        $("#waterForm").fadeIn();
-        $("#waterForm")[0].reset();
-      });
-    </script>
-  </body>
+      // Show results section
+      $("#waterForm").hide();
+      $("#waterResult").fadeIn();
+    });
+    // Recalculate button handler
+    $(".recalculate-btn").click(function () {
+      $("#waterResult").hide();
+      $("#waterForm").fadeIn();
+      $("#waterForm")[0].reset();
+    });
+  </script>
+</body>
+
 </html>
