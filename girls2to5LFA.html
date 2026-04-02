@@ -1,580 +1,588 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Height for Age - Girls 2-5 years</title>
-    <link rel="stylesheet" href="css/bootstrap.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
-    <!-- Replaced Chart.js with Highcharts -->
-    <!-- Added Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <style>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Height for Age - Girls 2-5 years</title>
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <!-- Replaced Chart.js with Highcharts -->
+  <!-- Added Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+</head>
+<style>
+  body {
+    padding: 0;
+    background-color: #f8f9fa;
+    font-family: "Poppins", sans-serif;
+    color: #333;
+  }
+
+  h2,
+  h4 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+  }
+
+  .calculator-container {
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+
+  .chart-container {
+    width: 100%;
+    height: 500px;
+    margin: auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
     body {
-      padding: 20px;
-      background-color: #f8f9fa;
-      font-family: "Poppins", sans-serif;
-      color: #333;
-    }
-
-    h2,
-    h4 {
-      font-family: "Montserrat", sans-serif;
-      font-weight: 600;
-    }
-
-    .calculator-container {
-      margin-top: 30px;
-      margin-bottom: 40px;
+      padding: 0px;
     }
 
     .chart-container {
-      width: 100%;
-      height: 500px;
-      margin: auto;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      padding: 20px;
-      overflow: hidden;
-    }
-
-    @media (max-width: 768px) {
-      body {
-        padding: 10px;
-      }
-
-      .chart-container {
-        height: 350px;
-        padding: 10px;
-        margin-bottom: 20px;
-        border-radius: 8px;
-      }
-
-      .page-title {
-        font-size: 1.4rem;
-        margin: 15px 0;
-        text-align: center;
-      }
-
-      .calculator-card {
-        padding: 15px;
-        margin-bottom: 15px;
-        border-radius: 8px;
-      }
-
-      .calculator-header h2 {
-        font-size: 1.3rem;
-      }
-
-      .calculator-header p {
-        font-size: 0.9rem;
-      }
-
-      .form-group label {
-        font-size: 0.9rem;
-      }
-
-      .form-control {
-        font-size: 0.9rem;
-        padding: 10px;
-      }
-
-      .btn {
-        padding: 12px 15px;
-        font-size: 0.9rem;
-      }
-
-      .result-section {
-        padding: 12px;
-        border-radius: 8px;
-        margin-top: 15px;
-      }
-
-      #percentileResult {
-        font-size: 0.9rem;
-        line-height: 1.4;
-      }
-
-      .percentile-legend {
-        padding: 10px;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-      }
-
-      .percentile-item {
-        margin: 3px;
-        flex-basis: 45%;
-      }
-
-      .percentile-color {
-        width: 15px;
-        height: 8px;
-        margin-right: 5px;
-      }
-
-      .percentile-item span {
-        font-size: 0.8rem;
-      }
-    }
-
-    .result-section {
-      display: none;
-      margin-top: 20px;
-      padding: 15px;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
-
-    .calculator-card {
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      padding: 25px;
-      margin-bottom: 25px;
-      transition: transform 0.3s ease;
-    }
-
-    .calculator-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .calculator-header {
+      height: 350px;
+      padding: 10px;
       margin-bottom: 20px;
-      border-bottom: 2px solid #f0f0f0;
-      padding-bottom: 15px;
-    }
-
-    .calculator-header h2 {
-      color: #2c3e50;
-      font-size: 1.8rem;
-    }
-
-    .calculator-header p {
-      color: #7f8c8d;
-      font-size: 1.1rem;
-    }
-
-    .calculator-form .form-group {
-      margin-bottom: 20px;
-    }
-
-    .calculator-form label {
-      font-weight: 500;
-      color: #34495e;
-      margin-bottom: 8px;
-    }
-
-    .calculator-form input {
       border-radius: 8px;
-      padding: 12px;
-      border: 1px solid #e0e0e0;
-      transition: all 0.3s ease;
-    }
-
-    .calculator-form input:focus {
-      border-color: #3498db;
-      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-    }
-
-    .btn-container {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 25px;
-      width: 100%;
-    }
-
-    .btn {
-      padding: 14px 24px;
-      border-radius: 8px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      width: 100%;
-    }
-
-    .btn i {
-      margin-right: 10px;
-      font-size: 16px;
-    }
-
-    .calculate-btn {
-      background: linear-gradient(135deg, #c59a6d 0%, #b38a5d 100%);
-      color: white;
-    }
-
-    .calculate-btn:hover {
-      box-shadow: 0 6px 12px rgba(197, 154, 109, 0.3);
-      transform: translateY(-3px);
-    }
-
-    .calculate-btn:active {
-      transform: translateY(-1px);
-      box-shadow: 0 3px 6px rgba(197, 154, 109, 0.2);
-    }
-
-    .recalculate-btn {
-      background: linear-gradient(135deg, #d1aa7f 0%, #c59a6d 100%);
-      color: white;
-    }
-
-    .recalculate-btn:hover {
-      box-shadow: 0 6px 12px rgba(209, 170, 127, 0.3);
-      transform: translateY(-3px);
-    }
-
-    .recalculate-btn:active {
-      transform: translateY(-1px);
-      box-shadow: 0 3px 6px rgba(209, 170, 127, 0.2);
-    }
-
-    .btn::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.1);
-      z-index: -1;
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.5s ease;
-    }
-
-    .btn:hover::before {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    .info-card {
-      background-color: #f8f9ff;
-    }
-
-    .info-content {
-      padding: 10px 0;
-    }
-
-    .info-list {
-      padding-left: 20px;
-    }
-
-    .info-list li {
-      margin-bottom: 12px;
-      line-height: 1.6;
     }
 
     .page-title {
+      font-size: 1.4rem;
+      margin: 15px 0;
       text-align: center;
-      margin: 30px 0;
-      color: #2c3e50;
-      font-weight: 700;
     }
 
-    .percentile-bands-legend {
-      margin-top: 20px;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      padding: 15px 20px;
-    }
-
-    .percentile-bands-legend h5 {
-      font-family: "Montserrat", sans-serif;
-      font-weight: 600;
-      color: #2c3e50;
+    .calculator-card {
+      padding: 15px;
       margin-bottom: 15px;
-      text-align: center;
+      border-radius: 8px;
     }
 
-    .legend-row {
-      display: flex;
+    .calculator-header h2 {
+      font-size: 1.3rem;
+    }
+
+    .calculator-header p {
+      font-size: 0.9rem;
+    }
+
+    .form-group label {
+      font-size: 0.9rem;
+    }
+
+    .form-control {
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+
+    .btn {
+      padding: 12px 15px;
+      font-size: 0.9rem;
+    }
+
+    .result-section {
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    #percentileResult {
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .percentile-legend {
+      padding: 10px;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 10px;
+      justify-content: flex-start;
     }
 
-    .legend-item {
-      display: flex;
-      align-items: center;
-      margin: 5px;
-      padding: 5px 10px;
-      border-radius: 4px;
-      background-color: #f8f9fa;
+    .percentile-item {
+      margin: 3px;
+      flex-basis: 45%;
     }
 
-    .legend-color {
-      width: 20px;
+    .percentile-color {
+      width: 15px;
       height: 8px;
-      margin-right: 8px;
-      border-radius: 2px;
-    }
-
-    .line-color {
-      height: 3px;
-    }
-
-    .band-color {
-      height: 12px;
-    }
-
-    .legend-item span {
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-
-    hr {
-      margin: 10px 0;
-      border-color: #eee;
-    }
-
-    @media (max-width: 768px) {
-      .legend-row {
-        gap: 5px;
-      }
-
-      .legend-item {
-        padding: 4px 8px;
-        margin: 3px;
-        flex-basis: 45%;
-      }
-
-      .legend-color {
-        width: 15px;
-        margin-right: 5px;
-      }
-
-      .legend-item span {
-        font-size: 0.75rem;
-      }
-    }
-
-    /* Styles for the data points table */
-    .data-points-container {
-      margin-top: 20px;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      padding: 15px 20px;
-      margin-bottom: 20px;
-    }
-
-    .table-header {
-      border-bottom: 1px solid #eee;
-      padding-bottom: 15px;
-      margin-bottom: 15px;
-    }
-
-    .table-header h4 {
-      margin: 0;
-      color: #2c3e50;
-    }
-
-    .color-swatch {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
       margin-right: 5px;
     }
 
-    .delete-point-btn {
-      padding: 2px 6px;
+    .percentile-item span {
       font-size: 0.8rem;
     }
+  }
 
-    /* Mobile adjustments */
-    @media (max-width: 768px) {
-      .data-points-container {
-        padding: 10px;
-      }
+  .result-section {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
 
-      .table-responsive {
-        font-size: 0.85rem;
-      }
+  .calculator-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
+  }
 
-      .delete-point-btn {
-        padding: 1px 4px;
-        font-size: 0.7rem;
-      }
+  .calculator-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .calculator-header {
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+  }
+
+  .calculator-header h2 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+  }
+
+  .calculator-header p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+  }
+
+  .calculator-form .form-group {
+    margin-bottom: 20px;
+  }
+
+  .calculator-form label {
+    font-weight: 500;
+    color: #34495e;
+    margin-bottom: 8px;
+  }
+
+  .calculator-form input {
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+  }
+
+  .calculator-form input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+
+  .btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+    width: 100%;
+  }
+
+  .btn {
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+  }
+
+  .btn i {
+    margin-right: 10px;
+    font-size: 16px;
+  }
+
+  .calculate-btn {
+    background: linear-gradient(135deg, #c59a6d 0%, #b38a5d 100%);
+    color: white;
+  }
+
+  .calculate-btn:hover {
+    box-shadow: 0 6px 12px rgba(197, 154, 109, 0.3);
+    transform: translateY(-3px);
+  }
+
+  .calculate-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(197, 154, 109, 0.2);
+  }
+
+  .recalculate-btn {
+    background: linear-gradient(135deg, #d1aa7f 0%, #c59a6d 100%);
+    color: white;
+  }
+
+  .recalculate-btn:hover {
+    box-shadow: 0 6px 12px rgba(209, 170, 127, 0.3);
+    transform: translateY(-3px);
+  }
+
+  .recalculate-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(209, 170, 127, 0.2);
+  }
+
+  .btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease;
+  }
+
+  .btn:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .info-card {
+    background-color: #f8f9ff;
+  }
+
+  .info-content {
+    padding: 10px 0;
+  }
+
+  .info-list {
+    padding-left: 20px;
+  }
+
+  .info-list li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+
+  .page-title {
+    text-align: center;
+    margin: 30px 0;
+    color: #2c3e50;
+    font-weight: 700;
+  }
+
+  .percentile-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 15px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .percentile-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 10px;
+  }
+
+  .percentile-color {
+    width: 25px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 3px;
+  }
+
+  .percentile-bands-legend {
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 15px 20px;
+  }
+
+  .percentile-bands-legend h5 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .legend-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+  }
+
+  .legend-color {
+    width: 20px;
+    height: 8px;
+    margin-right: 8px;
+    border-radius: 2px;
+  }
+
+  .line-color {
+    height: 3px;
+  }
+
+  .band-color {
+    height: 12px;
+  }
+
+  .legend-item span {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  hr {
+    margin: 10px 0;
+    border-color: #eee;
+  }
+
+  @media (max-width: 768px) {
+    .legend-row {
+      gap: 5px;
     }
-  </style>
-  <body>
-    <!-- Navigation -->
-    <div id="nav-placeholder"></div>
 
-    <!-- Growth Chart Section -->
-    <div id="calculator-section">
-      <div class="container">
-        <div class="calculator-container">
-          <div class="row">
-            <!-- Growth Chart Input Card -->
-            <div class="col-md-6">
-              <div class="calculator-card">
-                <div class="calculator-header">
-                  <h2><i class="fas fa-chart-line"></i> Growth Chart</h2>
-                  <p>Height for Age (2-5 Years) - Girls</p>
+    .legend-item {
+      padding: 4px 8px;
+      margin: 3px;
+      flex-basis: 45%;
+    }
+
+    .legend-color {
+      width: 15px;
+      margin-right: 5px;
+    }
+
+    .legend-item span {
+      font-size: 0.75rem;
+    }
+  }
+
+  /* Styles for the data points table */
+  .data-points-container {
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 15px 20px;
+    margin-bottom: 20px;
+  }
+
+  .table-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+
+  .table-header h4 {
+    margin: 0;
+    color: #2c3e50;
+  }
+
+  .color-swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+
+  .delete-point-btn {
+    padding: 2px 6px;
+    font-size: 0.8rem;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .data-points-container {
+      padding: 10px;
+    }
+
+    .table-responsive {
+      font-size: 0.85rem;
+    }
+
+    .delete-point-btn {
+      padding: 1px 4px;
+      font-size: 0.7rem;
+    }
+  }
+</style>
+
+<body>
+  <!-- Navigation -->
+  <div id="nav-placeholder"></div>
+
+  <!-- Page Header -->
+  <header class="section"
+    style="background: linear-gradient(rgba(30, 36, 41, 0.8), rgba(30, 36, 41, 0.8)), url('img/bg3.jpg') no-repeat center center/cover; padding: 140px 0 20px; color: white; text-align: center;">
+    <div class="container fade-in">
+      <h1 style="color: white; margin-bottom: 10px;">Girls Growth Chart (2-5 Years)</h1>
+      <p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+        Track your child's growth and compare it with World Health Organization (WHO) standards.
+      </p>
+    </div>
+  </header>
+
+  <!-- Growth Chart Section -->
+  <div id="calculator-section" class="section">
+    <div class="container">
+      <div class="calculator-container">
+        <div class="row">
+          <!-- Growth Chart Input Card -->
+          <div class="col-md-6">
+            <div class="calculator-card">
+              <div class="calculator-header">
+                <h2><i class="fas fa-chart-line"></i> Growth Chart</h2>
+                <p>Height for Age (2-5 Years) - Girls</p>
+              </div>
+
+              <form id="growthForm" class="calculator-form">
+                <div class="form-group">
+                  <label for="age">Age (Years)</label>
+                  <input type="number" class="form-control" id="age" required min="2.0" max="5.0"
+                    placeholder="Enter age (2-5 Years)" step="0.1" />
                 </div>
 
-                <form id="growthForm" class="calculator-form">
-                  <div class="form-group">
-                    <label for="age">Age (Years)</label>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="age"
-                      required
-                      min="2.0"
-                      max="5.0"
-                      placeholder="Enter age (2-5 Years)"
-                      step="0.1"
-                    />
-                  </div>
+                <div class="form-group">
+                  <label for="height">Height (cm)</label>
+                  <input type="number" class="form-control" id="height" required min="80" max="120"
+                    placeholder="Enter height in cm" />
+                </div>
 
-                  <div class="form-group">
-                    <label for="height">Height (cm)</label>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="height"
-                      required
-                      min="80"
-                      max="120"
-                      placeholder="Enter height in cm"
-                    />
-                  </div>
+                <div class="form-group">
+                  <label for="pointLabel">Label (optional)</label>
+                  <input type="text" class="form-control" id="pointLabel" placeholder="e.g., Jan 2023, Checkup, etc." />
+                </div>
 
-                  <div class="form-group">
-                    <label for="pointLabel">Label (optional)</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="pointLabel"
-                      placeholder="e.g., Jan 2023, Checkup, etc."
-                    />
-                  </div>
+                <div class="btn-container">
+                  <button type="submit" class="btn calculate-btn">
+                    <i class="fas fa-plus-circle"></i> Add Data Point
+                  </button>
 
-                  <div class="btn-container">
-                    <button type="submit" class="btn calculate-btn">
-                      <i class="fas fa-plus-circle"></i> Add Data Point
-                    </button>
+                  <button type="button" id="clearChart" class="btn recalculate-btn">
+                    <i class="fas fa-eraser"></i> Clear All Points
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
 
-                    <button
-                      type="button"
-                      id="clearChart"
-                      class="btn recalculate-btn"
-                    >
-                      <i class="fas fa-eraser"></i> Clear All Points
-                    </button>
-                  </div>
-                </form>
+          <!-- Growth Chart Info Card -->
+          <div class="col-md-6">
+            <div class="calculator-card info-card">
+              <div class="calculator-header">
+                <h2>
+                  <i class="fas fa-info-circle"></i> About Growth Charts
+                </h2>
+              </div>
+              <div class="info-content">
+                <h4>What Growth Charts Tell Us</h4>
+                <p>
+                  Growth percentiles by themselves don't say much. What really
+                  matters is the rate of growth:
+                </p>
+                <ul class="info-list">
+                  <li>
+                    A normal rate of growth means the child's growth points
+                    closely follow a percentile line on the chart.
+                  </li>
+                  <li>
+                    We usually don't worry about insufficient (or excessive)
+                    growth until a child's growth rate has crossed at least
+                    two percentile lines (e.g., from above the 90th percentile
+                    to below the 50th).
+                  </li>
+                  <li>
+                    If a child's weight, height, or head size is below the 5th
+                    percentile, it's important to see if the growth points
+                    have always paralleled the 5th percentile line - which
+                    would mean the growth rate is normal - or if the child is
+                    suddenly falling further behind, which is more concerning.
+                  </li>
+                </ul>
               </div>
             </div>
-
-            <!-- Growth Chart Info Card -->
-            <div class="col-md-6">
-              <div class="calculator-card info-card">
-                <div class="calculator-header">
-                  <h2>
-                    <i class="fas fa-info-circle"></i> About Growth Charts
-                  </h2>
-                </div>
-                <div class="info-content">
-                  <h4>What Growth Charts Tell Us</h4>
-                  <p>
-                    Growth percentiles by themselves don't say much. What really
-                    matters is the rate of growth:
-                  </p>
-                  <ul class="info-list">
-                    <li>
-                      A normal rate of growth means the child's growth points
-                      closely follow a percentile line on the chart.
-                    </li>
-                    <li>
-                      We usually don't worry about insufficient (or excessive)
-                      growth until a child's growth rate has crossed at least
-                      two percentile lines (e.g., from above the 90th percentile
-                      to below the 50th).
-                    </li>
-                    <li>
-                      If a child's weight, height, or head size is below the 5th
-                      percentile, it's important to see if the growth points
-                      have always paralleled the 5th percentile line - which
-                      would mean the growth rate is normal - or if the child is
-                      suddenly falling further behind, which is more concerning.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
+        </div>
 
-          <!-- Growth Chart Visualization -->
-          <div class="chart-container">
-            <div id="growthChartContainer"></div>
-          </div>
+        <!-- Growth Chart Visualization -->
+        <div class="chart-container">
+          <div id="growthChartContainer"></div>
+        </div>
 
-          <!-- Percentile Legend -->
-          <div class="percentile-bands-legend">
-            <h5>Percentile Ranges</h5>
-            <div class="percentile-legend-container"></div>
-          </div>
+        <!-- Percentile Legend -->
+        <div class="percentile-bands-legend">
+          <h5>Percentile Ranges</h5>
+          <div class="percentile-legend-container"></div>
+        </div>
 
-          <!-- Add a data table to show all the added points -->
-          <div
-            id="dataPointsTableContainer"
-            class="data-points-container"
-            style="display: none"
-          >
-            <div class="table-header">
-              <h4>Added Data Points</h4>
-            </div>
-            <div class="table-responsive">
-              <table class="table table-sm table-hover">
-                <thead>
-                  <tr>
-                    <th>Label</th>
-                    <th>Age (years)</th>
-                    <th>Height (cm)</th>
-                    <th>Percentile</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody id="dataPointsTableBody">
-                  <!-- Data points will be added here dynamically -->
-                </tbody>
-              </table>
-            </div>
+        <!-- Add a data table to show all the added points -->
+        <div id="dataPointsTableContainer" class="data-points-container" style="display: none">
+          <div class="table-header">
+            <h4>Added Data Points</h4>
           </div>
+          <div class="table-responsive">
+            <table class="table table-sm table-hover">
+              <thead>
+                <tr>
+                  <th>Label</th>
+                  <th>Age (years)</th>
+                  <th>Height (cm)</th>
+                  <th>Percentile</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="dataPointsTableBody">
+                <!-- Data points will be added here dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-          <!-- Result Section -->
-          <div id="growthInfo" class="result-section">
-            <h4>Growth Assessment</h4>
-            <p id="percentileResult"></p>
-          </div>
+        <!-- Result Section -->
+        <div id="growthInfo" class="result-section">
+          <h4>Growth Assessment</h4>
+          <p id="percentileResult"></p>
         </div>
       </div>
     </div>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
 
     <!-- Scripts -->
     <script src="js/jquery.1.11.1.js"></script>
@@ -586,6 +594,7 @@
     <script>
       $(function () {
         $("#nav-placeholder").load("nav.html");
+        $("#footer-placeholder").load("footer.html");
       });
 
       // Define color scheme for a professional medical look
@@ -677,7 +686,7 @@
 
       // Set up percentile data for girls 2-5 years
       const ageValues = [2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5];
-      
+
       const percentileData = {
         "3rd": [80.3, 81.5, 82.6, 84.3, 87.9, 89.1, 90.3, 91.5, 94.6, 95.6, 96.7, 97.7, 100.5],
         "10th": [82.3, 83.5, 84.7, 86.5, 90.2, 91.4, 92.6, 93.8, 97.2, 98.2, 99.3, 100.3, 103.3],
@@ -1318,9 +1327,9 @@
           while (lowerIndex < ageValues.length - 1 && ageValues[lowerIndex + 1] <= age) {
             lowerIndex++;
           }
-          
+
           const upperIndex = Math.min(ageValues.length - 1, lowerIndex + 1);
-          const fraction = (ageValues[upperIndex] === ageValues[lowerIndex]) ? 
+          const fraction = (ageValues[upperIndex] === ageValues[lowerIndex]) ?
             0 : (age - ageValues[lowerIndex]) / (ageValues[upperIndex] - ageValues[lowerIndex]);
 
           // Interpolate percentile values for exact age
@@ -1378,5 +1387,6 @@
         .getElementById("clearChart")
         .addEventListener("click", clearAllDataPoints);
     </script>
-  </body>
+</body>
+
 </html>

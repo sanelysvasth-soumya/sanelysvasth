@@ -1,57 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contact Us - Svasth by Soumya</title>
-    
-    <!-- Include same CSS as index.html -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="font-awesome-4.2.0/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-  </head>
-  <body>
-    <div id="nav-placeholder"></div>
 
-    <div id="contact">
-        <div class="container">
-            <div class="section-title text-center">
-                <h2>Contact Us</h2>
-                <hr>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Svasth by Soumya</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="font-awesome-4.2.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="img/other4.png">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="img/new_logo.png" alt="Svasth Logo" style="height: 80px;">
+                <img src="img/font_new.png" alt="Svasth by Soumya" style="height: 60px;">
+            </a>
+            <div class="nav-toggle" id="navToggle">
+                <i class="fa fa-bars"></i>
             </div>
-            
-            <div class="row">
-                <div class="col-md-3">
-                    <address>
-                        <strong>Address</strong><br>
-                        <br>
-                        Carmelaram, Off Sarjapur Main Road<br>
-                        landmark - Carmelaram Railway station<br>
-                        560035, Bengaluru<br>
-                        Phone: 9845166112
-                        <ul class="social">
-                            <li><a href="#"><span class="fa fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                            <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fa fa-dribbble"></span></a></li>
-                        </ul>
-                    </address>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="questionnaire.html" class="nav-link">Assessment</a></li>
+                <li><a href="blogs.html" class="nav-link">Blogs</a></li>
+                <li><a href="calculators.html" class="nav-link">Calculators</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="section"
+        style="background: linear-gradient(rgba(55, 65, 81, 0.7), rgba(55, 65, 81, 0.7)), url('img/bg2.jpg') no-repeat center center/cover; padding: 140px 0 20px; color: white; text-align: center;">
+        <div class="container fade-in">
+            <h1 style="color: white; margin-bottom: 10px;">Get in Touch</h1>
+            <p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+                We'd love to hear from you. Reach out for queries, appointments, or just to say hello.
+            </p>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-2">
+
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="section-title">Contact Info</h2>
+                    <p style="margin-bottom: 30px;">
+                        Feel free to visit us or call us during working hours.
+                    </p>
+
+                    <div style="margin-bottom: 20px;">
+                        <h4 style="color: var(--primary); margin-bottom: 10px;">Address</h4>
+                        <p>
+                            Carmelaram, Off Sarjapur Main Road<br>
+                            Landmark: Carmelaram Railway Station<br>
+                            Bengaluru, 560035
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <h4 style="color: var(--primary); margin-bottom: 10px;">Phone</h4>
+                        <p>+91 98451 66112</p>
+                    </div>
+
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: var(--primary); margin-bottom: 10px;">Socials</h4>
+                        <div style="display: flex; gap: 15px;">
+                            <a href="#" style="font-size: 1.5rem; color: var(--secondary);"><i
+                                    class="fa fa-facebook"></i></a>
+                            <a href="#" style="font-size: 1.5rem; color: var(--secondary);"><i
+                                    class="fa fa-instagram"></i></a>
+                            <a href="#" style="font-size: 1.5rem; color: var(--secondary);"><i
+                                    class="fa fa-twitter"></i></a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="col-md-9">
-                    <form autocomplete="off">
-                        <!-- Contact form from original file -->
+                <!-- Contact Form -->
+                <div class="card" style="padding: 30px;">
+                    <h3 style="margin-bottom: 20px;">Send a Message</h3>
+                    <form id="contactForm">
+                        <input type="hidden" name="_captcha" value="false">
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Subject</label>
+                            <input type="text" name="_subject" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">Send Message</button>
                     </form>
+                    <div id="formStatus" style="display: none; margin-top: 20px; padding: 15px; border-radius: 8px; text-align: center; font-weight: 600;"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4 class="footer-title">Svasth by Soumya</h4>
+                    <p style="color: #ffffff; opacity: 0.9;">
+                        Empowering you to live a healthier, happier life through better nutrition.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@svasth.com">info@svasth.com</a></li>
+                        <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+                        <li>Bangalore, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                Copyright &copy; 2024. All rights reserved.<br>
+                Svasth by Soumya - Dietitian in Bengaluru
+                <div class="designer-credit">
+                    Designed by <span class="designer-name">H. Sumant</span>
                 </div>
             </div>
         </div>
-    </div>
+    </footer>
 
-    <script src="js/jquery.1.11.1.js"></script>
     <script>
-        $(function(){
-            $("#nav-placeholder").load("nav.html");
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
         });
+
+        // AJAX Form Submission
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('submitBtn');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Show loading state
+                submitBtn.innerText = 'Sending...';
+                submitBtn.disabled = true;
+
+                const formData = new FormData(contactForm);
+
+                fetch("https://formsubmit.co/ajax/info.svasth@gmail.com", {
+                    method: "POST",
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            formStatus.innerText = "✅ Message sent successfully!";
+                            formStatus.style.backgroundColor = "#d4edda";
+                            formStatus.style.color = "#155724";
+                            formStatus.style.display = "block";
+                            contactForm.reset();
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    })
+                    .catch(error => {
+                        formStatus.innerText = "❌ Oops! Something went wrong. Please try again.";
+                        formStatus.style.backgroundColor = "#f8d7da";
+                        formStatus.style.color = "#721c24";
+                        formStatus.style.display = "block";
+                    })
+                    .finally(() => {
+                        submitBtn.innerText = 'Send Message';
+                        submitBtn.disabled = false;
+                        setTimeout(() => {
+                            formStatus.style.display = "none";
+                        }, 5000);
+                    });
+            });
+        }
     </script>
-  </body>
-</html> 
+</body>
+
+</html>
