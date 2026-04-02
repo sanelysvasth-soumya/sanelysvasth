@@ -633,6 +633,12 @@ img {
     padding: 20px !important;
     margin: 15% auto !important;
   }
+
+  .designer-credit {
+    padding: 4px 16px;
+    font-size: 0.7rem;
+    top: -15px;
+  }
 }
 
 /* Animations */
