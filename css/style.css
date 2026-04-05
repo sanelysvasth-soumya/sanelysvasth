@@ -231,10 +231,10 @@ img {
 
 /* Components: Navbar */
 .navbar {
-  position: fixed;
+  position: fixed !important;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100% !important;
   z-index: 1000;
   background: #ffffff;
   box-shadow: var(--shadow-sm);
@@ -255,6 +255,12 @@ img {
   color: var(--secondary);
   display: flex;
   align-items: center;
+  height: auto !important;
+  padding: 0 !important;
+}
+
+.navbar-brand img {
+  max-width: none !important;
 }
 
 .navbar-brand span {
