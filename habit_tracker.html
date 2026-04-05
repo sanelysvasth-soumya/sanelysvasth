@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit Tracker - Svasth by Soumya</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* Reset and Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f6f7f9;
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* Core Variables */
+    :root {
+      --primary-color: #bfa17c;
+      /* Beige/Gold UI accent color */
+      --text-color: #444;
+      --font-cursive: 'Alex Brush', cursive;
+      --font-sans: 'Montserrat', sans-serif;
+    }
+
+    /* Setup Form Styling */
+    #setup-view {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+      width: 100%;
+      max-width: 450px;
+      text-align: center;
+    }
+
+    #setup-view h2 {
+      margin-bottom: 25px;
+      color: var(--primary-color);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #555;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--primary-color);
+    }
+
+    .btn-start {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 15px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+
+    .btn-start:hover {
+      background: #a98a65;
+    }
+
+    /* Tracker UI Styling */
+    #tracker-view {
+      display: none;
+      /* Hidden strictly by default until form submission */
+      background: #fff;
+      padding: 50px;
+      border-radius: 6px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      max-width: 1200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Faint background watermark to mimic image's transparent logo */
+    .watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 12vw;
+      font-weight: 600;
+      color: rgba(191, 161, 124, 0.05);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: 10px;
+      z-index: 0;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    /* Relative Wrapper over watermark */
+    .tracker-content {
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Header Components */
+    .tracker-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .header-name {
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: baseline;
+      color: #333;
+    }
+
+    .inp-line {
+      display: inline-block;
+      min-width: 100px;
+      border-bottom: 1px solid #ccc;
+      margin-left: 10px;
+      text-align: center;
+      padding: 0 15px;
+      color: #333;
+    }
+
+    .inp-line.cursive {
+      font-family: var(--font-cursive);
+      font-size: 1.8rem;
+      color: #222;
+      transform: translateY(5px);
+    }
+
+    .header-title {
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-align: center;
+      flex-grow: 1;
+      padding-right: 15vw;
+      /* visual balancing since "NAME" is on left */
+    }
+
+    .tracker-sub-info {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 30px;
+      padding-left: 60px;
+    }
+
+    .sub-item {
+      display: flex;
+      align-items: baseline;
+      margin-right: 60px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+    }
+
+    .sub-item span.inp-line.cursive {
+      font-size: 1.6rem;
+    }
+
+    /* Grid Layout */
+    .grid-wrap {
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .col-habits {
+      flex: 2;
+      max-width: 600px;
+      padding-top: 30px;
+      /* Offset to align with days header */
+    }
+
+    .col-week {
+      width: 100px;
+      border: 1px solid var(--primary-color);
+      border-radius: 4px;
+      padding: 0;
+      position: relative;
+    }
+
+    /* Inside the grid the borders are subtle and thin */
+    .col-week::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Headers Rows inside Weeks */
+    .week-days {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-bottom: 1px dotted var(--primary-color);
+    }
+
+    .day-name {
+      text-align: center;
+      font-size: 0.65rem;
+      letter-spacing: 0.5px;
+      padding: 8px 0;
+      color: #555;
+    }
+
+    /* Habit specific rows */
+    .habit-header {
+      color: #ac6758;
+      /* Slightly reddish as in image "HABITS" text */
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-align: center;
+      margin-bottom: 0px;
+      border-bottom: 1px dotted var(--primary-color);
+      border-top: 1px solid var(--primary-color);
+      border-left: 1px solid var(--primary-color);
+      border-right: 1px solid var(--primary-color);
+      border-radius: 4px;
+      padding: 10px 0;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .habit-row {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px dotted var(--primary-color);
+    }
+
+    /* Don't show bottom border for the very last row */
+    .habit-row:last-child {
+      border-bottom: none;
+    }
+
+    .habit-text {
+      font-size: 0.72rem;
+      letter-spacing: 0.8px;
+      color: var(--text-color);
+      width: 100%;
+      text-align: right;
+      padding-right: 12px;
+      line-height: 1.3;
+    }
+
+    .week-row-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      height: 40px;
+    }
+
+    .checkbox-cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .check-box {
+      width: 16px;
+      height: 24px;
+      border: 1px dashed var(--primary-color);
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s;
+    }
+
+    .check-box:hover {
+      background: #fdfaf6;
+    }
+
+    .check-box.checked {
+      background-color: var(--primary-color);
+      border-style: solid;
+    }
+
+    .check-box.checked::after {
+      content: '✔';
+      color: white;
+      font-size: 12px;
+    }
+
+    /* Responsive scaling */
+    @media (max-width: 1024px) {
+      .header-title {
+        padding-right: 0;
+      }
+
+      .grid-wrap {
+        flex-direction: column;
+      }
+
+      .col-habits {
+        width: 100%;
+        text-align: left;
+      }
+
+      .habit-text {
+        text-align: left;
+        padding-left: 10px;
+      }
+
+      .tracker-sub-info {
+        padding-left: 0;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .sub-item {
+        margin-right: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- STEP 1: SETUP VIEW -->
+  <div id="setup-view">
+    <h2>Habit Tracker Setup</h2>
+    <form id="setup-form">
+      <div class="form-group">
+        <label for="input-name">Your Name</label>
+        <input type="text" id="input-name" placeholder="e.g. Preethiv" required>
+      </div>
+      <div class="form-group">
+        <label for="input-contact">Contact (Phone / Email)</label>
+        <input type="text" id="input-contact" placeholder="e.g. 9876543210 or your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label for="input-date">Select Date</label>
+        <input type="date" id="input-date" required>
+      </div>
+      <button type="submit" class="btn-start">Start Tracking</button>
+      <button type="button" class="btn-start" id="btn-load-existing" style="background: #888; margin-top: 10px;"
+        onclick="loadExistingSession()">Load Previous Session</button>
+    </form>
+  </div>
+
+  <!-- STEP 2: TRACKER VIEW -->
+  <div id="tracker-view">
+    <div class="watermark">
+      SANELY<br>SVASTH
+    </div>
+
+    <div class="tracker-content">
+      <div class="tracker-header">
+        <div class="header-name">
+          NAME: <span class="inp-line cursive" id="disp-name"></span>
+        </div>
+        <div class="header-title">HABIT TRACKER</div>
+      </div>
+
+      <div class="tracker-sub-info"
+        style="display: flex; justify-content: space-between; padding-left: 55px; padding-right: 55px;">
+        <div class="sub-item">Date: <span class="inp-line cursive" id="disp-date"></span></div>
+        <div class="sub-item" style="color: var(--primary-color); font-size: 1.2rem; font-weight: 600;">Progress: <span
+            id="disp-progress" style="margin-left: 10px;">0%</span></div>
+      </div>
+
+      <div class="grid-wrap">
+        <!-- Habits Column -->
+        <div class="col-habits">
+          <div class="habit-header">HABITS</div>
+          <div id="habit-labels-container">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Tracker Column -->
+        <div class="col-week">
+          <div class="week-days" id="dynamic-week-days">
+            <!-- Populated via JS -->
+          </div>
+          <div id="grid-container">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
+        <button id="submit-progress-btn" class="btn-start"
+          style="max-width: 300px; margin: 0 auto; display: block;">Save Progress to Sheet</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const habitsList = [
+      "Vegetables in two meals of the day",
+      "20 mins Sunlight (Between 9 AM and 2 PM)",
+      "Including any seasonal fruit",
+      "Noticed how my body responds to food",
+      "Order of eating veggies-proteins-carbs",
+      "Limited coffee/tea",
+      "Buttermilk in two meals of the day",
+      "Early dinner(two hours before sleep)",
+      "Had 3L water",
+      "Early Sleep routine (10 - 10:30 PM)",
+      "Basic activity (Walk/Stretch/Workout)",
+      "Ate out, but ate consciously (veggies-protein-carbs)",
+      "5-Min walk after each meal",
+      "Proteins in two meals of the day Sprouts/Dairy/Eggs/Whey/Tofu/Soya",
+      "Oil pulling (coconut oil)"
+    ];
+
+    // Generate the DOM structure for habits and grids
+    function updateProgress() {
+      const total = document.querySelectorAll('.check-box').length;
+      const checked = document.querySelectorAll('.check-box.checked').length;
+      const percentage = total === 0 ? 0 : Math.round((checked / total) * 100);
+      document.getElementById('disp-progress').innerText = `${percentage}%`;
+    }
+
+    // Generate the DOM structure for habits and grids
+    function initTrackerDOM(startDateStr) {
+      const labelsContainer = document.getElementById('habit-labels-container');
+      const gridContainer = document.getElementById('grid-container');
+      const weekDaysContainer = document.getElementById('dynamic-week-days');
+
+      labelsContainer.innerHTML = '';
+      gridContainer.innerHTML = '';
+      weekDaysContainer.innerHTML = '';
+
+      // Generate dates for the headers
+      const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+      // Parse dates properly considering local timezone
+      const parts = startDateStr.split('-');
+      const targetDate = new Date(parts[0], parts[1] - 1, parts[2]);
+
+      const dayName = days[targetDate.getDay()];
+      const dayDate = targetDate.getDate();
+      const monthName = targetDate.toLocaleString('default', { month: 'short' });
+      weekDaysContainer.innerHTML = `<div class="day-name">${dayName}<br>${dayDate} ${monthName}</div>`;
+
+      habitsList.forEach((habit, rIdx) => {
+        // Label
+        const rowHTML = `<div class="habit-row"><div class="habit-text">${habit}</div></div>`;
+        labelsContainer.innerHTML += rowHTML;
+
+        // Grid Row
+        let gridRow = `<div class="week-row-grid">`;
+        gridRow += `<div class="checkbox-cell"><div class="check-box" data-id="r${rIdx}"></div></div>`;
+        gridRow += `</div>`;
+        gridContainer.innerHTML += gridRow;
+      });
+
+      // Bind Click events to checkboxes
+      document.querySelectorAll('.check-box').forEach(box => {
+        box.addEventListener('click', function () {
+          this.classList.toggle('checked');
+          saveCheckboxState();
+          updateProgress();
+        });
+      });
+
+      updateProgress();
+    }
+
+    // Initialize State functionality
+    const setupForm = document.getElementById('setup-form');
+    const setupView = document.getElementById('setup-view');
+    const trackerView = document.getElementById('tracker-view');
+
+    setupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('input-name').value;
+      const contact = document.getElementById('input-contact').value;
+      const date = document.getElementById('input-date').value;
+
+      // Parse dates properly considering local timezone
+      const parts = date.split('-');
+      const dObj = new Date(parts[0], parts[1] - 1, parts[2]);
+
+      document.getElementById('disp-name').innerText = name;
+      document.getElementById('disp-date').innerText = dObj.toLocaleDateString();
+
+      initTrackerDOM(date);
+
+      // Ensure clear state for new sessions
+      localStorage.removeItem('svasthTrackerChecks');
+
+      saveConfig(name, date, contact);
+      transitionToTracker();
+    });
+
+    function saveConfig(name, date, contact) {
+      localStorage.setItem('svasthTrackerConfig', JSON.stringify({ name, date, contact }));
+    }
+
+    function saveCheckboxState() {
+      const checks = {};
+      document.querySelectorAll('.check-box.checked').forEach(box => {
+        checks[box.getAttribute('data-id')] = true;
+      });
+      localStorage.setItem('svasthTrackerChecks', JSON.stringify(checks));
+    }
+
+    function loadCheckboxState() {
+      const saved = JSON.parse(localStorage.getItem('svasthTrackerChecks'));
+      if (saved) {
+        Object.keys(saved).forEach(id => {
+          const el = document.querySelector(`.check-box[data-id="${id}"]`);
+          if (el) el.classList.add('checked');
+        });
+      }
+      updateProgress();
+    }
+
+    function loadExistingSession() {
+      const config = JSON.parse(localStorage.getItem('svasthTrackerConfig'));
+      if (!config) {
+        alert("No previous session found!");
+        return;
+      }
+
+      // Handle legacy configs
+      let targetDate = config.date;
+      if (!targetDate) {
+        // Fallback for old saved configs to today
+        const t = new Date();
+        targetDate = `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, '0')}-${String(t.getDate()).padStart(2, '0')}`;
+      }
+
+      const parts = targetDate.split('-');
+      const dObj = new Date(parts[0], parts[1] - 1, parts[2]);
+
+      document.getElementById('disp-name').innerText = config.name;
+      document.getElementById('disp-date').innerText = dObj.toLocaleDateString();
+
+      initTrackerDOM(targetDate);
+      loadCheckboxState();
+      transitionToTracker();
+    }
+
+    function transitionToTracker() {
+      setupView.style.display = 'none';
+      trackerView.style.display = 'block';
+    }
+
+    // Auto-check for existing config on page load
+    window.onload = () => {
+      // Set default date to today
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      document.getElementById('input-date').value = `${yyyy}-${mm}-${dd}`;
+
+      if (localStorage.getItem('svasthTrackerConfig')) {
+        document.getElementById('btn-load-existing').style.display = 'block';
+      } else {
+        document.getElementById('btn-load-existing').style.display = 'none';
+      }
+    }
+
+    // Google Sheets Submission Logic
+    document.getElementById("submit-progress-btn").addEventListener("click", submitProgressToGoogleSheets);
+
+    function submitProgressToGoogleSheets() {
+      const name = document.getElementById("disp-name").innerText;
+      const date = document.getElementById("disp-date").innerText;
+      const progress = document.getElementById("disp-progress").innerText;
+
+      if (!name) {
+        alert("Please start a tracker session first.");
+        return;
+      }
+
+      const config = JSON.parse(localStorage.getItem('svasthTrackerConfig')) || {};
+      const contact = config.contact || "";
+
+      const now = new Date();
+      const formattedTimestamp = now.toLocaleString('en-US', {
+        month: 'short', day: 'numeric', year: 'numeric',
+        hour: 'numeric', minute: '2-digit', hour12: true
+      });
+
+      const data = {
+        sheetName: "Sheet3",
+        Name: name,
+        Contact: contact,
+        Date: date,
+        Progress: progress,
+        timestamp: formattedTimestamp
+      };
+
+      document.querySelectorAll('.check-box').forEach(box => {
+        const idStr = box.getAttribute('data-id'); // e.g. "r0"
+        const rIdx = parseInt(idStr.replace('r', ''));
+        const habitName = habitsList[rIdx];
+        data[habitName] = box.classList.contains('checked') ? "Yes" : "No";
+      });
+
+      const btn = document.getElementById("submit-progress-btn");
+      const originalText = btn.innerText;
+      btn.innerText = "Saving to Sheet...";
+      btn.disabled = true;
+      btn.style.opacity = "0.7";
+
+      const iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      document.body.appendChild(iframe);
+
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = "https://script.google.com/macros/s/AKfycbzWpa98yHvCTYfp0aiOrScOgGhXxZ5EXR6v2cSUtTnhEQpj9fzYhyOWlIacKgxA53vGBA/exec";
+
+      for (const [key, value] of Object.entries(data)) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+      }
+
+      iframe.contentDocument.body.appendChild(form);
+      form.submit();
+
+      setTimeout(() => {
+        document.body.removeChild(iframe);
+        btn.innerText = "Saved Successfully!";
+        btn.style.backgroundColor = "#27ae60";
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.disabled = false;
+          btn.style.opacity = "1";
+          btn.style.backgroundColor = ""; // revert to CSS default
+        }, 3000);
+      }, 3000); // give it a few seconds to submit
+    }
+  </script>
+</body>
+
+</html>
