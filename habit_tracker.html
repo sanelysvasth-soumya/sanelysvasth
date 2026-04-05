@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@400;500;600&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="font-awesome-4.2.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/png" href="img/other4.png">
 
   <style>
     /* Reset and Base Styles */
@@ -23,11 +26,6 @@
       background-color: #f6f7f9;
       font-family: 'Montserrat', sans-serif;
       color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
     }
 
     /* Core Variables */
@@ -373,7 +371,24 @@
 
 <body>
 
-  <!-- STEP 1: SETUP VIEW -->
+  <!-- Navigation -->
+  <div id="nav-placeholder"></div>
+
+  <!-- Page Header -->
+  <header class="section"
+    style="background: linear-gradient(rgba(55, 65, 81, 0.7), rgba(55, 65, 81, 0.7)), url('img/bg3.jpg') no-repeat center center/cover; padding: 140px 0 20px; color: white; text-align: center;">
+    <div class="container fade-in">
+      <h1 style="color: white; margin-bottom: 10px;">Daily Habit Tracker</h1>
+      <p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+        Track your daily nutrition, sleep, and lifestyle habits seamlessly to stay on target with your health targets.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container" style="display: flex; justify-content: center; flex-direction: column; align-items: center; min-height: 60vh;">
+
+  <!-- Setup Screen -->
   <div id="setup-view">
     <h2>Habit Tracker Setup</h2>
     <form id="setup-form">
@@ -689,6 +704,21 @@
         }, 3000);
       }, 3000); // give it a few seconds to submit
     }
+  </script>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="js/jquery.1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#nav-placeholder").load("nav.html");
+      $("#footer-placeholder").load("footer.html");
+    });
   </script>
 </body>
 
