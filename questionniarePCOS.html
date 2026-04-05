@@ -511,11 +511,17 @@
 
     function sendReportToGoogleSheets(resultObj) {
       const scores = getScores();
+      const now = new Date();
+      const formattedTimestamp = now.toLocaleString('en-US', {
+        month: 'short', day: 'numeric', year: 'numeric',
+        hour: 'numeric', minute: '2-digit', hour12: true
+      });
+
       const data = {
         sheetName: "Sheet2",
         name: userName,
         contact: userContact,
-        timestamp: new Date().toISOString(),
+        timestamp: formattedTimestamp,
         result: resultObj.resultText || "",
         InsulinResistanceScore: scores["Insulin Resistance"],
         InflammatoryScore: scores["Inflammatory"],

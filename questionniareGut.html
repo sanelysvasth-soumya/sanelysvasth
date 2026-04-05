@@ -397,6 +397,55 @@
       document.getElementById("question-container").innerHTML = resultsHtml;
       document.getElementById("nav-buttons").style.display = "none";
       document.getElementById("progress-container").style.display = "none";
+      
+      sendReportToGoogleSheets(percentage, category);
+    }
+
+    function sendReportToGoogleSheets(percentage, category) {
+      const highSymptoms = questions
+        .filter(q => answers[q.id] && answers[q.id] >= 4)
+        .map(q => q.text)
+        .join(", ");
+
+      const now = new Date();
+      const formattedTimestamp = now.toLocaleString('en-US', {
+        month: 'short', day: 'numeric', year: 'numeric',
+        hour: 'numeric', minute: '2-digit', hour12: true
+      });
+
+      const data = {
+        sheetName: "Sheet1",
+        name: userName,
+        contact: userContact,
+        score: Math.round(percentage),
+        category: category,
+        highSymptoms: highSymptoms,
+        timestamp: formattedTimestamp
+      };
+
+      questions.forEach((q) => {
+        if (answers[q.id]) data[`Q${q.id}`] = answers[q.id];
+      });
+
+      const iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      document.body.appendChild(iframe);
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = "https://script.google.com/macros/s/AKfycbzWpa98yHvCTYfp0aiOrScOgGhXxZ5EXR6v2cSUtTnhEQpj9fzYhyOWlIacKgxA53vGBA/exec";
+      for (const [key, value] of Object.entries(data)) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+      }
+      iframe.contentDocument.body.appendChild(form);
+      form.submit();
+      
+      setTimeout(() => {
+        document.body.removeChild(iframe);
+      }, 5000);
     }
   </script>
 </body>
