@@ -283,7 +283,7 @@
         <div>
           <h4 class="footer-title">Contact</h4>
           <ul class="footer-links">
-            <li><a href="mailto:info.svasth@gmail.com">info.svasth@gmail.com</a></li>
+            <li><a href="mailto:sanelysvasth@gmail.com">sanelysvasth@gmail.com</a></li>
             <li><a href="tel:+919845188112">+91 98451 88112</a></li>
             <li>Bengaluru, India</li>
           </ul>
@@ -292,55 +292,6 @@
       <div class="footer-bottom">
         Copyright &copy; 2024. All rights reserved.<br>
         Svasth by Soumya - Dietitian in Bengaluru
-
-
-        <script>
-          function openDesignerModal() {
-            var modal = document.getElementById('designerModal');
-            if(modal) {
-              modal.style.display = 'flex';
-              setTimeout(function() { modal.classList.add('show'); }, 10);
-            }
-          }
-          function closeDesignerModal() {
-            var modal = document.getElementById('designerModal');
-            if(modal) {
-              modal.classList.remove('show');
-              setTimeout(function() { modal.style.display = 'none'; }, 300);
-            }
-          }
-          window.addEventListener('click', function(event) {
-            var modal = document.getElementById('designerModal');
-            if (event.target == modal) {
-              closeDesignerModal();
-            }
-          });
-        </script>
-
-        <!-- Designer Image Expanding Lightbox -->
-        <div id="designerImageModal" class="designer-modal" style="z-index: 10000; background-color: rgba(0,0,0,0.9);" onclick="closeDesignerImageDetail()">
-          <span class="designer-modal-close" style="color: white; font-size: 40px; right: 30px; top: 20px;">&times;</span>
-          <img id="designerImageDetailSrc" src="" style="max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); object-fit: contain; cursor: zoom-out;">
-        </div>
-
-        <script>
-          function openDesignerImageDetail(e, src) {
-            e.stopPropagation(); // prevent closing outer modal
-            var modal = document.getElementById('designerImageModal');
-            if(modal) {
-              document.getElementById('designerImageDetailSrc').src = src;
-              modal.style.display = 'flex';
-              setTimeout(function() { modal.classList.add('show'); }, 10);
-            }
-          }
-          function closeDesignerImageDetail() {
-            var modal = document.getElementById('designerImageModal');
-            if(modal) {
-              modal.classList.remove('show');
-              setTimeout(function() { modal.style.display = 'none'; }, 300);
-            }
-          }
-        </script>
 
       </div>
     </div>
