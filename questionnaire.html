@@ -68,14 +68,50 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <div id="footer-placeholder"></div>
+ <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4 class="footer-title">Svasth by Soumya</h4>
+          <p style="color: #ffffff; opacity: 0.9;">
+            Guiding you to live a healthier and holistically fitter life - via food and lifestyle
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:sanelysvasth@gmail.com">sanelysvasth@gmail.com</a></li>
+            <li><a href="tel:+919845188112">+91 98451 88112</a></li>
+            <li>Bengaluru, India</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        Copyright &copy; 2024. All rights reserved.<br>
+        Svasth by Soumya - Dietitian in Bengaluru
+      
 
-  <script src="js/jquery.1.11.1.js"></script>
+      </div>
+    </div>
+  </footer>
+
   <script>
-    $(function () {
-      $("#nav-placeholder").load("nav.html");
-      $("#footer-placeholder").load("footer.html");
+    // Mobile Navigation Toggle
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
     });
   </script>
 </body>
