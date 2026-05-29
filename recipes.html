@@ -1460,163 +1460,101 @@
     </div>
   </div>
 
-  <script src="js/jquery.1.11.1.js"></script>
-  <script>
-    $(function () {
-      $("#nav-placeholder").load("nav.html");
-      $("#footer-placeholder").load("footer.html");
-    });
+   <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4 class="footer-title">Svasth by Soumya</h4>
+          <p style="color: #ffffff; opacity: 0.9;">
+            Guiding you to live a healthier and holistically fitter life - via food and lifestyle
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:info.svasth@gmail.com">info.svasth@gmail.com</a></li>
+            <li><a href="tel:+919845188112">+91 98451 88112</a></li>
+            <li>Bangalore, India</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        Copyright &copy; 2024. All rights reserved.<br>
+        Svasth by Soumya - Dietitian in Bengaluru
+      
 
-    // Blog pagination and display functionality
-    document.addEventListener("DOMContentLoaded", function () {
-      // Removed all blog-related JavaScript
-    });
-  </script>
-
-  <!-- Add this CSS for fade-in animation -->
-  <style>
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
-
-  <style>
-    .card {
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    }
-  </style>
-
-  <div id="footer-placeholder"></div>
-
-  <!-- Add scroll to top button before closing body tag -->
-  <div class="scroll-top">
-    <i class="fas fa-arrow-up"></i>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Add scroll to top functionality
-      const scrollTopBtn = document.querySelector('.scroll-top');
-
-      window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-          scrollTopBtn.classList.add('active');
-        } else {
-          scrollTopBtn.classList.remove('active');
-        }
-      });
-
-      scrollTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-
-      // Add intersection observer for smooth animations
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animated');
+        <script>
+          function openDesignerModal() {
+            var modal = document.getElementById('designerModal');
+            if (modal) {
+              modal.style.display = 'flex';
+              setTimeout(function () { modal.classList.add('show'); }, 10);
+            }
           }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.recipe-card').forEach(card => {
-        observer.observe(card);
-      });
-
-      // Add difficulty indicators to recipe cards
-      const difficultyLevels = ['easy', 'medium', 'hard'];
-      const difficultyIcons = {
-        'easy': '<i class="fas fa-utensil-spoon difficulty-easy"></i>',
-        'medium': '<i class="fas fa-utensils difficulty-medium"></i>',
-        'hard': '<i class="fas fa-fire difficulty-hard"></i>'
-      };
-
-      document.querySelectorAll('.recipe-image').forEach(image => {
-        // Randomly assign difficulty for demonstration
-        const randomDifficulty = difficultyLevels[Math.floor(Math.random() * difficultyLevels.length)];
-        const difficultyElement = document.createElement('div');
-        difficultyElement.className = 'recipe-difficulty';
-        difficultyElement.innerHTML = `${difficultyIcons[randomDifficulty]} ${randomDifficulty.charAt(0).toUpperCase() + randomDifficulty.slice(1)}`;
-        image.appendChild(difficultyElement);
-      });
-
-      // Filter functionality
-      const filterButtons = document.querySelectorAll('.filter-btn');
-      const recipeCards = document.querySelectorAll('.recipe-card');
-
-      filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          // Remove active class from all buttons
-          filterButtons.forEach(btn => btn.classList.remove('active'));
-
-          // Add active class to clicked button
-          button.classList.add('active');
-
-          const filter = button.getAttribute('data-filter');
-
-          // For demonstration, we'll just hide/show cards randomly when filters are clicked
-          // In a real implementation, you would filter based on actual recipe attributes
-          if (filter === 'all') {
-            recipeCards.forEach(card => {
-              card.closest('.col-md-4').style.display = 'block';
-            });
-          } else {
-            recipeCards.forEach(card => {
-              // Randomly show/hide cards for demonstration
-              const shouldShow = Math.random() > 0.5;
-              card.closest('.col-md-4').style.display = shouldShow ? 'block' : 'none';
-            });
+          function closeDesignerModal() {
+            var modal = document.getElementById('designerModal');
+            if (modal) {
+              modal.classList.remove('show');
+              setTimeout(function () { modal.style.display = 'none'; }, 300);
+            }
           }
-        });
-      });
+          window.addEventListener('click', function (event) {
+            var modal = document.getElementById('designerModal');
+            if (event.target == modal) {
+              closeDesignerModal();
+            }
+          });
+        </script>
 
-      // Search functionality
-      const searchInput = document.getElementById('recipe-search-input');
-      const searchButton = document.getElementById('search-button');
+        <!-- Designer Image Expanding Lightbox -->
+        <div id="designerImageModal" class="designer-modal" style="z-index: 10000; background-color: rgba(0,0,0,0.9);"
+          onclick="closeDesignerImageDetail()">
+          <span class="designer-modal-close"
+            style="color: white; font-size: 40px; right: 30px; top: 20px;">&times;</span>
+          <img id="designerImageDetailSrc" src=""
+            style="max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); object-fit: contain; cursor: zoom-out;">
+        </div>
 
-      function performSearch() {
-        const searchTerm = searchInput.value.toLowerCase();
+        <script>
+          function openDesignerImageDetail(e, src) {
+            e.stopPropagation(); // prevent closing outer modal
+            var modal = document.getElementById('designerImageModal');
+            if (modal) {
+              document.getElementById('designerImageDetailSrc').src = src;
+              modal.style.display = 'flex';
+              setTimeout(function () { modal.classList.add('show'); }, 10);
+            }
+          }
+          function closeDesignerImageDetail() {
+            var modal = document.getElementById('designerImageModal');
+            if (modal) {
+              modal.classList.remove('show');
+              setTimeout(function () { modal.style.display = 'none'; }, 300);
+            }
+          }
+        </script>
 
-        recipeCards.forEach(card => {
-          const title = card.querySelector('.recipe-title').textContent.toLowerCase();
-          const description = card.querySelector('.recipe-description').textContent.toLowerCase();
-          const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
+      </div>
+    </div>
+  </footer>
 
-          // Check if the search term is in the title, description, or tags
-          const matchesSearch = title.includes(searchTerm) ||
-            description.includes(searchTerm) ||
-            tags.some(tag => tag.includes(searchTerm));
+  <script>
+    // Mobile Navigation Toggle
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
 
-          card.closest('.col-md-4').style.display = matchesSearch || searchTerm === '' ? 'block' : 'none';
-        });
-      }
-
-      // Add input event listener to filter as user types
-      searchInput.addEventListener('input', performSearch);
-
-      // Keep the click and Enter key functionality as well
-      searchButton.addEventListener('click', performSearch);
-      searchInput.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-          performSearch();
-        }
-      });
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
     });
   </script>
 </body>
