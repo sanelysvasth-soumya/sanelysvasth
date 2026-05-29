@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your HbA1c Might Be High… But Here’s Why You May Not Need Just Another Metformin Drug</title>
+    <meta name="description" content="Understand why an elevated HbA1c may reflect more than just blood sugar, including red blood cell health, iron status, B12, folate, vitamin D, inflammation, and oxidative stress." />
+    <meta name="keywords" content="HbA1c, high HbA1c, iron deficiency anemia, vitamin B12 deficiency, folate deficiency, vitamin D, inflammation, oxidative stress, insulin resistance, metformin" />
+    <meta name="author" content="Svasth by Soumya" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="YOUR_PAGE_URL_HERE" />
+    <meta property="og:title" content="Your HbA1c Might Be High… But Here’s Why You May Not Need Just Another Metformin Drug" />
+    <meta property="og:description" content="A physiology-first explanation of why HbA1c can rise due to red blood cell biology, nutrient deficiencies, inflammation, oxidative stress, and altered glucose handling." />
+    <!-- <meta property="og:image" content="YOUR_FEATURE_IMAGE_URL_HERE" /> -->
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="YOUR_PAGE_URL_HERE" />
+    <meta property="twitter:title" content="Your HbA1c Might Be High… But Here’s Why You May Not Need Just Another Metformin Drug" />
+    <meta property="twitter:description" content="Learn why HbA1c is not just a diabetes marker, and how red blood cells, deficiencies, inflammation, and oxidative stress can change the number." />
+    <!-- <meta property="twitter:image" content="YOUR_FEATURE_IMAGE_URL_HERE" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --background-color-light: #f9fafb;
+        --text-color-light: #2c3e50;
+        --card-bg-light: white;
+        --border-color-light: #eee;
+        --accent-color-light: #c59a6d;
+        --accent-hover-light: #a67c4e;
+        --meta-text-light: #666;
+        --alert-bg-light: #f3f4f6;
+        --background-color-dark: #1a202c;
+        --text-color-dark: #edf2f7;
+        --card-bg-dark: #2d3748;
+        --border-color-dark: #4a5568;
+        --accent-color-dark: #e5b889;
+        --accent-hover-dark: #d4a06a;
+        --meta-text-dark: #a0aec0;
+        --alert-bg-dark: #252d3a;
+      }
+      body {
+        font-family: 'Lora', serif;
+        padding: 20px;
+        padding-top: 60px;
+        background-color: var(--background-color-light);
+        color: var(--text-color-light);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      body.dark-mode {
+        background-color: var(--background-color-dark);
+        color: var(--text-color-dark);
+      }
+      #progress-bar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: var(--border-color-light);
+        z-index: 1000;
+      }
+      body.dark-mode #progress-bar-container {
+        background-color: var(--border-color-dark);
+      }
+      #progress-bar {
+        height: 100%;
+        width: 0%;
+        background-color: var(--accent-color-light);
+        transition: width 0.1s ease-out;
+      }
+      body.dark-mode #progress-bar {
+        background-color: var(--accent-color-dark);
+      }
+      #dark-mode-toggle {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        background-color: var(--card-bg-light);
+        color: var(--text-color-light);
+        border: 1px solid var(--border-color-light);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        cursor: pointer;
+        z-index: 1001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      body.dark-mode #dark-mode-toggle {
+        background-color: var(--card-bg-dark);
+        color: var(--text-color-dark);
+        border: 1px solid var(--border-color-dark);
+      }
+      #dark-mode-toggle .fa-sun { display: none; }
+      body.dark-mode #dark-mode-toggle .fa-moon { display: none; }
+      body.dark-mode #dark-mode-toggle .fa-sun { display: inline; }
+      .blog-post-content {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        transition: background-color 0.3s ease;
+      }
+      body.dark-mode .blog-post-content {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 15px rgba(255,255,255,0.05);
+      }
+      .blog-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode .blog-header {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+      .blog-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-align: center;
+        color: var(--text-color-light);
+      }
+      body.dark-mode .blog-title {
+        color: var(--text-color-dark);
+      }
+      .post-meta {
+        margin: 20px 0;
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .post-meta span {
+        color: var(--meta-text-light);
+      }
+      body.dark-mode .post-meta span {
+        color: var(--meta-text-dark);
+      }
+      #toc-container {
+        background: var(--alert-bg-light);
+        padding: 20px 25px;
+        border-radius: 8px;
+        margin: 30px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+      body.dark-mode #toc-container {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+      .toc-title {
+        font-family: 'Montserrat', sans-serif;
+        margin-top: 0 !important;
+        margin-bottom: 15px !important;
+        font-size: 1.5rem !important;
+        border-bottom: none !important;
+        color: var(--text-color-light);
+      }
+      body.dark-mode .toc-title {
+        color: var(--text-color-dark);
+      }
+      #toc-list {
+        list-style: none;
+        padding-left: 0;
+      }
+      #toc-list li {
+        margin-bottom: 10px;
+      }
+      #toc-list li a {
+        text-decoration: none;
+        color: var(--accent-color-light);
+        font-weight: 500;
+      }
+      #toc-list li a:hover {
+        text-decoration: underline;
+        color: var(--accent-hover-light);
+      }
+      body.dark-mode #toc-list li a {
+        color: var(--accent-color-dark);
+      }
+      body.dark-mode #toc-list li a:hover {
+        color: var(--accent-hover-dark);
+      }
+      .blog-content {
+        line-height: 1.8;
+      }
+      .lead {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: var(--text-color-light);
+        margin-bottom: 2rem;
+      }
+      body.dark-mode .lead {
+        color: var(--text-color-dark);
+      }
+      h2 {
+        font-family: 'Montserrat', sans-serif;
+        color: var(--text-color-light);
+        margin-top: 40px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        font-size: 1.8rem;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode h2 {
+        color: var(--text-color-dark);
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+      h3 {
+        font-family: 'Montserrat', sans-serif;
+        color: var(--text-color-light);
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+      }
+      body.dark-mode h3 {
+        color: var(--text-color-dark);
+      }
+      p {
+        margin-bottom: 20px;
+        line-height: 1.8;
+        color: var(--text-color-light);
+      }
+      body.dark-mode p {
+        color: var(--text-color-dark);
+      }
+      ul,
+      ol {
+        padding-left: 20px;
+        margin-bottom: 20px;
+        list-style: none;
+      }
+      li {
+        margin-bottom: 15px;
+        line-height: 1.6;
+        position: relative;
+        padding-left: 25px;
+        color: var(--text-color-light);
+      }
+      body.dark-mode li {
+        color: var(--text-color-dark);
+      }
+      ul li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color-light);
+      }
+      body.dark-mode ul li:before {
+        color: var(--accent-color-dark);
+      }
+      ol {
+        counter-reset: item;
+      }
+      ol li {
+        counter-increment: item;
+      }
+      ol li:before {
+        content: counter(item) ".";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color-light);
+      }
+      body.dark-mode ol li:before {
+        color: var(--accent-color-dark);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        font-family: 'Montserrat', sans-serif;
+      }
+      th,
+      td {
+        border: 1px solid var(--border-color-light);
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: var(--accent-color-light);
+        color: white;
+      }
+      body.dark-mode th {
+        background-color: var(--accent-color-dark);
+      }
+      body.dark-mode td,
+      body.dark-mode th {
+        border-color: var(--border-color-dark);
+      }
+      .alert-info,
+      .conclusion-section {
+        background: var(--alert-bg-light);
+        padding: 35px;
+        border-radius: 8px;
+        margin: 40px 0 20px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+      body.dark-mode .alert-info,
+      body.dark-mode .conclusion-section {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+      .alert-info h3,
+      .conclusion-section h2 {
+        margin-top: 0;
+        padding-top: 0;
+        color: var(--text-color-light);
+        border-bottom: none;
+      }
+      body.dark-mode .alert-info h3,
+      body.dark-mode .conclusion-section h2 {
+        color: var(--text-color-dark);
+      }
+      .alert-info p:last-child,
+      .conclusion-section p:last-child {
+        margin-bottom: 0;
+      }
+      a {
+        color: var(--accent-color-light);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      body.dark-mode a {
+        color: var(--accent-color-dark);
+      }
+      a:hover {
+        color: var(--accent-hover-light);
+        text-decoration: underline;
+      }
+      body.dark-mode a:hover {
+        color: var(--accent-hover-dark);
+      }
+      strong {
+        color: var(--text-color-light);
+        font-weight: 600;
+      }
+      body.dark-mode strong {
+        color: var(--text-color-dark);
+      }
+      .social-sharing {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color-light);
+        text-align: center;
+      }
+      body.dark-mode .social-sharing {
+        border-top: 1px solid var(--border-color-dark);
+      }
+      .social-sharing h3 {
+        margin-bottom: 15px;
+      }
+      .social-sharing a {
+        margin: 0 10px;
+        font-size: 1.5rem;
+        color: var(--meta-text-light);
+      }
+      .social-sharing a:hover {
+        color: var(--accent-color-light);
+      }
+      body.dark-mode .social-sharing a {
+        color: var(--meta-text-dark);
+      }
+      body.dark-mode .social-sharing a:hover {
+        color: var(--accent-hover-dark);
+      }
+      .comments-section {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 30px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+      body.dark-mode .comments-section {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 10px rgba(255,255,255,0.05);
+      }
+      .comments-section h2 {
+        margin-top: 0;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode .comments-section h2 {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+          padding-top: 50px;
+        }
+        #dark-mode-toggle {
+          top: 10px;
+          right: 10px;
+        }
+        .blog-post-content,
+        .comments-section {
+          padding: 25px;
+          margin: 20px auto;
+        }
+        .blog-title {
+          font-size: 2rem;
+        }
+        .alert-info,
+        .conclusion-section,
+        .author-bio {
+          padding: 20px;
+          margin: 30px 0 15px 0;
+        }
+        .author-bio {
+          flex-direction: column;
+          text-align: center;
+        }
+        .post-meta {
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+        .post-meta span {
+          margin-right: 0;
+        }
+        h2 {
+          font-size: 1.6rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+        }
+        p,
+        li {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="progress-bar-container"><div id="progress-bar"></div></div>
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i><i class="fas fa-sun"></i>
+    </button>
+    <main>
+      <article class="blog-post-content">
+        <header class="blog-header">
+          <h1 class="blog-title">Your HbA1c Might Be High… But Here’s Why You May Not Need Just Another Metformin Drug</h1>
+          <div class="post-meta">
+            <span><i class="far fa-calendar"></i> May 29, 2026</span>
+            <span><i class="far fa-clock"></i> 11 min read</span>
+            <span><i class="fas fa-tag"></i> HbA1c, Insulin Resistance, Inflammation, Micronutrient Deficiency</span>
+          </div>
+        </header>
+        <section id="toc-container" aria-labelledby="toc-heading">
+          <h2 id="toc-heading" class="toc-title">Table of Contents</h2>
+          <ul id="toc-list"></ul>
+        </section>
+        <div class="blog-content">
+          <p class="lead">
+            You go for a routine blood test. Your fasting blood glucose looks normal. Your post-meal sugars are not alarming. You feel mostly okay. But then one number suddenly stands out: HbA1c elevated.
+          </p>
+
+          <p>
+            Immediately, the conversation shifts toward insulin resistance, prediabetes, diabetes, or being started on another round of medication like metformin.
+          </p>
+
+          <p>
+            But what if your HbA1c is speaking about much more than just blood sugar?
+          </p>
+
+          <p>
+            Because physiologically, HbA1c is not simply a diabetes marker. It can also reflect an entire internal environment — your red blood cells, nutrient status, inflammation, oxidative stress, metabolic flexibility, and how your body has been handling glucose over time.
+          </p>
+
+          <h2 id="what-is-hba1c">What Exactly Is HbA1c?</h2>
+          <p>
+            Hemoglobin A1c measures the percentage of hemoglobin that has glucose attached to it. Your red blood cells live for roughly 120 days, and during those 3–4 months, they continuously circulate through your bloodstream carrying oxygen to tissues. The longer they are exposed to circulating glucose, the greater the chance that glucose molecules attach themselves to hemoglobin. [web:48]
+          </p>
+          <p>
+            This attachment process is called glycation. It is non-enzymatic, meaning the body is not actively choosing to attach glucose to hemoglobin. It happens based on exposure and chemistry, and once formed, glycated hemoglobin remains for the life of the red blood cell. [web:48]
+          </p>
+          <p>
+            That is why HbA1c is considered a marker of average glucose exposure over about 2 to 3 months. But HbA1c does not depend only on how much glucose is present. It also depends on red blood cell survival, red cell turnover, hemoglobin characteristics, and conditions that affect erythrocyte biology. [web:48][web:42][web:57]
+          </p>
+
+          <h2 id="b12-folate">When Vitamin B12 and Folate Are Low</h2>
+          <p>
+            Vitamin B12 and folate are essential for normal red blood cell formation, and deficiency can cause the body to produce abnormally large red blood cells that do not function properly. That makes red blood cell biology an important part of HbA1c interpretation. [web:40]
+          </p>
+          <p>
+            Reviews on HbA1c interference note that deficiencies in vitamin B12, folate, and iron can influence HbA1c values independently of true glycemia. The reason is that altered erythrocyte production and turnover can change how long red blood cells remain in circulation and therefore how long hemoglobin is exposed to glucose. [web:39][web:42]
+          </p>
+          <p>
+            So yes, someone with B12 or folate deficiency may show a surprisingly elevated HbA1c not only because of glucose handling, but because the biology and lifespan pattern of red blood cells has shifted. [web:39][web:42][web:40]
+          </p>
+
+          <h2 id="vitamin-d">Now Let’s Talk About Vitamin D</h2>
+          <p>
+            Vitamin D is often reduced to being only a bone nutrient, but it also has metabolic relevance. Research has found associations between vitamin D status, insulin sensitivity, and beta-cell function in people at risk of type 2 diabetes. [web:41]
+          </p>
+          <p>
+            Reviews further describe mechanisms by which vitamin D deficiency may impair pancreatic beta-cell function, worsen inflammation and oxidative stress, and contribute to insulin resistance and impaired glucose homeostasis. [web:43]
+          </p>
+          <p>
+            Physiologically, this means low vitamin D may make the body less efficient at signaling and handling glucose after meals. Blood sugar may not always look dramatically abnormal in a single fasting reading, but the cumulative glucose exposure over weeks and months can still rise enough to push HbA1c upward. [web:41][web:43]
+          </p>
+
+          <h2 id="inflammation">Chronic Inflammation Changes Everything</h2>
+          <p>
+            One of the most overlooked conversations in metabolic health is inflammation. Inflammation is not just swelling or pain. At a cellular level, it changes how the body communicates internally and how insulin signaling works. [web:55]
+          </p>
+          <p>
+            TNF-alpha is well documented to induce insulin resistance, and mechanistic reviews describe inflammatory signaling pathways such as JNK and IKKβ/NF-κB as important links between inflammation and impaired insulin action. IL-6 is also involved in inflammatory-metabolic signaling, although its role can be more context-dependent than TNF-alpha. [web:49][web:55]
+          </p>
+          <p>
+            This means glucose cannot move into cells as efficiently, so it remains in circulation longer. Over time, that pushes the body toward poorer glucose regulation and can contribute to a higher HbA1c. [web:49][web:55]
+          </p>
+
+          <h2 id="iron-deficiency">Iron Deficiency Anaemia and HbA1c</h2>
+          <p>
+            This is one of the most clinically important non-glycemic influences on HbA1c. The NGSP and multiple reviews note that iron deficiency anemia is associated with higher HbA1c, and iron replacement therapy can lower HbA1c even in the absence of major glucose change. [web:42][web:39]
+          </p>
+          <p>
+            Proposed mechanisms include changes in erythrocyte turnover and increased glycation-related processes in iron deficiency. The key message is simple: HbA1c may improve when iron deficiency improves, even if blood sugar itself has not changed dramatically. [web:42][web:44][web:47]
+          </p>
+          <p>
+            That means a raised HbA1c in iron deficiency should be interpreted carefully. Sometimes the red blood cell biology is part of the story, not just the glucose. [web:42][web:39]
+          </p>
+
+          <h2 id="oxidative-stress">Oxidative Stress: The Silent Accelerator</h2>
+          <p>
+            Oxidative stress reflects an imbalance between reactive species and antioxidant defenses. It is tightly linked with inflammation and metabolic dysfunction, and it also intersects with glycation biology. [web:43][web:56]
+          </p>
+          <p>
+            Reviews on glycation describe oxidative processes and reactive carbonyl chemistry as part of the broader damage pathway around glycated proteins and advanced glycation end products. In practical terms, a more oxidative internal environment can intensify the damage associated with glycation and metabolic stress. [web:56][web:53]
+          </p>
+          <p>
+            So HbA1c may rise in a body that is not only glucose-burdened, but also inflamed, poorly recovered, and under oxidative strain. That does not make glucose irrelevant, but it does make the interpretation deeper. [web:43][web:56]
+          </p>
+
+          <h2 id="is-hba1c-important">So… Is HbA1c Still Important?</h2>
+          <p>
+            Absolutely. An elevated HbA1c should never be ignored. But it also should not be interpreted in isolation. Conditions that alter erythrocyte lifespan or red cell turnover can distort HbA1c upward or downward, and professional guidance explicitly warns clinicians to interpret HbA1c carefully when these factors are present. [web:42][web:57]
+          </p>
+          <p>
+            Over time, nutrient deficiencies, inflammation, oxidative stress, sedentary behavior, and impaired metabolic regulation can all converge toward the same endpoint: poorer glucose control and higher diabetes risk. So yes, HbA1c can point toward insulin resistance and future diabetes, but the deeper question is what is driving the number in the first place. [web:41][web:43][web:55]
+          </p>
+          <p>
+            Is it purely excess glucose? Or is the body also dealing with inflammation, micronutrient deficiencies, oxidative stress, altered red blood cell biology, and impaired signaling?
+          </p>
+          <p>
+            Because true metabolic health is never about just lowering one number. It is about understanding the physiology behind why that number changed.
+          </p>
+          <p>
+            And sometimes, the answer is much deeper than simply prescribing another metformin tablet.
+          </p>
+
+          <div class="alert-info">
+            <h3>Ready to Take the Next Step?</h3>
+            <p>
+              <a href="https://wa.me/message/U43IYBJMJDQAD1" target="_blank" style="background-color: var(--accent-color-light); color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block;">Click to Book Now!</a>
+            </p>
+          </div>
+        </div>
+        <section class="social-sharing" aria-label="Share this post">
+          <h3>Share this post:</h3>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_PAGE_URL_HERE" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com/intent/tweet?url=YOUR_PAGE_URL_HERE&text=Your%20HbA1c%20Might%20Be%20High%E2%80%A6%20But%20Here%E2%80%99s%20Why%20You%20May%20Not%20Need%20Just%20Another%20Metformin%20Drug" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=YOUR_PAGE_URL_HERE&title=Your%20HbA1c%20Might%20Be%20High%E2%80%A6%20But%20Here%E2%80%99s%20Why%20You%20May%20Not%20Need%20Just%20Another%20Metformin%20Drug" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:?subject=Your%20HbA1c%20Might%20Be%20High%E2%80%A6%20But%20Here%E2%80%99s%20Why%20You%20May%20Not%20Need%20Just%20Another%20Metformin%20Drug&body=Check%20out%20this%20article:%20YOUR_PAGE_URL_HERE" aria-label="Share via Email"><i class="fas fa-envelope"></i></a>
+        </section>
+      </article>
+      <section class="comments-section" aria-label="Comments">
+        <h2>Comments</h2>
+        <p><em>Comments are not enabled yet. Check back soon!</em></p>
+      </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Table of Contents generation from h2[id]
+        const tocList = document.getElementById('toc-list');
+        const blogContent = document.querySelector('.blog-content');
+        if (tocList && blogContent) {
+          const headings = blogContent.querySelectorAll('h2[id]');
+          if (headings.length > 0) {
+            headings.forEach(heading => {
+              if (heading.id && heading.textContent.trim() !== '') {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = '#' + heading.id;
+                link.textContent = heading.textContent;
+                listItem.appendChild(link);
+                tocList.appendChild(listItem);
+              }
+            });
+          } else {
+            const tocContainer = document.getElementById('toc-container');
+            if(tocContainer) tocContainer.style.display = 'none';
+          }
+        }
+        // Reading progress bar
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+          window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollProgress = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = scrollProgress + '%';
+          });
+        }
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        const moonIcon = darkModeToggle ? darkModeToggle.querySelector('.fa-moon') : null;
+        const sunIcon = darkModeToggle ? darkModeToggle.querySelector('.fa-sun') : null;
+        function applyTheme(theme) {
+          if (theme === 'dark') {
+            body.classList.add('dark-mode');
+            if (moonIcon) moonIcon.style.display = 'none';
+            if (sunIcon) sunIcon.style.display = 'inline';
+          } else {
+            body.classList.remove('dark-mode');
+            if (moonIcon) moonIcon.style.display = 'inline';
+            if (sunIcon) sunIcon.style.display = 'none';
+          }
+        }
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          applyTheme(savedTheme);
+        } else {
+          applyTheme('light');
+        }
+        if (darkModeToggle) {
+          if (body.classList.contains('dark-mode')) {
+            if (moonIcon) moonIcon.style.display = 'none';
+            if (sunIcon) sunIcon.style.display = 'inline';
+          } else {
+            if (moonIcon) moonIcon.style.display = 'inline';
+            if (sunIcon) sunIcon.style.display = 'none';
+          }
+          darkModeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+              applyTheme('light');
+              localStorage.setItem('theme', 'light');
+            } else {
+              applyTheme('dark');
+              localStorage.setItem('theme', 'dark');
+            }
+          });
+        }
+        // Smooth scroll for TOC links
+        if (tocList) {
+          tocList.querySelectorAll('a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              const targetId = this.getAttribute('href').substring(1);
+              const targetElement = document.getElementById(targetId);
+              if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+              }
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
