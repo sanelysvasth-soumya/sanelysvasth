@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>For Every Gram of Protein You Eat, You Need 10 ml of Water and 0.35 g of Fiber. Here’s Why.</title>
+    <meta name="description" content="A physiology-based explanation of why higher protein intake increases the need for water and fiber, covering digestion, urea formation, kidney workload, and gut fermentation." />
+    <meta name="keywords" content="Protein metabolism, water per gram protein, fiber per gram protein, urea cycle, protein digestion, gut fermentation, kidney physiology, hydration, fiber, high protein diet" />
+    <meta name="author" content="Svasth by Soumya" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="YOUR_PAGE_URL_HERE" />
+    <meta property="og:title" content="For Every Gram of Protein You Eat, You Need 10 ml of Water and 0.35 g of Fiber. Here’s Why." />
+    <meta property="og:description" content="Understand the physiology behind protein digestion, nitrogen disposal, hydration demand, and why fiber becomes more important as protein intake rises." />
+    <!-- <meta property="og:image" content="YOUR_FEATURE_IMAGE_URL_HERE" /> -->
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="YOUR_PAGE_URL_HERE" />
+    <meta property="twitter:title" content="For Every Gram of Protein You Eat, You Need 10 ml of Water and 0.35 g of Fiber. Here’s Why." />
+    <meta property="twitter:description" content="A story-like, physiology-based explanation of why protein requires more than digestion—it requires water, fiber, and metabolic support." />
+    <!-- <meta property="twitter:image" content="YOUR_FEATURE_IMAGE_URL_HERE" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --background-color-light: #f9fafb;
+        --text-color-light: #2c3e50;
+        --card-bg-light: white;
+        --border-color-light: #eee;
+        --accent-color-light: #c59a6d;
+        --accent-hover-light: #a67c4e;
+        --meta-text-light: #666;
+        --alert-bg-light: #f3f4f6;
+        --background-color-dark: #1a202c;
+        --text-color-dark: #edf2f7;
+        --card-bg-dark: #2d3748;
+        --border-color-dark: #4a5568;
+        --accent-color-dark: #e5b889;
+        --accent-hover-dark: #d4a06a;
+        --meta-text-dark: #a0aec0;
+        --alert-bg-dark: #252d3a;
+      }
+      body {
+        font-family: 'Lora', serif;
+        padding: 20px;
+        padding-top: 60px;
+        background-color: var(--background-color-light);
+        color: var(--text-color-light);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      body.dark-mode {
+        background-color: var(--background-color-dark);
+        color: var(--text-color-dark);
+      }
+      #progress-bar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: var(--border-color-light);
+        z-index: 1000;
+      }
+      body.dark-mode #progress-bar-container {
+        background-color: var(--border-color-dark);
+      }
+      #progress-bar {
+        height: 100%;
+        width: 0%;
+        background-color: var(--accent-color-light);
+        transition: width 0.1s ease-out;
+      }
+      body.dark-mode #progress-bar {
+        background-color: var(--accent-color-dark);
+      }
+      #dark-mode-toggle {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        background-color: var(--card-bg-light);
+        color: var(--text-color-light);
+        border: 1px solid var(--border-color-light);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        cursor: pointer;
+        z-index: 1001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      body.dark-mode #dark-mode-toggle {
+        background-color: var(--card-bg-dark);
+        color: var(--text-color-dark);
+        border: 1px solid var(--border-color-dark);
+      }
+      #dark-mode-toggle .fa-sun { display: none; }
+      body.dark-mode #dark-mode-toggle .fa-moon { display: none; }
+      body.dark-mode #dark-mode-toggle .fa-sun { display: inline; }
+      .blog-post-content {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        transition: background-color 0.3s ease;
+      }
+      body.dark-mode .blog-post-content {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 15px rgba(255,255,255,0.05);
+      }
+      .blog-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode .blog-header {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+      .blog-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-align: center;
+        color: var(--text-color-light);
+      }
+      body.dark-mode .blog-title {
+        color: var(--text-color-dark);
+      }
+      .post-meta {
+        margin: 20px 0;
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .post-meta span {
+        color: var(--meta-text-light);
+      }
+      body.dark-mode .post-meta span {
+        color: var(--meta-text-dark);
+      }
+      #toc-container {
+        background: var(--alert-bg-light);
+        padding: 20px 25px;
+        border-radius: 8px;
+        margin: 30px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+      body.dark-mode #toc-container {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+      .toc-title {
+        font-family: 'Montserrat', sans-serif;
+        margin-top: 0 !important;
+        margin-bottom: 15px !important;
+        font-size: 1.5rem !important;
+        border-bottom: none !important;
+        color: var(--text-color-light);
+      }
+      body.dark-mode .toc-title {
+        color: var(--text-color-dark);
+      }
+      #toc-list {
+        list-style: none;
+        padding-left: 0;
+      }
+      #toc-list li {
+        margin-bottom: 10px;
+      }
+      #toc-list li a {
+        text-decoration: none;
+        color: var(--accent-color-light);
+        font-weight: 500;
+      }
+      #toc-list li a:hover {
+        text-decoration: underline;
+        color: var(--accent-hover-light);
+      }
+      body.dark-mode #toc-list li a {
+        color: var(--accent-color-dark);
+      }
+      body.dark-mode #toc-list li a:hover {
+        color: var(--accent-hover-dark);
+      }
+      .blog-content {
+        line-height: 1.8;
+      }
+      .lead {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: var(--text-color-light);
+        margin-bottom: 2rem;
+      }
+      body.dark-mode .lead {
+        color: var(--text-color-dark);
+      }
+      h2 {
+        font-family: 'Montserrat', sans-serif;
+        color: var(--text-color-light);
+        margin-top: 40px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        font-size: 1.8rem;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode h2 {
+        color: var(--text-color-dark);
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+      h3 {
+        font-family: 'Montserrat', sans-serif;
+        color: var(--text-color-light);
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+      }
+      body.dark-mode h3 {
+        color: var(--text-color-dark);
+      }
+      p {
+        margin-bottom: 20px;
+        line-height: 1.8;
+        color: var(--text-color-light);
+      }
+      body.dark-mode p {
+        color: var(--text-color-dark);
+      }
+      ul,
+      ol {
+        padding-left: 20px;
+        margin-bottom: 20px;
+        list-style: none;
+      }
+      li {
+        margin-bottom: 15px;
+        line-height: 1.6;
+        position: relative;
+        padding-left: 25px;
+        color: var(--text-color-light);
+      }
+      body.dark-mode li {
+        color: var(--text-color-dark);
+      }
+      ul li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color-light);
+      }
+      body.dark-mode ul li:before {
+        color: var(--accent-color-dark);
+      }
+      ol {
+        counter-reset: item;
+      }
+      ol li {
+        counter-increment: item;
+      }
+      ol li:before {
+        content: counter(item) ".";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color-light);
+      }
+      body.dark-mode ol li:before {
+        color: var(--accent-color-dark);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        font-family: 'Montserrat', sans-serif;
+      }
+      th,
+      td {
+        border: 1px solid var(--border-color-light);
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: var(--accent-color-light);
+        color: white;
+      }
+      body.dark-mode th {
+        background-color: var(--accent-color-dark);
+      }
+      body.dark-mode td,
+      body.dark-mode th {
+        border-color: var(--border-color-dark);
+      }
+      .alert-info,
+      .conclusion-section {
+        background: var(--alert-bg-light);
+        padding: 35px;
+        border-radius: 8px;
+        margin: 40px 0 20px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+      body.dark-mode .alert-info,
+      body.dark-mode .conclusion-section {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+      .alert-info h3,
+      .conclusion-section h2 {
+        margin-top: 0;
+        padding-top: 0;
+        color: var(--text-color-light);
+        border-bottom: none;
+      }
+      body.dark-mode .alert-info h3,
+      body.dark-mode .conclusion-section h2 {
+        color: var(--text-color-dark);
+      }
+      .alert-info p:last-child,
+      .conclusion-section p:last-child {
+        margin-bottom: 0;
+      }
+      a {
+        color: var(--accent-color-light);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      body.dark-mode a {
+        color: var(--accent-color-dark);
+      }
+      a:hover {
+        color: var(--accent-hover-light);
+        text-decoration: underline;
+      }
+      body.dark-mode a:hover {
+        color: var(--accent-hover-dark);
+      }
+      strong {
+        color: var(--text-color-light);
+        font-weight: 600;
+      }
+      body.dark-mode strong {
+        color: var(--text-color-dark);
+      }
+      .social-sharing {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color-light);
+        text-align: center;
+      }
+      body.dark-mode .social-sharing {
+        border-top: 1px solid var(--border-color-dark);
+      }
+      .social-sharing h3 {
+        margin-bottom: 15px;
+      }
+      .social-sharing a {
+        margin: 0 10px;
+        font-size: 1.5rem;
+        color: var(--meta-text-light);
+      }
+      .social-sharing a:hover {
+        color: var(--accent-color-light);
+      }
+      body.dark-mode .social-sharing a {
+        color: var(--meta-text-dark);
+      }
+      body.dark-mode .social-sharing a:hover {
+        color: var(--accent-hover-dark);
+      }
+      .comments-section {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 30px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+      body.dark-mode .comments-section {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 10px rgba(255,255,255,0.05);
+      }
+      .comments-section h2 {
+        margin-top: 0;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+      body.dark-mode .comments-section h2 {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+          padding-top: 50px;
+        }
+        #dark-mode-toggle {
+          top: 10px;
+          right: 10px;
+        }
+        .blog-post-content,
+        .comments-section {
+          padding: 25px;
+          margin: 20px auto;
+        }
+        .blog-title {
+          font-size: 2rem;
+        }
+        .alert-info,
+        .conclusion-section,
+        .author-bio {
+          padding: 20px;
+          margin: 30px 0 15px 0;
+        }
+        .author-bio {
+          flex-direction: column;
+          text-align: center;
+        }
+        .post-meta {
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+        .post-meta span {
+          margin-right: 0;
+        }
+        h2 {
+          font-size: 1.6rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+        }
+        p,
+        li {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="progress-bar-container"><div id="progress-bar"></div></div>
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i><i class="fas fa-sun"></i>
+    </button>
+    <main>
+      <article class="blog-post-content">
+        <header class="blog-header">
+          <h1 class="blog-title">For Every Gram of Protein You Eat, You Need 10 ml of Water and 0.35 g of Fiber. Here’s Why.</h1>
+          <div class="post-meta">
+            <span><i class="far fa-calendar"></i> May 29, 2026</span>
+            <span><i class="far fa-clock"></i> 12 min read</span>
+            <span><i class="fas fa-tag"></i> Protein Metabolism, Hydration, Fiber, Gut Health</span>
+          </div>
+        </header>
+        <section id="toc-container" aria-labelledby="toc-heading">
+          <h2 id="toc-heading" class="toc-title">Table of Contents</h2>
+          <ul id="toc-list"></ul>
+        </section>
+        <div class="blog-content">
+          <p class="lead">
+            Most people think protein ends at muscle. You eat eggs, chicken, paneer, whey, dal, tofu — your body absorbs it, builds muscle, recovers better, and that’s the end of the story. But physiologically, that is not even half the story.
+          </p>
+
+          <p>
+            Because the moment protein enters your body, an enormous amount of work begins behind the scenes. Your digestive system, liver, kidneys, microbiome, circulation, hormones, enzymes, and fluid balance all get involved in handling it properly.
+          </p>
+
+          <p>
+            And this is the part nobody talks about. People discuss protein targets all day long, but very few ask: does the body have enough support to actually process the protein being consumed?
+          </p>
+
+          <p>
+            Because protein is not just something you eat. It has to be broken down, chemically processed, transported, utilized, buffered, neutralized, and finally eliminated. And every single one of these steps comes with a physiological cost.
+          </p>
+
+          <p>
+            That cost is largely paid through water, fiber, and metabolic support.
+          </p>
+
+          <h2 id="journey-starts-stomach">The Journey Starts In Your Stomach</h2>
+          <p>
+            The moment protein enters your mouth, digestion has already begun. Not because absorption starts there, but because the body immediately prepares for what is about to arrive.
+          </p>
+          <p>
+            Your stomach begins secreting hydrochloric acid. The pH of the stomach drops dramatically, sometimes close to pH 2. This acidic environment helps unfold protein structures, a process called denaturation, so digestive enzymes can access them more effectively. 
+          </p>
+          <p>
+            Pepsin then begins chopping long protein chains into smaller peptide fragments. These fragments move into the small intestine where pancreatic enzymes like trypsin and chymotrypsin continue digestion further until proteins are reduced to amino acids and very small peptides that can be absorbed. 
+          </p>
+          <p>
+            Once amino acids enter circulation, some are immediately used for muscle repair, enzymes, neurotransmitters, hormones, immune signaling, tissue turnover, and cellular repair. This is the part most people already associate with protein.
+          </p>
+
+          <h2 id="excess-nitrogen">The Body Cannot Store Excess Nitrogen</h2>
+          <p>
+            But unlike carbohydrates and fats, protein contains something metabolically crucial: nitrogen. Your body can store carbohydrates as glycogen and fats as adipose tissue, but excess nitrogen must be handled differently because ammonia is toxic, especially to the nervous system.
+          </p>
+          <p>
+            This means that once amino acids are broken down and used, the nitrogen portion must be safely removed. The liver converts excess nitrogen into urea through the urea cycle, producing a far less toxic compound that can circulate in blood until the kidneys excrete it. 
+          </p>
+          <p>
+            Protein is approximately 16% nitrogen, so 1 gram of protein contains roughly 0.16 grams of nitrogen. This is the standard nitrogen conversion concept behind the familiar 6.25 factor used in protein calculations.
+          </p>
+          <p>
+            That nitrogen eventually becomes approximately 0.34 grams of urea. This is why protein metabolism always includes a waste-handling step, not just a building step.
+          </p>
+
+          <h2 id="kidneys-need-water">Your Kidneys Cannot Excrete Waste Without Water</h2>
+          <p>
+            Urea is osmotically active, which means it contributes to the solute load your kidneys need to manage. And kidneys cannot simply dump waste out of the body. Waste has to be dissolved in fluid first.
+          </p>
+          <p>
+            In practical terms, urine is water carrying dissolved waste products out of the body. The kidneys are continuously balancing water, sodium, osmolarity, electrolyte concentration, and waste removal, and urea is one of the main nitrogen-containing molecules involved in that system.
+          </p>
+          <p>
+            Under normal physiology, urine concentration commonly falls in a range around 500–800 mOsm/kg in people with normal intake and kidney concentrating ability. That is why using a moderate estimate such as 600 mOsm/L to explain the additional water demand from urea excretion is physiologically reasonable. 
+          </p>
+          <p>
+            So when additional protein increases urea production, the kidneys need additional fluid to dilute and excrete that osmotic load. This is the logic behind the approximation that every gram of protein requires roughly 10 ml of water for the extra nitrogen-handling burden.
+          </p>
+          <p>
+            And that is only the additional demand from nitrogen disposal, because baseline hydration is already busy maintaining blood circulation, saliva, digestive secretions, stomach acid, enzyme reactions, sweating, breathing, temperature regulation, bowel movements, and cellular metabolism.
+          </p>
+
+          <h2 id="protein-does-not-end-small-intestine">But Protein’s Story Does Not End In The Small Intestine</h2>
+          <p>
+            Not all protein gets absorbed. Even with healthy digestion, a portion of dietary protein can escape absorption and reach the colon, and this can increase further in conditions such as low stomach acid, dysbiosis, inflammatory gut conditions, pancreatic insufficiency, rapid eating, or very high protein intake. 
+          </p>
+          <p>
+            Once it reaches the colon, that leftover protein enters an entirely different world: your microbiome. Gut bacteria begin fermenting the undigested protein in a process known as proteolytic fermentation. 
+          </p>
+          <p>
+            During this process, compounds such as ammonia, hydrogen sulfide, phenols, and indoles are produced. These are among the main metabolites repeatedly described in reviews of protein fermentation in the gut. 
+          </p>
+          <p>
+            A significant amount of ammonia can then be absorbed into portal circulation, transported back to the liver, converted into urea, and eliminated through urine. Again: processing, neutralizing, eliminating.
+          </p>
+
+          <h2 id="fiber-changes-environment">This Is Where Fiber Completely Changes The Environment</h2>
+          <p>
+            Fiber does not cancel protein, digest protein, or chemically neutralize protein. What it does is shift what bacteria choose to ferment.
+          </p>
+          <p>
+            When fermentable fibers reach the colon, bacteria convert them into short-chain fatty acids such as acetate, propionate, and butyrate. These metabolites help shape a more favorable colonic environment and are linked with healthier microbial activity and colonic function. 
+          </p>
+          <p>
+            In simpler terms, fiber changes the ecosystem. Instead of excessive fermentation of leftover protein dominating the environment, fiber supports more saccharolytic fermentation and helps reduce the relative impact of excessive proteolytic byproducts. 
+          </p>
+          <p>
+            That is why fiber becomes increasingly important when protein intake increases. The issue is not that protein is bad, but that the ecosystem around it has to stay balanced.
+          </p>
+
+          <h2 id="where-fiber-number-came-from">So Then Where Did The 0.35 g Fiber Number Come From?</h2>
+          <p>
+            Not from a strict biochemical equation. There is no universal formula that says a fixed number of grams of protein must always require a fixed number of grams of fiber.
+          </p>
+          <p>
+            Your gut is not a laboratory beaker. It is a dynamic living system influenced by microbiome composition, genetics, epigenetics, transit time, bicarbonate buffering, stress, sleep, medications, food diversity, and overall lifestyle.
+          </p>
+          <p>
+            So the 0.35 g number works better as a functional physiological range than a law. If protein intake often falls around 70–100 g/day and fiber recommendations often sit around 25–35 g/day, the resulting pattern naturally lands around 0.3–0.35 grams of fiber per gram of protein.
+          </p>
+          <p>
+            Not perfect. Not universal. Not mathematically absolute. But functionally supportive.
+          </p>
+
+          <h2 id="real-problem-high-protein">The Real Problem With High Protein Diets</h2>
+          <p>
+            Most people think their body is unable to digest protein. That usually is not the real issue.
+          </p>
+          <p>
+            The issue is that people increase protein intake without increasing support for hydration, gut ecology, elimination, microbial balance, and metabolic processing.
+          </p>
+          <p>
+            Higher protein intake increases nitrogen load, urea production, renal handling demands, microbial fermentation, and hydration demand. Protein itself is not the problem. The missing link is everything required to process what comes after it. 
+          </p>
+          <p>
+            Because your body is not struggling to digest protein. It is struggling to manage the physiological workload created by it.
+          </p>
+
+          <div class="alert-info">
+            <h3>Ready to Take the Next Step?</h3>
+            <p>
+              <a href="https://wa.me/message/U43IYBJMJDQAD1" target="_blank" style="background-color: var(--accent-color-light); color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block;">Click to Book Now!</a>
+            </p>
+          </div>
+        </div>
+        <section class="social-sharing" aria-label="Share this post">
+          <h3>Share this post:</h3>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_PAGE_URL_HERE" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com/intent/tweet?url=YOUR_PAGE_URL_HERE&text=For Every Gram of Protein You Eat, You Need 10 ml of Water and 0.35 g of Fiber. Here’s Why." target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=YOUR_PAGE_URL_HERE&title=For Every Gram of Protein You Eat, You Need 10 ml of Water and 0.35 g of Fiber. Here’s Why." target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:?subject=For Every Gram of Protein You Eat, You Need 10 ml of Water and 0.35 g of Fiber. Here’s Why.&body=Check out this article: YOUR_PAGE_URL_HERE" aria-label="Share via Email"><i class="fas fa-envelope"></i></a>
+        </section>
+      </article>
+      <section class="comments-section" aria-label="Comments">
+        <h2>Comments</h2>
+        <p><em>Comments are not enabled yet. Check back soon!</em></p>
+      </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Table of Contents generation from h2[id]
+        const tocList = document.getElementById('toc-list');
+        const blogContent = document.querySelector('.blog-content');
+        if (tocList && blogContent) {
+          const headings = blogContent.querySelectorAll('h2[id]');
+          if (headings.length > 0) {
+            headings.forEach(heading => {
+              if (heading.id && heading.textContent.trim() !== '') {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = '#' + heading.id;
+                link.textContent = heading.textContent;
+                listItem.appendChild(link);
+                tocList.appendChild(listItem);
+              }
+            });
+          } else {
+            const tocContainer = document.getElementById('toc-container');
+            if(tocContainer) tocContainer.style.display = 'none';
+          }
+        }
+        // Reading progress bar
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+          window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollProgress = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = scrollProgress + '%';
+          });
+        }
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        const moonIcon = darkModeToggle ? darkModeToggle.querySelector('.fa-moon') : null;
+        const sunIcon = darkModeToggle ? darkModeToggle.querySelector('.fa-sun') : null;
+        function applyTheme(theme) {
+          if (theme === 'dark') {
+            body.classList.add('dark-mode');
+            if (moonIcon) moonIcon.style.display = 'none';
+            if (sunIcon) sunIcon.style.display = 'inline';
+          } else {
+            body.classList.remove('dark-mode');
+            if (moonIcon) moonIcon.style.display = 'inline';
+            if (sunIcon) sunIcon.style.display = 'none';
+          }
+        }
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          applyTheme(savedTheme);
+        } else {
+          applyTheme('light');
+        }
+        if (darkModeToggle) {
+          if (body.classList.contains('dark-mode')) {
+            if (moonIcon) moonIcon.style.display = 'none';
+            if (sunIcon) sunIcon.style.display = 'inline';
+          } else {
+            if (moonIcon) moonIcon.style.display = 'inline';
+            if (sunIcon) sunIcon.style.display = 'none';
+          }
+          darkModeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+              applyTheme('light');
+              localStorage.setItem('theme', 'light');
+            } else {
+              applyTheme('dark');
+              localStorage.setItem('theme', 'dark');
+            }
+          });
+        }
+        // Smooth scroll for TOC links
+        if (tocList) {
+          tocList.querySelectorAll('a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              const targetId = this.getAttribute('href').substring(1);
+              const targetElement = document.getElementById(targetId);
+              if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+              }
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
