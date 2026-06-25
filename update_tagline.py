@@ -3,7 +3,7 @@ import glob
 
 html_files = glob.glob('*.html')
 old_text = "Empowering you to live a healthier, happier life through better nutrition."
-new_text = "Addressing Root causes, not managing symptoms."
+new_text = "Guiding you to live a healthier and holistically fitter life - via food and lifestyle"
 
 for file in html_files:
     try:
