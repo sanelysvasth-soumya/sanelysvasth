@@ -415,6 +415,20 @@ html_injection = """
           btn.classList.add('loading');
           btn.disabled = true;
 
+          const name = document.getElementById('gfName').value.trim();
+          const age = document.getElementById('gfAge').value;
+          const rating = document.querySelector('input[name="gfRating"]:checked').value;
+          const feedback = document.getElementById('gfFeedbackText').value.trim();
+
+          const whatsappNumber = "919845188112"; // Format: Country code + Number
+          const whatsappMessage = `*New Global Feedback*\\n\\n*Name:* ${name}\\n*Age:* ${age}\\n*Rating:* ${rating} Stars\\n*Feedback:* ${feedback}`;
+          const encodedMessage = encodeURIComponent(whatsappMessage);
+          
+          const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+          
+          // Open WhatsApp in new tab
+          window.open(whatsappUrl, '_blank');
+
           setTimeout(() => {
             btn.classList.remove('loading');
             btn.disabled = false;
@@ -456,17 +470,18 @@ for filepath in html_files:
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
     
-    # Check if already injected
-    if "<!-- Global Feedback Modal Injection -->" not in content:
-        # Inject right before </body>
-        new_content = content.replace("</body>", html_injection + "\n</body>")
-        
-        # If replace didn't work (maybe </body> is missing or different case), try regex
-        if new_content == content:
-             new_content = re.sub(r'</body>', html_injection + "\n</body>", content, flags=re.IGNORECASE)
-             
-        with open(filepath, 'w', encoding='utf-8') as f:
-            f.write(new_content)
-        print(f"Injected Global Feedback Modal into {filepath}")
+    # Remove existing injection if present
+    if "<!-- Global Feedback Modal Injection -->" in content:
+        content = re.sub(r'<!-- Global Feedback Modal Injection -->.*?(?=</body>)', '', content, flags=re.DOTALL | re.IGNORECASE)
+    
+    # Inject right before </body>
+    new_content = content.replace("</body>", html_injection + "\n</body>")
+    
+    if new_content == content:
+         new_content = re.sub(r'</body>', html_injection + "\n</body>", content, flags=re.IGNORECASE)
+         
+    with open(filepath, 'w', encoding='utf-8') as f:
+        f.write(new_content)
+    print(f"Injected Global Feedback Modal into {filepath}")
 
 print("Feedback Modal injection script complete.")
