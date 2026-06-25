@@ -46,109 +46,159 @@
         </div>
     </header>
 
-    <!-- Contact Section -->
-    <section class="section">
-        <div class="container">
-            <div class="grid grid-2">
+    <!-- Minimal Contact Info Pill -->
+    <div class="contact-info-pill">
+        <div class="pill-item">
+            <i class="fa fa-map-marker"></i>
+            <span>Bangalore, India</span>
+        </div>
+        <div class="pill-item">
+            <i class="fa fa-phone"></i>
+            <a href="tel:+919845188112">+91 98451 88112</a>
+        </div>
+        <div class="pill-item">
+            <i class="fa fa-envelope"></i>
+            <a href="mailto:info.svasth@gmail.com">info.svasth@gmail.com</a>
+        </div>
+        <div class="pill-item" style="gap: 15px; margin-left: auto;">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+        </div>
+    </div>
 
-                <!-- Contact Info -->
-                <div>
-                    <h2 class="section-title">Contact Info</h2>
+    <!-- Unified Forms Section -->
+    <section class="unified-forms-container">
+        <div class="unified-forms-grid">
 
-                    <div style="margin-bottom: 20px;">
-                        <h4 style="color: var(--primary); margin-bottom: 10px;">Address</h4>
-                        <p>
-                            Coming Soon...!
-                        </p>
+            <!-- Send a Message Form -->
+            <div class="unified-form-card">
+                <h3>Send a Message</h3>
+                <p class="subtitle">Have a question? We'd love to hear from you.</p>
+
+                <form id="contactForm" style="display: flex; flex-direction: column; height: 100%;">
+                    <input type="hidden" name="_captcha" value="false">
+                    <div class="unified-group">
+                        <label class="unified-label">Name</label>
+                        <input type="text" name="name" class="unified-input" placeholder="Your Name" required>
                     </div>
-
-                    <div style="margin-bottom: 20px;">
-                        <h4 style="color: var(--primary); margin-bottom: 10px;">Phone</h4>
-                        <p>+91 98451 88112</p>
+                    <div class="unified-group">
+                        <label class="unified-label">Email</label>
+                        <input type="email" name="email" class="unified-input" placeholder="Your Email" required>
                     </div>
-
-                    <div style="margin-bottom: 30px;">
-                        <h4 style="color: var(--primary); margin-bottom: 10px;">Socials</h4>
-                        <div style="display: flex; gap: 15px;">
-                            <a href="#" style="font-size: 1.5rem; color: var(--secondary);"><i
-                                    class="fa fa-facebook"></i></a>
-                            <a href="#" style="font-size: 1.5rem; color: var(--secondary);"><i
-                                    class="fa fa-instagram"></i></a>
-                            <a href="#" style="font-size: 1.5rem; color: var(--secondary);"><i
-                                    class="fa fa-twitter"></i></a>
-                        </div>
+                    <div class="unified-group">
+                        <label class="unified-label">Subject</label>
+                        <input type="text" name="_subject" class="unified-input" placeholder="Subject" required>
                     </div>
+                    <div class="unified-group" style="flex-grow: 1;">
+                        <label class="unified-label">Message</label>
+                        <textarea name="message" class="unified-input" style="height: 140px;" placeholder="Your Message"
+                            required></textarea>
+                    </div>
+                    <button type="submit" id="submitBtn" class="unified-btn"><i class="fa fa-whatsapp"></i> Send via WhatsApp</button>
+                </form>
+                <div id="formStatus"
+                    style="display: none; margin-top: 20px; padding: 15px; border-radius: 8px; text-align: center; font-weight: 600;">
                 </div>
-
-                <!-- Contact Form -->
-                <div class="card" style="padding: 30px;">
-                    <h3 style="margin-bottom: 20px;">Send a Message</h3>
-                    <form id="contactForm">
-                        <input type="hidden" name="_captcha" value="false">
-                        <div class="form-group">
-                            <label class="form-label">Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Subject</label>
-                            <input type="text" name="_subject" class="form-control" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Message</label>
-                            <textarea name="message" class="form-control" rows="5" placeholder="Your Message"
-                                required></textarea>
-                        </div>
-                        <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">Send
-                            Message</button>
-                    </form>
-                    <div id="formStatus"
-                        style="display: none; margin-top: 20px; padding: 15px; border-radius: 8px; text-align: center; font-weight: 600;">
-                    </div>
-                </div>
-
             </div>
+
+            <!-- Feedback Form -->
+            <div class="unified-form-card">
+                <h3>Feedback</h3>
+                <p class="subtitle">Tell us how we can improve your experience!</p>
+
+                <div id="fbFormContainer" style="height: 100%;">
+                    <form id="fbForm" novalidate style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="grid grid-2" style="gap: 15px; margin-bottom: 25px;">
+                            <div class="unified-group" style="margin-bottom: 0;">
+                                <label class="unified-label">Full Name</label>
+                                <input type="text" class="unified-input" id="fbName" placeholder="John Doe" required>
+                                <div class="fb-error-msg">Please enter your name</div>
+                            </div>
+                            <div class="unified-group" style="margin-bottom: 0;">
+                                <label class="unified-label">Age</label>
+                                <input type="number" class="unified-input" id="fbAge" placeholder="25" min="1" max="120"
+                                    required>
+                                <div class="fb-error-msg">Please enter a valid age</div>
+                            </div>
+                        </div>
+
+                        <div class="unified-group">
+                            <label class="unified-label">How would you rate your experience?</label>
+                            <div class="fb-stars" id="fbStarRating">
+                                <input type="radio" id="fbStar5" name="fbRating" value="5" required>
+                                <label for="fbStar5" title="5 stars"><i class="fa fa-star"></i></label>
+                                <input type="radio" id="fbStar4" name="fbRating" value="4">
+                                <label for="fbStar4" title="4 stars"><i class="fa fa-star"></i></label>
+                                <input type="radio" id="fbStar3" name="fbRating" value="3">
+                                <label for="fbStar3" title="3 stars"><i class="fa fa-star"></i></label>
+                                <input type="radio" id="fbStar2" name="fbRating" value="2">
+                                <label for="fbStar2" title="2 stars"><i class="fa fa-star"></i></label>
+                                <input type="radio" id="fbStar1" name="fbRating" value="1">
+                                <label for="fbStar1" title="1 star"><i class="fa fa-star"></i></label>
+                            </div>
+                            <div class="fb-error-msg" id="fbRatingError">Please select a rating</div>
+                        </div>
+
+                        <div class="unified-group" style="flex-grow: 1;">
+                            <label class="unified-label">Your Feedback</label>
+                            <textarea class="unified-input" id="fbFeedbackText" style="height: 140px;"
+                                placeholder="Tell us what you liked or what we can improve..." maxlength="500"
+                                required></textarea>
+                            <span class="fb-char-counter" id="fbCharCounter">0 / 500</span>
+                            <div class="fb-error-msg">Please provide your feedback</div>
+                        </div>
+
+                        <button type="submit" class="unified-btn" id="fbSubmitBtn">
+                            <span>Submit Feedback</span>
+                            <div class="fb-btn-loader"></div>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="fb-success-state" id="fbSuccessState" style="margin: auto 0;">
+                    <div class="fb-success-icon"><i class="fa fa-check"></i></div>
+                    <h2 style="color: var(--secondary); margin-bottom: 10px;">Thank You!</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 25px;">Your feedback has been successfully
+                        submitted.</p>
+                    <button class="unified-btn" onclick="resetFeedbackForm()">Submit Another</button>
+                </div>
+            </div>
+
         </div>
     </section>
 
-
-
     <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h4 class="footer-title">Svasth by Soumya</h4>
-          <p style="color: #ffffff; opacity: 0.9;">
-Fixing root causes, not just managing symptoms.
-          </p>
-        </div>
-        <div>
-          <h4 class="footer-title">Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="blogs.html">Blogs</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="footer-title">Contact</h4>
-          <ul class="footer-links">
-            <li><a href="mailto:sanelysvasth@gmail.com">sanelysvasth@gmail.com</a></li>
-            <li><a href="tel:+919845188112">+91 98451 88112</a></li>
-            <li>Bengaluru, India</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        Copyright &copy; 2024. All rights reserved.<br>
-        Svasth by Soumya - Dietitian in Bengaluru
-
-                
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4 class="footer-title">Svasth by Soumya</h4>
+                    <p style="color: #ffffff; opacity: 0.9;">
+                        Guiding you to live a healthier and holistically fitter life - via food and lifestyle
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info.svasth@gmail.com">info.svasth@gmail.com</a></li>
+                        <li><a href="tel:+919845188112">+91 98451 88112</a></li>
+                        <li>Bangalore, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                Copyright &copy; 2024. All rights reserved.<br>
+                Svasth by Soumya - Dietitian in Bengaluru
                 <div class="designer-credit" onclick="openDesignerModal()"
                     style="cursor: pointer; transition: transform 0.2s ease;"
                     onmouseover="this.style.transform='translateX(-50%) scale(1.05)'"
@@ -240,7 +290,7 @@ Fixing root causes, not just managing symptoms.
             navMenu.classList.toggle('active');
         });
 
-        // AJAX Form Submission
+        // WhatsApp Form Submission
         const contactForm = document.getElementById('contactForm');
         const formStatus = document.getElementById('formStatus');
         const submitBtn = document.getElementById('submitBtn');
@@ -249,42 +299,121 @@ Fixing root causes, not just managing symptoms.
             contactForm.addEventListener('submit', function (e) {
                 e.preventDefault();
 
-                // Show loading state
-                submitBtn.innerText = 'Sending...';
+                const originalBtnText = submitBtn.innerHTML;
+                submitBtn.innerText = 'Redirecting...';
                 submitBtn.disabled = true;
 
                 const formData = new FormData(contactForm);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const subject = formData.get('_subject');
+                const message = formData.get('message');
 
-                fetch("https://formsubmit.co/ajax/info.svasth@gmail.com", {
-                    method: "POST",
-                    body: formData
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            formStatus.innerText = "✅ Message sent successfully!";
-                            formStatus.style.backgroundColor = "#d4edda";
-                            formStatus.style.color = "#155724";
-                            formStatus.style.display = "block";
-                            contactForm.reset();
-                        } else {
-                            throw new Error('Form submission failed');
-                        }
-                    })
-                    .catch(error => {
-                        formStatus.innerText = "❌ Oops! Something went wrong. Please try again.";
-                        formStatus.style.backgroundColor = "#f8d7da";
-                        formStatus.style.color = "#721c24";
-                        formStatus.style.display = "block";
-                    })
-                    .finally(() => {
-                        submitBtn.innerText = 'Send Message';
-                        submitBtn.disabled = false;
-                        setTimeout(() => {
-                            formStatus.style.display = "none";
-                        }, 5000);
-                    });
+                const whatsappNumber = "919845188112"; // Format: Country code + Number
+                const whatsappMessage = `*New Contact Request*\n\n*Name:* ${name}\n*Email:* ${email}\n*Subject:* ${subject}\n*Message:* ${message}`;
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                
+                // Open WhatsApp in new tab
+                window.open(whatsappUrl, '_blank');
+                
+                formStatus.innerText = "✅ Redirecting to WhatsApp...";
+                formStatus.style.backgroundColor = "#d4edda";
+                formStatus.style.color = "#155724";
+                formStatus.style.display = "block";
+                
+                contactForm.reset();
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                
+                setTimeout(() => {
+                    formStatus.style.display = "none";
+                }, 5000);
             });
+        }
+    </script>
+
+    <script>
+        // Feedback Form Logic
+        const fbFeedbackText = document.getElementById('fbFeedbackText');
+        if (fbFeedbackText) {
+            fbFeedbackText.addEventListener('input', function () {
+                const length = this.value.length;
+                const max = 500;
+                const counter = document.getElementById('fbCharCounter');
+                counter.textContent = `${length} / ${max}`;
+                if (length >= max * 0.9) counter.classList.add('near-limit');
+                else counter.classList.remove('near-limit');
+                if (length >= max) counter.classList.add('limit-reached');
+                else counter.classList.remove('limit-reached');
+            });
+        }
+
+        document.querySelectorAll('input[name="fbRating"]').forEach(input => {
+            input.addEventListener('change', () => {
+                document.getElementById('fbRatingError').style.display = 'none';
+            });
+        });
+
+        const fbForm = document.getElementById('fbForm');
+        if (fbForm) {
+            fbForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                let isValid = true;
+
+                function checkErr(id, condition) {
+                    const el = document.getElementById(id);
+                    const err = el.parentElement.querySelector('.fb-error-msg');
+                    if (condition) {
+                        el.classList.add('error');
+                        err.style.display = 'block';
+                        isValid = false;
+                    } else {
+                        el.classList.remove('error');
+                        err.style.display = 'none';
+                    }
+                }
+
+                checkErr('fbName', !document.getElementById('fbName').value.trim());
+                const ageVal = document.getElementById('fbAge').value;
+                checkErr('fbAge', !ageVal || ageVal < 1);
+                checkErr('fbFeedbackText', !document.getElementById('fbFeedbackText').value.trim());
+
+                const isRated = Array.from(document.querySelectorAll('input[name="fbRating"]')).some(r => r.checked);
+                if (!isRated) {
+                    document.getElementById('fbRatingError').style.display = 'block';
+                    isValid = false;
+                }
+
+                if (isValid) {
+                    const btn = document.getElementById('fbSubmitBtn');
+                    btn.classList.add('loading');
+                    btn.disabled = true;
+
+                    setTimeout(() => {
+                        btn.classList.remove('loading');
+                        btn.disabled = false;
+                        document.getElementById('fbFormContainer').style.display = 'none';
+                        document.getElementById('fbSuccessState').style.display = 'block';
+                    }, 1200);
+                }
+            });
+
+            document.querySelectorAll('.fb-form-control').forEach(input => {
+                input.addEventListener('input', () => {
+                    input.classList.remove('error');
+                    const err = input.parentElement.querySelector('.fb-error-msg');
+                    if (err) err.style.display = 'none';
+                });
+            });
+        }
+
+        function resetFeedbackForm() {
+            document.getElementById('fbForm').reset();
+            document.getElementById('fbFormContainer').style.display = 'block';
+            document.getElementById('fbSuccessState').style.display = 'none';
+            document.getElementById('fbCharCounter').textContent = '0 / 500';
         }
     </script>
 </body>
