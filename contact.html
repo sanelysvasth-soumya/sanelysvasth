@@ -84,22 +84,21 @@
                 <div class="card" style="padding: 30px;">
                     <h3 style="margin-bottom: 20px;">Send a Message</h3>
                     <form id="contactForm">
-                        <input type="hidden" name="_captcha" value="false">
                         <div class="form-group">
                             <label class="form-label">Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                            <input type="text" name="Name" class="form-control" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                            <label class="form-label">Contact number (WhatsApp)</label>
+                            <input type="text" name="Contact" class="form-control" placeholder="Your Contact Number" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Subject</label>
-                            <input type="text" name="_subject" class="form-control" placeholder="Subject" required>
+                            <input type="text" name="Subject" class="form-control" placeholder="Subject" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Message</label>
-                            <textarea name="message" class="form-control" rows="5" placeholder="Your Message"
+                            <textarea name="Message" class="form-control" rows="5" placeholder="Your Message"
                                 required></textarea>
                         </div>
                         <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">Send
@@ -240,7 +239,7 @@ Fixing root causes, not just managing symptoms.
             navMenu.classList.toggle('active');
         });
 
-        // AJAX Form Submission
+        // Form Submission to Google Sheets
         const contactForm = document.getElementById('contactForm');
         const formStatus = document.getElementById('formStatus');
         const submitBtn = document.getElementById('submitBtn');
@@ -254,36 +253,48 @@ Fixing root causes, not just managing symptoms.
                 submitBtn.disabled = true;
 
                 const formData = new FormData(contactForm);
+                const data = {
+                    sheetName: "Sheet4"
+                };
 
-                fetch("https://formsubmit.co/ajax/info.svasth@gmail.com", {
-                    method: "POST",
-                    body: formData
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            formStatus.innerText = "✅ Message sent successfully!";
-                            formStatus.style.backgroundColor = "#d4edda";
-                            formStatus.style.color = "#155724";
-                            formStatus.style.display = "block";
-                            contactForm.reset();
-                        } else {
-                            throw new Error('Form submission failed');
-                        }
-                    })
-                    .catch(error => {
-                        formStatus.innerText = "❌ Oops! Something went wrong. Please try again.";
-                        formStatus.style.backgroundColor = "#f8d7da";
-                        formStatus.style.color = "#721c24";
-                        formStatus.style.display = "block";
-                    })
-                    .finally(() => {
-                        submitBtn.innerText = 'Send Message';
-                        submitBtn.disabled = false;
-                        setTimeout(() => {
-                            formStatus.style.display = "none";
-                        }, 5000);
-                    });
+                for (let [key, value] of formData.entries()) {
+                    data[key] = value;
+                }
+
+                const iframe = document.createElement("iframe");
+                iframe.style.display = "none";
+                document.body.appendChild(iframe);
+
+                const form = document.createElement("form");
+                form.method = "POST";
+                form.action = "https://script.google.com/macros/s/AKfycbzWpa98yHvCTYfp0aiOrScOgGhXxZ5EXR6v2cSUtTnhEQpj9fzYhyOWlIacKgxA53vGBA/exec";
+
+                for (const [key, value] of Object.entries(data)) {
+                    const input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = key;
+                    input.value = value;
+                    form.appendChild(input);
+                }
+
+                iframe.contentDocument.body.appendChild(form);
+                form.submit();
+
+                // Show success message after a brief delay
+                setTimeout(() => {
+                    document.body.removeChild(iframe);
+                    formStatus.innerText = "✅ Message sent successfully!";
+                    formStatus.style.backgroundColor = "#d4edda";
+                    formStatus.style.color = "#155724";
+                    formStatus.style.display = "block";
+                    contactForm.reset();
+                    submitBtn.innerText = 'Send Message';
+                    submitBtn.disabled = false;
+
+                    setTimeout(() => {
+                        formStatus.style.display = "none";
+                    }, 5000);
+                }, 2000);
             });
         }
     </script>
