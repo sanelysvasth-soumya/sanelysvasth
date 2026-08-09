@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Do "Heating" Foods Really Exist? Here's What Physiology Says.</title>
+
+    <meta
+      name="description"
+      content="Explore the physiological basis behind 'heating' and 'cooling' foods. Learn how metabolism, protein digestion, inflammation, hydration and nervous system responses influence body heat."
+    />
+
+    <meta
+      name="keywords"
+      content="heating foods, cooling foods, body heat, thermic effect of food, protein metabolism, inflammation, hydration, TRPV1 receptors, capsaicin, digestion, metabolism"
+    />
+
+    <meta name="author" content="Svasth by Soumya" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="YOUR_PAGE_URL_HERE" />
+    <meta
+      property="og:title"
+      content="Do &quot;Heating&quot; Foods Really Exist? Here's What Physiology Says."
+    />
+    <meta
+      property="og:description"
+      content="Traditional concepts of heating and cooling foods have a physiological explanation. Discover how metabolism, digestion and inflammation influence how warm you feel."
+    />
+    <!-- <meta property="og:image" content="YOUR_FEATURE_IMAGE_URL_HERE" /> -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="YOUR_PAGE_URL_HERE" />
+    <meta
+      property="twitter:title"
+      content="Do &quot;Heating&quot; Foods Really Exist? Here's What Physiology Says."
+    />
+    <meta
+      property="twitter:description"
+      content="Foods don't magically create heat. They influence the physiology that regulates heat through metabolism, digestion, inflammation and nervous system responses."
+    />
+    <!-- <meta property="twitter:image" content="YOUR_FEATURE_IMAGE_URL_HERE" /> -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --background-color-light: #f9fafb;
+        --text-color-light: #2c3e50;
+        --card-bg-light: white;
+        --border-color-light: #eee;
+        --accent-color-light: #c59a6d;
+        --accent-hover-light: #a67c4e;
+        --meta-text-light: #666;
+        --alert-bg-light: #f3f4f6;
+
+        --background-color-dark: #1a202c;
+        --text-color-dark: #edf2f7;
+        --card-bg-dark: #2d3748;
+        --border-color-dark: #4a5568;
+        --accent-color-dark: #e5b889;
+        --accent-hover-dark: #d4a06a;
+        --meta-text-dark: #a0aec0;
+        --alert-bg-dark: #252d3a;
+      }
+
+      body {
+        font-family: "Lora", serif;
+        padding: 20px;
+        padding-top: 60px;
+        background-color: var(--background-color-light);
+        color: var(--text-color-light);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      body.dark-mode {
+        background-color: var(--background-color-dark);
+        color: var(--text-color-dark);
+      }
+
+      #progress-bar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: var(--border-color-light);
+        z-index: 1000;
+      }
+
+      body.dark-mode #progress-bar-container {
+        background-color: var(--border-color-dark);
+      }
+
+      #progress-bar {
+        height: 100%;
+        width: 0%;
+        background-color: var(--accent-color-light);
+        transition: width 0.1s ease-out;
+      }
+
+      body.dark-mode #progress-bar {
+        background-color: var(--accent-color-dark);
+      }
+
+      #dark-mode-toggle {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        background-color: var(--card-bg-light);
+        color: var(--text-color-light);
+        border: 1px solid var(--border-color-light);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        cursor: pointer;
+        z-index: 1001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      body.dark-mode #dark-mode-toggle {
+        background-color: var(--card-bg-dark);
+        color: var(--text-color-dark);
+        border: 1px solid var(--border-color-dark);
+      }
+
+      #dark-mode-toggle .fa-sun {
+        display: none;
+      }
+
+      body.dark-mode #dark-mode-toggle .fa-moon {
+        display: none;
+      }
+
+      body.dark-mode #dark-mode-toggle .fa-sun {
+        display: inline;
+      }
+
+      .blog-post-content {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        transition: background-color 0.3s ease;
+      }
+
+      body.dark-mode .blog-post-content {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 15px rgba(255, 255, 255, 0.05);
+      }
+
+      .blog-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+
+      body.dark-mode .blog-header {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+
+      .blog-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-align: center;
+        color: var(--text-color-light);
+      }
+
+      body.dark-mode .blog-title {
+        color: var(--text-color-dark);
+      }
+
+      .post-meta {
+        margin: 20px 0;
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .post-meta span {
+        color: var(--meta-text-light);
+      }
+
+      body.dark-mode .post-meta span {
+        color: var(--meta-text-dark);
+      }
+
+      #toc-container {
+        background: var(--alert-bg-light);
+        padding: 20px 25px;
+        border-radius: 8px;
+        margin: 30px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+
+      body.dark-mode #toc-container {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+
+      .toc-title {
+        font-family: "Montserrat", sans-serif;
+        margin-top: 0 !important;
+        margin-bottom: 15px !important;
+        font-size: 1.5rem !important;
+        border-bottom: none !important;
+        color: var(--text-color-light);
+      }
+
+      body.dark-mode .toc-title {
+        color: var(--text-color-dark);
+      }
+
+      #toc-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      #toc-list li {
+        margin-bottom: 10px;
+      }
+
+      #toc-list li a {
+        text-decoration: none;
+        color: var(--accent-color-light);
+        font-weight: 500;
+      }
+
+      #toc-list li a:hover {
+        text-decoration: underline;
+        color: var(--accent-hover-light);
+      }
+
+      body.dark-mode #toc-list li a {
+        color: var(--accent-color-dark);
+      }
+
+      body.dark-mode #toc-list li a:hover {
+        color: var(--accent-hover-dark);
+      }
+
+      .blog-content {
+        line-height: 1.8;
+      }
+
+      .lead {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: var(--text-color-light);
+        margin-bottom: 2rem;
+      }
+
+      body.dark-mode .lead {
+        color: var(--text-color-dark);
+      }
+
+      h2 {
+        font-family: "Montserrat", sans-serif;
+        color: var(--text-color-light);
+        margin-top: 40px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        font-size: 1.8rem;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+
+      body.dark-mode h2 {
+        color: var(--text-color-dark);
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+
+      h3 {
+        font-family: "Montserrat", sans-serif;
+        color: var(--text-color-light);
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+      }
+
+      body.dark-mode h3 {
+        color: var(--text-color-dark);
+      }
+
+      p {
+        margin-bottom: 20px;
+        line-height: 1.8;
+        color: var(--text-color-light);
+      }
+
+      body.dark-mode p {
+        color: var(--text-color-dark);
+      }
+
+      ul,
+      ol {
+        padding-left: 20px;
+        margin-bottom: 20px;
+        list-style: none;
+      }
+
+      li {
+        margin-bottom: 15px;
+        line-height: 1.6;
+        position: relative;
+        padding-left: 25px;
+        color: var(--text-color-light);
+      }
+
+      body.dark-mode li {
+        color: var(--text-color-dark);
+      }
+
+      ul li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color-light);
+      }
+
+      body.dark-mode ul li:before {
+        color: var(--accent-color-dark);
+      }
+
+      ol {
+        counter-reset: item;
+      }
+
+      ol li {
+        counter-increment: item;
+      }
+
+      ol li:before {
+        content: counter(item) ".";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color-light);
+      }
+
+      body.dark-mode ol li:before {
+        color: var(--accent-color-dark);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      th,
+      td {
+        border: 1px solid var(--border-color-light);
+        padding: 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: var(--accent-color-light);
+        color: white;
+      }
+
+      body.dark-mode th {
+        background-color: var(--accent-color-dark);
+      }
+
+      body.dark-mode td,
+      body.dark-mode th {
+        border-color: var(--border-color-dark);
+      }
+
+      .alert-info,
+      .conclusion-section {
+        background: var(--alert-bg-light);
+        padding: 35px;
+        border-radius: 8px;
+        margin: 40px 0 20px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+
+      body.dark-mode .alert-info,
+      body.dark-mode .conclusion-section {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+
+      .alert-info h3,
+      .conclusion-section h2 {
+        margin-top: 0;
+        padding-top: 0;
+        color: var(--text-color-light);
+        border-bottom: none;
+      }
+
+      body.dark-mode .alert-info h3,
+      body.dark-mode .conclusion-section h2 {
+        color: var(--text-color-dark);
+      }
+
+      .alert-info p:last-child,
+      .conclusion-section p:last-child {
+        margin-bottom: 0;
+      }
+
+      a {
+        color: var(--accent-color-light);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      body.dark-mode a {
+        color: var(--accent-color-dark);
+      }
+
+      a:hover {
+        color: var(--accent-hover-light);
+        text-decoration: underline;
+      }
+
+      body.dark-mode a:hover {
+        color: var(--accent-hover-dark);
+      }
+
+      strong {
+        color: var(--text-color-light);
+        font-weight: 600;
+      }
+
+      body.dark-mode strong {
+        color: var(--text-color-dark);
+      }
+
+      .social-sharing {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color-light);
+        text-align: center;
+      }
+
+      body.dark-mode .social-sharing {
+        border-top: 1px solid var(--border-color-dark);
+      }
+
+      .social-sharing h3 {
+        margin-bottom: 15px;
+      }
+
+      .social-sharing a {
+        margin: 0 10px;
+        font-size: 1.5rem;
+        color: var(--meta-text-light);
+      }
+
+      .social-sharing a:hover {
+        color: var(--accent-color-light);
+      }
+
+      body.dark-mode .social-sharing a {
+        color: var(--meta-text-dark);
+      }
+
+      body.dark-mode .social-sharing a:hover {
+        color: var(--accent-hover-dark);
+      }
+
+      .comments-section {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 30px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      body.dark-mode .comments-section {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
+      }
+
+      .comments-section h2 {
+        margin-top: 0;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+
+      body.dark-mode .comments-section h2 {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+          padding-top: 50px;
+        }
+
+        #dark-mode-toggle {
+          top: 10px;
+          right: 10px;
+        }
+
+        .blog-post-content,
+        .comments-section {
+          padding: 25px;
+          margin: 20px auto;
+        }
+
+        .blog-title {
+          font-size: 2rem;
+        }
+
+        .alert-info,
+        .conclusion-section,
+        .author-bio {
+          padding: 20px;
+          margin: 30px 0 15px 0;
+        }
+
+        .author-bio {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .post-meta {
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .post-meta span {
+          margin-right: 0;
+        }
+
+        h2 {
+          font-size: 1.6rem;
+        }
+
+        h3 {
+          font-size: 1.3rem;
+        }
+
+        p,
+        li {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="progress-bar-container">
+      <div id="progress-bar"></div>
+    </div>
+
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun"></i>
+    </button>
+
+    <main>
+      <article class="blog-post-content">
+        <header class="blog-header">
+          <h1 class="blog-title">
+            Do "Heating" Foods Really Exist? Here's What Physiology Says.
+          </h1>
+
+          <div class="post-meta">
+            <span>
+              <i class="far fa-calendar"></i>
+              August 9, 2026
+            </span>
+
+            <span>
+              <i class="far fa-clock"></i>
+              12 min read
+            </span>
+
+            <span>
+              <i class="fas fa-tag"></i>
+              Heating Foods, Metabolism, Thermic Effect, Inflammation, Hydration, Digestion
+            </span>
+          </div>
+        </header>
+
+        <section id="toc-container" aria-labelledby="toc-heading">
+          <h2 id="toc-heading" class="toc-title">
+            Table of Contents
+          </h2>
+
+          <ul id="toc-list"></ul>
+        </section>
+
+        <div class="blog-content">
+          <p class="lead">
+            Traditional concepts of heating and cooling foods have a physiological explanation. Discover how metabolism, digestion and inflammation influence how warm you feel.
+          </p>
+
+          <p>
+            People often laugh at terms like heating foods and cooling foods. They dismiss them as myths because they aren't found in modern nutrition textbooks. But if you look beyond the terminology, there is actually a physiological explanation for why certain foods, environments and even stress can make you feel warmer internally.
+          </p>
+
+          <p>
+            Your body doesn't randomly "heat up." Every second, it is producing heat as a by-product of metabolism. Digestion, hormone activity, inflammation, breathing, muscle activity and temperature regulation all contribute to how warm or cool you feel. So while the traditional explanation may differ from modern science, the experience itself isn't imaginary.
+          </p>
+
+          <h2 id="body-constantly-producing-heat">
+            Your Body Is Constantly Producing Heat
+          </h2>
+
+          <p>
+            Even when you're lying down doing absolutely nothing, your body is generating heat. Your brain, liver, heart, muscles and gut are continuously burning energy to keep you alive. This is your Basal Metabolic Rate (BMR), and heat is a natural by-product of these reactions.
+          </p>
+
+          <p>
+            Whenever metabolism increases—whether because you're digesting food, exercising, recovering from an illness or repairing tissues—heat production increases as well. Sometimes what people describe as "body heat" is simply their body working harder.
+          </p>
+
+          <h2 id="protein-produces-more-heat">
+            Protein Naturally Produces More Heat
+          </h2>
+
+          <p>
+            One of the biggest reasons people feel warmer after certain meals is something called the Thermic Effect of Food (TEF).
+          </p>
+
+          <p>
+            Your body spends energy digesting, absorbing and processing every nutrient you eat, but protein is by far the most demanding. Around 20–30% of the calories from protein are used just to digest and metabolise it, compared to 5–10% for carbohydrates and only 0–3% for fats.
+          </p>
+
+          <p>
+            That means if you eat 100 calories of protein, your body may use up to 30 calories simply processing it. Heat is released during this process, which is why very high-protein meals, large portions or protein-heavy diets can make some people feel internally warmer or sweat more after eating.
+          </p>
+
+          <h2 id="not-food-its-quantity">
+            Sometimes It's Not the Food—It's the Quantity
+          </h2>
+
+          <p>
+            Even meals that are very high in carbohydrates or simply very large require significant digestive work. More food means more digestion, greater blood flow to the digestive system and increased metabolic activity. Many people notice feeling hot, sweaty or sleepy after heavy meals because digestion itself is an energy-intensive process.
+          </p>
+
+          <h2 id="sweet-fruits-metabolically-active">
+            Sweet Fruits Aren't "Heating"—They're Metabolically Active
+          </h2>
+
+          <p>
+            Many traditional systems describe foods like mangoes, jackfruit and chikoo as "heating."
+          </p>
+
+          <p>
+            Modern physiology offers another explanation.
+          </p>
+
+          <p>
+            These fruits contain a relatively higher natural sugar load. Once absorbed, glucose has to be transported into cells, insulin is released, nutrients are stored or utilised and water shifts occur across cells. All of these processes require energy, and energy metabolism always produces heat.
+          </p>
+
+          <p>
+            Now combine that with dehydration, hot weather, poor sleep and low electrolyte intake. It's no surprise that some people experience mouth ulcers, acne flare-ups, fatigue, excessive sweating or simply a feeling of "body heat." The fruit isn't the entire problem—the physiological context matters.
+          </p>
+
+          <h2 id="fruits-increase-digestive-activity">
+            Some Fruits Increase Digestive Activity
+          </h2>
+
+          <p>
+            Papaya contains papain and pineapple contains bromelain—proteolytic enzymes that help break down proteins.
+          </p>
+
+          <p>
+            This doesn't make these fruits harmful. In fact, they're nutritious foods. But protein digestion is an energy-demanding process, and anything that increases digestive activity also slightly increases metabolic work. More metabolism simply means more heat is produced as a natural by-product.
+          </p>
+
+          <h2 id="spicy-foods-trick-nervous-system">
+            Spicy Foods Trick Your Nervous System
+          </h2>
+
+          <p>
+            This is probably the most fascinating mechanism.
+          </p>
+
+          <p>
+            Compounds such as capsaicin in chilli, gingerol in ginger and piperine in black pepper activate receptors called TRPV1 receptors. These are the same heat-sensitive receptors that respond when you touch something genuinely hot.
+          </p>
+
+          <p>
+            The food itself isn't increasing your body temperature dramatically. Instead, your nervous system interprets these compounds as heat, causing flushing, sweating and the sensation of warmth. In many cases, sweating then helps cool the body afterwards.
+          </p>
+
+          <h2 id="inflammation-heat-producing-state">
+            Inflammation Is a Heat-Producing State
+          </h2>
+
+          <p>
+            One of the classic signs of inflammation is heat, and that's because inflammation is metabolically expensive.
+          </p>
+
+          <p>
+            Whenever inflammatory molecules like cytokines, prostaglandins and interleukins increase, immune cells become more active and energy demand rises. Higher metabolic activity means greater heat production.
+          </p>
+
+          <p>
+            This is one reason why infections, poor sleep, chronic stress, alcohol and diets high in ultra-processed foods can make people feel warmer than usual. It's not simply the food—it's the inflammatory environment the body is functioning in.
+          </p>
+
+          <h2 id="hydration-changes-everything">
+            Hydration Changes Everything
+          </h2>
+
+          <p>
+            One thing that's often missing from conversations around "body heat" is hydration.
+          </p>
+
+          <p>
+            Water is required for digestion, circulation and metabolism. It also allows your body to sweat, and sweating is your most effective cooling mechanism. When you're dehydrated, sweat production becomes less efficient, circulation slows and your ability to lose heat decreases.
+          </p>
+
+          <p>
+            This is why the exact same meal can feel completely different under different circumstances. Mangoes eaten on a hot day after poor sleep and very little water may make you feel much warmer than mangoes eaten as part of a balanced meal with good hydration and adequate recovery.
+          </p>
+
+          <h2 id="way-you-breathe-matters">
+            Even the Way You Breathe Matters
+          </h2>
+
+          <p>
+            Breathing is another underrated part of temperature regulation.
+          </p>
+
+          <p>
+            Shallow chest breathing recruits smaller respiratory muscles, reduces breathing efficiency and limits full lung expansion. Diaphragmatic breathing, on the other hand, improves ventilation and supports better heat exchange through exhaled air and water vapour.
+          </p>
+
+          <p>
+            In fact, around 20% of body heat can be dissipated through respiration. Traditional systems may describe this as "cooling the body," while modern physiology explains it through breathing mechanics, evaporation and thermoregulation.
+          </p>
+
+          <h2 id="heating-foods-myth">
+            So, Are Heating Foods a Myth?
+          </h2>
+
+          <div class="conclusion-section">
+            <h2>Not Entirely</h2>
+
+            <p>
+              Foods don't magically create heat inside your body. What they do is influence the physiology that regulates heat—through metabolism, digestion, inflammation, hydration, hormone responses and even the receptors in your nervous system.
+            </p>
+
+            <p>
+              So instead of asking whether a food is "heating" or "cooling," a better question is this: What is this food asking my body to do?
+            </p>
+          </div>
+
+          <div class="alert-info">
+            <h3>Ready to Take the Next Step?</h3>
+
+            <p>
+              <a
+                href="https://wa.me/message/U43IYBJMJDQAD1"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="
+                  background-color: var(--accent-color-light);
+                  color: white;
+                  padding: 12px 24px;
+                  border-radius: 6px;
+                  text-decoration: none;
+                  font-weight: 600;
+                  display: inline-block;
+                "
+              >
+                Click to Book Now!
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <section class="social-sharing" aria-label="Share this post">
+          <h3>Share this post:</h3>
+
+          <a
+            href="https://www.facebook.com/sharer/sharer.php?u=YOUR_PAGE_URL_HERE"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Share on Facebook"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+
+          <a
+            href="https://twitter.com/intent/tweet?url=YOUR_PAGE_URL_HERE&text=Do%20%22Heating%22%20Foods%20Really%20Exist%3F%20Here%27s%20What%20Physiology%20Says."
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Share on Twitter"
+          >
+            <i class="fab fa-twitter"></i>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/shareArticle?mini=true&url=YOUR_PAGE_URL_HERE&title=Do%20%22Heating%22%20Foods%20Really%20Exist%3F%20Here%27s%20What%20Physiology%20Says."
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Share on LinkedIn"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+
+          <a
+            href="mailto:?subject=Do%20%22Heating%22%20Foods%20Really%20Exist%3F%20Here%27s%20What%20Physiology%20Says.&body=Check%20out%20this%20article:%20YOUR_PAGE_URL_HERE"
+            aria-label="Share via Email"
+          >
+            <i class="fas fa-envelope"></i>
+          </a>
+        </section>
+      </article>
+
+      <section class="comments-section" aria-label="Comments">
+        <h2>Comments</h2>
+
+        <p>
+          <em>Comments are not enabled yet. Check back soon!</em>
+        </p>
+      </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        /* Table of Contents generation from h2[id] */
+        const tocList = document.getElementById("toc-list");
+        const blogContent = document.querySelector(".blog-content");
+
+        if (tocList && blogContent) {
+          const headings = blogContent.querySelectorAll("h2[id]");
+
+          if (headings.length > 0) {
+            headings.forEach((heading) => {
+              if (
+                heading.id &&
+                heading.textContent.trim() !== ""
+              ) {
+                const listItem = document.createElement("li");
+                const link = document.createElement("a");
+
+                link.href = "#" + heading.id;
+                link.textContent = heading.textContent;
+
+                listItem.appendChild(link);
+                tocList.appendChild(listItem);
+              }
+            });
+          } else {
+            const tocContainer =
+              document.getElementById("toc-container");
+
+            if (tocContainer) {
+              tocContainer.style.display = "none";
+            }
+          }
+        }
+
+        /* Reading progress bar */
+        const progressBar =
+          document.getElementById("progress-bar");
+
+        if (progressBar) {
+          window.addEventListener("scroll", () => {
+            const scrollTop =
+              document.documentElement.scrollTop ||
+              document.body.scrollTop;
+
+            const scrollHeight =
+              document.documentElement.scrollHeight -
+              document.documentElement.clientHeight;
+
+            const scrollProgress =
+              scrollHeight > 0
+                ? (scrollTop / scrollHeight) * 100
+                : 0;
+
+            progressBar.style.width =
+              scrollProgress + "%";
+          });
+        }
+
+        /* Dark mode toggle */
+        const darkModeToggle =
+          document.getElementById("dark-mode-toggle");
+
+        const body = document.body;
+
+        const moonIcon = darkModeToggle
+          ? darkModeToggle.querySelector(".fa-moon")
+          : null;
+
+        const sunIcon = darkModeToggle
+          ? darkModeToggle.querySelector(".fa-sun")
+          : null;
+
+        function applyTheme(theme) {
+          if (theme === "dark") {
+            body.classList.add("dark-mode");
+
+            if (moonIcon) {
+              moonIcon.style.display = "none";
+            }
+
+            if (sunIcon) {
+              sunIcon.style.display = "inline";
+            }
+          } else {
+            body.classList.remove("dark-mode");
+
+            if (moonIcon) {
+              moonIcon.style.display = "inline";
+            }
+
+            if (sunIcon) {
+              sunIcon.style.display = "none";
+            }
+          }
+        }
+
+        const savedTheme =
+          localStorage.getItem("theme");
+
+        if (savedTheme) {
+          applyTheme(savedTheme);
+        } else {
+          applyTheme("light");
+        }
+
+        if (darkModeToggle) {
+          if (body.classList.contains("dark-mode")) {
+            if (moonIcon) {
+              moonIcon.style.display = "none";
+            }
+
+            if (sunIcon) {
+              sunIcon.style.display = "inline";
+            }
+          } else {
+            if (moonIcon) {
+              moonIcon.style.display = "inline";
+            }
+
+            if (sunIcon) {
+              sunIcon.style.display = "none";
+            }
+          }
+
+          darkModeToggle.addEventListener("click", () => {
+            if (body.classList.contains("dark-mode")) {
+              applyTheme("light");
+              localStorage.setItem("theme", "light");
+            } else {
+              applyTheme("dark");
+              localStorage.setItem("theme", "dark");
+            }
+          });
+        }
+
+        /* Smooth scroll for TOC links */
+        if (tocList) {
+          tocList.querySelectorAll("a").forEach((anchor) => {
+            anchor.addEventListener("click", function (event) {
+              event.preventDefault();
+
+              const targetId =
+                this.getAttribute("href").substring(1);
+
+              const targetElement =
+                document.getElementById(targetId);
+
+              if (targetElement) {
+                targetElement.scrollIntoView({
+                  behavior: "smooth"
+                });
+              }
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
