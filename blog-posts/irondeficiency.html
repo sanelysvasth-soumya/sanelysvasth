@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Know Why You Are Iron Deficient</title>
+
+    <meta
+      name="description"
+      content="Understand the root causes of iron deficiency, including poor intake, digestion, absorption, inflammation, gut health, nutrient cofactors, menstrual blood loss, stress and lifestyle factors."
+    />
+
+    <meta
+      name="keywords"
+      content="iron deficiency, iron deficiency anaemia, low ferritin, low haemoglobin, vitamin B12 deficiency, iron absorption, gut health, hepcidin, inflammation, menstrual blood loss"
+    />
+
+    <meta name="author" content="Svasth by Soumya" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="YOUR_PAGE_URL_HERE" />
+    <meta
+      property="og:title"
+      content="Know Why You Are Iron Deficient"
+    />
+    <meta
+      property="og:description"
+      content="Discover why iron deficiency keeps returning and how nutrition, digestion, absorption, inflammation, gut health and lifestyle affect iron status."
+    />
+    <!-- <meta property="og:image" content="YOUR_FEATURE_IMAGE_URL_HERE" /> -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="YOUR_PAGE_URL_HERE" />
+    <meta
+      property="twitter:title"
+      content="Know Why You Are Iron Deficient"
+    />
+    <meta
+      property="twitter:description"
+      content="Learn why iron deficiency is often about more than simply not eating enough iron."
+    />
+    <!-- <meta property="twitter:image" content="YOUR_FEATURE_IMAGE_URL_HERE" /> -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --background-color-light: #f9fafb;
+        --text-color-light: #2c3e50;
+        --card-bg-light: white;
+        --border-color-light: #eee;
+        --accent-color-light: #c59a6d;
+        --accent-hover-light: #a67c4e;
+        --meta-text-light: #666;
+        --alert-bg-light: #f3f4f6;
+
+        --background-color-dark: #1a202c;
+        --text-color-dark: #edf2f7;
+        --card-bg-dark: #2d3748;
+        --border-color-dark: #4a5568;
+        --accent-color-dark: #e5b889;
+        --accent-hover-dark: #d4a06a;
+        --meta-text-dark: #a0aec0;
+        --alert-bg-dark: #252d3a;
+      }
+
+      body {
+        font-family: "Lora", serif;
+        padding: 20px;
+        padding-top: 60px;
+        background-color: var(--background-color-light);
+        color: var(--text-color-light);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      body.dark-mode {
+        background-color: var(--background-color-dark);
+        color: var(--text-color-dark);
+      }
+
+      #progress-bar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: var(--border-color-light);
+        z-index: 1000;
+      }
+
+      body.dark-mode #progress-bar-container {
+        background-color: var(--border-color-dark);
+      }
+
+      #progress-bar {
+        height: 100%;
+        width: 0%;
+        background-color: var(--accent-color-light);
+        transition: width 0.1s ease-out;
+      }
+
+      body.dark-mode #progress-bar {
+        background-color: var(--accent-color-dark);
+      }
+
+      #dark-mode-toggle {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        background-color: var(--card-bg-light);
+        color: var(--text-color-light);
+        border: 1px solid var(--border-color-light);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        cursor: pointer;
+        z-index: 1001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      body.dark-mode #dark-mode-toggle {
+        background-color: var(--card-bg-dark);
+        color: var(--text-color-dark);
+        border: 1px solid var(--border-color-dark);
+      }
+
+      #dark-mode-toggle .fa-sun {
+        display: none;
+      }
+
+      body.dark-mode #dark-mode-toggle .fa-moon {
+        display: none;
+      }
+
+      body.dark-mode #dark-mode-toggle .fa-sun {
+        display: inline;
+      }
+
+      .blog-post-content {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        transition: background-color 0.3s ease;
+      }
+
+      body.dark-mode .blog-post-content {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 15px rgba(255, 255, 255, 0.05);
+      }
+
+      .blog-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+
+      body.dark-mode .blog-header {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+
+      .blog-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-align: center;
+        color: var(--text-color-light);
+      }
+
+      body.dark-mode .blog-title {
+        color: var(--text-color-dark);
+      }
+
+      .post-meta {
+        margin: 20px 0;
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .post-meta span {
+        color: var(--meta-text-light);
+      }
+
+      body.dark-mode .post-meta span {
+        color: var(--meta-text-dark);
+      }
+
+      #toc-container {
+        background: var(--alert-bg-light);
+        padding: 20px 25px;
+        border-radius: 8px;
+        margin: 30px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+
+      body.dark-mode #toc-container {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+
+      .toc-title {
+        font-family: "Montserrat", sans-serif;
+        margin-top: 0 !important;
+        margin-bottom: 15px !important;
+        font-size: 1.5rem !important;
+        border-bottom: none !important;
+        color: var(--text-color-light);
+      }
+
+      body.dark-mode .toc-title {
+        color: var(--text-color-dark);
+      }
+
+      #toc-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      #toc-list li {
+        margin-bottom: 10px;
+      }
+
+      #toc-list li a {
+        text-decoration: none;
+        color: var(--accent-color-light);
+        font-weight: 500;
+      }
+
+      #toc-list li a:hover {
+        text-decoration: underline;
+        color: var(--accent-hover-light);
+      }
+
+      body.dark-mode #toc-list li a {
+        color: var(--accent-color-dark);
+      }
+
+      body.dark-mode #toc-list li a:hover {
+        color: var(--accent-hover-dark);
+      }
+
+      .blog-content {
+        line-height: 1.8;
+      }
+
+      .lead {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: var(--text-color-light);
+        margin-bottom: 2rem;
+      }
+
+      body.dark-mode .lead {
+        color: var(--text-color-dark);
+      }
+
+      h2 {
+        font-family: "Montserrat", sans-serif;
+        color: var(--text-color-light);
+        margin-top: 40px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        font-size: 1.8rem;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+
+      body.dark-mode h2 {
+        color: var(--text-color-dark);
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+
+      h3 {
+        font-family: "Montserrat", sans-serif;
+        color: var(--text-color-light);
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+      }
+
+      body.dark-mode h3 {
+        color: var(--text-color-dark);
+      }
+
+      p {
+        margin-bottom: 20px;
+        line-height: 1.8;
+        color: var(--text-color-light);
+      }
+
+      body.dark-mode p {
+        color: var(--text-color-dark);
+      }
+
+      ul,
+      ol {
+        padding-left: 20px;
+        margin-bottom: 20px;
+        list-style: none;
+      }
+
+      li {
+        margin-bottom: 15px;
+        line-height: 1.6;
+        position: relative;
+        padding-left: 25px;
+        color: var(--text-color-light);
+      }
+
+      body.dark-mode li {
+        color: var(--text-color-dark);
+      }
+
+      ul li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color-light);
+      }
+
+      body.dark-mode ul li:before {
+        color: var(--accent-color-dark);
+      }
+
+      ol {
+        counter-reset: item;
+      }
+
+      ol li {
+        counter-increment: item;
+      }
+
+      ol li:before {
+        content: counter(item) ".";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color-light);
+      }
+
+      body.dark-mode ol li:before {
+        color: var(--accent-color-dark);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      th,
+      td {
+        border: 1px solid var(--border-color-light);
+        padding: 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: var(--accent-color-light);
+        color: white;
+      }
+
+      body.dark-mode th {
+        background-color: var(--accent-color-dark);
+      }
+
+      body.dark-mode td,
+      body.dark-mode th {
+        border-color: var(--border-color-dark);
+      }
+
+      .alert-info,
+      .conclusion-section {
+        background: var(--alert-bg-light);
+        padding: 35px;
+        border-radius: 8px;
+        margin: 40px 0 20px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+
+      body.dark-mode .alert-info,
+      body.dark-mode .conclusion-section {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+
+      .alert-info h3,
+      .conclusion-section h2 {
+        margin-top: 0;
+        padding-top: 0;
+        color: var(--text-color-light);
+        border-bottom: none;
+      }
+
+      body.dark-mode .alert-info h3,
+      body.dark-mode .conclusion-section h2 {
+        color: var(--text-color-dark);
+      }
+
+      .alert-info p:last-child,
+      .conclusion-section p:last-child {
+        margin-bottom: 0;
+      }
+
+      a {
+        color: var(--accent-color-light);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      body.dark-mode a {
+        color: var(--accent-color-dark);
+      }
+
+      a:hover {
+        color: var(--accent-hover-light);
+        text-decoration: underline;
+      }
+
+      body.dark-mode a:hover {
+        color: var(--accent-hover-dark);
+      }
+
+      strong {
+        color: var(--text-color-light);
+        font-weight: 600;
+      }
+
+      body.dark-mode strong {
+        color: var(--text-color-dark);
+      }
+
+      .social-sharing {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color-light);
+        text-align: center;
+      }
+
+      body.dark-mode .social-sharing {
+        border-top: 1px solid var(--border-color-dark);
+      }
+
+      .social-sharing h3 {
+        margin-bottom: 15px;
+      }
+
+      .social-sharing a {
+        margin: 0 10px;
+        font-size: 1.5rem;
+        color: var(--meta-text-light);
+      }
+
+      .social-sharing a:hover {
+        color: var(--accent-color-light);
+      }
+
+      body.dark-mode .social-sharing a {
+        color: var(--meta-text-dark);
+      }
+
+      body.dark-mode .social-sharing a:hover {
+        color: var(--accent-hover-dark);
+      }
+
+      .comments-section {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 30px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      body.dark-mode .comments-section {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
+      }
+
+      .comments-section h2 {
+        margin-top: 0;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+
+      body.dark-mode .comments-section h2 {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+          padding-top: 50px;
+        }
+
+        #dark-mode-toggle {
+          top: 10px;
+          right: 10px;
+        }
+
+        .blog-post-content,
+        .comments-section {
+          padding: 25px;
+          margin: 20px auto;
+        }
+
+        .blog-title {
+          font-size: 2rem;
+        }
+
+        .alert-info,
+        .conclusion-section,
+        .author-bio {
+          padding: 20px;
+          margin: 30px 0 15px 0;
+        }
+
+        .author-bio {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .post-meta {
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .post-meta span {
+          margin-right: 0;
+        }
+
+        h2 {
+          font-size: 1.6rem;
+        }
+
+        h3 {
+          font-size: 1.3rem;
+        }
+
+        p,
+        li {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="progress-bar-container">
+      <div id="progress-bar"></div>
+    </div>
+
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun"></i>
+    </button>
+
+    <main>
+      <article class="blog-post-content">
+        <header class="blog-header">
+          <h1 class="blog-title">
+            Know Why You Are Iron Deficient
+          </h1>
+
+          <div class="post-meta">
+            <span>
+              <i class="far fa-calendar"></i>
+              August 9, 2026
+            </span>
+
+            <span>
+              <i class="far fa-clock"></i>
+              12 min read
+            </span>
+
+            <span>
+              <i class="fas fa-tag"></i>
+              Iron Deficiency, Ferritin, Anaemia, Gut Health
+            </span>
+          </div>
+        </header>
+
+        <section id="toc-container" aria-labelledby="toc-heading">
+          <h2 id="toc-heading" class="toc-title">
+            Table of Contents
+          </h2>
+
+          <ul id="toc-list"></ul>
+        </section>
+
+        <div class="blog-content">
+          <p class="lead">
+            Every second blood report I see today has low ferritin, low iron,
+            low haemoglobin or low vitamin B12. Most people are told exactly
+            the same thing—“Take an iron supplement.”
+          </p>
+
+          <p>
+            They feel better for a few months, stop the tablets, and before
+            long they’re iron deficient again.
+          </p>
+
+          <p>
+            The problem is that iron deficiency is rarely just about not eating
+            enough iron. If you don’t understand why you’re deficient, you’ll
+            keep treating the blood report instead of fixing the root cause.
+          </p>
+
+          <h2 id="iron-deficiency-and-anaemia">
+            Iron Deficiency and Anaemia Are Not the Same
+          </h2>
+
+          <p>
+            The first thing to understand is that iron deficiency and anaemia
+            are not the same thing.
+          </p>
+
+          <p>
+            Iron deficiency begins when your body’s iron stores start reducing.
+            Ferritin, which reflects your iron stores, drops first. As iron
+            stores continue to fall, transferrin saturation changes because
+            less iron is available for transport.
+          </p>
+
+          <p>
+            Eventually, haemoglobin starts dropping, and that’s when you’re
+            diagnosed with iron deficiency anaemia. By this stage, your body
+            has often been struggling for months or even years.
+          </p>
+
+          <h2 id="early-symptoms">
+            The Early Symptoms of Iron Deficiency
+          </h2>
+
+          <p>
+            Long before anaemia develops, your body is already trying to tell
+            you something.
+          </p>
+
+          <p>
+            Fatigue, brain fog, poor concentration, headaches, dizziness, hair
+            fall, reduced exercise tolerance, breathlessness while climbing
+            stairs, cold hands and feet, palpitations and restless legs are all
+            common symptoms.
+          </p>
+
+          <p>
+            Most people call this “normal tiredness” when, in reality, it’s
+            often the earliest sign that your tissues aren’t receiving oxygen
+            efficiently.
+          </p>
+
+          <h2 id="five-steps">
+            The Five Steps of Iron Metabolism
+          </h2>
+
+          <p>
+            So why does iron deficiency happen?
+          </p>
+
+          <p>
+            Most people immediately think it’s because they’re not eating
+            enough iron. That is certainly one reason, but it’s only one piece
+            of the puzzle.
+          </p>
+
+          <p>
+            Iron metabolism has five important steps—intake, digestion,
+            absorption, utilisation and cofactors. If any one of these steps is
+            compromised, iron deficiency can develop.
+          </p>
+
+          <h2 id="iron-intake">
+            Step One: Iron Intake
+          </h2>
+
+          <p>
+            For healthy iron stores, your meals should regularly include green
+            leafy vegetables, pulses and legumes, nuts and seeds, adequate
+            protein and vitamin C-rich foods.
+          </p>
+
+          <p>
+            If you’re a non-vegetarian, include eggs, fish and meat regularly.
+            But remember, simply eating non-vegetarian food does not guarantee
+            healthy iron stores.
+          </p>
+
+          <p>
+            I see plenty of non-vegetarians with iron deficiency because food
+            quality, frequency, digestion, inflammation, gut health and overall
+            metabolic health determine how much iron your body is actually able
+            to use.
+          </p>
+
+          <p>
+            One of the biggest problems today is that we’re overfed but
+            undernourished. We eat enough calories but very little real
+            nutrition.
+          </p>
+
+          <p>
+            We’ve become obsessed with high-protein diets, low-carb diets and
+            the latest superfood, while forgetting that good health is built on
+            a consistently nutrient-dense plate, not one magical food or drink.
+          </p>
+
+          <h2 id="digestion">
+            Step Two: Digestion
+          </h2>
+
+          <p>
+            The next step is digestion.
+          </p>
+
+          <p>
+            Eating iron isn’t enough if your body cannot digest it properly.
+            Iron digestion begins in the stomach, where stomach acid converts
+            ferric iron (Fe³⁺) into ferrous iron (Fe²⁺), the form that is much
+            easier to absorb.
+          </p>
+
+          <p>
+            When stomach acid is low, this conversion becomes less efficient,
+            reducing the amount of absorbable iron reaching the intestine.
+          </p>
+
+          <p>
+            This is one reason I worry about the long-term use of antacids.
+            While they have an important role in certain medical conditions,
+            they are often continued for months without addressing the reason
+            symptoms developed in the first place.
+          </p>
+
+          <p>
+            Chronic stress, poor sleep, eating too quickly, irregular meal
+            timings and a sedentary lifestyle can all reduce digestive
+            efficiency.
+          </p>
+
+          <p>
+            Poor digestion doesn’t just affect iron—it also affects protein,
+            vitamin B12, magnesium, calcium, zinc and copper, all of which are
+            important for healthy blood production.
+          </p>
+
+          <h2 id="absorption">
+            Step Three: Iron Absorption and Gut Health
+          </h2>
+
+          <p>
+            Once iron is digested, your gut has to absorb it.
+          </p>
+
+          <p>
+            Iron is absorbed primarily in the small intestine, so the health of
+            your gut lining and your gut microbiome becomes extremely
+            important.
+          </p>
+
+          <p>
+            If your gut is unhealthy, absorption begins to fail. Persistent
+            bloating, constipation, loose stools, excessive gas, undigested
+            food in the stool, food intolerances and feeling tired after meals
+            are not normal.
+          </p>
+
+          <p>
+            They may be signs that your gut is struggling to absorb nutrients
+            efficiently.
+          </p>
+
+          <p>
+            Years of ultra-processed foods, repeated antibiotic use, alcohol,
+            poor sleep, chronic stress, low fibre intake and irregular eating
+            patterns gradually damage the gut environment.
+          </p>
+
+          <p>
+            If your gut cannot absorb nutrients properly, taking more
+            supplements without improving gut health often becomes a temporary
+            solution.
+          </p>
+
+          <h2 id="utilisation">
+            Step Four: Iron Utilisation and Hepcidin
+          </h2>
+
+          <p>
+            Now let’s say you’re eating enough iron and your gut is absorbing
+            it. Can you still be iron deficient?
+          </p>
+
+          <p>
+            Yes.
+          </p>
+
+          <p>
+            Because the next step is utilisation, and this is where your liver
+            controls the game.
+          </p>
+
+          <p>
+            Your liver produces a hormone called hepcidin, which regulates both
+            iron absorption from the intestine and the release of stored iron
+            into the bloodstream.
+          </p>
+
+          <p>
+            Whenever inflammation increases, hepcidin also increases. Chronic
+            stress, insulin resistance, fatty liver disease, infections, gut
+            dysbiosis and diets rich in ultra-processed foods all increase
+            inflammation.
+          </p>
+
+          <p>
+            As hepcidin rises, iron absorption falls and stored iron remains
+            locked away. This means you may have iron in your body, but it
+            isn’t available where it’s actually needed.
+          </p>
+
+          <p>
+            That’s why improving iron availability is just as important as
+            improving iron intake.
+          </p>
+
+          <h2 id="cofactors">
+            Step Five: The Cofactors Iron Needs
+          </h2>
+
+          <p>
+            The last piece of the puzzle is cofactors.
+          </p>
+
+          <p>
+            Iron never works alone. Vitamin B12, folate, vitamin D, vitamin A,
+            magnesium, copper, adequate protein and a healthy gut all support
+            iron metabolism.
+          </p>
+
+          <p>
+            These nutrients influence red blood cell production, iron
+            transport, digestion, absorption and utilisation.
+          </p>
+
+          <p>
+            Correcting iron deficiency while ignoring these nutrients is like
+            trying to build a house with only bricks and no workers.
+          </p>
+
+          <h2 id="women-and-iron">
+            Why Women Are Particularly Vulnerable
+          </h2>
+
+          <p>
+            Women are particularly vulnerable because we lose blood every
+            month.
+          </p>
+
+          <p>
+            An average menstrual cycle results in a blood loss of about
+            30–40 mL, with every millilitre containing approximately
+            0.4–0.5 mg of iron.
+          </p>
+
+          <p>
+            The recommended dietary allowance is about 8 mg of iron per day
+            for men and 18–21 mg per day for women.
+          </p>
+
+          <p>
+            These recommendations apply to healthy individuals. If you already
+            have iron deficiency or experience heavy menstrual bleeding, your
+            requirements are likely to be higher.
+          </p>
+
+          <h2 id="daily-habits">
+            Everyday Habits That Reduce Iron Absorption
+          </h2>
+
+          <p>
+            There are also simple habits that quietly reduce iron absorption
+            every single day.
+          </p>
+
+          <p>
+            Drinking tea or coffee with meals, frequent alcohol intake,
+            smoking, long-term antacid use, crash dieting, chronic under-eating
+            and diets high in ultra-processed foods all interfere with iron
+            metabolism either by reducing absorption or increasing
+            inflammation.
+          </p>
+
+          <p>
+            Chronic stress adds another layer by increasing the body’s demand
+            for nutrients such as magnesium, B vitamins and antioxidants, while
+            a low-fibre diet weakens gut health and the microbiome that support
+            nutrient absorption.
+          </p>
+
+          <h2 id="movement">
+            Movement Supports Healthy Blood Production
+          </h2>
+
+          <p>
+            Finally, don’t underestimate the role of movement.
+          </p>
+
+          <p>
+            Exercise isn’t just for weight loss or muscle gain. When you move
+            regularly, your muscles demand more oxygen.
+          </p>
+
+          <p>
+            Your body adapts by improving circulation, insulin sensitivity,
+            mitochondrial function, blood flow and oxygen utilisation. With
+            adequate nutrition, it also supports healthy red blood cell
+            production.
+          </p>
+
+          <p>
+            Your body always adapts to what you repeatedly ask of it.
+          </p>
+
+          <h2 id="root-cause">
+            Treat the Root Cause, Not Just the Blood Report
+          </h2>
+
+          <p>
+            Iron deficiency isn’t caused by one mistake, and it won’t be fixed
+            by one supplement.
+          </p>
+
+          <p>
+            It’s usually the result of multiple systems slowly breaking down—
+            poor nutrition, poor digestion, an unhealthy gut, chronic
+            inflammation, inadequate movement, poor sleep and unmanaged stress.
+          </p>
+
+          <p>
+            If you only replace iron, you’ll continue treating the deficiency.
+            But if you improve your lifestyle, support your gut, reduce
+            inflammation and build a nutrient-rich diet, you’re treating the
+            reason the deficiency developed in the first place.
+          </p>
+
+          <div class="conclusion-section">
+            <h2>Build Long-Term Health</h2>
+
+            <p>
+              That’s the difference between temporarily correcting a blood
+              report and building long-term health.
+            </p>
+          </div>
+
+          <div class="alert-info">
+            <h3>Ready to Take the Next Step?</h3>
+
+            <p>
+              <a
+                href="https://wa.me/message/U43IYBJMJDQAD1"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="
+                  background-color: var(--accent-color-light);
+                  color: white;
+                  padding: 12px 24px;
+                  border-radius: 6px;
+                  text-decoration: none;
+                  font-weight: 600;
+                  display: inline-block;
+                "
+              >
+                Click to Book Now!
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <section class="social-sharing" aria-label="Share this post">
+          <h3>Share this post:</h3>
+
+          <a
+            href="https://www.facebook.com/sharer/sharer.php?u=YOUR_PAGE_URL_HERE"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Share on Facebook"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+
+          <a
+            href="https://twitter.com/intent/tweet?url=YOUR_PAGE_URL_HERE&text=Know%20Why%20You%20Are%20Iron%20Deficient"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Share on Twitter"
+          >
+            <i class="fab fa-twitter"></i>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/shareArticle?mini=true&url=YOUR_PAGE_URL_HERE&title=Know%20Why%20You%20Are%20Iron%20Deficient"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Share on LinkedIn"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+
+          <a
+            href="mailto:?subject=Know%20Why%20You%20Are%20Iron%20Deficient&body=Check%20out%20this%20article:%20YOUR_PAGE_URL_HERE"
+            aria-label="Share via Email"
+          >
+            <i class="fas fa-envelope"></i>
+          </a>
+        </section>
+      </article>
+
+      <section class="comments-section" aria-label="Comments">
+        <h2>Comments</h2>
+
+        <p>
+          <em>Comments are not enabled yet. Check back soon!</em>
+        </p>
+      </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        /* Table of Contents generation from h2[id] */
+        const tocList = document.getElementById("toc-list");
+        const blogContent = document.querySelector(".blog-content");
+
+        if (tocList && blogContent) {
+          const headings = blogContent.querySelectorAll("h2[id]");
+
+          if (headings.length > 0) {
+            headings.forEach((heading) => {
+              if (
+                heading.id &&
+                heading.textContent.trim() !== ""
+              ) {
+                const listItem = document.createElement("li");
+                const link = document.createElement("a");
+
+                link.href = "#" + heading.id;
+                link.textContent = heading.textContent;
+
+                listItem.appendChild(link);
+                tocList.appendChild(listItem);
+              }
+            });
+          } else {
+            const tocContainer =
+              document.getElementById("toc-container");
+
+            if (tocContainer) {
+              tocContainer.style.display = "none";
+            }
+          }
+        }
+
+        /* Reading progress bar */
+        const progressBar =
+          document.getElementById("progress-bar");
+
+        if (progressBar) {
+          window.addEventListener("scroll", () => {
+            const scrollTop =
+              document.documentElement.scrollTop ||
+              document.body.scrollTop;
+
+            const scrollHeight =
+              document.documentElement.scrollHeight -
+              document.documentElement.clientHeight;
+
+            const scrollProgress =
+              scrollHeight > 0
+                ? (scrollTop / scrollHeight) * 100
+                : 0;
+
+            progressBar.style.width =
+              scrollProgress + "%";
+          });
+        }
+
+        /* Dark mode toggle */
+        const darkModeToggle =
+          document.getElementById("dark-mode-toggle");
+
+        const body = document.body;
+
+        const moonIcon = darkModeToggle
+          ? darkModeToggle.querySelector(".fa-moon")
+          : null;
+
+        const sunIcon = darkModeToggle
+          ? darkModeToggle.querySelector(".fa-sun")
+          : null;
+
+        function applyTheme(theme) {
+          if (theme === "dark") {
+            body.classList.add("dark-mode");
+
+            if (moonIcon) {
+              moonIcon.style.display = "none";
+            }
+
+            if (sunIcon) {
+              sunIcon.style.display = "inline";
+            }
+          } else {
+            body.classList.remove("dark-mode");
+
+            if (moonIcon) {
+              moonIcon.style.display = "inline";
+            }
+
+            if (sunIcon) {
+              sunIcon.style.display = "none";
+            }
+          }
+        }
+
+        const savedTheme =
+          localStorage.getItem("theme");
+
+        if (savedTheme) {
+          applyTheme(savedTheme);
+        } else {
+          applyTheme("light");
+        }
+
+        if (darkModeToggle) {
+          if (body.classList.contains("dark-mode")) {
+            if (moonIcon) {
+              moonIcon.style.display = "none";
+            }
+
+            if (sunIcon) {
+              sunIcon.style.display = "inline";
+            }
+          } else {
+            if (moonIcon) {
+              moonIcon.style.display = "inline";
+            }
+
+            if (sunIcon) {
+              sunIcon.style.display = "none";
+            }
+          }
+
+          darkModeToggle.addEventListener("click", () => {
+            if (body.classList.contains("dark-mode")) {
+              applyTheme("light");
+              localStorage.setItem("theme", "light");
+            } else {
+              applyTheme("dark");
+              localStorage.setItem("theme", "dark");
+            }
+          });
+        }
+
+        /* Smooth scroll for TOC links */
+        if (tocList) {
+          tocList.querySelectorAll("a").forEach((anchor) => {
+            anchor.addEventListener("click", function (event) {
+              event.preventDefault();
+
+              const targetId =
+                this.getAttribute("href").substring(1);
+
+              const targetElement =
+                document.getElementById(targetId);
+
+              if (targetElement) {
+                targetElement.scrollIntoView({
+                  behavior: "smooth"
+                });
+              }
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
