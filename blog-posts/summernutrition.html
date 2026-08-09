@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Deal with Summers Rightly</title>
+
+    <meta
+      name="description"
+      content="Heat is becoming a chronic environmental stressor. Learn how to support your physiology through hydration, electrolytes, lighter meals, sleep and gradual heat exposure."
+    />
+
+    <meta
+      name="keywords"
+      content="summer heat, hydration, electrolytes, heat tolerance, digestion, sleep, buttermilk, coconut water, environmental stress, heat exhaustion, physiology"
+    />
+
+    <meta name="author" content="Svasth by Soumya" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="YOUR_PAGE_URL_HERE" />
+    <meta
+      property="og:title"
+      content="Deal with Summers Rightly"
+    />
+    <meta
+      property="og:description"
+      content="Heat is more than discomfort—it's a physiological challenge. Discover how to support your body through summer with practical nutrition and lifestyle strategies."
+    />
+    <!-- <meta property="og:image" content="YOUR_FEATURE_IMAGE_URL_HERE" /> -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="YOUR_PAGE_URL_HERE" />
+    <meta
+      property="twitter:title"
+      content="Deal with Summers Rightly"
+    />
+    <meta
+      property="twitter:description"
+      content="Hydration, electrolytes, lighter meals, sleep and gradual heat exposure—practical ways to support your body through summer heat."
+    />
+    <!-- <meta property="twitter:image" content="YOUR_FEATURE_IMAGE_URL_HERE" /> -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --background-color-light: #f9fafb;
+        --text-color-light: #2c3e50;
+        --card-bg-light: white;
+        --border-color-light: #eee;
+        --accent-color-light: #c59a6d;
+        --accent-hover-light: #a67c4e;
+        --meta-text-light: #666;
+        --alert-bg-light: #f3f4f6;
+
+        --background-color-dark: #1a202c;
+        --text-color-dark: #edf2f7;
+        --card-bg-dark: #2d3748;
+        --border-color-dark: #4a5568;
+        --accent-color-dark: #e5b889;
+        --accent-hover-dark: #d4a06a;
+        --meta-text-dark: #a0aec0;
+        --alert-bg-dark: #252d3a;
+      }
+
+      body {
+        font-family: "Lora", serif;
+        padding: 20px;
+        padding-top: 60px;
+        background-color: var(--background-color-light);
+        color: var(--text-color-light);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      body.dark-mode {
+        background-color: var(--background-color-dark);
+        color: var(--text-color-dark);
+      }
+
+      #progress-bar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: var(--border-color-light);
+        z-index: 1000;
+      }
+
+      body.dark-mode #progress-bar-container {
+        background-color: var(--border-color-dark);
+      }
+
+      #progress-bar {
+        height: 100%;
+        width: 0%;
+        background-color: var(--accent-color-light);
+        transition: width 0.1s ease-out;
+      }
+
+      body.dark-mode #progress-bar {
+        background-color: var(--accent-color-dark);
+      }
+
+      #dark-mode-toggle {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        background-color: var(--card-bg-light);
+        color: var(--text-color-light);
+        border: 1px solid var(--border-color-light);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        cursor: pointer;
+        z-index: 1001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      body.dark-mode #dark-mode-toggle {
+        background-color: var(--card-bg-dark);
+        color: var(--text-color-dark);
+        border: 1px solid var(--border-color-dark);
+      }
+
+      #dark-mode-toggle .fa-sun {
+        display: none;
+      }
+
+      body.dark-mode #dark-mode-toggle .fa-moon {
+        display: none;
+      }
+
+      body.dark-mode #dark-mode-toggle .fa-sun {
+        display: inline;
+      }
+
+      .blog-post-content {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        transition: background-color 0.3s ease;
+      }
+
+      body.dark-mode .blog-post-content {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 15px rgba(255, 255, 255, 0.05);
+      }
+
+      .blog-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+
+      body.dark-mode .blog-header {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+
+      .blog-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-align: center;
+        color: var(--text-color-light);
+      }
+
+      body.dark-mode .blog-title {
+        color: var(--text-color-dark);
+      }
+
+      .post-meta {
+        margin: 20px 0;
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .post-meta span {
+        color: var(--meta-text-light);
+      }
+
+      body.dark-mode .post-meta span {
+        color: var(--meta-text-dark);
+      }
+
+      #toc-container {
+        background: var(--alert-bg-light);
+        padding: 20px 25px;
+        border-radius: 8px;
+        margin: 30px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+
+      body.dark-mode #toc-container {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+
+      .toc-title {
+        font-family: "Montserrat", sans-serif;
+        margin-top: 0 !important;
+        margin-bottom: 15px !important;
+        font-size: 1.5rem !important;
+        border-bottom: none !important;
+        color: var(--text-color-light);
+      }
+
+      body.dark-mode .toc-title {
+        color: var(--text-color-dark);
+      }
+
+      #toc-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      #toc-list li {
+        margin-bottom: 10px;
+      }
+
+      #toc-list li a {
+        text-decoration: none;
+        color: var(--accent-color-light);
+        font-weight: 500;
+      }
+
+      #toc-list li a:hover {
+        text-decoration: underline;
+        color: var(--accent-hover-light);
+      }
+
+      body.dark-mode #toc-list li a {
+        color: var(--accent-color-dark);
+      }
+
+      body.dark-mode #toc-list li a:hover {
+        color: var(--accent-hover-dark);
+      }
+
+      .blog-content {
+        line-height: 1.8;
+      }
+
+      .lead {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: var(--text-color-light);
+        margin-bottom: 2rem;
+      }
+
+      body.dark-mode .lead {
+        color: var(--text-color-dark);
+      }
+
+      h2 {
+        font-family: "Montserrat", sans-serif;
+        color: var(--text-color-light);
+        margin-top: 40px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        font-size: 1.8rem;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+
+      body.dark-mode h2 {
+        color: var(--text-color-dark);
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+
+      h3 {
+        font-family: "Montserrat", sans-serif;
+        color: var(--text-color-light);
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+      }
+
+      body.dark-mode h3 {
+        color: var(--text-color-dark);
+      }
+
+      p {
+        margin-bottom: 20px;
+        line-height: 1.8;
+        color: var(--text-color-light);
+      }
+
+      body.dark-mode p {
+        color: var(--text-color-dark);
+      }
+
+      ul,
+      ol {
+        padding-left: 20px;
+        margin-bottom: 20px;
+        list-style: none;
+      }
+
+      li {
+        margin-bottom: 15px;
+        line-height: 1.6;
+        position: relative;
+        padding-left: 25px;
+        color: var(--text-color-light);
+      }
+
+      body.dark-mode li {
+        color: var(--text-color-dark);
+      }
+
+      ul li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color-light);
+      }
+
+      body.dark-mode ul li:before {
+        color: var(--accent-color-dark);
+      }
+
+      ol {
+        counter-reset: item;
+      }
+
+      ol li {
+        counter-increment: item;
+      }
+
+      ol li:before {
+        content: counter(item) ".";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color-light);
+      }
+
+      body.dark-mode ol li:before {
+        color: var(--accent-color-dark);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      th,
+      td {
+        border: 1px solid var(--border-color-light);
+        padding: 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: var(--accent-color-light);
+        color: white;
+      }
+
+      body.dark-mode th {
+        background-color: var(--accent-color-dark);
+      }
+
+      body.dark-mode td,
+      body.dark-mode th {
+        border-color: var(--border-color-dark);
+      }
+
+      .alert-info,
+      .conclusion-section {
+        background: var(--alert-bg-light);
+        padding: 35px;
+        border-radius: 8px;
+        margin: 40px 0 20px 0;
+        border-left: 4px solid var(--accent-color-light);
+      }
+
+      body.dark-mode .alert-info,
+      body.dark-mode .conclusion-section {
+        background: var(--alert-bg-dark);
+        border-left: 4px solid var(--accent-color-dark);
+      }
+
+      .alert-info h3,
+      .conclusion-section h2 {
+        margin-top: 0;
+        padding-top: 0;
+        color: var(--text-color-light);
+        border-bottom: none;
+      }
+
+      body.dark-mode .alert-info h3,
+      body.dark-mode .conclusion-section h2 {
+        color: var(--text-color-dark);
+      }
+
+      .alert-info p:last-child,
+      .conclusion-section p:last-child {
+        margin-bottom: 0;
+      }
+
+      a {
+        color: var(--accent-color-light);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      body.dark-mode a {
+        color: var(--accent-color-dark);
+      }
+
+      a:hover {
+        color: var(--accent-hover-light);
+        text-decoration: underline;
+      }
+
+      body.dark-mode a:hover {
+        color: var(--accent-hover-dark);
+      }
+
+      strong {
+        color: var(--text-color-light);
+        font-weight: 600;
+      }
+
+      body.dark-mode strong {
+        color: var(--text-color-dark);
+      }
+
+      .social-sharing {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color-light);
+        text-align: center;
+      }
+
+      body.dark-mode .social-sharing {
+        border-top: 1px solid var(--border-color-dark);
+      }
+
+      .social-sharing h3 {
+        margin-bottom: 15px;
+      }
+
+      .social-sharing a {
+        margin: 0 10px;
+        font-size: 1.5rem;
+        color: var(--meta-text-light);
+      }
+
+      .social-sharing a:hover {
+        color: var(--accent-color-light);
+      }
+
+      body.dark-mode .social-sharing a {
+        color: var(--meta-text-dark);
+      }
+
+      body.dark-mode .social-sharing a:hover {
+        color: var(--accent-hover-dark);
+      }
+
+      .comments-section {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 30px;
+        background: var(--card-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      body.dark-mode .comments-section {
+        background: var(--card-bg-dark);
+        box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
+      }
+
+      .comments-section h2 {
+        margin-top: 0;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border-color-light);
+      }
+
+      body.dark-mode .comments-section h2 {
+        border-bottom: 1px solid var(--border-color-dark);
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+          padding-top: 50px;
+        }
+
+        #dark-mode-toggle {
+          top: 10px;
+          right: 10px;
+        }
+
+        .blog-post-content,
+        .comments-section {
+          padding: 25px;
+          margin: 20px auto;
+        }
+
+        .blog-title {
+          font-size: 2rem;
+        }
+
+        .alert-info,
+        .conclusion-section,
+        .author-bio {
+          padding: 20px;
+          margin: 30px 0 15px 0;
+        }
+
+        .author-bio {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .post-meta {
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .post-meta span {
+          margin-right: 0;
+        }
+
+        h2 {
+          font-size: 1.6rem;
+        }
+
+        h3 {
+          font-size: 1.3rem;
+        }
+
+        p,
+        li {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="progress-bar-container">
+      <div id="progress-bar"></div>
+    </div>
+
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun"></i>
+    </button>
+
+    <main>
+      <article class="blog-post-content">
+        <header class="blog-header">
+          <h1 class="blog-title">
+            Deal with Summers Rightly
+          </h1>
+
+          <div class="post-meta">
+            <span>
+              <i class="far fa-calendar"></i>
+              August 9, 2026
+            </span>
+
+            <span>
+              <i class="far fa-clock"></i>
+              12 min read
+            </span>
+
+            <span>
+              <i class="fas fa-tag"></i>
+              Summer Heat, Hydration, Electrolytes, Digestion, Sleep, Heat Tolerance
+            </span>
+          </div>
+        </header>
+
+        <section id="toc-container" aria-labelledby="toc-heading">
+          <h2 id="toc-heading" class="toc-title">
+            Table of Contents
+          </h2>
+
+          <ul id="toc-list"></ul>
+        </section>
+
+        <div class="blog-content">
+          <p class="lead">
+            Heat is more than discomfort—it's a physiological challenge. Discover how to support your body through summer with practical nutrition and lifestyle strategies.
+          </p>
+
+          <p>
+            Year after year, the list of the world's hottest cities is increasingly dominated by India. This isn't just about an uncomfortable summer anymore. Heat is becoming a chronic environmental stressor, and whether we realise it or not, our physiology is working overtime every single day to cope with it.
+          </p>
+
+          <p>
+            Your body is constantly trying to maintain a core temperature of around 37°C. To prevent overheating, it increases sweating, redirects blood flow towards your skin, conserves fluid and carefully regulates electrolytes like sodium and potassium. When you don't support these adaptations, the body begins to struggle. Fatigue, headaches, poor appetite, constipation, sluggish digestion, dizziness and even heat exhaustion are often signs that your physiology is failing to keep up with the environmental heat.
+          </p>
+
+          <h2 id="hydration-more-than-water">
+            Hydration Is More Than Just Drinking Water
+          </h2>
+
+          <p>
+            When you sweat, you don't just lose water—you lose sodium, potassium and other electrolytes that help maintain fluid balance, nerve function and muscle contraction. Simply drinking litres of plain water without replacing these losses isn't always enough.
+          </p>
+
+          <p>
+            Instead, include fluids that naturally replenish both water and electrolytes. Buttermilk provides fluids, sodium and beneficial bacteria that support gut health. Coconut water is naturally rich in potassium. Lemon water with a pinch of salt helps replace electrolytes, while traditional fermented drinks like kanji, ambali and jaljeera provide hydration while also supporting your gut microbiome.
+          </p>
+
+          <p>
+            One mistake I would avoid is depending on packaged fruit juices for hydration. They're often high in sugar and far less satisfying than simply eating the whole fruit, which provides water, fibre and a slower release of natural sugars.
+          </p>
+
+          <h2 id="stop-ice-cold-water">
+            Stop Shocking Your Body With Ice-Cold Water
+          </h2>
+
+          <p>
+            Many people reach for ice-cold water thinking it cools the body faster. In reality, extremely cold water can temporarily constrict blood vessels in the digestive tract, slowing fluid absorption and, in some individuals, slightly delaying the body's natural cooling responses.
+          </p>
+
+          <p>
+            Room-temperature water or water stored in an earthen pot is often a better option. It cools the body comfortably without placing unnecessary stress on your digestive system and supports more effective hydration throughout the day.
+          </p>
+
+          <h2 id="digestion-slows-heat">
+            Your Digestion Slows Down in the Heat
+          </h2>
+
+          <p>
+            One reason heavy meals feel uncomfortable during summer is because your body is prioritising cooling over digestion. More blood is diverted towards the skin to help dissipate heat, leaving relatively less available for digestion. As a result, gastric emptying may feel slower, appetite often reduces and heavy meals can leave you feeling sluggish.
+          </p>
+
+          <p>
+            During hot weather, choose lighter meals that are easier to digest. Rice-based meals, cooked vegetables, curd rice, buttermilk, dals and simple home-cooked foods are often better tolerated than large, oily or heavily fried meals. You're not eating less because your body is weak—you're eating differently because your physiology is adapting.
+          </p>
+
+          <h2 id="sleep-heat-management">
+            Sleep Is Part of Heat Management
+          </h2>
+
+          <p>
+            Hot nights don't just make you uncomfortable—they interfere with your body's ability to cool itself. Dehydration and elevated body temperature reduce sleep quality, while poor sleep the following night impairs temperature regulation, making you feel even more exhausted the next day.
+          </p>
+
+          <p>
+            Maintaining a consistent sleep schedule, staying hydrated throughout the day and keeping your sleeping environment cool and well-ventilated helps break this cycle and allows your body to recover more effectively.
+          </p>
+
+          <h2 id="dont-become-heat-intolerant">
+            Don't Become Heat Intolerant
+          </h2>
+
+          <p>
+            Modern life has made many of us surprisingly intolerant to heat. We spend most of our day in air-conditioned homes, offices and cars before suddenly stepping into extreme outdoor temperatures. Because of this, our bodies become less efficient at sweating and adapting to heat.
+          </p>
+
+          <p>
+            Gradual, regular exposure to natural sunlight and outdoor temperatures allows your body to improve its heat tolerance over time. I'm not asking you to stand outside in peak afternoon heat, but avoiding sunlight altogether isn't helping either. Our physiology adapts to the environment we repeatedly expose it to.
+          </p>
+
+          <h2 id="heat-environmental-problem">
+            Heat Is Also an Environmental Problem
+          </h2>
+
+          <p>
+            This is the part we rarely talk about.
+          </p>
+
+          <p>
+            Every year, more trees disappear to make way for roads, buildings, flyovers and expanding cities. Lakes are filled in, green spaces shrink and concrete replaces natural cooling systems. If you've ever ridden through a tree-lined road and then onto a busy stretch of concrete, you've probably felt the temperature change immediately. That's not your imagination—it's physiology responding to the environment around you.
+          </p>
+
+          <p>
+            Our cities are becoming hotter because we've removed many of the natural systems that once kept them cool.
+          </p>
+
+          <p>
+            Beyond choosing the right foods and staying hydrated, there are things we can all do. Plant and protect trees. Support green spaces. Reduce your carbon footprint where possible. Choose seasonal, locally grown foods that require fewer resources to produce and transport. And most importantly, stay informed about the environmental decisions shaping the places we live.
+          </p>
+
+          <div class="conclusion-section">
+            <h2>Build Cooler Cities for the Future</h2>
+
+            <p>
+              Because this isn't just about surviving another summer. It's about deciding whether we continue building cities that become physiologically harder to live in, or whether we start making choices that help cool them—for ourselves and for the generations that follow.
+            </p>
+          </div>
+
+          <div class="alert-info">
+            <h3>Ready to Take the Next Step?</h3>
+
+            <p>
+              <a
+                href="https://wa.me/message/U43IYBJMJDQAD1"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="
+                  background-color: var(--accent-color-light);
+                  color: white;
+                  padding: 12px 24px;
+                  border-radius: 6px;
+                  text-decoration: none;
+                  font-weight: 600;
+                  display: inline-block;
+                "
+              >
+                Click to Book Now!
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <section class="social-sharing" aria-label="Share this post">
+          <h3>Share this post:</h3>
+
+          <a
+            href="https://www.facebook.com/sharer/sharer.php?u=YOUR_PAGE_URL_HERE"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Share on Facebook"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+
+          <a
+            href="https://twitter.com/intent/tweet?url=YOUR_PAGE_URL_HERE&text=Deal%20with%20Summers%20Rightly"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Share on Twitter"
+          >
+            <i class="fab fa-twitter"></i>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/shareArticle?mini=true&url=YOUR_PAGE_URL_HERE&title=Deal%20with%20Summers%20Rightly"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Share on LinkedIn"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+
+          <a
+            href="mailto:?subject=Deal%20with%20Summers%20Rightly&body=Check%20out%20this%20article:%20YOUR_PAGE_URL_HERE"
+            aria-label="Share via Email"
+          >
+            <i class="fas fa-envelope"></i>
+          </a>
+        </section>
+      </article>
+
+      <section class="comments-section" aria-label="Comments">
+        <h2>Comments</h2>
+
+        <p>
+          <em>Comments are not enabled yet. Check back soon!</em>
+        </p>
+      </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        /* Table of Contents generation from h2[id] */
+        const tocList = document.getElementById("toc-list");
+        const blogContent = document.querySelector(".blog-content");
+
+        if (tocList && blogContent) {
+          const headings = blogContent.querySelectorAll("h2[id]");
+
+          if (headings.length > 0) {
+            headings.forEach((heading) => {
+              if (
+                heading.id &&
+                heading.textContent.trim() !== ""
+              ) {
+                const listItem = document.createElement("li");
+                const link = document.createElement("a");
+
+                link.href = "#" + heading.id;
+                link.textContent = heading.textContent;
+
+                listItem.appendChild(link);
+                tocList.appendChild(listItem);
+              }
+            });
+          } else {
+            const tocContainer =
+              document.getElementById("toc-container");
+
+            if (tocContainer) {
+              tocContainer.style.display = "none";
+            }
+          }
+        }
+
+        /* Reading progress bar */
+        const progressBar =
+          document.getElementById("progress-bar");
+
+        if (progressBar) {
+          window.addEventListener("scroll", () => {
+            const scrollTop =
+              document.documentElement.scrollTop ||
+              document.body.scrollTop;
+
+            const scrollHeight =
+              document.documentElement.scrollHeight -
+              document.documentElement.clientHeight;
+
+            const scrollProgress =
+              scrollHeight > 0
+                ? (scrollTop / scrollHeight) * 100
+                : 0;
+
+            progressBar.style.width =
+              scrollProgress + "%";
+          });
+        }
+
+        /* Dark mode toggle */
+        const darkModeToggle =
+          document.getElementById("dark-mode-toggle");
+
+        const body = document.body;
+
+        const moonIcon = darkModeToggle
+          ? darkModeToggle.querySelector(".fa-moon")
+          : null;
+
+        const sunIcon = darkModeToggle
+          ? darkModeToggle.querySelector(".fa-sun")
+          : null;
+
+        function applyTheme(theme) {
+          if (theme === "dark") {
+            body.classList.add("dark-mode");
+
+            if (moonIcon) {
+              moonIcon.style.display = "none";
+            }
+
+            if (sunIcon) {
+              sunIcon.style.display = "inline";
+            }
+          } else {
+            body.classList.remove("dark-mode");
+
+            if (moonIcon) {
+              moonIcon.style.display = "inline";
+            }
+
+            if (sunIcon) {
+              sunIcon.style.display = "none";
+            }
+          }
+        }
+
+        const savedTheme =
+          localStorage.getItem("theme");
+
+        if (savedTheme) {
+          applyTheme(savedTheme);
+        } else {
+          applyTheme("light");
+        }
+
+        if (darkModeToggle) {
+          if (body.classList.contains("dark-mode")) {
+            if (moonIcon) {
+              moonIcon.style.display = "none";
+            }
+
+            if (sunIcon) {
+              sunIcon.style.display = "inline";
+            }
+          } else {
+            if (moonIcon) {
+              moonIcon.style.display = "inline";
+            }
+
+            if (sunIcon) {
+              sunIcon.style.display = "none";
+            }
+          }
+
+          darkModeToggle.addEventListener("click", () => {
+            if (body.classList.contains("dark-mode")) {
+              applyTheme("light");
+              localStorage.setItem("theme", "light");
+            } else {
+              applyTheme("dark");
+              localStorage.setItem("theme", "dark");
+            }
+          });
+        }
+
+        /* Smooth scroll for TOC links */
+        if (tocList) {
+          tocList.querySelectorAll("a").forEach((anchor) => {
+            anchor.addEventListener("click", function (event) {
+              event.preventDefault();
+
+              const targetId =
+                this.getAttribute("href").substring(1);
+
+              const targetElement =
+                document.getElementById(targetId);
+
+              if (targetElement) {
+                targetElement.scrollIntoView({
+                  behavior: "smooth"
+                });
+              }
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
