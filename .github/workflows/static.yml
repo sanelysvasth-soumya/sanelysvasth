@@ -1,0 +1,66 @@
+# Build with Eleventy and deploy to GitHub Pages.
+#
+# Previously this uploaded the repository root verbatim. It now runs the
+# Eleventy build and publishes _site/, which contains:
+#   - the rebuilt pages (home, calculators hub, 11 calculators)
+#   - redirect stubs at every migrated page's legacy URL
+#   - the not-yet-migrated legacy pages, copied through unchanged
+# so the deployed site stays complete during migration.
+name: Deploy static content to Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Calculator regression suite — the build fails if any formula
+      # deviates from the locked functional baseline.
+      - name: Run calculator baseline tests
+        run: npm test
+
+      - name: Build site
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "_site"
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,445 @@
+/* ============================================================
+   05 — CONTENT PATTERNS
+   Article, recipe and collection UI. All built from the tokens in
+   01-tokens.css; no new colour values are introduced here.
+   ============================================================ */
+
+/* ==================== READING PROGRESS ==================== */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: var(--z-sticky);
+  background: transparent;
+  pointer-events: none;
+}
+.reading-progress span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--primary);
+  transition: width 80ms linear;
+}
+@media print {
+  .reading-progress {
+    display: none;
+  }
+}
+
+/* ==================== ARTICLE ==================== */
+.article-hero {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-lg);
+}
+
+/* Shell: body centred, TOC parked in the left margin on wide screens */
+.article-shell {
+  display: grid;
+  gap: var(--space-lg);
+  padding-bottom: var(--space-2xl);
+}
+@media (min-width: 1100px) {
+  .article-shell {
+    grid-template-columns: 15rem minmax(0, var(--container-narrow));
+    justify-content: center;
+    align-items: start;
+    gap: var(--space-xl);
+  }
+}
+.article-body {
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  min-width: 0;
+}
+.article-body > * {
+  max-width: var(--measure);
+}
+.article-body :is(h2, h3) {
+  scroll-margin-top: 6rem;
+}
+.article-body h2 {
+  font-size: var(--text-3xl);
+  margin-top: var(--space-xl);
+}
+.article-body h3 {
+  font-size: var(--text-xl);
+  margin-top: var(--space-lg);
+}
+.article-body img {
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+.article-body blockquote {
+  margin-block: var(--space-lg);
+  padding-left: var(--space-md);
+  border-left: 3px solid var(--primary);
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+}
+.article-body :is(ul, ol) {
+  padding-left: 1.3rem;
+}
+.article-body table {
+  font-size: var(--text-sm);
+}
+
+/* ---- Table of contents ---- */
+.article-toc {
+  display: none;
+}
+/* `display:block` below out-specifies the UA's `[hidden] { display:none }`,
+   which made the container appear on wide screens even when the script had
+   not populated it — an empty "On this page" box. Restore the attribute. */
+.article-toc[hidden] {
+  display: none !important;
+}
+@media (min-width: 1100px) {
+  .article-toc {
+    display: block;
+    position: sticky;
+    top: 6rem;
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+    padding-right: var(--space-2xs);
+    border-right: 1px solid var(--color-border);
+  }
+}
+.article-toc__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2xs);
+}
+.article-toc ol {
+  list-style: none;
+  display: grid;
+  gap: 2px;
+}
+.article-toc a {
+  display: block;
+  padding: var(--space-3xs) var(--space-2xs);
+  border-left: 2px solid transparent;
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.article-toc a:hover {
+  color: var(--color-text);
+  background: var(--color-surface-sunken);
+}
+.article-toc a[aria-current="true"] {
+  color: var(--primary-dark);
+  border-left-color: var(--primary);
+  font-weight: var(--weight-semibold);
+}
+.article-toc li[data-level="3"] a {
+  padding-left: var(--space-sm);
+  font-size: var(--text-xs);
+}
+
+/* ==================== CTA PANEL ==================== */
+.cta-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm) var(--space-md);
+  margin-top: var(--space-2xl);
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--primary) 14%, var(--color-surface)),
+    var(--color-surface-sunken)
+  );
+  border: 1px solid var(--primary-light);
+  max-width: none;
+}
+.cta-panel__title {
+  font-size: var(--text-xl);
+}
+.cta-panel__text {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  margin-top: var(--space-3xs);
+  margin-bottom: 0;
+}
+
+/* ==================== RECIPE ==================== */
+.recipe-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 1px;
+  /* Previously pulled up to overlap the old dark full-bleed hero. The
+     compact light header is not tall enough to absorb that, and the
+     overlap clipped the standfirst — so the card now sits below it. */
+  margin-top: var(--space-lg);
+  position: relative;
+  z-index: var(--z-raised);
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.recipe-stats__item {
+  background: var(--color-surface-raised);
+  padding: var(--space-sm);
+  text-align: center;
+}
+.recipe-stats dt {
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.recipe-stats dd {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--primary-dark);
+  margin-top: var(--space-3xs);
+}
+
+.recipe-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  justify-content: flex-end;
+  margin-bottom: var(--space-md);
+}
+
+.recipe-grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+@media (min-width: 820px) {
+  .recipe-grid {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+  .recipe-grid > section:first-child {
+    position: sticky;
+    top: 6rem;
+  }
+}
+.recipe-section-title {
+  font-size: var(--text-2xl);
+  padding-bottom: var(--space-2xs);
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: var(--space-2xs);
+}
+.recipe-progress {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: var(--space-sm);
+  min-height: 1.2em;
+}
+
+/* ---- Checklists ---- */
+.checklist {
+  list-style: none;
+  display: grid;
+  gap: var(--space-3xs);
+}
+.checklist__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2xs);
+  min-height: var(--control-height);
+  padding: var(--space-2xs);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+.checklist__item:hover {
+  background: var(--color-surface-sunken);
+}
+.checklist__item input {
+  accent-color: var(--primary);
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.28em;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.checklist__item input:checked + span {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+.checklist__item span {
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.steps {
+  list-style: none;
+  display: grid;
+  gap: var(--space-2xs);
+  counter-reset: step;
+}
+.steps__label {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: start;
+  gap: var(--space-2xs);
+  padding: var(--space-2xs);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+.steps__label:hover {
+  background: var(--color-surface-sunken);
+}
+.steps__label input {
+  accent-color: var(--primary);
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.35em;
+  cursor: pointer;
+}
+.steps__num {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-circle);
+  background: color-mix(in srgb, var(--primary) 16%, transparent);
+  color: var(--primary-dark);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  flex-shrink: 0;
+}
+.steps__label input:checked ~ .steps__num {
+  background: var(--primary);
+  color: var(--text-light);
+}
+.steps__label input:checked ~ .steps__text {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+.steps__text {
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+@media print {
+  .recipe-grid {
+    grid-template-columns: 1fr;
+  }
+  .recipe-grid > section:first-child {
+    position: static;
+  }
+  .checklist__item input,
+  .steps__label input {
+    display: none;
+  }
+}
+
+/* ==================== COLLECTION CONTROLS ==================== */
+.collection-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3xs);
+}
+.filter-chip {
+  min-height: var(--control-height-sm);
+  padding: 0 var(--space-sm);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+.filter-chip:hover {
+  border-color: var(--primary-light);
+  color: var(--color-text);
+}
+.filter-chip[aria-pressed="true"] {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--text-light);
+}
+
+.collection-count {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3xs) var(--space-2xs);
+  margin-top: var(--space-2xs);
+  padding-top: var(--space-2xs);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+.card__meta span + span::before {
+  content: "·";
+  margin-right: var(--space-2xs);
+}
+
+.recipe-card .card__body {
+  gap: var(--space-3xs);
+}
+
+/* Collection cards are a scannable grid, so their summary text is clamped.
+   This keeps every card the same height and means a single over-long
+   description can never stretch one card out of the layout — which is
+   exactly what happened when the Bottle Gourd Kofta excerpt was 1,854
+   characters instead of the ~60 every other recipe carries. */
+[data-collection-grid] .card__text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+[data-collection-grid] .card {
+  height: 100%;
+}
+
+/* Fallback tile for a recipe with no photograph — the emblem on a tinted
+   ground, so the card keeps the same footprint as its neighbours. */
+.card__media--placeholder {
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--primary) 10%, var(--color-surface-sunken));
+}
+.card__media--placeholder img {
+  width: 38%;
+  height: auto;
+  opacity: 0.5;
+}
+
+/* Hidden by the filter — kept in the DOM for fast re-show */
+[data-item][hidden] {
+  display: none !important;
+}

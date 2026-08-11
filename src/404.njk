@@ -1,0 +1,25 @@
+---
+layout: layouts/base.njk
+permalink: /404.html
+title: Page not found
+description: The page you were looking for could not be found.
+eleventyExcludeFromCollections: true
+eyebrow: "Not found"
+pageHeader: false
+---
+
+<div class="section">
+  <div class="container">
+    <div class="error-state">
+      <p class="error-state__code">404</p>
+      <h1>We couldn't find that page</h1>
+      <p class="empty-state__text">
+        The page may have moved, or the link may be out of date.
+      </p>
+      <div class="cluster cluster--center" style="margin-top: var(--space-sm)">
+        <a href="/" class="btn btn--primary">Back to home</a>
+        <a href="/calculators/" class="btn btn--secondary">Browse calculators</a>
+      </div>
+    </div>
+  </div>
+</div>

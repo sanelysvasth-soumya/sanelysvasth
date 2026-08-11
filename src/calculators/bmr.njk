@@ -1,0 +1,65 @@
+---
+layout: "layouts/calculator.njk"
+permalink: "/calculators/bmr/"
+title: "BMR Calculator"
+lede: "Find the calories your body burns at complete rest."
+description: "Calculate your Basal Metabolic Rate using the Harris-Benedict equation, plus daily calorie needs by activity level."
+formId: "bmr-form"
+resultId: "bmr-result"
+scriptModule: "bmr"
+formTitle: "Calculate BMR"
+submitLabel: "Calculate BMR"
+infoTitle: "About BMR"
+disclaimer: "BMR estimates vary between equations. Use this as a starting point, not a prescription."
+fields:
+  - name: "weight"
+    type: "number"
+    label: "Weight"
+    unit: "kg"
+    min: 30
+    max: 300
+    step: "0.1"
+    placeholder: "70"
+    requiredMessage: "Enter your weight in kilograms."
+  - name: "height"
+    type: "number"
+    label: "Height"
+    unit: "cm"
+    min: 120
+    max: 250
+    step: "0.1"
+    placeholder: "170"
+    requiredMessage: "Enter your height in centimetres."
+  - name: "age"
+    type: "int"
+    label: "Age"
+    unit: "years"
+    min: 15
+    max: 120
+    placeholder: "30"
+    requiredMessage: "Enter your age in years."
+  - name: "gender"
+    type: "radio"
+    label: "Gender"
+    options:
+      - value: "male"
+        text: "Male"
+      - value: "female"
+        text: "Female"
+---
+
+<h3>What is BMR?</h3>
+
+Your Basal Metabolic Rate is the energy your body uses at complete rest to
+maintain essential functions — breathing, circulation, cell production and
+temperature regulation.
+
+<h3>How it is calculated</h3>
+
+This calculator uses the Harris-Benedict equation, which accounts for your
+weight, height, age and gender.
+
+<h3>Using your result</h3>
+
+Multiply your BMR by an activity factor to estimate total daily calorie
+needs. All five activity levels are shown with your result.

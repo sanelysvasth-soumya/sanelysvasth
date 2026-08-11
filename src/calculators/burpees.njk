@@ -1,0 +1,42 @@
+---
+layout: "layouts/calculator.njk"
+permalink: "/calculators/burpees/"
+title: "Burpee Calorie Calculator"
+lede: "Estimate calories burned from a burpee set."
+description: "Estimate calories burned doing burpees, based on your body weight and repetitions completed."
+formId: "burpees-form"
+resultId: "burpees-result"
+scriptModule: "burpees"
+formTitle: "Calculate calories burned"
+submitLabel: "Calculate calories"
+infoTitle: "About this estimate"
+disclaimer: "Calorie estimates are approximate and vary with tempo, form and fitness level."
+fields:
+  - name: "weight"
+    type: "number"
+    label: "Body weight"
+    unit: "kg"
+    min: 1
+    max: 300
+    step: "0.1"
+    placeholder: "70"
+    requiredMessage: "Enter your weight in kilograms."
+  - name: "burpees"
+    type: "int"
+    label: "Repetitions completed"
+    unit: "reps"
+    min: 0
+    max: 100000
+    placeholder: "50"
+    requiredMessage: "Enter the number of burpees completed."
+---
+
+<h3>How this is estimated</h3>
+
+The estimate scales a per-repetition energy cost by your body weight,
+using 68 kg as the reference point.
+
+<h3>Why estimates vary</h3>
+
+Tempo matters a great deal with burpees — the same rep count performed
+faster raises energy cost considerably.

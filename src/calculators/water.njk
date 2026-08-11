@@ -1,0 +1,90 @@
+---
+layout: "layouts/calculator.njk"
+permalink: "/calculators/water/"
+title: "Water Intake Calculator"
+lede: "Estimate how much fluid you need each day."
+description: "Estimate your daily water requirement from your weight, activity level and climate."
+formId: "water-form"
+resultId: "water-result"
+scriptModule: "water"
+formTitle: "Calculate water intake"
+submitLabel: "Calculate intake"
+infoTitle: "About hydration"
+disclaimer: "Fluid needs change with illness, medication and kidney health. Seek advice if you have a medical condition."
+fields:
+  - name: "weight"
+    type: "number"
+    label: "Weight"
+    unit: "kg"
+    min: 30
+    max: 300
+    step: "0.1"
+    placeholder: "70"
+    requiredMessage: "Enter your weight in kilograms."
+  - name: "height"
+    type: "number"
+    label: "Height"
+    unit: "cm"
+    min: 120
+    max: 250
+    step: "0.1"
+    placeholder: "170"
+    requiredMessage: "Enter your height in centimetres."
+  - name: "age"
+    type: "int"
+    label: "Age"
+    unit: "years"
+    min: 15
+    max: 120
+    placeholder: "30"
+    requiredMessage: "Enter your age in years."
+  - name: "gender"
+    type: "radio"
+    label: "Gender"
+    options:
+      - value: "male"
+        text: "Male"
+      - value: "female"
+        text: "Female"
+  - name: "activity"
+    type: "select"
+    label: "Activity level"
+    options:
+      - value: "sedentary"
+        text: "Sedentary"
+      - value: "lightly"
+        text: "Lightly active"
+      - value: "moderately"
+        text: "Moderately active"
+      - value: "very"
+        text: "Very active"
+  - name: "environment"
+    type: "select"
+    label: "Environment"
+    options:
+      - value: "normal"
+        text: "Normal"
+      - value: "hot"
+        text: "Hot"
+      - value: "humid"
+        text: "Humid"
+      - value: "cold"
+        text: "Cold"
+---
+
+<h3>Why hydration matters</h3>
+
+Water supports digestion, circulation, temperature regulation, joint
+lubrication and nutrient transport.
+
+<h3>How this is calculated</h3>
+
+Your baseline is derived from body weight, then adjusted for how active
+you are and the climate you spend your day in. Results are capped at four
+litres per day.
+
+<h3>Where fluid comes from</h3>
+
+Not all of it needs to be plain water. Above 2,800 ml a day, your result
+includes a suggested split between water, other drinks and fluid from
+food.

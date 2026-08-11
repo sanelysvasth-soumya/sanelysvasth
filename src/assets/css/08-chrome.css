@@ -1,0 +1,652 @@
+/* ============================================================
+   08 — PAGE CHROME
+   The canonical page header and the site footer.
+
+   Design note — why the page header is light now:
+   the old treatment was a full-bleed near-black band 195–252px tall that
+   pushed content past 300px on every page. It read as a slab sitting on
+   the page rather than the top of it. This replaces it with a warm paper
+   band: a wash of the brand gold over the existing neutral, dissolving
+   into the page and closed by a hairline rule with a short gold segment.
+   Hierarchy now comes from typography and space, not from a dark block.
+
+   No font colours changed. Titles keep --secondary, ledes keep
+   --text-muted; both sit on a near-white ground, so contrast is far
+   higher than the white-on-dark it replaces.
+   ============================================================ */
+
+/* ==================== PAGE HEADER ==================== */
+.page-head {
+  position: relative;
+  isolation: isolate;
+  /* Warm paper: a 6% gold wash over the existing neutral, fading to the
+     page surface so there is no hard edge where the band ends. */
+  /* Tint strength is set by contrast, not taste: at 7% the ground fell to
+     rgb(239,232,224) and the site's existing --text-muted dropped to
+     3.85:1, below AA. Dialled back so every inherited text colour keeps
+     the same headroom it has on white. */
+  /* Uses the theming tint tokens, not --gray-100: that raw brand value
+     does not flip, which left this band rendering light in dark mode. */
+  background: linear-gradient(180deg, var(--color-tint) 0%, var(--color-tint-soft) 100%);
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+/* A very faint gold bloom anchored to the text side — gives the band
+   depth without a pattern or an image. */
+.page-head::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    60ch 120% at 8% 0%,
+    color-mix(in srgb, var(--primary) 6%, transparent),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* The rule that closes the band carries a short gold segment at the
+   content's left edge — a small, deliberate accent rather than a border
+   treatment applied everywhere. */
+.page-head::after {
+  content: "";
+  position: absolute;
+  left: max(var(--container-pad), calc((100% - var(--container-max)) / 2 + var(--container-pad)));
+  bottom: -1px;
+  width: 3.5rem;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.page-head__inner {
+  /* Compact by design: this is the single biggest vertical saving. */
+  padding-block: clamp(1.5rem, 3.5vw, 2.25rem) clamp(1.25rem, 3vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* ---- eyebrow / breadcrumbs share one small-label treatment ---- */
+/* Gold is kept for the rules and accents, not for the small text itself:
+   --primary-dark only reaches 3.73:1 on plain white, so at this size it
+   never met AA anywhere on the site. Using --secondary here (an existing
+   site colour) puts the label comfortably over 4.5:1 without altering any
+   token. The gold still leads the eyebrow as a rule and closes the band
+   as the accent bar. */
+.page-head__eyebrow,
+.page-head__crumbs {
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-heading);
+  margin: 0;
+}
+.page-head__eyebrow::before {
+  background: var(--primary);
+}
+.page-head__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+.page-head__eyebrow::before {
+  content: "";
+  width: 1.25rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.page-head__crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--space-3xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.page-head__crumbs li:not(:last-child)::after {
+  content: "/";
+  margin-left: var(--space-3xs);
+  color: var(--color-border);
+}
+.page-head__crumbs a {
+  color: var(--color-heading);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+}
+.page-head__crumbs a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.page-head__crumbs [aria-current="page"] {
+  color: var(--color-text);
+  font-weight: var(--weight-medium);
+  /* long article titles must not blow out the row */
+  max-width: 32ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---- title + lede ---- */
+.page-head__title {
+  font-size: clamp(1.75rem, 1.1rem + 2.6vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--color-heading);
+  margin: 0;
+  max-width: 20ch;
+}
+/* Uses --text-main rather than --text-muted: both are established site
+   colours, and --text-main clears AA comfortably on the tinted ground
+   while --text-muted only just missed it. No new colour introduced. */
+.page-head__lede {
+  font-size: clamp(0.98rem, 0.94rem + 0.25vw, 1.1rem);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+  max-width: 58ch;
+  margin: 0;
+}
+.page-head__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3xs) var(--space-2xs);
+  margin: var(--space-3xs) 0 0;
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+.page-head__meta span + span::before {
+  content: "·";
+  margin-right: var(--space-2xs);
+  color: var(--color-border);
+}
+
+/* ---- variant: picture-led (recipes) ----
+   The photograph sits beside the text on wide screens instead of behind
+   it, so the type never has to fight an image for contrast. */
+.page-head--media .page-head__inner {
+  gap: var(--space-2xs);
+}
+@media (min-width: 820px) {
+  .page-head--media .page-head__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 15rem;
+    column-gap: var(--space-xl);
+    align-items: center;
+    padding-block: clamp(1.5rem, 3vw, 2rem);
+  }
+  .page-head--media .page-head__inner::after {
+    content: "";
+    grid-column: 2;
+    grid-row: 1 / -1;
+    align-self: stretch;
+    min-height: 8.5rem;
+    background-image: var(--head-media);
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+  .page-head--media .page-head__crumbs,
+  .page-head--media .page-head__title,
+  .page-head--media .page-head__lede,
+  .page-head--media .page-head__meta {
+    grid-column: 1;
+  }
+}
+
+/* ---- variant: plain (no tint — for pages that supply their own art) ---- */
+.page-head--plain {
+  background: var(--color-surface-raised);
+}
+.page-head--plain::before {
+  display: none;
+}
+
+/* ---- variant: hero (homepage only) ----
+   Deliberately unchanged in spirit: the homepage is the one place a large
+   photographic statement earns its height. */
+.page-head--hero {
+  min-height: min(78vh, 44rem);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  border-bottom: none;
+  background:
+    linear-gradient(rgba(30, 36, 41, 0.66), rgba(30, 36, 41, 0.72)),
+    var(--head-media, none) center 20% / cover no-repeat,
+    var(--secondary);
+}
+.page-head--hero::before,
+.page-head--hero::after {
+  display: none;
+}
+.page-head--hero .page-head__inner {
+  align-items: center;
+  text-align: center;
+  padding-block: var(--space-2xl);
+}
+.page-head--hero .page-head__title {
+  color: var(--text-light);
+  font-size: clamp(2.25rem, 1.4rem + 3.6vw, 3.5rem);
+  max-width: 18ch;
+}
+.page-head--hero .page-head__lede {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: var(--text-lg);
+  max-width: 52ch;
+}
+.page-head--hero .page-head__eyebrow {
+  color: var(--primary-light);
+}
+
+@media (max-width: 599px) {
+  .page-head__title {
+    max-width: none;
+  }
+  .page-head__crumbs [aria-current="page"] {
+    max-width: 18ch;
+  }
+}
+
+/* ==================== FOOTER ====================
+   Design note — colour:
+   the previous footer was the same flat near-black as the old page
+   banner, 389px tall on desktop and 691px on mobile because four columns
+   stacked into a tower. This is a deep espresso: --secondary warmed
+   toward the brand gold, so it reads as part of the palette rather than
+   generic black, and it closes the page against the light header above
+   it. A hairline gold rule marks the join. Text stays white — no font
+   colours changed.
+   ============================================================ */
+.site-footer {
+  --footer-ink: rgba(255, 255, 255, 0.72);
+  --footer-ink-strong: #ffffff;
+  position: relative;
+  background:
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--primary) 8%, var(--secondary)) 0%,
+      var(--secondary) 55%
+    );
+  color: var(--footer-ink);
+  padding-block: 0;
+}
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--primary) 0%,
+    color-mix(in srgb, var(--primary) 40%, transparent) 38%,
+    transparent 70%
+  );
+}
+
+/* ---- main row: brand · links · contact, side by side ---- */
+.site-footer__main {
+  display: grid;
+  gap: var(--space-md);
+  padding-block: var(--space-md);
+}
+@media (min-width: 760px) {
+  .site-footer__main {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: var(--space-xl);
+    align-items: start;
+  }
+}
+
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  align-items: flex-start;
+}
+.site-footer__brand img {
+  height: 2.75rem;
+  width: auto;
+  /* the emblem is gold on transparent; lift it slightly on the dark ground */
+  filter: brightness(1.12);
+}
+/* The wordmark picks up the same accent as the column headings
+   ("Explore", "Get in touch") — one token, so both track any theme change. */
+.site-footer__name {
+  color: var(--primary-light);
+}
+.site-footer__blurb {
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--footer-ink);
+  max-width: 34ch;
+  margin: 0;
+}
+
+.site-footer__col-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--primary-light);
+  margin: 0 0 var(--space-2xs);
+}
+
+/* Links wrap inline rather than stacking one-per-row — this is what kept
+   the old mobile footer near 700px tall. */
+.site-footer__links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-md);
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 760px) {
+  /* Two columns, not one — seven links stacked singly made this column
+     298px tall on its own and was what kept the whole footer oversized. */
+  .site-footer__links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 var(--space-md);
+  }
+}
+.site-footer__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  font-size: var(--text-sm);
+  color: var(--footer-ink);
+  text-decoration: none;
+}
+.site-footer__links a:hover {
+  color: var(--primary-light);
+}
+
+.site-footer__contact {
+  display: grid;
+  gap: var(--space-3xs);
+  font-size: var(--text-sm);
+}
+.site-footer__contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  min-height: 2.25rem;
+  color: var(--footer-ink-strong);
+  text-decoration: none;
+  font-weight: var(--weight-medium);
+}
+.site-footer__contact a:hover {
+  color: var(--primary-light);
+}
+.site-footer__contact .muted {
+  color: var(--footer-ink);
+  font-weight: var(--weight-normal);
+}
+.site-footer__cta {
+  margin-top: var(--space-2xs);
+}
+
+/* ---- legal bar ---- */
+.site-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-md);
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-sm);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.58);
+}
+.site-footer__legal p {
+  margin: 0;
+  max-width: none;
+}
+/* Designer credit. Deliberately kept in the legal bar, where a design
+   credit conventionally sits — quiet, but findable.
+
+   `inline-block`, not `inline-flex`: as a flex container the label and the
+   name became separate flex items, and CSS drops the whitespace *between*
+   flex items, so this rendered as "Designed byH. Sumant" and could break
+   mid-phrase on narrow screens. Normal inline flow keeps the space and the
+   phrase intact; line-height preserves the 36px touch target. */
+.designer-credit {
+  display: inline-block;
+  min-height: 2.25rem;
+  line-height: 2.25rem;
+  white-space: nowrap;
+  padding-inline: var(--space-3xs);
+  background: none;
+  border: none;
+  /* One step brighter than the legal bar's 58%, using the footer's own ink
+     token — visible enough to notice, quiet enough not to compete. */
+  color: var(--footer-ink);
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 255, 255, 0.3);
+}
+.designer-credit:hover {
+  color: var(--primary-light);
+}
+.designer-name {
+  font-weight: var(--weight-semibold);
+}
+
+@media (max-width: 759px) {
+  .site-footer__main {
+    gap: var(--space-sm);
+    padding-block: var(--space-md) var(--space-sm);
+  }
+  .site-footer__brand img {
+    height: 2.25rem;
+  }
+  /* The copyright and strapline wrapped to three lines and sat above a
+     separately-stacked credit button — 115px for a legal bar. Tightened
+     and allowed to share the row. */
+  .site-footer__legal {
+    justify-content: flex-start;
+    gap: 0 var(--space-sm);
+    padding-block: var(--space-2xs);
+    line-height: var(--leading-snug);
+  }
+  .site-footer__legal p {
+    flex: 1 1 100%;
+  }
+  .site-footer__contact {
+    gap: 0;
+  }
+}
+
+/* ============================================================
+   THEME CONTROL + DARK-MODE CHROME ADJUSTMENTS
+   ============================================================ */
+
+.site-header__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  flex-shrink: 0;
+}
+@media (min-width: 900px) {
+  .site-header__controls {
+    margin-left: var(--space-sm);
+  }
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  height: var(--control-height);
+  padding-inline: var(--space-xs);
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+.theme-toggle:hover {
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+.theme-toggle__icon {
+  display: grid;
+  place-items: center;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+.theme-toggle__icon svg {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+/* Show the icon of the theme you would switch TO, matching the label. */
+.theme-toggle__sun { opacity: 0; transform: rotate(-90deg) scale(0.6); }
+.theme-toggle__moon { opacity: 1; transform: none; }
+[data-theme="dark"] .theme-toggle__sun { opacity: 1; transform: none; }
+[data-theme="dark"] .theme-toggle__moon { opacity: 0; transform: rotate(90deg) scale(0.6); }
+
+/* The word is redundant on small screens where space is tight. */
+@media (max-width: 599px) {
+  .theme-toggle__text { display: none; }
+  .theme-toggle { padding-inline: 0; width: var(--control-height); justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle__icon svg { transition: none; }
+}
+
+/* ---- dark-mode chrome ---- */
+[data-theme="dark"] .site-header {
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+}
+[data-theme="dark"] .page-head {
+  border-bottom-color: var(--color-border);
+}
+/* The traced brand SVGs are a fixed gold; on a dark ground they read a
+   touch heavy, so lift them very slightly rather than recolouring. */
+[data-theme="dark"] .site-header__mark,
+[data-theme="dark"] .site-header__wordmark {
+  filter: brightness(1.08);
+}
+
+/* Footer already sits on --secondary, which is dark in both themes; in
+   dark mode give it a hair of separation from the page instead of the
+   gradient, which would otherwise vanish. */
+[data-theme="dark"] .site-footer {
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--primary) 6%, #1b2125) 0%,
+    #171c20 60%
+  );
+  border-top: 1px solid var(--color-border);
+}
+
+/* Sections that are intentionally dark need to stay distinct from a dark
+   page rather than blending into it. */
+[data-theme="dark"] .section--dark {
+  background: var(--color-surface-raised);
+  border-block: 1px solid var(--color-border);
+}
+
+/* ============================================================
+   CALCULATOR SURFACES
+   The tool pages read as white-on-white: a white panel on a white page
+   with only a hairline between them. Seating the page on the sunken
+   surface and lifting the panels gives the form real presence, and the
+   same rule holds in dark mode because both sides are tokens.
+   ============================================================ */
+.calculator,
+.growth {
+  --panel-bg: var(--color-surface-raised);
+}
+
+/* the band the tool sits in */
+.calculator-shell {
+  background: var(--color-surface-sunken);
+  border-block: 1px solid var(--color-border);
+}
+
+.calculator__panel,
+.growth-chart {
+  background: var(--panel-bg, var(--color-surface-raised));
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm), var(--elevate);
+}
+
+/* Panel headings get a gold rule so the tool carries brand rather than an
+   icon — this replaces the emoji that used to sit beside them. */
+.calculator__panel-title {
+  position: relative;
+  padding-left: var(--space-sm);
+}
+.calculator__panel-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  bottom: 0.35em;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--primary);
+}
+
+/* Result panel: tinted so the answer is visibly the payoff, not just
+   another card. */
+.result {
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--primary) 12%, var(--color-surface-raised)),
+    var(--color-surface-raised)
+  );
+  border-color: color-mix(in srgb, var(--primary) 45%, var(--color-border));
+  box-shadow: var(--shadow-sm), var(--elevate);
+}
+[data-theme="dark"] .result {
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--primary) 16%, var(--color-surface-raised)),
+    var(--color-surface-raised)
+  );
+}
+
+/* Inputs need to read as inset on a raised panel in both themes. */
+.control {
+  background: var(--color-surface);
+}
+[data-theme="dark"] .control {
+  background: var(--color-surface-sunken);
+}
+
+/* Growth chart canvas keeps a light plotting ground in dark mode would be
+   wrong — the SVG uses currentColor-ish tokens, so it themes with the
+   page. Just ensure the frame matches the panels. */
+[data-theme="dark"] .growth-chart__marker {
+  stroke: var(--color-surface-raised);
+}

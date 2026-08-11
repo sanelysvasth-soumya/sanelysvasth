@@ -1,0 +1,50 @@
+---
+layout: layouts/base.njk
+permalink: /calculators/
+title: Health Calculators
+description: Free health calculators from Svasth by Soumya — BMI, BMR, protein and water intake, body ratios, insulin sensitivity and more.
+pageTitle: "Health Tools"
+eyebrow: "Calculators"
+lede: "Track your progress and health metrics with easy-to-use calculators."
+---
+
+{# NOTE: the legacy calculators.html referenced img/bg3.jpg, which has
+   never existed in the repo — that page has been silently 404-ing and
+   rendering as a plain dark band. Using the solid variant reproduces
+   what users actually see, without the failed request. #}
+<div class="section">
+  <div class="container">
+    {% for group in site.calculatorGroups %}
+      <section {% if not loop.first %}style="margin-top: var(--space-2xl)"{% endif %}>
+        <div class="section-header" style="margin-bottom: var(--space-lg)">
+          <h2 class="section-title">{{ group.title }}</h2>
+        </div>
+
+        <div class="grid grid--3 calculators-grid">
+          {% for item in group.items %}
+            <article class="card card--interactive card--feature tool-card" data-reveal>
+              <div class="card__body">
+                {# Category kicker replaces the old emoji as the visual
+                   anchor — it carries information the emoji did not. #}
+                <p class="tool-card__kicker">{{ group.title }}</p>
+                <h3 class="card__title"><a href="{{ item.url }}">{{ item.text }}</a></h3>
+                <p class="card__text">{{ item.blurb or "Open the calculator" }}</p>
+                <p class="card__footer"><span class="btn btn--tertiary">Calculate</span></p>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+    {% endfor %}
+
+    <div class="alert alert--info" style="margin-top: var(--space-2xl)">
+      <div class="alert__body">
+        <p>
+          These tools are for information and screening only. They do not diagnose any
+          condition. For personalised guidance,
+          <a href="/contact/">get in touch</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

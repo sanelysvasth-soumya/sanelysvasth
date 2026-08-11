@@ -1,0 +1,57 @@
+---
+layout: "layouts/calculator.njk"
+permalink: "/calculators/ideal-body-weight/"
+title: "Ideal Body Weight Calculator"
+lede: "Estimate a reference body weight for your height."
+description: "Estimate ideal body weight from height and gender using the Hamwi and Broca methods."
+formId: "ideal-body-weight-form"
+resultId: "ideal-body-weight-result"
+scriptModule: "ideal-body-weight"
+formTitle: "Calculate ideal weight"
+submitLabel: "Calculate IBW"
+infoTitle: "About ideal body weight"
+disclaimer: "Ideal body weight is a reference figure, not a target. It does not account for body composition, frame size or athletic build."
+fields:
+  - name: "height"
+    type: "number"
+    label: "Height"
+    unit: "cm"
+    min: 1
+    max: 300
+    step: "0.1"
+    placeholder: "170"
+    requiredMessage: "Enter your height in centimetres."
+  - name: "age"
+    type: "int"
+    label: "Age"
+    unit: "years"
+    min: 18
+    max: 120
+    placeholder: "30"
+    hint: "This calculator applies to adults aged 18 and over."
+    requiredMessage: "Enter your age in years."
+  - name: "gender"
+    type: "select"
+    label: "Gender"
+    options:
+      - value: "male"
+        text: "Male"
+      - value: "female"
+        text: "Female"
+---
+
+<h3>What this shows</h3>
+
+Ideal body weight (IBW) is a reference value derived from height and
+gender. Clinicians use it as one input among many — alongside body
+composition, waist measurements and blood markers.
+
+<h3>How it is calculated</h3>
+
+For heights of five feet and above, this calculator uses the Hamwi method.
+Below five feet it applies the Broca index.
+
+<h3>Reading your result</h3>
+
+A range is shown alongside the single figure. Healthy weight is a band,
+not a point.

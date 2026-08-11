@@ -1,0 +1,124 @@
+---
+layout: layouts/base.njk
+pageScripts: ["growth/growth-page"]
+pageHeader: false
+---
+{% set chart = growthCharts[chartKey] %}
+
+{% set breadcrumbs = [
+  { text: "Home", url: "/" },
+  { text: "Growth Charts", url: "/growth-charts/" },
+  { text: chart.chartTitle }
+] %}
+{% set pageTitle = chart.title %}
+{% set lede = "Plot a child's " + chart.measureLabel + " against WHO-style percentile curves for " + chart.ageMin + "–" + chart.ageMax + " " + chart.ageUnit + "." %}
+{% include "components/page-header.njk" %}
+
+<div class="section calculator-shell">
+  <div class="container">
+    <div class="growth" data-growth="{{ chartKey }}">
+
+      {# ---------- chart ---------- #}
+      <figure class="growth-chart">
+        <div class="growth-chart__canvas" data-growth-canvas></div>
+        <figcaption class="growth-chart__caption">
+          {{ chart.chartTitle }} — dashed lines are percentile curves; the solid dark line is
+          the 50th percentile (median).
+        </figcaption>
+      </figure>
+
+      {# ---------- input + result ---------- #}
+      <div class="growth__side">
+        <section class="calculator__panel" aria-labelledby="growth-form-title">
+          <h2 class="calculator__panel-title" id="growth-form-title">Plot a measurement</h2>
+
+          <form data-growth-form novalidate>
+            <div class="form-summary" data-form-summary role="alert" aria-live="assertive"></div>
+
+            <div class="field">
+              <label class="field__label" for="age">
+                Age<span class="required" aria-hidden="true">*</span>
+              </label>
+              <div class="control-group">
+                <input class="control" id="age" name="age" type="number" inputmode="decimal"
+                       step="{{ '1' if chart.ageUnit == 'months' else '0.25' }}"
+                       min="{{ chart.ageMin }}" max="{{ chart.ageMax }}"
+                       placeholder="{{ chart.ageMin }}"
+                       aria-describedby="age-hint age-error">
+                <span class="control-group__unit" aria-hidden="true">{{ chart.ageUnit }}</span>
+              </div>
+              <span class="field__hint" id="age-hint">{{ chart.ageMin }} to {{ chart.ageMax }} {{ chart.ageUnit }}</span>
+              <span class="field__error" id="age-error"></span>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="height">
+                {{ chart.measureLabel | capitalize }}<span class="required" aria-hidden="true">*</span>
+              </label>
+              <div class="control-group">
+                <input class="control" id="height" name="height" type="number" inputmode="decimal"
+                       step="0.1" min="1" max="250" placeholder="{{ chart.bands['50th'][0] | round }}"
+                       aria-describedby="height-error">
+                <span class="control-group__unit" aria-hidden="true">cm</span>
+              </div>
+              <span class="field__error" id="height-error"></span>
+            </div>
+
+            <div class="calculator__actions">
+              <button type="submit" class="btn btn--primary">Plot on chart</button>
+              <button type="reset" class="btn btn--secondary">Clear</button>
+            </div>
+
+            <p class="visually-hidden" data-growth-status role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section class="result" data-growth-result hidden aria-labelledby="growth-result-title">
+          <h2 class="visually-hidden" id="growth-result-title">Percentile result</h2>
+          <div data-growth-result-body></div>
+        </section>
+
+        <div class="alert alert--info">
+          <div class="alert__body">
+            <p>
+              Growth charts are a screening tool. A single measurement matters far less than the
+              trend over time. Discuss any concern with your paediatrician.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {# ---------- accessible data table ----------
+       The same numbers the SVG draws, reachable without seeing it. #}
+    <details class="growth-table-disclosure">
+      <summary>View the percentile data as a table</summary>
+      <div class="table-wrap" style="margin-top: var(--space-sm)">
+        <table class="table table--numeric">
+          <caption>{{ chart.chartTitle }} — {{ chart.yLabel }} by {{ chart.xLabel | lower }}</caption>
+          <thead>
+            <tr>
+              <th scope="col">{{ chart.xLabel }}</th>
+              {% for band in chart.bands | keys %}<th scope="col">{{ band }}</th>{% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for x in chart.xValues %}
+              <tr>
+                <th scope="row">{{ x }}</th>
+                {% for band in chart.bands | keys %}<td>{{ chart.bands[band][loop.parent.loop.index0] }}</td>{% endfor %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+</div>
+
+{# Chart data is inlined rather than fetched — it is small, and this keeps
+   the page working with no extra request. #}
+<script>
+  window.__GROWTH_CHARTS__ = window.__GROWTH_CHARTS__ || {};
+  window.__GROWTH_CHARTS__[{{ chartKey | dump | safe }}] = {{ chart | dump | safe }};
+</script>

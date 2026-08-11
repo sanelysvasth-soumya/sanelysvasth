@@ -1,0 +1,63 @@
+---
+layout: layouts/base.njk
+permalink: /recipes/
+pageScripts: ["content"]
+title: Recipes
+description: Wholesome, everyday Indian recipes from Svasth by Soumya — nutrient-dense, practical and built around real kitchens.
+eyebrow: "Kitchen"
+lede: "Nutrient-dense everyday cooking — practical portions, ingredients you already have."
+---
+
+<div class="section">
+  <div class="container">
+
+    <div class="collection-controls no-print">
+      <div class="field" style="flex:1; min-width:16rem">
+        <label class="visually-hidden" for="recipe-search">Search recipes</label>
+        <input class="control" id="recipe-search" type="search" placeholder="Search recipes or ingredients…"
+               data-collection-search autocomplete="off">
+      </div>
+    </div>
+
+    <p class="collection-count" data-collection-count aria-live="polite"></p>
+
+    <div class="grid grid--3" data-collection-grid>
+      {% for recipe in collections.recipes %}
+        <article class="card card--interactive card--feature recipe-card" data-reveal
+                 data-item
+                 data-category="all"
+                 data-search="{{ (recipe.data.title + ' ' + recipe.data.excerpt + ' ' + (recipe.data.ingredients | join(' '))) | lower }}">
+          {% if recipe.data.image %}
+            <img class="card__media" src="{{ recipe.data.image }}" alt=""
+                 loading="lazy" decoding="async" width="400" height="250">
+          {% else %}
+            {# Keeps the grid even when a recipe has no photograph — one
+               card collapsing to half height leaves a visible hole. #}
+            <div class="card__media card__media--placeholder" aria-hidden="true">
+              <img src="{{ site.brand.logo }}" alt="" width="594" height="521" loading="lazy">
+            </div>
+          {% endif %}
+          <div class="card__body">
+            <h2 class="card__title"><a href="{{ recipe.url }}">{{ recipe.data.title }}</a></h2>
+            <p class="card__text">{{ recipe.data.excerpt }}</p>
+            {% if recipe.data.metaItems.length %}
+              <p class="card__meta">
+                {% for m in recipe.data.metaItems %}<span>{{ m.label }}: {{ m.value }}</span>{% endfor %}
+              </p>
+            {% endif %}
+            {# Explicit affordance for the detail page — the whole card is
+               already clickable via the stretched title link. #}
+            <p class="card__footer"><span class="btn btn--tertiary">View recipe</span></p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+
+    <div class="empty-state" data-collection-empty hidden>
+      <h2 class="empty-state__title">No recipes match</h2>
+      <p class="empty-state__text">Try another ingredient or dish name, or clear your search.</p>
+      <button type="button" class="btn btn--secondary" data-collection-clear>Clear search</button>
+    </div>
+
+  </div>
+</div>

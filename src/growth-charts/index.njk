@@ -1,0 +1,53 @@
+---
+layout: layouts/base.njk
+permalink: /growth-charts/
+title: Growth Charts
+description: Paediatric growth charts for boys and girls from birth to 18 years — plot length or height against percentile curves.
+eyebrow: "Paediatric"
+lede: "Plot a child's length or height against percentile curves, from birth to 18 years."
+---
+
+<div class="section">
+  <div class="container">
+
+    {% for group in [
+      { label: "Boys", keys: ["boys-0-2", "boys-2-5", "boys-5-18"] },
+      { label: "Girls", keys: ["girls-0-2", "girls-2-5", "girls-5-18"] }
+    ] %}
+      <section {% if not loop.first %}style="margin-top: var(--space-2xl)"{% endif %}>
+        <div class="section-header" style="margin-bottom: var(--space-lg)">
+          <h2 class="section-title">{{ group.label }}</h2>
+        </div>
+        <div class="grid grid--3 calculators-grid">
+          {% for key in group.keys %}
+            {% set c = growthCharts[key] %}
+            <article class="card card--interactive card--feature tool-card" data-reveal>
+              <div class="card__body">
+                <p class="tool-card__kicker">{{ group.label }}</p>
+                <p class="badge badge--accent">{{ c.ageMin }}–{{ c.ageMax }} {{ c.ageUnit }}</p>
+                <h3 class="card__title">
+                  <a href="/growth-charts/{{ key | replace('boys-', 'boys-') | replace('girls-', 'girls-') }}-years/">
+                    {{ c.chartTitle }}
+                  </a>
+                </h3>
+                <p class="card__text">
+                  {{ c.measureLabel | capitalize }}-for-age percentiles, {{ c.bands | keys | length }} curves.
+                </p>
+                <p class="card__footer"><span class="btn btn--tertiary">Open chart</span></p>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+    {% endfor %}
+
+    <div class="alert alert--info" style="margin-top: var(--space-2xl)">
+      <div class="alert__body">
+        <p>
+          These charts are a screening aid, not a diagnosis. A single measurement matters far
+          less than the trend over time — always discuss concerns with your paediatrician.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

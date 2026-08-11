@@ -1,0 +1,140 @@
+---
+layout: layouts/base.njk
+permalink: /
+title: false
+description: Integrative health dietitian in Bengaluru. Sports nutrition, gut health, metabolic and pediatric nutrition — rooted in physiology, education and sustainability.
+pageHeader: false
+---
+
+{# ---------------- Hero ----------------
+   The homepage is the one place a full photographic statement earns its
+   height, so it uses the shared component's hero variant with the CTAs
+   composed in. Every other page gets the compact band. #}
+<header class="page-head page-head--hero"
+        style="--head-media: url('/img/soumya_adidas.jpeg')">
+  <div class="container page-head__inner">
+    <p class="page-head__eyebrow">Svasth by Soumya</p>
+    <h1 class="page-head__title">Rediscover Your Health</h1>
+    <p class="page-head__lede">
+      Performance peaks with smart fueling - you diet, lifestyle, nutrients and hormones.
+    </p>
+    <div class="cluster cluster--center" style="margin-top: var(--space-md);">
+      <a href="/questionnaire/" class="btn btn--primary">Start Assessment</a>
+      <a href="/services/" class="btn btn--secondary btn--on-dark">Explore Services</a>
+    </div>
+  </div>
+</header>
+
+{# ---------------- Expertise ---------------- #}
+<section class="section">
+  <div class="container">
+    <div class="section-header" data-reveal>
+      <h2 class="section-title">Expertise</h2>
+      <p class="section-subtitle">Holistic approaches to your well-being</p>
+    </div>
+
+    <div class="grid grid--2" data-reveal>
+      <article class="card card--interactive card--feature">
+        <div class="card__body">
+          <h3 class="card__title"><a href="/services/">Sports Nutrition</a></h3>
+          <p class="card__text">
+            Fueling performance, recovery, adaptation and metabolic resilience through
+            physiology driven holistic plans.
+          </p>
+        </div>
+      </article>
+
+      <article class="card card--interactive card--feature">
+        <div class="card__body">
+          <h3 class="card__title"><a href="/services/">Gut Health Nutrition</a></h3>
+          <p class="card__text">
+            Addressing digestion, inflammation, microbiome health, nutrient absorption
+            and gut-organ physiology at the root.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+{# ---------------- About preview ---------------- #}
+<section class="section section--sunken">
+  <div class="container">
+    <div class="grid grid--split">
+      <div data-reveal>
+        <img src="/img/about.jpg" alt="Soumya, founder and dietitian"
+             style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);"
+             loading="lazy" decoding="async">
+      </div>
+
+      <div class="prose" data-reveal>
+        <h2 class="section-title" style="text-align:left">Meet Soumya</h2>
+        <p class="eyebrow" style="margin-bottom: var(--space-sm)">Founder &amp; Dietitian</p>
+
+        <p>
+          Hi, I am a intergrative health dietitian, biotechnology enthusiast, content creator,
+          wellness explorer, and someone endlessly curious about the human body — its physiology,
+          chemistry, mechanisms, and remarkable ability to adapt, heal, and thrive when given the
+          right environment.
+        </p>
+        <p>
+          My work exists at the intersection of nutrition science, traditional science,
+          sustainability, technology, and human behaviour. I strongly believe that modern science
+          and traditional Indian practices aren't opposing worlds, but deeply connected,
+          complimenting systems, when understood with context and curiosity.
+        </p>
+
+        <div id="full-story">
+          <p>
+            To me, nutrition is never just about calories, proteins or what's on your plate. It is
+            also about your environment, stress, sleep, movement, emotions, relationships,
+            sunlight, routines, hormones and nutrient deficiencies.
+          </p>
+          <p>
+            Alongside Svasth by Soumya, I also work across different clinical and wellness spaces
+            and continue exploring the evolving world of integrative wellness, agro-tourism,
+            lifestyle experiences, and community-based health events.
+          </p>
+          <p>
+            Beyond consultations, I write blogs, recipes, creating wellness tools and
+            questionnaires, coding calculators and features for this website myself whenever I can.
+            Body physiology and computer logic are quiet similar — understanding systems, patterns,
+            and how small inputs create larger outcomes over time.
+          </p>
+          <p>
+            As a practitioner, my approach is rooted in education and sustainability. I don't
+            believe wellness should feel restrictive, extreme, or dependent on lifelong monthly
+            renewals. A major part of my consultations (20 out of 60 minutes) involves counselling,
+            helping individuals understand their own bodies, build awareness, and create habits
+            that are practical, and sustainable in the long run.
+          </p>
+          <p>
+            At the heart of everything I do is one intention:
+            to make health feel more connected, conscious, scientific, sustainable, and deeply
+            human.
+          </p>
+        </div>
+
+        <p>
+          <button type="button" class="btn btn--primary"
+                  data-disclosure
+                  aria-expanded="false"
+                  aria-controls="full-story"
+                  data-label-open="Read Less"
+                  data-label-closed="Read More">Read More</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ---------------- CTA ---------------- #}
+<section class="section section--dark">
+  <div class="container text-center">
+    <h2>See Where Your Health Stands</h2>
+    <p class="mx-auto" style="font-size: var(--text-lg); opacity: .9; margin-block: var(--space-sm) var(--space-lg);">
+      Take the first step towards a healthier you today.
+    </p>
+    <a href="/contact/" class="btn btn--primary">Get in Touch</a>
+  </div>
+</section>

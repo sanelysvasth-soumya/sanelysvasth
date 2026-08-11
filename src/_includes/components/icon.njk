@@ -1,0 +1,28 @@
+{#
+  Inline SVG icon set — one canonical source.
+
+  These restore the icon anchors the Contact page has always had (the
+  legacy page used Font Awesome: fa-envelope, fa-phone, fa-map-marker,
+  and a chat mark for WhatsApp). Font Awesome was removed when the last
+  legacy page retired, so the same glyphs are reproduced here as inline
+  SVG: scalable, sharp on high-DPI, themeable via currentColor, and no
+  font dependency.
+
+  Usage: {% set icon = "phone" %}{% include "components/icon.njk" %}
+#}
+{% set _i = icon %}
+<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+     stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+     aria-hidden="true" focusable="false">
+  {% if _i == "chat" %}
+    <path d="M20.5 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.6A8 8 0 1 1 20.5 11.5Z"/>
+  {% elif _i == "phone" %}
+    <path d="M6.2 3.5h3l1.5 3.8-1.9 1.4a11 11 0 0 0 5.5 5.5l1.4-1.9 3.8 1.5v3a1.8 1.8 0 0 1-2 1.8A16.2 16.2 0 0 1 4.4 5.5a1.8 1.8 0 0 1 1.8-2Z"/>
+  {% elif _i == "envelope" %}
+    <rect x="2.8" y="5" width="18.4" height="14" rx="2.2"/>
+    <path d="m3.4 6.6 8.6 6 8.6-6"/>
+  {% elif _i == "pin" %}
+    <path d="M12 21.4s6.6-5.9 6.6-10.6a6.6 6.6 0 1 0-13.2 0C5.4 15.5 12 21.4 12 21.4Z"/>
+    <circle cx="12" cy="10.6" r="2.4"/>
+  {% endif %}
+</svg>

@@ -1,0 +1,87 @@
+---
+layout: "layouts/calculator.njk"
+permalink: "/calculators/protein/"
+title: "Protein Intake Calculator"
+lede: "Calculate your daily protein requirement based on activity level and goal."
+description: "Work out how much protein to eat per day based on your weight, activity level and fitness goal."
+formId: "protein-form"
+resultId: "protein-result"
+scriptModule: "protein"
+formTitle: "Calculate protein intake"
+submitLabel: "Calculate protein"
+infoTitle: "About protein intake"
+disclaimer: "Protein needs vary with health status and training load. Discuss significant changes with a practitioner."
+fields:
+  - name: "weight"
+    type: "number"
+    label: "Weight"
+    unit: "kg"
+    min: 30
+    max: 300
+    step: "0.1"
+    placeholder: "70"
+    requiredMessage: "Enter your weight in kilograms."
+  - name: "height"
+    type: "number"
+    label: "Height"
+    unit: "cm"
+    min: 120
+    max: 250
+    step: "0.1"
+    placeholder: "170"
+    requiredMessage: "Enter your height in centimetres."
+  - name: "age"
+    type: "int"
+    label: "Age"
+    unit: "years"
+    min: 15
+    max: 120
+    placeholder: "30"
+    requiredMessage: "Enter your age in years."
+  - name: "gender"
+    type: "radio"
+    label: "Gender"
+    options:
+      - value: "male"
+        text: "Male"
+      - value: "female"
+        text: "Female"
+  - name: "goal"
+    type: "select"
+    label: "Fitness goal"
+    options:
+      - value: "fat_loss"
+        text: "Fat Loss"
+      - value: "maintenance"
+        text: "Maintenance"
+      - value: "muscle_gain"
+        text: "Muscle Gain"
+  - name: "activity"
+    type: "select"
+    label: "Activity level"
+    options:
+      - value: "sedentary"
+        text: "Sedentary (little or no exercise)"
+      - value: "lightly"
+        text: "Lightly active (1-3 days/week)"
+      - value: "moderately"
+        text: "Moderately active (3-5 days/week)"
+      - value: "very"
+        text: "Very active (6-7 days/week)"
+---
+
+<h3>Why protein matters</h3>
+
+Protein supports muscle repair, immune function, enzyme and hormone
+production, and helps you stay full between meals.
+
+<h3>How this is calculated</h3>
+
+Your requirement is derived from your body weight, adjusted by your
+activity level and your stated goal.
+
+<h3>Spreading intake across the day</h3>
+
+Your result includes a suggested split across breakfast, lunch, dinner and
+snacks — distributing protein through the day is generally easier to
+digest and to sustain.

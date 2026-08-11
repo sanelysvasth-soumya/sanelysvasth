@@ -1,0 +1,76 @@
+{# Shared multi-step questionnaire shell. Used by both the gut and PCOS
+   assessments — one markup implementation, driven by quiz-ui.js. #}
+<div class="quiz" data-quiz>
+
+  {# ---------- 1. Start ---------- #}
+  <section class="calculator__panel" data-quiz-start aria-labelledby="quiz-start-title">
+    <h2 class="calculator__panel-title" id="quiz-start-title">Before we begin</h2>
+
+    <form data-quiz-details novalidate>
+      <div class="form-summary" data-form-summary role="alert" aria-live="assertive"></div>
+
+      <div class="field">
+        <label class="field__label" for="q-name">Your name<span class="required" aria-hidden="true">*</span></label>
+        <input class="control" id="q-name" name="name" type="text" autocomplete="name"
+               aria-describedby="q-name-error">
+        <span class="field__error" id="q-name-error"></span>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="q-contact">Contact number (WhatsApp)<span class="required" aria-hidden="true">*</span></label>
+        <input class="control" id="q-contact" name="contact" type="tel" inputmode="tel" autocomplete="tel"
+               aria-describedby="q-contact-error">
+        <span class="field__error" id="q-contact-error"></span>
+      </div>
+
+      <div class="alert alert--info" style="margin-top: var(--space-md)">
+        <div class="alert__body"><p>{{ quizIntro }}</p></div>
+      </div>
+
+      <div class="calculator__actions">
+        <button type="submit" class="btn btn--primary">Start assessment</button>
+      </div>
+    </form>
+  </section>
+
+  {# ---------- 2. Questions ---------- #}
+  <section class="calculator__panel" data-quiz-questions hidden aria-labelledby="quiz-q-title">
+    <div class="quiz__progress">
+      <div class="quiz__progress-track">
+        <div class="quiz__progress-bar" data-quiz-bar></div>
+      </div>
+      <p class="quiz__progress-label">
+        <span data-quiz-counter></span>
+        <span data-quiz-percent></span>
+      </p>
+    </div>
+
+    <div class="quiz__step" data-quiz-step role="group" aria-live="polite" aria-atomic="true">
+      <h2 class="quiz__question" id="quiz-q-title" data-quiz-question></h2>
+      <div class="option-list" data-quiz-options role="radiogroup" aria-labelledby="quiz-q-title"></div>
+    </div>
+
+    <div class="quiz__actions">
+      <button type="button" class="btn btn--secondary" data-quiz-back>Back</button>
+      <button type="button" class="btn btn--primary" data-quiz-next>Next</button>
+    </div>
+  </section>
+
+  {# ---------- 3. Review ---------- #}
+  <section class="calculator__panel" data-quiz-review hidden aria-labelledby="quiz-review-title">
+    <h2 class="calculator__panel-title" id="quiz-review-title">Review your answers</h2>
+    <p style="color: var(--color-text-muted)">Select any row to change that answer before submitting.</p>
+    <dl class="quiz__review" data-quiz-review-list></dl>
+    <div class="quiz__actions">
+      <button type="button" class="btn btn--secondary" data-quiz-review-back>Back to questions</button>
+      <button type="button" class="btn btn--primary" data-quiz-submit>See my result</button>
+    </div>
+  </section>
+
+  {# ---------- 4. Result ---------- #}
+  <section class="result" data-quiz-result hidden aria-labelledby="quiz-result-title">
+    <h2 class="visually-hidden" id="quiz-result-title">Your result</h2>
+    <div data-quiz-result-body></div>
+  </section>
+
+</div>

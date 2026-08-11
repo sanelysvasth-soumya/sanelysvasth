@@ -1,0 +1,32 @@
+---
+layout: layouts/base.njk
+permalink: /questionnaire/pcos/
+title: PCOS Root Cause Analysis
+description: Identify the likely primary driver of your PCOS — insulin resistance, inflammation, post-birth-control or adrenal — across 37 questions.
+pageScripts: ["questionnaires/pcos"]
+quizIntro: You'll answer up to 37 questions grouped by root cause. Some questions are skipped based on your answers. You can go back and change any answer before submitting.
+breadcrumbs:
+  - text: "Home"
+    url: "/"
+  - text: "Assessments"
+    url: "/questionnaire/"
+  - text: "PCOS"
+lede: "Identify the potential root causes of your PCOS. Understanding the underlying factors is the first step towards reversal."
+---
+
+<div class="section">
+  <div class="container">
+    {% include "components/quiz.njk" %}
+
+    <div class="alert alert--info" style="margin-top: var(--space-2xl); max-width: var(--container-narrow); margin-inline: auto;">
+      <div class="alert__body">
+        <p>
+          PCOS usually has more than one driver. This assessment highlights the strongest
+          signal in your answers — it is not a diagnosis.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>window.__PCOS__ = {{ pcos | dump | safe }};</script>

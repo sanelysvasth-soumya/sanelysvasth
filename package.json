@@ -1,0 +1,17 @@
+{
+  "name": "sanelysvasth",
+  "version": "1.0.0",
+  "description": "Svasth by Soumya — integrative health, nutrition tools and recipes",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "eleventy --serve --port=8080",
+    "build": "eleventy",
+    "test": "node --test \"test/**/*.test.js\"",
+    "check": "npm run test && npm run build"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

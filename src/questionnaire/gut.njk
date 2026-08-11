@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+permalink: /questionnaire/gut/
+title: Gut Health Assessment
+description: Evaluate your digestive health across 26 symptoms in about 5 minutes, and get an instant gut health score.
+pageScripts: ["questionnaires/gut"]
+quizIntro: You'll answer 26 short questions about digestive and related symptoms. You can go back and change any answer before submitting.
+pageTitle: "Know Your Gut Health"
+breadcrumbs:
+  - text: "Home"
+    url: "/"
+  - text: "Assessments"
+    url: "/questionnaire/"
+  - text: "Gut Health"
+lede: "Evaluate your digestive health based on your symptoms. About 5 minutes."
+---
+
+<div class="section">
+  <div class="container">
+    {% include "components/quiz.njk" %}
+  </div>
+</div>

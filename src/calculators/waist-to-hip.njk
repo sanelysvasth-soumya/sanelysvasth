@@ -1,0 +1,62 @@
+---
+layout: "layouts/calculator.njk"
+permalink: "/calculators/waist-to-hip/"
+title: "Waist to Hip Ratio Calculator"
+lede: "Assess fat distribution and associated cardiovascular risk."
+description: "Calculate your waist-to-hip ratio (WHR) and see how it compares to healthy thresholds."
+formId: "waist-to-hip-form"
+resultId: "waist-to-hip-result"
+scriptModule: "waist-to-hip"
+formTitle: "Calculate WHR"
+submitLabel: "Calculate WHR"
+infoTitle: "About waist to hip ratio"
+disclaimer: "WHR is one indicator among several. Interpret it alongside other measures and clinical advice."
+fields:
+  - name: "waist"
+    type: "number"
+    label: "Waist circumference"
+    unit: "cm"
+    min: 1
+    max: 300
+    step: "0.1"
+    placeholder: "80"
+    hint: "Measure at the narrowest point, usually just above the navel."
+    requiredMessage: "Enter your waist measurement."
+  - name: "hip"
+    type: "number"
+    label: "Hip circumference"
+    unit: "cm"
+    min: 1
+    max: 300
+    step: "0.1"
+    placeholder: "100"
+    hint: "Measure at the widest point around the buttocks."
+    requiredMessage: "Enter your hip measurement."
+  - name: "gender"
+    type: "radio"
+    label: "Gender"
+    options:
+      - value: "male"
+        text: "Male"
+      - value: "female"
+        text: "Female"
+---
+
+<h3>What WHR tells you</h3>
+
+Waist-to-hip ratio indicates where your body stores fat. Fat carried
+around the abdomen carries a different metabolic risk profile from fat
+carried around the hips and thighs.
+
+<h3>Thresholds used here</h3>
+
+<div class="table-wrap">
+  <table class="table table--numeric">
+    <caption>WHR thresholds applied by this calculator</caption>
+    <thead><tr><th scope="col">Gender</th><th scope="col">Increased risk above</th></tr></thead>
+    <tbody>
+      <tr><td>Female</td><td>0.80</td></tr>
+      <tr><td>Male</td><td>0.90</td></tr>
+    </tbody>
+  </table>
+</div>

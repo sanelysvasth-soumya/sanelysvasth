@@ -1,0 +1,54 @@
+---
+layout: "layouts/calculator.njk"
+permalink: "/calculators/waist-to-height/"
+title: "Waist to Height Ratio Calculator"
+lede: "A simple screening measure for central body fat."
+description: "Calculate your waist-to-height ratio (WHtR), a screening measure for abdominal fat and metabolic risk."
+formId: "waist-to-height-form"
+resultId: "waist-to-height-result"
+scriptModule: "waist-to-height"
+formTitle: "Calculate WHtR"
+submitLabel: "Calculate WHtR"
+infoTitle: "About waist to height ratio"
+disclaimer: "WHtR is a screening measure. It does not diagnose any condition."
+fields:
+  - name: "waist"
+    type: "number"
+    label: "Waist circumference"
+    unit: "cm"
+    min: 40
+    max: 200
+    step: "0.1"
+    placeholder: "80"
+    hint: "Measure at the narrowest point, usually just above the navel."
+    requiredMessage: "Enter your waist measurement."
+  - name: "height"
+    type: "number"
+    label: "Height"
+    unit: "cm"
+    min: 120
+    max: 250
+    step: "0.1"
+    placeholder: "170"
+    requiredMessage: "Enter your height in centimetres."
+  - name: "gender"
+    type: "radio"
+    label: "Gender"
+    options:
+      - value: "male"
+        text: "Male"
+      - value: "female"
+        text: "Female"
+---
+
+<h3>Why WHtR is useful</h3>
+
+Waist-to-height ratio is a straightforward screening measure for central
+body fat. A commonly cited guideline is to keep your waist under half your
+height.
+
+<h3>How it is calculated</h3>
+
+Waist circumference divided by height, both in the same units. Bands
+differ between men and women, and this calculator applies the appropriate
+set.

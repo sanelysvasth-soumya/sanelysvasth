@@ -1,0 +1,84 @@
+{# Site footer — single canonical implementation.
+   Content is unchanged from the legacy footer; only its organisation.
+   Four stacked columns became three side-by-side groups plus a thin legal
+   bar, and link lists wrap inline on mobile instead of stacking one per
+   row, which is what made the old footer ~691px tall on a phone. #}
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="site-footer__main">
+
+      {# --- brand ---
+         Wordmark set as type rather than repeating the header emblem: the
+         mark already appears in the navigation, and a second copy here
+         added weight without adding information. #}
+      <div class="site-footer__brand">
+        <p class="site-footer__name">{{ site.name }}</p>
+        <p class="site-footer__blurb">{{ site.footer.blurb }}</p>
+      </div>
+
+      {# --- navigation --- #}
+      <nav aria-labelledby="footer-nav-title">
+        <h2 class="site-footer__col-title" id="footer-nav-title">Explore</h2>
+        <ul class="site-footer__links">
+          {% for item in site.nav %}
+            {% if item.url != "/" %}<li><a href="{{ item.url }}">{{ item.text }}</a></li>{% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
+
+      {# --- contact --- #}
+      <div>
+        <h2 class="site-footer__col-title">Get in touch</h2>
+        <div class="site-footer__contact">
+          <a href="mailto:{{ site.contact.emailHref }}">{{ site.contact.emailDisplay }}</a>
+          <a href="tel:{{ site.contact.phoneHref }}">{{ site.contact.phoneDisplay }}</a>
+          <p class="muted" style="margin:0">{{ site.contact.location }}</p>
+          <p class="site-footer__cta" style="margin:0">
+            <a class="btn btn--primary btn--sm" href="{{ site.contact.whatsapp }}"
+               target="_blank" rel="noopener noreferrer">Book a consultation</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="site-footer__legal">
+      <p>{{ site.footer.copyright }} &middot; {{ site.footer.strapline }}</p>
+      <button type="button" class="designer-credit" data-modal-open="designer-modal">
+        Designed by <span class="designer-name">{{ site.designer.shortName }}</span>
+      </button>
+    </div>
+
+  </div>
+</footer>
+
+{# ---- Designer profile dialog ---- #}
+<dialog class="modal" id="designer-modal" aria-labelledby="designer-modal-title">
+  <div class="modal__header">
+    <h2 class="modal__title" id="designer-modal-title">{{ site.designer.name }}</h2>
+    <button type="button" class="modal__close" data-modal-close aria-label="Close dialog">&times;</button>
+  </div>
+  <div class="modal__body">
+    <div class="designer-profile">
+      <img src="{{ site.designer.photo }}" alt="{{ site.designer.name }}"
+           width="128" height="128" loading="lazy"
+           data-lightbox-src="{{ site.designer.photo }}"
+           onerror="this.src='https://ui-avatars.com/api/?name=Sumant+Hipparagi&background=c59a6d&color=fff&size=150&rounded=true'">
+      <p class="badge badge--accent">{{ site.designer.profession }}</p>
+      <ul class="stack" style="list-style:none; gap:var(--space-3xs); margin-top:var(--space-2xs);">
+        <li><a href="mailto:{{ site.designer.email }}">{{ site.designer.email }}</a></li>
+        <li><a href="tel:{{ site.designer.phoneHref }}">{{ site.designer.phoneDisplay }}</a></li>
+      </ul>
+    </div>
+  </div>
+</dialog>
+
+{# ---- Shared image lightbox ---- #}
+<dialog class="modal modal--lightbox" id="lightbox" aria-label="Expanded image">
+  <button type="button" class="modal__close" data-modal-close aria-label="Close image"
+          style="position:absolute; top:-2.75rem; right:0; background:rgba(255,255,255,.9);">&times;</button>
+  {# No src until the lightbox opens — an empty src="" is invalid and makes
+     some browsers re-request the current page as an image. #}
+  <img alt="" data-lightbox-target hidden>
+</dialog>

@@ -1,0 +1,140 @@
+---
+layout: layouts/base.njk
+permalink: /services/
+title: Services
+description: Personalised health solutions — metabolic, sports, pediatric and gut health nutrition, built on diet, lifestyle, blood biomarkers and hormonal health.
+pageScripts: ["services"]
+services:
+  - id: metabolic
+    name: Metabolic Nutrition
+    summary: Understand the interplay of stress, sleep, circadian rythm, nutrient status, metabolism and endocrine physiology.
+    steps:
+      - title: Assessment
+      - title: Custom Plan
+      - title: Monitoring
+      - title: Maintenance
+  - id: sports
+    name: Sports Nutrition
+    summary: Fueling performance, recovery, adaptation and metabolic resilience through physiology driven holistic plans.
+    steps:
+      - title: Performance Analysis
+      - title: Fueling Strategy
+      - title: Recovery Optimization
+      - title: Competition Prep
+  - id: pediatric
+    name: Pediatric Nutrition
+    summary: Supporting growth and immunity based on food behaviors, while helping children navigate today's overstimulated and ultra-processed environment.
+    steps:
+      - title: Growth Assessment
+      - title: Kid-Friendly Planning
+      - title: Habit Formation
+      - title: Parental Support
+  - id: gut
+    name: Gut Health Nutrition
+    summary: Addressing digestion, inflammation, microbiome health, nutrient absorption and gut-organ physiology at the root.
+    steps:
+      - title: Symptom Analysis
+      - title: Elimination & Reintroduction
+      - title: Microbiome Restoration
+      - title: Lifestyle Integration
+eyebrow: "What I do"
+lede: "Personalised Health solutions (Diet, lifestyle, Blood biomarkers, hormonal health and nutrient deficiencies)"
+---
+
+{# Tabbed service explorer. The legacy page hid each process behind a
+   modal, so the four offerings could never be compared. Tabs put the
+   summary and the full process on the page and make them scannable. #}
+<div class="section">
+  <div class="container">
+
+    <div class="tabs service-tabs">
+      <div class="tabs__list" role="tablist" aria-label="Services">
+        {% for s in services %}
+          <button class="tabs__tab" role="tab" type="button"
+                  id="tab-{{ s.id }}"
+                  aria-controls="panel-{{ s.id }}"
+                  aria-selected="{{ 'true' if loop.first else 'false' }}"
+                  tabindex="{{ '0' if loop.first else '-1' }}">
+            {{ s.name }}
+          </button>
+        {% endfor %}
+      </div>
+
+      {% for s in services %}
+        <section class="tabs__panel service-panel"
+                 role="tabpanel"
+                 id="panel-{{ s.id }}"
+                 aria-labelledby="tab-{{ s.id }}"
+                 tabindex="0"
+                 {% if not loop.first %}hidden{% endif %}>
+
+          <div class="service-panel__intro">
+            <div>
+              <h2>{{ s.name }}</h2>
+              <p>{{ s.summary }}</p>
+            </div>
+          </div>
+
+          <h3 class="service-panel__steps-title">How it works</h3>
+          <ol class="process">
+            {% for step in s.steps %}
+              <li class="process__step" data-reveal>
+                <span class="process__num" aria-hidden="true">{{ loop.index }}</span>
+                <div>
+                  <h4 class="process__title">{{ step.title }}</h4>
+                  </div>
+              </li>
+            {% endfor %}
+          </ol>
+
+          <div class="cluster" style="margin-top: var(--space-lg)">
+            <a class="btn btn--primary" href="{{ site.contact.whatsapp }}"
+               target="_blank" rel="noopener noreferrer">Book a consultation</a>
+            <a class="btn btn--tertiary" href="/questionnaire/">Start with an assessment</a>
+          </div>
+        </section>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+
+{# What a consultation includes — surfaces detail that was previously
+   buried in the homepage bio paragraph. Copy preserved from the About text. #}
+<section class="section section--sunken">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">What a consultation includes</h2>
+      <p class="section-subtitle">Education first — not lifelong monthly renewals.</p>
+    </div>
+    <div class="grid grid--3">
+      <div class="card card--stat" data-reveal>
+        <p class="stat__value tabular">60&ndash;75</p>
+        <p class="stat__label">minutes per consultation</p>
+      </div>
+      <div class="card card--stat" data-reveal>
+        <p class="stat__value tabular">15&ndash;20</p>
+        <p class="stat__label">of those minutes are counselling</p>
+      </div>
+      <div class="card card--stat" data-reveal>
+        <p class="stat__value">4</p>
+        <p class="stat__label">areas of specialisation</p>
+      </div>
+    </div>
+    <p class="flow-narrow text-center" style="margin-top: var(--space-lg); color: var(--color-text-muted)">
+      A major part of my consultations involves counselling, helping individuals understand
+      their own bodies, build awareness, and create habits that are practical, and sustainable
+      in the long run.
+    </p>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="container text-center">
+    <h2>Not sure where you stand?</h2>
+    <p class="mx-auto" style="font-size: var(--text-lg); opacity: .9; margin-block: var(--space-sm) var(--space-lg);">
+      Take the assessment and we'll start from where you actually are.
+    </p>
+    <a href="/questionnaire/" class="btn btn--primary">Start Assessment</a>
+  </div>
+</section>

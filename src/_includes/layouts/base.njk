@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="{{ site.locale }}">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{% if title %}{{ title }} | {{ site.name }}{% else %}{{ site.name }} | {{ site.tagline }}{% endif %}</title>
+  <meta name="description" content="{{ description or site.description }}">
+
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="icon" type="image/png" href="{{ site.brand.favicon }}">
+
+  {# Open Graph / social share #}
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ title or site.name }}">
+  <meta property="og:description" content="{{ description or site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  {% if image %}<meta property="og:image" content="{{ site.url }}{{ image }}">{% endif %}
+  <meta name="twitter:card" content="{% if image %}summary_large_image{% else %}summary{% endif %}">
+
+  {# Fonts — same families as legacy (Montserrat + Lato), now over https
+     with preconnect, replacing the five competing per-page imports. #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap">
+
+  {# Resolve the theme before first paint so there is no flash of the
+     wrong one. Deliberately inline and blocking: it is ~200 bytes and
+     must run before the stylesheet applies. #}
+  <script>
+    (function () {
+      try {
+        var s = localStorage.getItem("svasth:theme");
+        var t = s === "dark" || s === "light" ? s
+          : (window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.dataset.theme = t;
+      } catch (e) {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  {% if structuredData %}
+  <script type="application/ld+json">{{ structuredData | dump | safe }}</script>
+  {% endif %}
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  {% include "components/header.njk" %}
+
+  <main id="main" tabindex="-1">
+    {# Every page gets the canonical header from its own front matter.
+       Layouts that need to compose it themselves (article, recipe) or
+       supply extra content inside it (the homepage hero) opt out with
+       `pageHeader: false` and include the component directly. #}
+    {% if pageHeader !== false %}
+      {% include "components/page-header.njk" %}
+    {% endif %}
+    {{ content | safe }}
+  </main>
+
+  {% include "components/footer.njk" %}
+
+  <script type="module" src="/assets/js/theme.js"></script>
+  <script type="module" src="/assets/js/site.js"></script>
+  {# Page-type modules load only where needed, rather than site-wide. #}
+  {% if pageScripts %}
+    {% for s in pageScripts %}
+      <script type="module" src="/assets/js/{{ s }}.js"></script>
+    {% endfor %}
+  {% endif %}
+</body>
+
+</html>

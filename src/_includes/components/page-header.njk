@@ -1,0 +1,58 @@
+{#
+  CANONICAL PAGE HEADER — one component for every page type.
+
+  Driven entirely by front matter, so no page hardcodes its own banner:
+    title        (or pageTitle to override the <title> tag wording)
+    lede         standfirst line — kept separate from `description`, which
+                 is the SEO meta description and must not be overwritten
+    eyebrow      small label above the title
+    breadcrumbs  [{ text, url }] — last entry renders as current page
+    headerMeta   [strings] — date / read time / author, for articles
+    headerMedia  image URL — recipes and anything picture-led
+    headerVariant  "" | "hero" | "media" | "plain"
+
+  Replaces the dark full-bleed banner that was hand-written into 13
+  templates. The treatment is now a light, warm "paper" band that closes
+  with a hairline rule, so the page starts far sooner and the title reads
+  as the top of the content rather than a slab sitting on top of it.
+#}
+{% set _title = pageTitle or title %}
+{% set _variant = headerVariant or "" %}
+
+<header class="page-head{% if _variant %} page-head--{{ _variant }}{% endif %}"
+        {% if headerMedia and _variant == "media" %}style="--head-media: url('{{ headerMedia }}')"{% endif %}>
+  <div class="container page-head__inner">
+
+    {% if breadcrumbs %}
+      <nav class="page-head__crumbs" aria-label="Breadcrumb">
+        <ol>
+          {% for c in breadcrumbs %}
+            <li>
+              {% if c.url and not loop.last %}
+                <a href="{{ c.url }}">{{ c.text }}</a>
+              {% else %}
+                <span aria-current="page">{{ c.text }}</span>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ol>
+      </nav>
+    {% elif eyebrow %}
+      <p class="page-head__eyebrow">{{ eyebrow }}</p>
+    {% endif %}
+
+    <h1 class="page-head__title">{{ _title }}</h1>
+
+    {% set _lede = lede or headerLede %}
+    {% if _lede %}
+      <p class="page-head__lede">{{ _lede }}</p>
+    {% endif %}
+
+    {% if headerMeta %}
+      <p class="page-head__meta">
+        {% for m in headerMeta %}{% if m %}<span>{{ m }}</span>{% endif %}{% endfor %}
+      </p>
+    {% endif %}
+
+  </div>
+</header>

@@ -1,0 +1,147 @@
+/* ============================================================
+   03 — LAYOUT PRIMITIVES
+   One grid system (CSS Grid + flex). Replaces the two competing
+   grids in the legacy code (Bootstrap's .col-md-* and the bespoke
+   flex grid in recipes.html).
+   ============================================================ */
+
+/* ---------- Container ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+.container--wide {
+  max-width: 1400px;
+}
+
+/* ---------- Section ---------- */
+.section {
+  padding-block: var(--section-padding-y);
+}
+.section--tight {
+  padding-block: clamp(2rem, 4vw, 3rem);
+}
+.section--sunken {
+  background-color: var(--color-surface-sunken);
+}
+.section--dark {
+  background-color: var(--color-heading);
+  color: var(--text-light);
+}
+.section--dark :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--text-light);
+}
+
+/* Section header block */
+.section-header {
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
+.section-header > * + * {
+  margin-top: var(--space-2xs);
+}
+.section-title {
+  font-size: var(--text-4xl);
+}
+.section-subtitle {
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  max-width: none;
+}
+
+/* Eyebrow label above a title */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--primary-dark);
+}
+.eyebrow::before {
+  content: "";
+  width: 1.5rem;
+  height: 1px;
+  background: currentColor;
+}
+.section-header .eyebrow::after {
+  content: "";
+  width: 1.5rem;
+  height: 1px;
+  background: currentColor;
+}
+
+/* ---------- Auto-fit grid (the one grid) ---------- */
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+.grid--2 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+}
+.grid--3 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+}
+.grid--4 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+}
+/* Fixed two-column split that collapses at a known breakpoint */
+.grid--split {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px) {
+  .grid--split {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  .grid--split-sticky {
+    align-items: start;
+  }
+}
+
+/* ---------- Cluster / stack helpers ---------- */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+.cluster--center {
+  justify-content: center;
+}
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.stack--lg {
+  gap: var(--space-lg);
+}
+
+/* ---------- Utility ---------- */
+.text-center {
+  text-align: center;
+}
+.mx-auto {
+  margin-inline: auto;
+}
+.flow-narrow {
+  max-width: var(--measure);
+  margin-inline: auto;
+}
+
+/* Wide content never scrolls the page body sideways */
+.scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}

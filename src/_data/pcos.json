@@ -1,0 +1,234 @@
+{
+  "sheetName": "PCOS",
+  "groups": [
+    {
+      "name": "Insulin Resistance",
+      "key": "Insulin Resistance"
+    },
+    {
+      "name": "Inflammatory",
+      "key": "Inflammatory"
+    },
+    {
+      "name": "Post-Birth Control",
+      "key": "Post-Birth Control"
+    },
+    {
+      "name": "Adrenal",
+      "key": "Adrenal"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "text": "I have problems with blood sugar levels.",
+      "group": "Insulin Resistance"
+    },
+    {
+      "id": 2,
+      "text": "I have been diagnosed with insulin resistance, pre-diabetes, or diabetes.",
+      "group": "Insulin Resistance"
+    },
+    {
+      "id": 3,
+      "text": "I have a family history of diabetes (e.g. my mother, father, grandparents, siblings, aunts, or uncles).",
+      "group": "Insulin Resistance"
+    },
+    {
+      "id": 4,
+      "text": "My fasting glucose is greater than 99 mg/dl.",
+      "group": "Insulin Resistance"
+    },
+    {
+      "id": 5,
+      "text": "I have dark, velvety patches in my skin folds.",
+      "group": "Insulin Resistance"
+    },
+    {
+      "id": 6,
+      "text": "I struggle with weight gain around my waist or mid-section.",
+      "group": "Insulin Resistance"
+    },
+    {
+      "id": 7,
+      "text": "I experience strong sugar or sweet cravings.",
+      "group": "Insulin Resistance"
+    },
+    {
+      "id": 8,
+      "text": "I experience increased thirst and need to urinate frequently.",
+      "group": "Insulin Resistance"
+    },
+    {
+      "id": 9,
+      "text": "I often feel fatigued or low in energy after meals (post-meal fatigue).",
+      "group": "Insulin Resistance"
+    },
+    {
+      "id": 10,
+      "text": "I struggle to lose weight despite following a healthy diet and exercising regularly.",
+      "group": "Insulin Resistance"
+    },
+    {
+      "id": 11,
+      "text": "My blood pressure is often elevated, and my doctor has noted it as a concern.",
+      "group": "Insulin Resistance"
+    },
+    {
+      "id": 12,
+      "text": "My blood work shows elevated triglycerides or cholesterol levels.",
+      "group": "Insulin Resistance"
+    },
+    {
+      "id": 13,
+      "text": "I experience symptoms like increased thirst and frequent urination.",
+      "group": "Insulin Resistance"
+    },
+    {
+      "id": 14,
+      "text": "I suffer from digestive issues (e.g. IBS, bloating, irregular bowel habits, constipation, or heartburn).",
+      "group": "Inflammatory"
+    },
+    {
+      "id": 15,
+      "text": "I have food sensitivities, food allergies, or chronic skin conditions like eczema, hives, or psoriasis.",
+      "group": "Inflammatory"
+    },
+    {
+      "id": 16,
+      "text": "I suffer from headaches, migraines, or unexplained fatigue.",
+      "group": "Inflammatory"
+    },
+    {
+      "id": 17,
+      "text": "I often experience unexplained fatigue and/or joint pain.",
+      "group": "Inflammatory"
+    },
+    {
+      "id": 18,
+      "text": "My blood tests show low vitamin D, high inflammatory markers (e.g. CRP), thyroid antibodies, or gluten antibodies.",
+      "group": "Inflammatory"
+    },
+    {
+      "id": 19,
+      "text": "I frequently experience cold or flu-like symptoms, or tend to catch infections more often.",
+      "group": "Inflammatory"
+    },
+    {
+      "id": 20,
+      "text": "I sometimes notice swollen or tender lymph nodes, especially when I’m not feeling well.",
+      "group": "Inflammatory"
+    },
+    {
+      "id": 21,
+      "text": "I have taken Birth control pill in the past.",
+      "group": "Post-Birth Control"
+    },
+    {
+      "id": 22,
+      "text": "I stopped taking the pill or using another form of hormonal birth control in the last 12 months.",
+      "group": "Post-Birth Control"
+    },
+    {
+      "id": 23,
+      "text": "My PCOS symptoms began after I stopped using birth control.",
+      "group": "Post-Birth Control"
+    },
+    {
+      "id": 24,
+      "text": "I may have had acne, but my cycles were regular before starting birth control.",
+      "group": "Post-Birth Control"
+    },
+    {
+      "id": 25,
+      "text": "My acne worsened after I stopped using birth control, especially cystic acne around my chin or jawline.",
+      "group": "Post-Birth Control"
+    },
+    {
+      "id": 26,
+      "text": "I’ve noticed increased hair thinning or hair loss since discontinuing birth control.",
+      "group": "Post-Birth Control"
+    },
+    {
+      "id": 27,
+      "text": "I had regular periods before starting the pill, but since stopping it, my cycles have become irregular.",
+      "group": "Post-Birth Control"
+    },
+    {
+      "id": 28,
+      "text": "I struggle with mood swings, irritability, or emotional instability after stopping birth control.",
+      "group": "Post-Birth Control"
+    },
+    {
+      "id": 29,
+      "text": "I gained weight shortly after starting birth control, and it hasn’t been easy to lose it since.",
+      "group": "Post-Birth Control"
+    },
+    {
+      "id": 30,
+      "text": "Since coming off the pill, I’ve had trouble getting pregnant or noticed a delay in my ability to conceive.",
+      "group": "Post-Birth Control"
+    },
+    {
+      "id": 31,
+      "text": "I respond abnormally to stress. I have trouble sleeping even when I’m tired.",
+      "group": "Adrenal"
+    },
+    {
+      "id": 32,
+      "text": "I often have my best energy after 6 PM.",
+      "group": "Adrenal"
+    },
+    {
+      "id": 33,
+      "text": "I gain weight when I’m stressed.",
+      "group": "Adrenal"
+    },
+    {
+      "id": 34,
+      "text": "I have had abnormal thyroid hormones and cortisol levels on my blood tests.",
+      "group": "Adrenal"
+    },
+    {
+      "id": 35,
+      "text": "I have dark circles under my eyes, which I’ve noticed are more prominent when I’m stressed or tired.",
+      "group": "Adrenal"
+    },
+    {
+      "id": 36,
+      "text": "I often miss periods or have irregular cycles, especially when I’m going through stressful times.",
+      "group": "Adrenal"
+    },
+    {
+      "id": 37,
+      "text": "I often feel low on energy, and I need caffeine or other stimulants to get through the day, especially after 3-4 PM.",
+      "group": "Adrenal"
+    }
+  ],
+  "explanations": {
+    "Inflammatory": "<b>Inflammatory PCOS</b><br> Based on your answers, it seems likely that Chronic, low-grade inflammation is a primary cause of your PCOS symptoms. While inflammation is present in all types of PCOS, in your case, it plays a key role in triggering hormonal imbalances and worsen PCOS symptoms such as acne, weight gain, irregular periods or missed periods, fertility struggles, and changes in hair growth.<br> Over time, persistent inflammation can cause your ovaries to produce excessive testosterone, leading to these symptoms. Reducing inflammation through dietary changes, stress management, and specific supplements can be highly effective in alleviating symptoms.<br> To create a personalized plan that fits your unique needs, I recommend a consultation where we can explore the best strategies to help you feel your best.",
+    "Insulin Resistance": "<b>Insulin Resistance PCOS</b><br> Based on your symptoms, it appears that insulin resistance may be the underlying cause of your PCOS.<br> Insulin resistance is the root cause of about 80% of PCOS cases, making it the most common cause of symptoms like acne, irregular periods, fertility challenges, and changes in hair growth.<br> Insulin resistance can lead to higher insulin levels, which in turn may cause hormonal imbalances, weight gain, and irregular cycles. When insulin levels are elevated, your ovaries may produce more testosterone, leading to these symptoms.<br> A personalized plan involving dietary and lifestyle changes focused on improving insulin sensitivity can help you manage these symptoms. I recommend scheduling a consultation to discuss a tailored approach that includes dietary adjustments, lifestyle changes, and, if needed, supplementation to support your overall health.",
+    "Adrenal": "<b>Adrenal PCOS</b><br> Based on your answers, it seems highly likely that you may have Adrenal imbalance induced PCOS.<br> Your body appears to have an abnormal response to stress hormones, leading to hormonal imbalances. When cortisol levels are elevated due to stress, they can disrupt other hormones, contributing to symptoms such as acne, irregular or missed periods, fertility challenges, and hair growth changes.<br> Adrenal PCOS affects around 50% of individuals with PCOS and is the second most common root cause. Adrenal support through stress management, proper sleep, and targeted nutrition may help restore balance and alleviate symptoms. I recommend scheduling a consultation to dive deeper into a tailored approach to restore adrenal function.",
+    "Post-Birth Control": "<b>Pill-Induced PCOS</b><br> After stopping hormonal birth control, it’s common to experience a temporary surge in androgens (male hormones like testosterone).<br> If your symptoms began after discontinuing the pill or another form of hormonal birth control, they are likely temporary. The increase in androgens can lead to symptoms like acne, hair changes, and irregular or missed periods. If you are experiencing symptoms of PCOS after discontinuing birth control, this could indicate that your body is adjusting hormonally post-pill. Birth control can mask underlying hormonal imbalances, and once stopped, those imbalances may resurface. It is important to give your body time to regulate itself, but addressing any underlying hormonal disruptions through diet, lifestyle changes, and possible hormone testing may be necessary for recovery.<br> I would recommend a consultation to help you navigate this transition and develop a personalized program that supports long-term health.",
+    "Mixed": "<b>Mixed Results</b><br> It appears that your symptoms reflect a combination of factors, which may involve insulin resistance, inflammation, hormonal imbalances, or adrenal dysfunction. Since your symptoms appear to be multifactorial, a personalized consultation will allow us to pinpoint the exact causes and develop a comprehensive, individualized nutrition and lifestyle plan. This will provide you with the best chance of managing your symptoms effectively and restoring hormonal balance. I encourage you to book a session to create a plan that’s right for you."
+  },
+  "skip": {
+    "whenQuestion": 21,
+    "equals": 1,
+    "jumpTo": 31
+  },
+  "binaryQuestions": {
+    "21": [
+      {
+        "value": 2,
+        "label": "Yes",
+        "sublabel": "Have taken"
+      },
+      {
+        "value": 1,
+        "label": "No",
+        "sublabel": "Never taken"
+      }
+    ]
+  }
+}

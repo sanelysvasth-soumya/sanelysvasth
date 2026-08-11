@@ -1,0 +1,83 @@
+---
+layout: "layouts/calculator.njk"
+permalink: "/calculators/dka/"
+title: "Diabetic Ketoacidosis Criteria"
+lede: "Check presenting values against ADA diagnostic criteria."
+description: "Check clinical values against the American Diabetes Association criteria for diabetic ketoacidosis."
+formId: "dka-form"
+resultId: "dka-result"
+scriptModule: "dka"
+formTitle: "Enter clinical values"
+submitLabel: "Evaluate criteria"
+infoTitle: "About these criteria"
+disclaimer: "This is a clinical reference tool for practitioners. It does not diagnose, and it is not a substitute for emergency medical assessment. Suspected DKA requires immediate medical attention."
+fields:
+  - name: "glucose"
+    type: "select"
+    label: "Plasma glucose above 250 mg/dL"
+    options:
+      - value: "yes"
+        text: "Yes"
+      - value: "no"
+        text: "No"
+  - name: "bicarbonate"
+    type: "select"
+    label: "Serum bicarbonate (mEq/L)"
+    options:
+      - value: ">18"
+        text: "Above 18"
+      - value: "15-18"
+        text: "15 to 18"
+      - value: "10-15"
+        text: "10 to 15"
+      - value: "<10"
+        text: "Below 10"
+  - name: "anionGap"
+    type: "select"
+    label: "Anion gap"
+    options:
+      - value: ">12"
+        text: "Above 12"
+      - value: "<12"
+        text: "12 or below"
+  - name: "ph"
+    type: "select"
+    label: "Arterial pH"
+    options:
+      - value: ">7.30"
+        text: "Above 7.30"
+      - value: "7.25-7.30"
+        text: "7.25 to 7.30"
+      - value: "7.00-7.24"
+        text: "7.00 to 7.24"
+      - value: "<7.00"
+        text: "Below 7.00"
+  - name: "serumKetone"
+    type: "select"
+    label: "Serum ketones"
+    options:
+      - value: "absent"
+        text: "Absent"
+      - value: "present"
+        text: "Present"
+  - name: "urineKetone"
+    type: "select"
+    label: "Urine ketones"
+    options:
+      - value: "absent"
+        text: "Absent"
+      - value: "present"
+        text: "Present"
+---
+
+<h3>What this checks</h3>
+
+This tool compares presenting values against the American Diabetes
+Association criteria for diabetic ketoacidosis, and reports which criteria
+are met.
+
+<h3>Interpretation</h3>
+
+Meeting three or more criteria is flagged as suggestive of a severe
+presentation. This is a reference aid only — clinical judgement and
+immediate assessment take precedence.

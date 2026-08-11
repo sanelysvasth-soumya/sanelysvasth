@@ -1,0 +1,100 @@
+---
+layout: layouts/base.njk
+ogType: article
+pageScripts: ["content"]
+pageHeader: false
+---
+{# Recipe layout — utility-first, built for cooking from.
+   New vs legacy: ingredients and steps are interactive checklists with
+   persisted progress, a wake-lock-free "cook mode", and a print view.
+   Structured data is emitted for Recipe rich results. #}
+
+<article class="recipe">
+  {# Canonical header, picture-led variant: the photograph sits beside the
+     text rather than behind it, so the type never fights the image. #}
+  {% set breadcrumbs = [
+    { text: "Home", url: "/" },
+    { text: "Recipes", url: "/recipes/" },
+    { text: title }
+  ] %}
+  {% set lede = excerpt %}
+  {% set headerMedia = image %}
+  {% set headerVariant = "media" if image else "" %}
+  {% include "components/page-header.njk" %}
+
+  {% if metaItems.length %}
+    <div class="container container--narrow">
+      <dl class="recipe-stats">
+        {% for item in metaItems %}
+          <div class="recipe-stats__item">
+            <dt>{{ item.label }}</dt>
+            <dd>{{ item.value }}</dd>
+          </div>
+        {% endfor %}
+      </dl>
+    </div>
+  {% endif %}
+
+  <div class="container container--narrow section">
+    <div class="recipe-actions no-print">
+      <button type="button" class="btn btn--secondary btn--sm" data-recipe-reset>
+        Clear progress
+      </button>
+      <button type="button" class="btn btn--secondary btn--sm" onclick="window.print()">
+        Print recipe
+      </button>
+    </div>
+
+    <div class="recipe-grid">
+      <section aria-labelledby="ingredients-title">
+        <h2 class="recipe-section-title" id="ingredients-title">Ingredients</h2>
+        <p class="recipe-progress" data-progress-for="ingredients" aria-live="polite"></p>
+        <ul class="checklist" data-checklist="ingredients-{{ page.fileSlug }}">
+          {% for item in ingredients %}
+            <li>
+              <label class="checklist__item">
+                <input type="checkbox" data-checklist-item="{{ loop.index0 }}">
+                <span>{{ item }}</span>
+              </label>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <section aria-labelledby="method-title">
+        <h2 class="recipe-section-title" id="method-title">Method</h2>
+        <p class="recipe-progress" data-progress-for="method" aria-live="polite"></p>
+        <ol class="steps" data-checklist="method-{{ page.fileSlug }}">
+          {% for step in instructions %}
+            <li class="steps__item">
+              <label class="steps__label">
+                <input type="checkbox" data-checklist-item="{{ loop.index0 }}">
+                <span class="steps__num" aria-hidden="true">{{ loop.index }}</span>
+                <span class="steps__text">{{ step }}</span>
+              </label>
+            </li>
+          {% endfor %}
+        </ol>
+      </section>
+    </div>
+
+    {% include "components/cta.njk" %}
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "name": {{ title | dump | safe }},
+  "description": {{ excerpt | dump | safe }}{% if image %},
+  "image": "{{ site.url }}{{ image }}"{% endif %},
+  "author": { "@type": "Person", "name": "Soumya" },
+  "recipeIngredient": {{ ingredients | dump | safe }},
+  "recipeInstructions": [
+    {% for step in instructions %}
+    { "@type": "HowToStep", "text": {{ step | dump | safe }} }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>

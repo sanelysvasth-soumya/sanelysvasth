@@ -1,0 +1,62 @@
+---
+layout: "layouts/calculator.njk"
+permalink: "/calculators/homa-ir/"
+title: "HOMA-IR & QUICKI Calculator"
+lede: "Assess insulin sensitivity from fasting insulin and glucose."
+description: "Calculate HOMA-IR and QUICKI insulin resistance indices from fasting insulin and fasting glucose."
+formId: "homa-ir-form"
+resultId: "homa-ir-result"
+scriptModule: "homa-ir"
+formTitle: "Enter your fasting values"
+submitLabel: "Calculate indices"
+infoTitle: "About these indices"
+disclaimer: "These indices require FASTING blood values and are for informational use only. Interpretation belongs with your doctor."
+fields:
+  - name: "insulin"
+    type: "number"
+    label: "Fasting insulin"
+    unit: ""
+    min: 0
+    step: "0.01"
+    placeholder: "10"
+    requiredMessage: "Enter your fasting insulin value."
+  - name: "insulinUnit"
+    type: "select"
+    label: "Insulin unit"
+    options:
+      - value: "uIU"
+        text: "µIU/mL"
+      - value: "pmol"
+        text: "pmol/L"
+  - name: "glucose"
+    type: "number"
+    label: "Fasting glucose"
+    unit: ""
+    min: 0
+    step: "0.01"
+    placeholder: "90"
+    requiredMessage: "Enter your fasting glucose value."
+  - name: "glucoseUnit"
+    type: "select"
+    label: "Glucose unit"
+    options:
+      - value: "mg"
+        text: "mg/dL"
+      - value: "mmol"
+        text: "mmol/L"
+---
+
+<h3>HOMA-IR</h3>
+
+The Homeostatic Model Assessment of Insulin Resistance estimates how well
+your body responds to insulin, using fasting insulin and fasting glucose.
+
+<h3>QUICKI</h3>
+
+The Quantitative Insulin Sensitivity Check Index is a complementary
+measure derived from the same two values.
+
+<h3>Important</h3>
+
+Both indices require genuinely fasting samples. Non-fasting values will
+produce meaningless results.

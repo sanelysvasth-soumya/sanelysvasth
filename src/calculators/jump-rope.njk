@@ -1,0 +1,53 @@
+---
+layout: "layouts/calculator.njk"
+permalink: "/calculators/jump-rope/"
+title: "Jump Rope Calorie Calculator"
+lede: "Estimate calories burned during a skipping session."
+description: "Estimate calories burned jumping rope from your weight, intensity and session duration."
+formId: "jump-rope-form"
+resultId: "jump-rope-result"
+scriptModule: "jump-rope"
+formTitle: "Calculate calories burned"
+submitLabel: "Calculate calories"
+infoTitle: "About this estimate"
+disclaimer: "Calorie estimates are approximate and vary with technique, fitness and body composition."
+fields:
+  - name: "weight"
+    type: "number"
+    label: "Body weight"
+    unit: "kg"
+    min: 1
+    max: 300
+    step: "0.1"
+    placeholder: "70"
+    requiredMessage: "Enter your weight in kilograms."
+  - name: "speed"
+    type: "select"
+    label: "Intensity"
+    options:
+      - value: "8.8"
+        text: "Slow (under 100 skips/min)"
+      - value: "11.8"
+        text: "Moderate (100-120 skips/min)"
+      - value: "12.3"
+        text: "Fast (over 120 skips/min)"
+  - name: "duration"
+    type: "number"
+    label: "Duration"
+    unit: "minutes"
+    min: 0
+    max: 600
+    step: "1"
+    placeholder: "20"
+    requiredMessage: "Enter the session duration in minutes."
+---
+
+<h3>How this is estimated</h3>
+
+The estimate uses a MET (metabolic equivalent) value for your chosen
+intensity, scaled by your body weight and the duration of the session.
+
+<h3>Why estimates vary</h3>
+
+Actual energy expenditure depends on technique, rest intervals, fitness
+level and body composition. Treat the figure as a guide.

@@ -1,0 +1,116 @@
+---
+layout: layouts/base.njk
+pageHeader: false
+---
+{# Canonical calculator template. One layout drives every calculator —
+   replaces 11 near-identical hand-maintained pages. Fields are declared
+   in each page's front matter; arithmetic lives in engines.js. #}
+
+{% set breadcrumbs = [
+  { text: "Home", url: "/" },
+  { text: "Calculators", url: "/calculators/" },
+  { text: title }
+] %}
+{% set lede = lede or pageLede %}
+{% include "components/page-header.njk" %}
+
+<div class="section calculator-shell">
+  <div class="container">
+    <div class="calculator">
+
+      {# ---------------- input panel ---------------- #}
+      <section class="calculator__panel" aria-labelledby="calc-form-title">
+        <h2 class="calculator__panel-title" id="calc-form-title">{{ formTitle or "Enter your details" }}</h2>
+
+        <form id="{{ formId }}" novalidate>
+          <div class="form-summary" data-form-summary role="alert" aria-live="assertive"></div>
+
+          {% for field in fields %}
+            <div class="field">
+              {% if field.type == "radio" %}
+                <span class="field__label" id="{{ field.name }}-label">
+                  {{ field.label }}{% if not field.optional %}<span class="required" aria-hidden="true">*</span>{% endif %}
+                </span>
+                <div class="choice-group" role="radiogroup" aria-labelledby="{{ field.name }}-label">
+                  {% for opt in field.options %}
+                    <label class="choice">
+                      <input type="radio" name="{{ field.name }}" value="{{ opt.value }}"
+                             {% if loop.first %}checked{% endif %}>
+                      <span>{{ opt.text }}</span>
+                    </label>
+                  {% endfor %}
+                </div>
+
+              {% elif field.type == "select" %}
+                <label class="field__label" for="{{ field.name }}">
+                  {{ field.label }}{% if not field.optional %}<span class="required" aria-hidden="true">*</span>{% endif %}
+                </label>
+                <select class="control" id="{{ field.name }}" name="{{ field.name }}"
+                        {% if field.hint %}aria-describedby="{{ field.name }}-hint"{% endif %}>
+                  {% for opt in field.options %}
+                    <option value="{{ opt.value }}">{{ opt.text }}</option>
+                  {% endfor %}
+                </select>
+
+              {% else %}
+                <label class="field__label" for="{{ field.name }}">
+                  {{ field.label }}{% if not field.optional %}<span class="required" aria-hidden="true">*</span>{% endif %}
+                </label>
+                <div class="control-group">
+                  <input class="control"
+                         id="{{ field.name }}"
+                         name="{{ field.name }}"
+                         type="number"
+                         inputmode="decimal"
+                         {% if field.step %}step="{{ field.step }}"{% endif %}
+                         {% if field.min is defined %}min="{{ field.min }}"{% endif %}
+                         {% if field.max is defined %}max="{{ field.max }}"{% endif %}
+                         placeholder="{{ field.placeholder or '' }}"
+                         aria-describedby="{{ field.name }}-error{% if field.hint %} {{ field.name }}-hint{% endif %}">
+                  {% if field.unit %}<span class="control-group__unit" aria-hidden="true">{{ field.unit }}</span>{% endif %}
+                </div>
+              {% endif %}
+
+              {% if field.hint %}<span class="field__hint" id="{{ field.name }}-hint">{{ field.hint }}</span>{% endif %}
+              <span class="field__error" id="{{ field.name }}-error"></span>
+            </div>
+          {% endfor %}
+
+          <div class="calculator__actions">
+            <button type="submit" class="btn btn--primary">{{ submitLabel or "Calculate" }}</button>
+            <button type="reset" class="btn btn--secondary">Reset</button>
+          </div>
+
+          <p class="visually-hidden" data-calc-status role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      {# ---------------- result + info panel ---------------- #}
+      <div class="stack stack--lg">
+        <section class="result" id="{{ resultId }}" hidden aria-labelledby="calc-result-title">
+          <h2 class="visually-hidden" id="calc-result-title">Your result</h2>
+          <div data-result-body></div>
+        </section>
+
+        {% if content %}
+          <section class="calculator__panel">
+            <h2 class="calculator__panel-title">{{ infoTitle or "About this calculator" }}</h2>
+            <div class="prose">{{ content | safe }}</div>
+          </section>
+        {% endif %}
+
+        {% if disclaimer %}
+          <div class="alert alert--info">
+            <div class="alert__body"><p>{{ disclaimer }}</p></div>
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{# Each calculator's binding lives in its own module under
+   /assets/js/calculators/pages/ — keeps presentation wiring out of the
+   template and lets the browser cache it separately. #}
+<script type="module" src="/assets/js/calculators/pages/{{ scriptModule }}.js"></script>

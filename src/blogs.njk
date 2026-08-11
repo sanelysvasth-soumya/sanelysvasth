@@ -1,0 +1,62 @@
+---
+layout: layouts/base.njk
+permalink: /blogs/
+pageScripts: ["content"]
+title: Blogs
+description: Evidence-based articles on nutrition, gut health, metabolism and sustainable wellness from Svasth by Soumya.
+eyebrow: "Reading"
+lede: "Nutrition science, gut health and metabolism — written to be understood, not just cited."
+---
+
+<div class="section">
+  <div class="container">
+
+    {# ---- Filter + search bar ---- #}
+    {% set categories = collections.posts | categoriesIn %}
+    <div class="collection-controls no-print">
+      <div class="field" style="flex:1; min-width:16rem">
+        <label class="visually-hidden" for="post-search">Search articles</label>
+        <input class="control" id="post-search" type="search" placeholder="Search articles…"
+               data-collection-search autocomplete="off">
+      </div>
+      <div class="filter-chips" role="group" aria-label="Filter by category">
+        <button type="button" class="filter-chip" data-filter="all" aria-pressed="true">All</button>
+        {% for cat in categories %}
+          <button type="button" class="filter-chip" data-filter="{{ cat | slug }}" aria-pressed="false">{{ cat }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <p class="collection-count" data-collection-count aria-live="polite"></p>
+
+    {# ---- Grid ---- #}
+    <div class="grid grid--3" data-collection-grid>
+      {% for post in collections.posts %}
+        {% set cat = post.data.meta | categoryOf %}
+        <article class="card card--interactive card--feature" data-reveal
+                 data-item
+                 data-category="{{ cat | slug }}"
+                 data-search="{{ (post.data.title + ' ' + post.data.excerpt + ' ' + cat) | lower }}">
+          <div class="card__body">
+            {% if cat %}<p class="badge badge--accent">{{ cat }}</p>{% endif %}
+            <h2 class="card__title"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+            <p class="card__text">{{ post.data.excerpt }}</p>
+            <p class="card__meta">
+              {% set rt = post.data.meta | readTimeOf %}{% set d = post.data.meta | dateOf %}
+              {% if d %}<span>{{ d }}</span>{% endif %}
+              {% if rt %}<span>{{ rt }}</span>{% endif %}
+            </p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+
+    {# ---- Empty state ---- #}
+    <div class="empty-state" data-collection-empty hidden>
+      <h2 class="empty-state__title">No articles match</h2>
+      <p class="empty-state__text">Try a different search term, or clear the filters to see all articles.</p>
+      <button type="button" class="btn btn--secondary" data-collection-clear>Clear filters</button>
+    </div>
+
+  </div>
+</div>

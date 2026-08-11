@@ -1,0 +1,81 @@
+{# Site header — single canonical implementation.
+   Replaces the nav markup that was copy-pasted into 50+ legacy files. #}
+<header class="site-header" data-site-header>
+  <div class="container site-header__inner">
+
+    {# Brand lockup: vector emblem + vector wordmark, optically aligned.
+       width/height carry the true intrinsic ratio so the browser reserves
+       the right box before the SVGs load (no layout shift). #}
+    <a href="/" class="site-header__brand" aria-label="{{ site.name }} — home">
+      <img class="site-header__mark"
+           src="{{ site.brand.logo }}" alt=""
+           width="{{ site.brand.logoWidth }}" height="{{ site.brand.logoHeight }}"
+           fetchpriority="high" decoding="async">
+      <img class="site-header__wordmark"
+           src="{{ site.brand.wordmark }}" alt="{{ site.name }}"
+           width="{{ site.brand.wordmarkWidth }}" height="{{ site.brand.wordmarkHeight }}"
+           fetchpriority="high" decoding="async">
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      {% for item in site.nav %}
+        <a class="nav__link" href="{{ item.url }}"
+           {% if page.url == item.url or (item.url != '/' and page.url.startsWith(item.url)) %}aria-current="page"{% endif %}>
+          {{ item.text }}
+        </a>
+      {% endfor %}
+    </nav>
+
+    <div class="site-header__controls">
+      {# One global theme control. Rendered once here; the drawer reuses
+         the same handler via [data-theme-toggle]. #}
+      <button class="theme-toggle" type="button"
+              data-theme-toggle
+              aria-pressed="false"
+              aria-label="Switch to dark theme">
+        <span class="theme-toggle__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="theme-toggle__sun" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4.2"/>
+            <path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/>
+          </svg>
+          <svg viewBox="0 0 24 24" class="theme-toggle__moon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1Z"/>
+          </svg>
+        </span>
+        <span class="theme-toggle__text" data-theme-label>Dark</span>
+      </button>
+
+      <button class="nav-toggle" type="button"
+              aria-expanded="false"
+              aria-controls="nav-drawer"
+              aria-label="Open navigation menu"
+              data-nav-toggle>
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+{# Mobile drawer — focus-trapped and scroll-locked while open #}
+<div class="nav-drawer" id="nav-drawer" data-nav-drawer data-open="false" aria-label="Primary" role="dialog" aria-modal="true" hidden>
+  <nav>
+    {% for item in site.nav %}
+      <a class="nav-drawer__link" href="{{ item.url }}"
+         {% if page.url == item.url or (item.url != '/' and page.url.startsWith(item.url)) %}aria-current="page"{% endif %}>
+        {{ item.text }}
+      </a>
+    {% endfor %}
+  </nav>
+
+  {# Calculators are surfaced directly so mobile users don't have to
+     bounce back to the hub page to switch tools. #}
+  {% for group in site.calculatorGroups %}
+    <p class="nav-drawer__group-title">{{ group.title }}</p>
+    <nav aria-label="{{ group.title }} calculators">
+      {% for item in group.items %}
+        <a class="nav-drawer__link" href="{{ item.url }}"
+           {% if page.url == item.url %}aria-current="page"{% endif %}>{{ item.text }}</a>
+      {% endfor %}
+    </nav>
+  {% endfor %}
+</div>

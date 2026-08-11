@@ -1,0 +1,318 @@
+/* ============================================================
+   01 — DESIGN TOKENS
+   BRAND PRESERVATION: every colour below is carried over verbatim
+   from the legacy css/style.css :root block. No hue, saturation or
+   lightness has been altered. New tokens are additive only
+   (spacing, motion, z-index, semantic state colours).
+   ============================================================ */
+
+:root {
+  /* ---------- BRAND COLOUR — UNCHANGED FROM LEGACY ---------- */
+  --primary: #c59a6d;
+  --primary-dark: #a67c52;
+  --primary-light: #e0bfa0;
+  --secondary: #1e2429;
+  --secondary-light: #2c333a;
+  --dark: #1e2429;
+  --light: #ffffff;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-800: #343a40;
+  --text-main: #2c3e50;
+  --text-light: #ffffff;
+  --text-muted: #6c757d;
+
+  /* Secondary brand tints found in legacy stylesheet, preserved */
+  --primary-hover: #d1aa7f;
+  --primary-active: #b38a5d;
+  --text-slate: #34495e;
+  --text-grey: #7f8c8d;
+
+  /* ---------- SEMANTIC ALIASES ----------
+     These are the ONLY colour tokens that change between themes. The
+     brand values above never flip: #c59a6d is #c59a6d in both modes.
+     Components must consume these, never the raw brand values, or they
+     will not theme. */
+  --color-accent: var(--primary);
+  --color-accent-strong: var(--primary-dark);
+
+  /* surfaces, back to front */
+  --color-surface: #ffffff;
+  --color-surface-sunken: #f8f9fa;
+  --color-surface-raised: #ffffff;
+  --color-border: #dee2e6;
+  --color-border-strong: #cdd3d8;
+
+  /* text */
+  --color-heading: #1e2429;
+  --color-text: #2c3e50;
+  --color-text-muted: #6c757d;
+  --color-text-inverse: #ffffff;
+
+  /* One shared ground for the feature-card family (calculators,
+     expertise, recipes, blog cards, tool panels). Defined once here so
+     the whole family stays in step and future changes land everywhere. */
+  --surface-feature: linear-gradient(
+    168deg,
+    color-mix(in srgb, var(--primary) 6%, var(--color-surface-raised)) 0%,
+    var(--color-surface-raised) 62%
+  );
+
+  /* a tinted ground used by page chrome */
+  --color-tint: color-mix(in srgb, var(--primary) 4%, var(--gray-100));
+  --color-tint-soft: color-mix(in srgb, var(--primary) 1.5%, var(--color-surface));
+
+  /* elevation on dark needs lightening rather than shadow */
+  --elevate: none;
+  color-scheme: light;
+
+  /* ---------- STATE COLOURS (new — deliberately NOT brand gold,
+       so status never competes with the accent) ---------- */
+  --color-success: #2f6b4f;
+  --color-success-bg: #e6f2ec;
+  --color-warning: #8a6d1f;
+  --color-warning-bg: #fbf3dc;
+  --color-danger: #a3352a;
+  --color-danger-bg: #f9e7e5;
+  --color-info: #2f5d6b;
+  --color-info-bg: #e4f0f3;
+
+  /* ---------- TYPOGRAPHY — families unchanged ---------- */
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Lato", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Modular type scale (1.200 minor third), fluid at the top end */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: clamp(1.375rem, 1.2rem + 0.8vw, 1.5rem);
+  --text-3xl: clamp(1.625rem, 1.4rem + 1.1vw, 1.875rem);
+  --text-4xl: clamp(1.875rem, 1.5rem + 1.9vw, 2.5rem);
+  --text-5xl: clamp(2.25rem, 1.6rem + 3vw, 3.25rem);
+
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.1em;
+
+  --measure: 65ch; /* optimal reading width */
+
+  /* ---------- SPACING — legacy scale kept, finer steps added ---------- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem; /* legacy --spacing-xs */
+  --space-xs: 0.75rem;
+  --space-sm: 1rem; /* legacy --spacing-sm */
+  --space-md: 1.5rem;
+  --space-lg: 2rem; /* legacy --spacing-md */
+  --space-xl: 3rem;
+  --space-2xl: 4rem; /* legacy --spacing-lg */
+  --space-3xl: 6rem; /* legacy --spacing-xl */
+
+  /* Legacy aliases retained so nothing referencing them breaks */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 6rem;
+
+  /* Section rhythm */
+  --section-padding-y: clamp(3rem, 7vw, 6rem);
+  --container-max: 1200px;
+  --container-narrow: 760px;
+  --container-pad: clamp(1rem, 4vw, 2rem);
+
+  /* ---------- RADIUS — legacy values kept ---------- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 50px;
+  --radius-circle: 50%;
+
+  /* ---------- SHADOW — legacy values kept ---------- */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 0 20px rgba(197, 154, 109, 0.3);
+
+  /* ---------- MOTION (new — replaces ad hoc per-page timings) ---------- */
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+  --transition: all var(--duration-base) var(--ease-out);
+
+  /* ---------- Z-INDEX SCALE (new — replaces stray z-index:10000) ---------- */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-sticky: 100;
+  --z-header: 200;
+  --z-drawer: 300;
+  --z-overlay: 400;
+  --z-modal: 500;
+  --z-toast: 600;
+
+  /* Brand emblem, for use as a subtle surface watermark */
+  --brand-mark: url("/assets/brand/logo-mark.svg");
+
+  /* ---------- FOCUS ---------- */
+  --focus-ring: 2px solid var(--primary-dark);
+  --focus-offset: 3px;
+
+  /* ---------- CONTROL SIZING (a11y touch targets) ---------- */
+  --control-height: 2.75rem; /* 44px */
+  --control-height-sm: 2.25rem;
+  --control-pad-x: 1rem;
+}
+
+/* Breakpoint reference (media queries can't read custom properties;
+   these exist as documentation and for JS to read if needed):
+     --bp-sm: 360px | --bp-md: 600px | --bp-lg: 900px | --bp-xl: 1280px */
+
+/* ============================================================
+   THEME — DARK
+   Not an inversion. Surfaces are a warm charcoal that carries a trace of
+   the brand gold, so the palette still reads as Svasth rather than
+   generic dark-mode grey. Type is a warm off-white, never pure #fff, to
+   cut halation on large areas. Brand colours are untouched: the gold sits
+   on these grounds at 6.9:1, comfortably over AA.
+
+   Structure: the media query is the system default, and the two
+   data-theme selectors override it in BOTH directions so the toggle
+   always wins.
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-surface: #15191c;
+    --surface-feature: linear-gradient(
+      168deg,
+      color-mix(in srgb, var(--primary) 11%, var(--color-surface-raised)) 0%,
+      var(--color-surface-raised) 62%
+    );
+    --color-surface-sunken: #101315;
+    --color-surface-raised: #1c2226;
+    --color-border: #2b3338;
+    --color-border-strong: #3a444a;
+
+    --color-heading: #f2efe9;
+    --color-text: #ddd8d0;
+    --color-text-muted: #a29c94;
+    --color-text-inverse: #15191c;
+
+    --color-tint: color-mix(in srgb, var(--primary) 8%, #1c2226);
+    --color-tint-soft: color-mix(in srgb, var(--primary) 3%, #15191c);
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.55);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
+    --elevate: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-surface: #15191c;
+  --surface-feature: linear-gradient(
+    168deg,
+    color-mix(in srgb, var(--primary) 11%, var(--color-surface-raised)) 0%,
+    var(--color-surface-raised) 62%
+  );
+  --color-surface-sunken: #101315;
+  --color-surface-raised: #1c2226;
+  --color-border: #2b3338;
+  --color-border-strong: #3a444a;
+
+  --color-heading: #f2efe9;
+  --color-text: #ddd8d0;
+  --color-text-muted: #a29c94;
+  --color-text-inverse: #15191c;
+
+  --color-tint: color-mix(in srgb, var(--primary) 8%, #1c2226);
+  --color-tint-soft: color-mix(in srgb, var(--primary) 3%, #15191c);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
+  --elevate: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --color-surface: #ffffff;
+  --surface-feature: linear-gradient(
+    168deg,
+    color-mix(in srgb, var(--primary) 6%, var(--color-surface-raised)) 0%,
+    var(--color-surface-raised) 62%
+  );
+  --color-surface-sunken: #f8f9fa;
+  --color-surface-raised: #ffffff;
+  --color-border: #dee2e6;
+  --color-border-strong: #cdd3d8;
+
+  --color-heading: #1e2429;
+  --color-text: #2c3e50;
+  --color-text-muted: #6c757d;
+  --color-text-inverse: #ffffff;
+
+  --color-tint: color-mix(in srgb, var(--primary) 4%, var(--gray-100));
+  --color-tint-soft: color-mix(in srgb, var(--primary) 1.5%, #ffffff);
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+  --elevate: none;
+
+  color-scheme: light;
+}
+
+/* State colours need their own dark values: the light tints are far too
+   bright to sit on a charcoal ground. Foregrounds are lifted so each
+   still clears AA against its own background. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-success: #7fc9a3;
+    --color-success-bg: #16281f;
+    --color-warning: #e0bd6a;
+    --color-warning-bg: #2a2312;
+    --color-danger: #f0968a;
+    --color-danger-bg: #2e1a17;
+    --color-info: #7fbcce;
+    --color-info-bg: #14262c;
+  }
+}
+:root[data-theme="dark"] {
+  --color-success: #7fc9a3;
+  --color-success-bg: #16281f;
+  --color-warning: #e0bd6a;
+  --color-warning-bg: #2a2312;
+  --color-danger: #f0968a;
+  --color-danger-bg: #2e1a17;
+  --color-info: #7fbcce;
+  --color-info-bg: #14262c;
+}
+:root[data-theme="light"] {
+  --color-success: #2f6b4f;
+  --color-success-bg: #e6f2ec;
+  --color-warning: #8a6d1f;
+  --color-warning-bg: #fbf3dc;
+  --color-danger: #a3352a;
+  --color-danger-bg: #f9e7e5;
+  --color-info: #2f5d6b;
+  --color-info-bg: #e4f0f3;
+}

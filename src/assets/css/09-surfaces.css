@@ -1,0 +1,265 @@
+/* ============================================================
+   09 — SURFACE TREATMENT
+   Calculator cards, calculator panels and the service explorer.
+
+   One system, not three: every surface here is a soft brand-tinted
+   gradient on a raised ground, edged with a hairline, and marked with a
+   single gold accent that strengthens on hover or when active. Nothing
+   introduces a new colour — the tint is --primary mixed into the existing
+   surface tokens, so it themes automatically and stays restrained.
+
+   Deliberately NOT four different colours: the four services share one
+   family, and only the ACTIVE one carries full-strength gold. That reads
+   as a considered system rather than a rainbow.
+   ============================================================ */
+
+/* ---------- the shared feature-card ground ----------
+   One token (--surface-feature, defined per theme in 01-tokens.css) and
+   one class. Previously this was a hardcoded selector list duplicated for
+   light and dark, which meant Expertise cards were silently excluded and
+   any future change had to be made in five places.
+
+   `.card--feature` is the hook; panels that are not cards consume the
+   token directly. Both resolve to the same value, so the family stays in
+   step and each theme supplies its own tint strength automatically. */
+.card--feature,
+.calculator__panel,
+.service-panel {
+  background: var(--surface-feature);
+}
+
+/* ==================== CALCULATOR / TOOL CARDS ==================== */
+/* The hub cards: a tinted ground, a gold top edge that grows on hover,
+   and a quiet monogram rule instead of an icon. */
+.tool-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm), var(--elevate);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+.tool-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--primary) 0%,
+    color-mix(in srgb, var(--primary) 35%, transparent) 45%,
+    transparent 80%
+  );
+  transform: scaleX(0.32);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+.tool-card:hover,
+.tool-card:focus-within {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--primary) 55%, var(--color-border));
+  box-shadow: var(--shadow-md), var(--elevate);
+}
+.tool-card:hover::before,
+.tool-card:focus-within::before {
+  transform: scaleX(1);
+}
+
+/* A faint brand emblem watermark, bottom-right, clipped by the card.
+   Low enough opacity to read as texture rather than a logo placement. */
+.tool-card::after {
+  content: "";
+  position: absolute;
+  right: -1.5rem;
+  bottom: -2rem;
+  width: 8rem;
+  height: 8rem;
+  background: var(--brand-mark) center / contain no-repeat;
+  opacity: 0.05;
+  pointer-events: none;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+[data-theme="dark"] .tool-card::after {
+  opacity: 0.08;
+}
+.tool-card:hover::after {
+  opacity: 0.1;
+}
+[data-theme="dark"] .tool-card:hover::after {
+  opacity: 0.14;
+}
+
+.tool-card .card__body {
+  position: relative;
+  z-index: 1;
+}
+/* Category label above the title, in place of the old emoji */
+.tool-card__kicker {
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--primary-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  margin: 0 0 var(--space-3xs);
+}
+.tool-card__kicker::before {
+  content: "";
+  width: 1.1rem;
+  height: 1px;
+  background: currentColor;
+}
+[data-theme="dark"] .tool-card__kicker {
+  color: var(--primary-light);
+}
+
+/* ==================== CALCULATOR PANELS ==================== */
+.calculator__panel {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-sm), var(--elevate);
+}
+
+/* ==================== SERVICE EXPLORER ==================== */
+.service-tabs .tabs__list {
+  gap: var(--space-3xs);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0;
+  /* Wrap rather than scroll: four service names do not fit on one line
+     below ~900px, and a scrollbar under the tabs hid the fourth option. */
+  flex-wrap: wrap;
+  overflow-x: visible;
+}
+.service-tabs .tabs__tab {
+  flex: 0 1 auto;
+}
+
+/* Tabs become quiet pills; only the active one carries the brand. */
+.service-tabs .tabs__tab {
+  position: relative;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  padding-inline: var(--space-md);
+  color: var(--color-text-muted);
+  background: transparent;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+.service-tabs .tabs__tab:hover {
+  color: var(--color-text);
+  background: color-mix(in srgb, var(--primary) 7%, transparent);
+}
+.service-tabs .tabs__tab[aria-selected="true"] {
+  color: var(--color-heading);
+  font-weight: var(--weight-semibold);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--primary) 14%, var(--color-surface-raised)),
+      var(--color-surface-raised)
+    );
+  border-color: var(--color-border);
+  /* sits on top of the list's bottom rule */
+  margin-bottom: -1px;
+  padding-bottom: 1px;
+}
+.service-tabs .tabs__tab[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px 2px 0 0;
+}
+
+/* Panel: tinted surface, gold rule down the intro, emblem watermark. */
+.service-panel {
+  position: relative;
+  overflow: hidden;
+  margin-top: 0;
+  padding: var(--space-lg) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-top: none;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  box-shadow: var(--shadow-sm), var(--elevate);
+}
+.service-panel::after {
+  content: "";
+  position: absolute;
+  right: -2rem;
+  top: -2rem;
+  width: 11rem;
+  height: 11rem;
+  background: var(--brand-mark) center / contain no-repeat;
+  opacity: 0.04;
+  pointer-events: none;
+}
+[data-theme="dark"] .service-panel::after {
+  opacity: 0.07;
+}
+.service-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.service-panel__intro {
+  gap: var(--space-sm);
+  padding-left: var(--space-md);
+  border-left: 3px solid var(--primary);
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: var(--space-lg);
+}
+.service-panel__intro h2 {
+  font-size: var(--text-3xl);
+}
+
+/* Steps: numbered chips on a soft ground so the four read as a set. */
+.process__step {
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--primary) 5%, transparent);
+  border: 1px solid transparent;
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+[data-theme="dark"] .process__step {
+  background: color-mix(in srgb, var(--primary) 9%, transparent);
+}
+.process__step:hover {
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+  background: color-mix(in srgb, var(--primary) 9%, transparent);
+}
+[data-theme="dark"] .process__step:hover {
+  background: color-mix(in srgb, var(--primary) 14%, transparent);
+}
+.process__num {
+  background: var(--primary);
+  color: #fff;
+}
+[data-theme="dark"] .process__num {
+  color: var(--color-surface);
+}
+
+@media (max-width: 599px) {
+  /* keep cards from getting tall on a phone */
+  .service-panel {
+    padding: var(--space-md) var(--space-sm);
+  }
+  .process__step {
+    padding: var(--space-2xs) var(--space-xs);
+  }
+  .service-tabs .tabs__tab {
+    padding-inline: var(--space-sm);
+  }
+}

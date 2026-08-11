@@ -1,0 +1,67 @@
+---
+layout: layouts/base.njk
+ogType: article
+pageScripts: ["content"]
+pageHeader: false
+---
+{# Editorial article layout — reading-first.
+   New vs legacy: adds a reading-progress indicator, an auto-generated
+   sticky table of contents, a constrained 65ch measure, and a shared CTA
+   component (the legacy CTA was injected by a regex script). #}
+
+<div class="reading-progress" role="presentation"><span data-reading-progress></span></div>
+
+<article>
+  {# Same canonical header as every other page — the article simply feeds
+     it a category eyebrow and a date/read-time meta row. #}
+  {% set breadcrumbs = [
+    { text: "Home", url: "/" },
+    { text: "Blogs", url: "/blogs/" },
+    { text: title }
+  ] %}
+  {% set lede = excerpt %}
+  {% set headerMeta = [meta | dateOf, meta | readTimeOf, "Svasth by Soumya"] %}
+  {% include "components/page-header.njk" %}
+
+  {% if image %}
+    <div class="container container--narrow">
+      <img class="article-hero" src="{{ image }}" alt="" loading="eager" decoding="async">
+    </div>
+  {% endif %}
+
+  <div class="container article-shell">
+    {# Auto-generated TOC — populated client-side from the headings below,
+       so authors never maintain it by hand. #}
+    <aside class="article-toc" data-toc hidden>
+      <h2 class="article-toc__title">On this page</h2>
+      <nav aria-label="Article sections"><ol data-toc-list></ol></nav>
+    </aside>
+
+    <div class="article-body prose" data-article-body>
+      {{ content | safe }}
+
+      {% include "components/cta.njk" %}
+    </div>
+  </div>
+</article>
+
+{% set related = collections.posts | selectattr("url", "!=", page.url) %}
+{% if related.length %}
+<section class="section section--sunken">
+  <div class="container">
+    <div class="section-header"><h2 class="section-title">More reading</h2></div>
+    <div class="grid grid--3">
+      {% for post in related.slice(0, 3) %}
+        <article class="card card--interactive" data-reveal>
+          <div class="card__body">
+            {% set c = post.data.meta | categoryOf %}
+            {% if c %}<p class="badge badge--accent">{{ c }}</p>{% endif %}
+            <h3 class="card__title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+            <p class="card__text">{{ post.data.excerpt }}</p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

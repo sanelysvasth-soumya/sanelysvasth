@@ -1,0 +1,10 @@
+node_modules/
+_site/
+
+# Pre-migration snapshot of the legacy implementation. Kept out of the
+# build and the deploy artifact; safe to delete once migration completes
+# and the result has been verified in production.
+_archive/
+
+.DS_Store
+*.log
