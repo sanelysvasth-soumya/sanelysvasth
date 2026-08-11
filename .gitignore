@@ -8,3 +8,6 @@ _archive/
 
 .DS_Store
 *.log
+
+# Claude Code local settings (machine-specific, not needed by the build)
+.claude/settings.local.json
