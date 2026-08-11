@@ -1,7 +1,7 @@
 # Content Editing Guide — Svasth by Soumya
 
 **What this document is:** a map of where every piece of visible text, image and
-style on sanelysvasth.com actually lives, so that changing wording never turns
+style on www.sanelysvasth.in actually lives, so that changing wording never turns
 into hunting through the codebase.
 
 **Who it is for:** the site owner and any future developer making content

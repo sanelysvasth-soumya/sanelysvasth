@@ -14,7 +14,18 @@ export default {
   tagline: "Rediscover Your Health",
   description:
     "Integrative health dietitian in Bengaluru — sports nutrition, gut health, metabolic and pediatric nutrition.",
-  url: "https://sanelysvasth.com",
+  /**
+   * The production origin, and the ONLY one. Every absolute URL the site
+   * emits is built from this value: canonical links, og:url, og:image,
+   * sitemap <loc>s, the robots.txt Sitemap line, redirect-stub canonicals
+   * and recipe structured data.
+   *
+   * It must match the custom domain in CNAME (www.sanelysvasth.in). A
+   * mismatch tells search engines the canonical copy lives elsewhere and
+   * de-indexes the real site — which is exactly what the previous value
+   * ("https://sanelysvasth.com", not a domain we serve) was doing.
+   */
+  url: "https://www.sanelysvasth.in",
   locale: "en",
 
   /**
